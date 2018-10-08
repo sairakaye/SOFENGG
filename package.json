@@ -1,0 +1,29 @@
+{
+  "name": "sofengg-vca",
+  "version": "1.0.0",
+  "description": "A system of Faculty Development Grants for VCA.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sairakaye/SOFENGG-VCA.git"
+  },
+  "author": "Sai Manalili, Christian Dequito, Candace Mercado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sairakaye/SOFENGG-VCA/issues"
+  },
+  "homepage": "https://github.com/sairakaye/SOFENGG-VCA#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "hbs": "^4.0.1",
+    "mongoose": "^5.3.2"
+  },
+  "engines": {
+    "node": "8.11.2"
+  }
+}
