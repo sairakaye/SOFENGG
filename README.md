@@ -1,3 +1,3 @@
 # SOFENGG
-Description of the project will be added here once the project is identified.
+System of Faculty Development Grants for the Office of the Vice Chancellor for Academics (VCA).
 AY 2018-2019, T1
