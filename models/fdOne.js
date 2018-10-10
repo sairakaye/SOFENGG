@@ -1,6 +1,7 @@
 const mongoose = "mongoose"
 
 var fdOneSchema = mongoose.Schema({
+    
     term : String, 
     startAY : int,
     endAY : int,
@@ -10,7 +11,7 @@ var fdOneSchema = mongoose.Schema({
     rank : String,
     status : Boolean, //true = permanent, false = probationary
     aveTeachingPerformance : String,
-    titleOfPaper : String,
+    titleOfPaperOrPublication : String,
     titleOfJournal : String, 
     datePaperSubmitted : Date,
     datePaperAccepted : Date,
@@ -18,11 +19,16 @@ var fdOneSchema = mongoose.Schema({
     titleOfPaperToBePresented : String,
     dateOfConference : Date,
     dateOfDeparture : Date,
-    place : String,
+    placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
     dateIncentiveLastAvailed : Date,
-    //CHECK BOX INCOMPLETE
+    //CHECK BOX
     applicationLetter : Boolean,
-    
+    copyOfJournal : Boolean,
+    proofOfAcceptance : Boolean,
+    proofofPaperAcceptance : Boolean,
+    callForPapersOfConference : Boolean,
+    copyOfInvitation : Boolean,
+    updatedFacultyWebpage : Boolean
 })
