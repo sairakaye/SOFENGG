@@ -84,3 +84,47 @@ exports.findFDTwoFormsByUser = function(paramUsername){
         })
     })
 }
+
+exports.addFDOneInUser = function(paramFDOne){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : paramFDOne.ownerUsername
+        }, {
+            $push : {fdOneForms : {paramFDOne}}
+        }).then((updatedUser)=>{
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.deleteFDOneInUser = function(paramFDOne){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramFDOne.username
+        }).then((foundUser)=>{
+            foundUser.fdOneForms.remove({
+                _id : paramFDOne._id
+            })
+            resolve(foundUser) // error?
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+//erroneous edit in user
+exports.editFDOneInUser = function(paramFDOne){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : user.username
+        }, {
+            $set : { "fdOneForms.$" : paramFDOne}
+        }).then((updatedUser)=>{
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
