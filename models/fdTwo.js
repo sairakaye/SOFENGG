@@ -2,6 +2,7 @@ const mongoose = "mongoose"
 
 var fdTwoSchema = mongoose.Schema({
     
+    ownerUsername : String,
     term : String, 
     startAY : int,
     endAY : int,
