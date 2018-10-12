@@ -1,0 +1,36 @@
+html,body{
+  height:100%;
+  margin:0;
+  color:#fff;
+  text-align:center;
+  font-family: 'Roboto';
+}
+
+body {
+  width:100%;
+  background-image: url("../images/henrysy.jpg");
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+p{
+    color: white;
+    float: left;
+    font-size: 16px;
+    font-family: 'Roboto';
+}
+
+.grid {
+  height: 100%;
+}
+.image {
+  margin-top: -100px;
+}
+.column {
+  max-width: 450px;
+}  
+
+.ui.darkgreen.button {
+  background-color: #2E8B57;
+  color: #fff;
+}
