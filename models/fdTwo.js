@@ -1,11 +1,10 @@
-const mongoose = "mongoose"
+const mongoose = require("mongoose");
 
 var fdTwoSchema = mongoose.Schema({
-    
     ownerUsername : String,
     term : String, 
-    startAY : int,
-    endAY : int,
+    startAY : Number,
+    endAY : Number,
     name : String, 
     department : String,
     dateHired : Date,
@@ -28,5 +27,6 @@ var fdTwoSchema = mongoose.Schema({
     callForPapersOfConference : Boolean,
     copyOfInvitation : Boolean,
     updatedFacultyWebpage : Boolean
-    
 })
+
+var fdTwo = mongoose.model("fdTwo", fdTwoSchema)

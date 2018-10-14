@@ -1,11 +1,10 @@
-const mongoose = "mongoose"
+const mongoose = require("mongoose");
 
 var fdOneSchema = mongoose.Schema({
-    
     ownerUsername : String,
     term : String, 
-    startAY : int,
-    endAY : int,
+    startAY : Number,
+    endAY : Number,
     name : String, 
     department : String,
     dateHired : Date,

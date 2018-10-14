@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
+const crypto = require("crypto")
 const fdOne = require("./fdOne.js")
+const fdOneSchema = mongoose.model('fdOne').schema
 const fdTwo = require("./fdTwo.js")
+const fdTwoSchema = mongoose.model('fdTwo').schema
+
 
 var userSchema = mongoose.Schema({
     
@@ -28,25 +32,42 @@ var userSchema = mongoose.Schema({
     
     dateHired : Date,
     
-    fdOneForms : [fdOne.fdOneSchema],
+    fdOneForms : [fdOneSchema],
     
-    fdTwoForms : [fdTwo.fdTwoSchema]
-    
+    fdTwoForms : [fdTwoSchema]
+})
+
+userSchema.pre("save", function(next){
+  this.password = crypto.createHash("md5").update(this.password).digest("hex")
+  next()
 })
 
 var User = mongoose.model("user", userSchema)
 
-exports.authenticate = function(user){
-    return new Promise(function(resolve, reject){
-        User.findOne({
-            username : user.username,
-            password : user.password
-        }).then((userFound)=>{
-            resolve(userFound)
-        },(err)=>{
-            reject(err)
-        })
+exports.create = function(user){
+  return new Promise(function(resolve, reject){
+    var u = new User(user)
+    
+    u.save().then((newUser)=>{
+      resolve(newUser)
+    }, (err)=>{
+      reject(err)
     })
+  })
+}
+
+exports.authenticate = function(user){
+  return new Promise(function(resolve, reject){
+      
+    User.findOne({
+      username : user.username,
+      password : crypto.createHash("md5").update(user.password).digest("hex")
+    }).then((user)=>{
+      resolve(user)
+    },(err)=>{
+      reject(err)
+    })
+  })
 }
 
 exports.findUser = function(paramUsername){

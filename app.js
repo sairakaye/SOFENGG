@@ -20,6 +20,11 @@ const urlencoder = bodyparser.urlencoded({
     extended: false
 })
 
+mongoose.Promise = global.Promise
+mongoose.connect("mongodb://localhost:27017/VCA-Database",{
+    useNewUrlParser: true
+})
+
 app.set("view engine", "hbs")
 app.use(express.static(__dirname + "/public"))
 

@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <title>Faculty Development Fund</title>
+    <title>Faculty Development Grant</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
     <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="../index.css" type="text/css" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -14,7 +15,7 @@
             <div class="ui items">
                 <div class="item">
                     <a class="ui tiny image">
-                        <img src="../images/dlsulogo.png">
+                        <img src="../images/dlsulogo.png"/>
                     </a>
                      <div class="content">                          
                         <div class="description">
@@ -25,7 +26,7 @@
                 </div>
             </div>
                     
-            <form  class="ui large form">
+            <form id = "loginform" class="ui large form" action = "user/login" method = "post">
                 <div class="ui  secondary  segment">
                     <h2 class="ui image header">
                         <div class="content">
@@ -34,16 +35,23 @@
                     </h2>
                     <div class="field">
                         <div class="ui left input">
-                            <input type="text" name="userid" placeholder="ID Number">
+                            <input type="text" name="idnumber" placeholder="ID Number" required/>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui left input">
-                            <input type="password" name="userpassword" placeholder="Password">
+                            <input type="password" name="password" placeholder="Password" required />
                         </div>
                     </div>
-                    <div class="ui fluid large darkgreen submit button">Log In</div>
-                </div>              
+                    <div class="ui fluid large darkgreen submit button" onclick="loginform.submit();"> Log In </div>
+                </div>
+              
+                {{#if error}}
+                  <div class="error">
+                    <div class="ui red tiny message">{{error}}</div>
+                  </div>
+                {{/if}}
+                
             </form>
         </div>
     </div>
