@@ -1,0 +1,47 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.main-content {
+    margin: 1rem 1rem 1rem 16rem;
+  }
+  
+  .ui.topbar {
+    background-color: black;
+    border: none;
+    min-height: 4rem;
+    position: relative;
+    z-index: 1000;
+    border-radius: 0 !important;
+  }
+  .ui.topbar .item {
+    color: white;
+  }
+  
+  .ui[class*="top attached"].menu.topbar {
+    margin-top: 0;
+  }
+  
+  .ui.attached.menu:not(.tabular) {
+    border: none;
+  }
+  
+  .ui.menu .item:before {
+    display: none;
+  }
+  
+  .ui.vertical.menu {
+    background-color:gray;
+    border: none;
+    position: absolute;
+  }
+  
+  .sidebar-content {
+    margin-top: 6rem;
+  }
+
+  .brand-text {
+      font-size: 14pt;
+      font-weight: bold;
+  }
