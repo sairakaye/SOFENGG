@@ -47,7 +47,7 @@ router.post("/login", (req, res)=>{
 		if(newUser){
 			console.log("User Found")
 			console.log(newUser)
-			res.render("test.hbs")
+			res.render("home-admin.hbs")
 		} else {
 			res.redirect("/")
 		}

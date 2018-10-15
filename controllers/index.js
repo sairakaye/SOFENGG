@@ -13,8 +13,13 @@ const app = express()
 router.use("/user", require("./user"))
 
 router.get("/", function(request, response) {
-    console.log("GET /")
-    response.render("index.hbs")
+     console.log("GET /")
+     response.render("index.hbs")
+})
+
+router.get("/logout", function(req, res){
+	 console.log("GET Lead to home")
+	 res.render("index.hbs")
 })
 
 module.exports = router

@@ -14,7 +14,7 @@
             </div>
 
             <div class="brand-text">
-                Office of the Vice Chancellor <br> for Academics
+                Office of the Vice Chancellor <br/> for Academics
             </div>
         </a>
         
@@ -22,51 +22,55 @@
             <a class="item">
                 <i class="bell icon"></i>
             </a>
-            <a class="item">Log Out</a>
+          <form id ="logoutform" action="/logout" method="get">
+            <a class="item" onclick ="logoutform.submit();">Log Out</a>
+          </form>
         </div>
     </div>
 
     <div class="ui grid">
-        <!-- This is the side menu bar. -->
-        <div class="row">
-            <div class="column" id="sidebar">
-                <div class="ui secondary vertical fluid menu">
-                    <a class="active item">
-                        Request Grant
-                        <i class="edit outline icon"></i>
-                    </a>
-                    <a class="item">
-                        My Request
-                        <i class="file outline icon"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- This is the body of the page, where you put the contents. -->
-            <div class="column" id="content">
-                <div class="ui grid">
-                    <div class="row">
-                        <h1 class="ui huge header">
-                            Welcome!
-                        </h1>
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="two column center aligned row">
-                        <div class="column">
-                            <h1>Col 1</h1>
-                            <p>Sample colsszz</p>
-                        </div>
-                        <div class="column">
-                            <h1>Col 2</h1>
-                            <p>Sample colsszz</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p>Goods baaa? Pag hindi cols ang need, use this mga pre :D
-                        </p>
-                    </div>
-            </div>
+      <!-- This is the side menu bar. -->
+      <div class="row">
+        <div class="column" id="sidebar">
+          <div class="ui secondary vertical fluid menu">
+            <a class="active item">
+              Request Grant
+              <i class="edit outline icon"></i>
+            </a>
+            <a class="item">
+              My Request
+              <i class="file outline icon"></i>
+            </a>
+          </div>
         </div>
+
+        <!-- This is the body of the page, where you put the contents. -->
+        <div class="column" id="content">
+          <div class="ui grid">
+            <div class="row">
+              <h1 class="ui huge header">
+                Welcome!
+              </h1>
+            </div>
+            <div class="ui divider"></div>
+            <div class="two column center aligned row">
+              <div class="column">
+                <h1>Col 1</h1>
+                <p>Sample colsszz</p>
+              </div>
+              <div class="column">
+                <h1>Col 2</h1>
+                <p>Sample colsszz</p>
+              </div>
+            </div>
+            <div class="row">
+              <p>
+                Goods baaa? Pag hindi cols ang need, use this mga pre :D
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   

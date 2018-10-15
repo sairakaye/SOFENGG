@@ -35,6 +35,22 @@ body {
   background-color:gray;
   color: white;
 }
+
+#sidebar .ui.menu > input.item {
+  color: black;
+  border-radius: 0 !important;
+}
+  
+#sidebar .ui.menu > input.item.active {
+  background-color: gray;
+  color: white;
+  border: none !important;
+}
+  
+#sidebar .ui.menu > input.item:hover {
+  background-color:gray;
+  color: white;
+}
   
 #content {
   margin-left: 19%;
