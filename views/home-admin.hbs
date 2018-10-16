@@ -8,35 +8,24 @@
   <body>
     <!-- This is the menu bar. -->
     <div class="ui inverted huge borderless fixed fluid menu">
-        <a class="header item">
-            <div class="ui mini image">
-                <img src="../images/dlsulogo.png"/>
-            </div>
-
-            <div class="brand-text">
-                Office of the Vice Chancellor <br/> for Academics
-            </div>
-        </a>
-        
-        <div class="right menu">
-            <a class="item">
-                <i class="bell icon"></i>
-            </a>
-          <form id ="logoutform" action="/logout" method="get">
-            <a class="item" onclick ="logoutform.submit();">Log Out</a>
-          </form>
+      <a class="header item">
+        <div class="ui mini image">
+          <img src="../images/dlsulogo.png"/>
         </div>
-       <div class="brand-text">
-         Office of the Vice Chancellor <br> for Academics
-       </div>
+
+        <div class="brand-text">
+          Office of the Vice Chancellor <br/> for Academics
+        </div>
       </a>
+        
       <div class="right menu">
         <a class="item">
           <i class="bell icon"></i>
         </a>
-        <a class="item">Log Out</a>
+        <form id ="logoutform" action="/logout" method="get">
+          <a class="item" onclick ="logoutform.submit();">Log Out</a>
+        </form>
       </div>
-    </div>
 
     <div class="ui grid">
       <!-- This is the side menubar. -->
