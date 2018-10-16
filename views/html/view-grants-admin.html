@@ -1,0 +1,133 @@
+<html>
+  <head>
+   <!-- Always include these two css files when creating a new html file. -->
+   <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic\semantic.css" type="text/css" rel="stylesheet">
+   <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\css\main.css" type="text/css" rel="stylesheet"/>
+   <!-- You can insert more CSS files below-->
+  </head>
+
+  <body>
+    <!-- This is the menu bar. -->
+    <div class="ui inverted huge borderless fixed fluid menu">
+      <a class="header item">
+        <div class="ui mini image">
+          <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\dlsulogo.png"/>
+        </div>
+       <div class="brand-text">
+         Office of the Vice Chancellor <br> for Academics
+       </div>
+      </a>
+      <div class="right menu">
+        <a class="item">
+          <i class="bell icon"></i>
+        </a>
+        <a class="item">Log Out</a>
+      </div>
+    </div>
+
+    <div class="ui grid">
+      <!-- This is the side menubar. -->
+      <div class="row">
+        <div class="column" id="sidebar">
+          <div class="ui secondary vertical fluid menu">
+            <div class="ui grid">
+              <!-- This is where the short overview of the profile is placed. -->
+              <div class="one column center aligned row">
+                <div class="column profile">
+                   <div class="ui small image circular bordered">
+                     <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\photo_template.jpg"/>
+                   </div>
+                   <div class="row">
+                     <div class="person-name">
+                       Juan dela Cruz
+                     </div>
+                     <div class="person-type">
+                         Administrator
+                     </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <!-- These are the side menubar items. -->
+          <a class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            Grants
+            <i class="chevron right icon"></i>
+          </a>
+         </div>
+        </div>
+       
+       <!-- This is where you will put the content of the page. -->
+       <div class="column" id="content">
+         <div class="ui grid">
+           <div class="row">
+             <h1 class="ui huge header">
+                View Grants
+             </h1>
+            </div>
+            <div class="ui divider"></div>
+            <div class="row">
+              <div class="ui action input">
+                <input type="text" placeholder="Search...">
+                <div class="ui button">Search</div>
+              </div>
+            </div>
+            <div class="row">
+              <table class="ui fixed single line selectable table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>College</th>
+                    <th>Project</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="positive">
+                    <td>Christian Dequito</td>
+                    <td>CCS</td>
+                    <td>Hello World Project</td>
+                    <td><i class="icon checkmark"></i>Approved</td>
+                    <td>
+                      <button class="ui button">View Details</button>
+                      <button class="ui negative button">Delete</button>
+                    </td>
+                  </tr>
+                  <tr class="negative">
+                    <td>Sai Manalili</td>
+                    <td>CCS</td>
+                    <td>The Project is too long so it was cut off but it is okay.</td>
+                    <td><i class="icon close"></i>Rejected</td>
+                    <td>
+                      <button class="ui button">View Details</button>
+                      <button class="ui negative button">Delete</button>
+                    </td>
+                  </tr>                         
+                  <tr>
+                    <td>Candace Mercado</td>
+                    <td>CCS</td>
+                    <td>Mother Nature's Spring</td>
+                    <td>Pending</td>
+                      <td>
+                        <button class="ui button">View Details</button>
+                        <button class="ui negative button">Delete</button>
+                      </td>
+                   </tr>                                         
+                </tbody>
+             </table>
+            </div>
+          </div>
+         </div>
+      </div>
+    </div>
+  </body>
+  
+  <!-- Always include these two JS files when adding a new page -->
+  <script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\jquery-3.3.1.min.js"></script>
+  <script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic\semantic.js"></script>
+  <!-- You can insert more JS files below -->
+</html>
