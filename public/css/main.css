@@ -35,6 +35,11 @@ body {
   background-color:gray;
   color: white;
 }
+
+#sidebar .ui.menu > a.item.profile:hover {
+  background-color: none;
+  color: none;
+}
   
 #content {
   margin-left: 19%;
@@ -67,4 +72,19 @@ body {
 
 .brand-text {
   padding-left: 15px;
+}
+
+.profile {
+  padding-bottom: 20px;
+}
+
+/* for testing */
+.person-name {
+  font-weight: bold;
+  font-size: 18pt;
+  padding: 10px;
+}
+
+.person-type {
+  font-size: 12pt;
 }
