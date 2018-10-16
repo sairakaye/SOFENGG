@@ -36,9 +36,26 @@ body {
   color: white;
 }
 
+<<<<<<< HEAD
 #sidebar .ui.menu > a.item.profile:hover {
   background-color: none;
   color: none;
+=======
+#sidebar .ui.menu > input.item {
+  color: black;
+  border-radius: 0 !important;
+}
+  
+#sidebar .ui.menu > input.item.active {
+  background-color: gray;
+  color: white;
+  border: none !important;
+}
+  
+#sidebar .ui.menu > input.item:hover {
+  background-color:gray;
+  color: white;
+>>>>>>> 9c476523446c1ccc587811a05362a1e4ab1bcfcb
 }
   
 #content {
