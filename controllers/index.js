@@ -51,6 +51,7 @@ router.post("/login", (req, res, next)=>{
 		username : idnumber,
 		password 
 	}
+    
 
 	User.authenticate(user).then((newUser)=>{
 		if(newUser){

@@ -28,7 +28,7 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
-    status : String,
+    status : Boolean, //true = permanent, false = probationary
     
     dateHired : Date,
     
@@ -80,6 +80,54 @@ exports.findUser = function(paramUsername){
             reject(err)
         })
     })
+}
+
+exports.getUserByName = function(paramName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramName
+        }).then((userFound)=>{
+            resolve(userFound)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getAllUser = function(){
+    return new Promise(function(resolve, reject){
+        User.find().then((users)=>{
+            resolve(users)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getUserByDepartment = function(paramUserDepartment){
+    return new Promise(function(resolve, reject){
+        User.find({
+            department : paramUserDepartment
+        }).then((departmentUsers)=>{
+            resolve(departmentUsers)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+    
+}
+
+exports.getUserByStatus = function(paramUserStatus){
+    return new Promise(function(resolve, reject){
+        User.find({
+            status : paramUserStatus
+        }).then((statusUsers)=>{
+            resolve(statustUsers)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+    
 }
 
 exports.findFDOneFormsByUser = function(paramUsername){
