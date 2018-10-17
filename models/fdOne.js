@@ -94,3 +94,27 @@ exports.getAllFDOne = function(){
     })
 }
 
+exports.getFDOneByDepartment = function(paramFDOneDepartment){
+    return new Promise(function(resolve, reject){
+        fdOne.find({
+            department : paramFDOneDepartment
+        }).then((departmentFDOne)=>{
+            resolve(departmentFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getFDOneByStatus = function(paramFDOneStatus){
+    return new Promise(function(resolve, reject){
+        fdOne.find({
+            status : paramFDOneStatus
+        }).then((statusFDOne)=>{
+            resolve(statusFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+

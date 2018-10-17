@@ -28,7 +28,7 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
-    status : String,
+    status : Boolean, //true = permanent, false = probationary
     
     dateHired : Date,
     
@@ -70,7 +70,7 @@ exports.authenticate = function(user){
   })
 }
 
-exports.findUser = function(paramUsername){
+exports.getUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
@@ -82,7 +82,55 @@ exports.findUser = function(paramUsername){
     })
 }
 
-exports.findFDOneFormsByUser = function(paramUsername){
+exports.getUserByName = function(paramName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramName
+        }).then((userFound)=>{
+            resolve(userFound)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getAllUser = function(){
+    return new Promise(function(resolve, reject){
+        User.find().then((users)=>{
+            resolve(users)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getUserByDepartment = function(paramUserDepartment){
+    return new Promise(function(resolve, reject){
+        User.find({
+            department : paramUserDepartment
+        }).then((departmentUsers)=>{
+            resolve(departmentUsers)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+    
+}
+
+exports.getUserByStatus = function(paramUserStatus){
+    return new Promise(function(resolve, reject){
+        User.find({
+            status : paramUserStatus
+        }).then((statusUsers)=>{
+            resolve(statustUsers)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+    
+}
+
+exports.getFDOneFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
@@ -94,7 +142,7 @@ exports.findFDOneFormsByUser = function(paramUsername){
     })
 }
 
-exports.findFDTwoFormsByUser = function(paramUsername){
+exports.getFDTwoFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
