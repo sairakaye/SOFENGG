@@ -26,6 +26,7 @@ mongoose.connect("mongodb://localhost:27017/VCA-Database",{
 })
 
 app.set("view engine", "hbs")
+app.use(express.static(__dirname))
 app.use(express.static(__dirname + "/public"))
 
 app.use(require("./controllers"))

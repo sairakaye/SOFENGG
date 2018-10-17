@@ -1,8 +1,8 @@
 <html>
   <head>
     <title>Home</title>
-      <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-      <link href="../css/main.css" type="text/css" rel="stylesheet"/>
+      <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet"/>
+      <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
    </head>
 
   <body>
@@ -10,22 +10,18 @@
     <div class="ui inverted huge borderless fixed fluid menu">
       <a class="header item">
         <div class="ui mini image">
-          <img src="../images/dlsulogo.png"/>
+          <img src="../public/images/dlsulogo.png"/>
         </div>
-
-        <div class="brand-text">
-          Office of the Vice Chancellor <br/> for Academics
-        </div>
+       <div class="brand-text">
+         Office of the Vice Chancellor <br> for Academics
+       </div>
       </a>
-        
       <div class="right menu">
         <a class="item">
           <i class="bell icon"></i>
         </a>
-        <form id ="logoutform" action="/logout" method="get">
-          <a class="item" onclick ="logoutform.submit();">Log Out</a>
-        </form>
       </div>
+    </div>
 
     <div class="ui grid">
       <!-- This is the side menubar. -->
@@ -45,6 +41,11 @@
                      </div>
                      <div class="person-type">
                          Administrator
+                     </div>
+                     <div class="log-out">
+                       <a href="/logout" class="ui tiny button">
+                         Log Out
+                       </a>
                      </div>
                     </div>
                 </div>
@@ -93,7 +94,7 @@
   </body>
   
   <!-- Always include these two JS files when adding a new page -->
-  <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="../semantic/semantic.js"></script>
+  <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../public/semantic/semantic.js"></script>
   <!-- You can insert more JS files below -->
 </html>

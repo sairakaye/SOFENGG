@@ -98,3 +98,8 @@ body {
 .person-type {
   font-size: 12pt;
 }
+
+.log-out {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
