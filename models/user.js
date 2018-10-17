@@ -70,7 +70,7 @@ exports.authenticate = function(user){
   })
 }
 
-exports.findUser = function(paramUsername){
+exports.getUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
@@ -130,7 +130,7 @@ exports.getUserByStatus = function(paramUserStatus){
     
 }
 
-exports.findFDOneFormsByUser = function(paramUsername){
+exports.getFDOneFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
@@ -142,7 +142,7 @@ exports.findFDOneFormsByUser = function(paramUsername){
     })
 }
 
-exports.findFDTwoFormsByUser = function(paramUsername){
+exports.getFDTwoFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
