@@ -1,8 +1,10 @@
 <html>
+
 <head>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic\semantic.css" type="text/css" rel="stylesheet">
-  <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\css\main.css" type="text/css" rel="stylesheet"/>
+  <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\css\main.css" type="text/css" rel="stylesheet" />
+  <link href="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic-ui-calendar\dist\calendar.min.css" type="text/css" rel="stylesheet" />
   <!-- You can insert more CSS files below-->
 </head>
 
@@ -11,7 +13,7 @@
   <div class="ui inverted huge borderless fixed fluid menu">
     <a class="header item">
       <div class="ui mini image">
-        <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\dlsulogo.png"/>
+        <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\dlsulogo.png" />
       </div>
       <div class="brand-text">
         Office of the Vice Chancellor <br> for Academics
@@ -25,45 +27,45 @@
   </div>
 
   <div class="ui grid">
-      <!-- This is the side menubar. -->
-      <div class="row">
-        <div class="column" id="sidebar">
-          <div class="ui secondary vertical fluid menu">
-            <div class="ui grid">
-              <!-- This is where the short overview of the profile is placed. -->
-              <div class="one column center aligned row">
-                <div class="column profile">
-                    <div class="ui small image circular bordered">
-                      <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\photo_template.jpg"/>
-                    </div>
-                    <div class="row">
-                      <div class="person-name">
-                        Juan dela Cruz
-                      </div>
-                      <div class="person-type">
-                          Administrator
-                      </div>
-                      <div class="log-out">
-                        <a href="/logout" class="ui tiny button">
-                          Log Out
-                        </a>
-                      </div>
-                    </div>
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\images\photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name">
+                    Juan dela Cruz
+                  </div>
+                  <div class="person-type">
+                    Administrator
+                  </div>
+                  <div class="log-out">
+                    <a href="/logout" class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-        <!-- These are the side menubar items. -->
-        <a class="active item">
-          Request Grant
-          <i class="chevron right icon"></i>
-        </a>
-        <a class="item">
-          My Requests
-          <i class="chevron right icon"></i>
-        </a>
+          </div>
+          <!-- These are the side menubar items. -->
+          <a class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
         </div>
       </div>
-      
+
       <!-- This is where you will put the content of the page. -->
       <div class="column" id="content">
         <div class="ui grid">
@@ -73,50 +75,230 @@
             </h1>
           </div>
           <div class="ui divider"></div>
-            <div class="row">
-              <div class="ui selection dropdown fluid" id="dp-grants">
-                <input type="hidden" name="form-dp">
-                <i class="dropdown icon"></i>
-                <div class="default text">Select forms....</div>
-                <div class="menu">
-                  <div class="item" data-value="0">[FD1] Support for Paper Presentations in Conferences</div>
-                  <div class="item" data-value="1">[FD2] Support for Participation in Local Conferences</div>
+          <div class="row">
+            1st Term, AY 2018-2019
+          </div>
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column row">
+              <form action="/submit" method="post" class="ui form">
+                <div class="field">
+                  <label>Faculty Development Grant Form</label>
+                  <div class="ui selection dropdown fluid" id="dp-grants">
+                    <input type="hidden" id="form-dp" name="form-num">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select forms....</div>
+                    <div class="menu">
+                      <div class="item" data-value="1">[FD1] Incentive for Publication in Pre-Selected High Impact
+                        Journal</div>
+                      <div class="item" data-value="2">[FD2] Support for Participation in Local Conferences</div>
+                    </div>
+                  </div>
                 </div>
-                <!-- The Forms. -->
-              </div>
-            </div>
-            <div class="row">
-              <div class="one column row">
-                <form class="ui form">
-                  <div class="field">
-                    <label>Name</label>
-                    <div class="two fields">
-                        <div class="field">
-                          <input type="text" name="first-name" placeholder="First Name">
-                        </div>
-                        <div class="field">
-                          <input type="text" name="last-name" placeholder="Last Name">
-                        </div>
+                <div class="field">
+                  <label>Name</label>
+                  <div class="two fields">
+                    <div class="field">
+                      <input type="text" name="first-name" placeholder="First Name">
                     </div>
                     <div class="field">
-                      <label>Faculty Information</label>
-                      <div class="fields">
-                        <div class="eight wide field">
-                          <input type="text" name="department" placeholder="Department">
+                      <input type="text" name="last-name" placeholder="Last Name">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Faculty Information</label>
+                    <div class="fields">
+                      <div class="ten wide field">
+                        <input type="text" name="department" placeholder="Department">
+                      </div>
+                      <div class="six wide field">
+                        <input type="text" name="rank" placeholder="Rank">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                    <div class="fields">
+                      <div class="two wide field">
+                        <div class="ui radio checkbox">
+                          <input type="radio" name="status">
+                          <label>Permanent</label>
                         </div>
-                        <div class="four wide field">
-                          <input type="text" name="rank" placeholder="Rank">
-                        </div>
-                        <div class="four wide field">
-                        
+                      </div>
+                      <div class="two wide field">
+                        <div class="ui radio checkbox">
+                          <input type="radio" name="status">
+                          <label>Probationary</label>
                         </div>
                       </div>
                     </div>
-                </form>
-              </div>
+                  </div>
+
+                  <div class="field">
+                    <label>Publication Details</label>
+                    <input type="text" name="title-paper" placeholder="Title of Paper or Publication">
+                  </div>
+
+                  <div class="field">
+                    <input type="text" name="title-journal" placeholder="Title of the Journal where paper was published">
+                  </div>
+
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="submit-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-publication" placeholder="Date paper was submitted for publication">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="accept-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-accepted" placeholder="Date paper was accepted for publication">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <input type="text" name="name-conference" placeholder="Name of Conference">
+                  </div>
+
+                  <div class="field">
+                    <input type="text" name="title-present" placeholder="Title of paper to be presented">
+                  </div>
+
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="conference-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-conference" placeholder="Date of Conference">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="eight wide field">
+                        <input type="text" name="place" placeholder="Place and Venue">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="departure-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-departure" placeholder="Date of Departure">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="return-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-return" placeholder="Date of Return">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="expected-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-return" placeholder="Date of expected return to work">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="eight wide field">
+                        <div class="ui calendar" id="incentive-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="date-incentive" placeholder="Date incentive was last availed of">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Application should be accompanied by the following:</label>
+                    <div class="fields">
+                      <div class="six wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="app-letter">
+                          <label>Application Letter</label>
+                        </div>
+                      </div>
+
+                      <div class="five wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="proof-journal">
+                          <label>Proof of acceptance from the journal editor</label>
+                        </div>
+                      </div>
+                      <div class="five wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="call-conference">
+                          <label>Call for papers of conference/symposium</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="fields">
+                      <div class="six wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="copy-journal">
+                          <label>Copy of journal paper</label>
+                        </div>
+                      </div>
+
+                      <div class="five wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="proof-conference">
+                          <label>Proof of paper acceptance for the conference</label>
+                        </div>
+                        <b>/or</b>
+                      </div>
+                      <div class="five wide field">
+                        <div class="ui checkbox">
+                          <input type="checkbox" name="copy-invitation">
+                          <label>Copy of invitation to deliver keynote presentation as an
+                            invited speaker</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" name="dlsu-faculty">
+                      <label>Updated DLSU Faculty webpage <i>(please attach printout of updated faculty webpage) <a
+                            href="https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf">https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf</a></i></label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="sixteen wide field">
+                      <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <input type="submit" class="ui button positive" value="Submit">
+                  </div>
+              </form>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </body>
@@ -124,5 +306,7 @@
 <!-- Always include these two JS files when adding a new page -->
 <script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\jquery-3.3.1.min.js"></script>
 <script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic\semantic.js"></script>
+<script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\semantic-ui-calendar\dist\calendar.min.js"></script>
 <script src="D:\[NEED] Faculty Development Grants\SOFENGG-VCA\public\js\form.js"></script>
+
 </html>

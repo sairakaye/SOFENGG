@@ -1,5 +1,8 @@
 /**
- * Template only. Will be updated.
+ * <description>
+ * <date created>
+ * @ver
+ * @author
  */
 const express = require("express")
 const bodyparser = require("body-parser")
@@ -12,6 +15,7 @@ const app = express()
 
 const User = require("../models/user")
 router.use("/user", require("./user"))
+router.use("/faculty", require("./faculty"))
 
 router.get("/", function(request, response) {
      console.log("GET /")
@@ -57,7 +61,7 @@ router.post("/login", (req, res, next)=>{
 		if(newUser){
 			console.log("User Found")
 			console.log(newUser)
-			res.render("home-admin.hbs")
+			res.render("home-user.hbs")
 		} else {			
 			res.render("index.hbs", {
 				error: "Incorrect ID Number / password. Try again."
