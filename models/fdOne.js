@@ -8,7 +8,7 @@
 const mongoose = require("mongoose");
 
 var fdOneSchema = mongoose.Schema({
-    ownerUsername : String,
+    ownerIdNumber : Number,
     term : String, 
     startAY : Number,
     endAY : Number,
@@ -16,7 +16,7 @@ var fdOneSchema = mongoose.Schema({
     department : String,
     dateHired : Date,
     rank : String,
-    status : Boolean, //true = permanent, false = probationary
+    status : String,
     aveTeachingPerformance : String,
     titleOfPaperOrPublication : String,
     titleOfJournal : String, 
@@ -30,12 +30,13 @@ var fdOneSchema = mongoose.Schema({
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
     dateIncentiveLastAvailed : Date,
+    grantStatus: String,
     
     //CHECK BOX
     applicationLetter : Boolean,
     copyOfJournal : Boolean,
     proofOfAcceptance : Boolean,
-    proofofPaperAcceptance : Boolean,
+    proofOfPaperAcceptance : Boolean,
     callForPapersOfConference : Boolean,
     copyOfInvitation : Boolean,
     updatedFacultyWebpage : Boolean

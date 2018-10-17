@@ -5,6 +5,10 @@ $("#dp-grants").dropdown({
     }
 });
 
+$('#date-hired').calendar({
+  type: 'date'
+})
+
 $('#submit-date').calendar({
   type: 'date'
 });
