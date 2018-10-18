@@ -16,19 +16,24 @@ const app = express()
 
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
+
+const controllerUser = require("./index")
 router.use("/user", require("./user"))
 
 router.get("/request-grant", function(req, res){
-	 console.log("GET /request-grant")
-	 res.render("request-grant.hbs")
+	console.log("GET /request-grant")
+	var user = controllerUser.getCurrentUser() 
+	res.render("request-grant.hbs", {
+		user
+	})
 })
 
 router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
-
+  var user = controllerUser.getCurrentUser() 
   fdOne.getAllFDOne().then((fdOneData)=> {
     res.render("my-requests.hbs", {
-      fdOneData
+      user, fdOneData
     })
   }, (err)=> {
     res.send(err)
@@ -112,7 +117,10 @@ router.post("/submit", urlencoder, function(req,res) {
     }
 
     fdOne.create(fdOneData).then((newFdOneData)=> {
-      res.render("home-user.hbs")
+	  var user = controllerUser.getCurrentUser() 
+      res.render("home-user.hbs", {
+		  user
+	  })
     }, (err)=> {
       res.send(err)
     })

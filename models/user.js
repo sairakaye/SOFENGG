@@ -12,7 +12,6 @@ const fdOneSchema = mongoose.model('fdOne').schema
 const fdTwo = require("./fdTwo.js")
 const fdTwoSchema = mongoose.model('fdTwo').schema
 
-
 var userSchema = mongoose.Schema({
     
     username : {
@@ -35,6 +34,8 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
+	userType: String, //Admin, Faculty or Library Staff
+
     status : Boolean, //true = permanent, false = probationary
     
     dateHired : Date,

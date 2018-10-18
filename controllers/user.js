@@ -1,8 +1,9 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This controller is for the users of the
+ * web application
+ * October 14, 2018
+ * @ver 1.0
+ * @author Candace Mercado
  */
 const express = require("express")
 const bodyparser = require("body-parser")

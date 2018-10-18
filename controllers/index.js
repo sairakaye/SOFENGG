@@ -1,8 +1,9 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This controller is for logging in of users 
+ * to the web application
+ * October 14, 2018
+ * @ver 1.0
+ * @author Candace Mercado
  */
 const express = require("express")
 const bodyparser = require("body-parser")
@@ -55,13 +56,20 @@ router.post("/login", (req, res, next)=>{
 		username : idnumber,
 		password 
 	}
-    
 
-	User.authenticate(user).then((newUser)=>{
-		if(newUser){
+	User.authenticate(user).then((user)=>{
+		if(user){
 			console.log("User Found")
-			console.log(newUser)
-			res.render("home-user.hbs")
+			currentUser = user
+			console.log(currentUser)
+			if(user.userType == "Admin")
+				res.render("home-admin.hbs", {
+					user
+				})
+			else if(user.userType == "Faculty" || user.userType == "Library Staff")
+				res.render("home-user.hbs", {
+					user
+				})
 		} else {			
 			res.render("index.hbs", {
 				error: "Incorrect ID Number / password. Try again."
@@ -79,3 +87,7 @@ router.get("/logout", function(req, res){
 })
 
 module.exports = router
+
+exports.getCurrentUser = function() {
+    return currentUser
+}
