@@ -104,40 +104,21 @@
                 {{#each forms}}
                     {{#checkstatus 'Approved' grantStatus}}
                         <tr class="positive">
-                          <td>{{name}}</td>
-                          <td>{{department}}</td>
-                          <td>{{grantName}}</td>
-                          <td><i class="icon checkmark"></i>{{grantStatus}}</td>
-                          <td>
-                            <button class="ui button fluid">View Details</button>
-                          </td>
-                          <td>
-                            <button class="ui negative button fluid">Delete</button>
-                          </td>
-                        </tr>
                     {{else}}
                       <!-- dont show -->
                     {{/checkstatus}}
 
                     {{#checkstatus 'Rejected' grantStatus}}
                         <tr class="negative">
-                          <td>{{name}}</td>
-                          <td>{{department}}</td>
-                          <td>{{grantName}}</td>
-                          <td><i class="icon close"></i>{{grantStatus}}</td>
-                          <td>
-                            <button class="ui button fluid">View Details</button>
-                          </td>
-                          <td>
-                            <button class="ui negative button fluid">Delete</button>
-                          </td>
-                        </tr> 
                     {{else}}
                       <!-- dont show -->
                     {{/checkstatus}}
 
                     {{#checkstatus 'Pending' grantStatus}}
                         <tr>
+                    {{else}}
+                      <!-- dont show -->
+                    {{/checkstatus}}
                           <td>{{name}}</td>
                           <td>{{department}}</td>
                           <td>{{grantName}}</td>
@@ -149,9 +130,6 @@
                             <button class="ui negative button fluid">Delete</button>
                           </td>
                         </tr>  
-                    {{else}}
-                      <!-- dont show -->
-                    {{/checkstatus}}
                   {{/each}}         
                 </tbody>
              </table>

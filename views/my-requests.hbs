@@ -95,16 +95,37 @@
                   </tr>
                 </thead>
                 <tbody>
+                <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
-                        <tr>
-                          <td>{{name}}</td>
-                          <td>{{department}}</td>
-                          <td>{{grantName}}</td>
-                          <td>{{grantStatus}}</td>
-                          <td>
-                            <button class="ui button fluid">View Details</button>
-                          </td>
-                        </tr>  
+                     {{#showonlybyuser name}}
+                        {{#checkstatus 'Approved' grantStatus}}
+                            <tr class="positive">
+                        {{else}}
+                          <!-- dont show -->
+                        {{/checkstatus}}
+
+                        {{#checkstatus 'Rejected' grantStatus}}
+                            <tr class="negative">
+                        {{else}}
+                          <!-- dont show -->
+                        {{/checkstatus}}
+
+                        {{#checkstatus 'Pending' grantStatus}}
+                            <tr>
+                        {{else}}
+                          <!-- dont show -->
+                        {{/checkstatus}}
+                              <td>{{name}}</td>
+                              <td>{{department}}</td>
+                              <td>{{grantName}}</td>
+                              <td>{{grantStatus}}</td>
+                              <td>
+                                <button class="ui button fluid">View Details</button>
+                              </td>
+                            </tr>  
+                    {{else}}
+                      <!--  do not show -->
+                    {{/showonlybyuser}}
                   {{/each}}                                  
                 </tbody>
              </table>

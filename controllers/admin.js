@@ -57,8 +57,8 @@ router.get("/view-grants", function(req, res){
 module.exports = router
 
 /**
- * Compares two values in .hbs files for ease of display
- * and acts like an if-else condition function
+ * Compares two values from the .hbs files for ease of
+ *  display and acts like an if-else condition function
  *
  * @param {options} options.fn
  * @param {options} options.inverse

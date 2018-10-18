@@ -11,6 +11,7 @@
  */
 const express = require("express")
 const bodyparser = require("body-parser")
+const hbs = require("hbs")
 const urlencoder = bodyparser.urlencoded({
   extended : true
 })
@@ -154,3 +155,24 @@ router.post("/submit", urlencoder, function(req,res) {
 })
 
 module.exports = router
+
+/**
+ * Compares form's name from the .hbs files with
+ * the current logged in user's name to filter in the  
+ * view grants of the admin user
+ *
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('showonlybyuser', function(name, options) {  
+  var currentUser = controllerUser.getCurrentUser() 
+  var currentUserName = currentUser.name 
+  
+  if (currentUser != undefined || currentUser!= null){
+      if(name.toString() == currentUserName.toString()) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+  }
+})
