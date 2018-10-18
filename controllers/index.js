@@ -70,7 +70,7 @@ router.post("/home", (req, res)=>{
 			console.log("ERROR")
 			console.log(error)
 	})
- */
+*/ 
 	
 	let user = {
 		username : idnumber,

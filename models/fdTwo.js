@@ -6,8 +6,15 @@
  * @author Christian Dequito
  */
 
+/**
+ * Module dependencies.
+ */
 const mongoose = require("mongoose");
 
+
+/**
+ * Setting up FD2 Form Schema
+ */
 var fdTwoSchema = mongoose.Schema({
     ownerUsername : String,
     term : String, 
