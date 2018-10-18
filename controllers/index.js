@@ -5,6 +5,10 @@
  * @ver 1.0
  * @author Candace Mercado
  */
+
+/**
+ * Module dependencies.
+ */
 const express = require("express")
 const bodyparser = require("body-parser")
 const urlencoder = bodyparser.urlencoded({
@@ -18,18 +22,31 @@ const User = require("../models/user")
 router.use("/user", require("./user"))
 router.use("/faculty", require("./faculty"))
 
-router.get("/", function(request, response) {
+/**
+ * Leads to the login page index.hbs
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/", function(req, res) {
      console.log("GET /")
-     response.render("index.hbs")
+     res.render("index.hbs")
 })
 
-router.post("/login", (req, res, next)=>{
+/**
+ * Checks the database if user exists and logs in 
+ * the user, lead to right page based on user type
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/login", (req, res)=>{
   console.log("POST /user/login")
 
   var idnumber = req.body.idnumber
   var password = req.body.password
 
-  	/* for adding to DB testing
+  	/* for adding user to DB
 	var today = new Date();
 	today.setHours(0, 0, 0, 0);
 
@@ -81,6 +98,13 @@ router.post("/login", (req, res, next)=>{
 	})
 })
 
+/**
+ * Logs the user out of the web application and 
+ * redirects to the login page index.hbs
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/logout", function(req, res){
 	 console.log("GET Lead to home")
 	 res.render("index.hbs")
@@ -88,6 +112,12 @@ router.get("/logout", function(req, res){
 
 module.exports = router
 
+/**
+ * Returns the current user object, this is to 
+ * make user details reflect in handlebars
+ *
+ * @return {Object} currentUser
+ */
 exports.getCurrentUser = function() {
     return currentUser
 }

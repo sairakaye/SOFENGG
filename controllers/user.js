@@ -5,6 +5,10 @@
  * @ver 1.0
  * @author Candace Mercado
  */
+
+/**
+ * Module dependencies.
+ */
 const express = require("express")
 const bodyparser = require("body-parser")
 const urlencoder = bodyparser.urlencoded({
@@ -13,7 +17,6 @@ const urlencoder = bodyparser.urlencoded({
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
-
 const User = require("../models/user")
 
 module.exports = router

@@ -5,6 +5,10 @@
  * @ver 1.0
  * @author Sai Manalili
  */
+
+/**
+ * Module dependencies.
+ */
 const express = require("express")
 const bodyparser = require("body-parser")
 const urlencoder = bodyparser.urlencoded({
@@ -16,10 +20,15 @@ const app = express()
 
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
-
 const controllerUser = require("./index")
 router.use("/user", require("./user"))
 
+/**
+ * Leads to the page for requesting grants 
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/request-grant", function(req, res){
 	console.log("GET /request-grant")
 	var user = controllerUser.getCurrentUser() 
@@ -28,6 +37,12 @@ router.get("/request-grant", function(req, res){
 	})
 })
 
+/**
+ * Leads to the page for viewing all applied grant requests
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
   var user = controllerUser.getCurrentUser() 
@@ -40,6 +55,13 @@ router.get("/my-requests", function(req, res) {
   })
 })
 
+/**
+ * Adds to the database the entered information for the chosen
+ * grant form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.post("/submit", urlencoder, function(req,res) {
     var firstName = req.body.firstName
     var lastName = req.body.lastName
