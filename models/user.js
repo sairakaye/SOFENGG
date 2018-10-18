@@ -1,8 +1,9 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This contains schema initialization and 
+ * model functions for the users
+ * October 17, 2018
+ * @ver 1.0
+ * @author Christian Dequito
  */
 
 const mongoose = require("mongoose")
