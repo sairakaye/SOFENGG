@@ -6,8 +6,9 @@
  *  @author Sai Manalili
  */
 
-
- /* This section is for the required packages of the web app. */
+/**
+ * Module dependencies.
+ */
 const express = require("express")
 const bodyparser = require("body-parser")
 const hbs = require("hbs")

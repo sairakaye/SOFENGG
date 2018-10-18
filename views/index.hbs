@@ -1,22 +1,24 @@
 <!-- 
-    <description>
-    <date>
+    This is the login page for the system
+    October 14, 2018
     @ver 1.0
-    @author
+    @author Candace Mercado
 -->
+
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Faculty Development Grant</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
-    <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-    <link href="../css/index.css" type="text/css" rel="stylesheet"/>
-
+    <title>Faculty Development Grants</title>
+    <!-- Always include these two css files when creating a new html file. -->
+        <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
+        <link href="../css/index.css" type="text/css" rel="stylesheet"/>
+    <!-- You can insert more CSS files below-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
 </head>
 
 <body>
     <div class="ui middle aligned center aligned grid countier">
+      <!-- This is the mini header with logo and office name-->
         <div class="column">
             <div class="ui items">
                 <div class="item">
@@ -31,7 +33,8 @@
                      </div>
                 </div>
             </div>
-                    
+
+          <!-- This is the main login form -->
             <form id = "loginform" class="ui large form" action = "/login" method = "post">
                 <div class="ui  secondary  segment">
                     <h2 class="ui image header">
@@ -51,7 +54,7 @@
                     </div>
                     <div class="ui fluid large darkgreen submit button" onclick="loginform.submit();"> Log In </div>
                 </div>
-              
+              <!-- If wrong credentials are entered, an error message will show up -->
                 {{#if error}}
                   <div class="error">
                     <div class="ui red tiny message">{{error}}</div>
@@ -61,6 +64,9 @@
             </form>
         </div>
     </div>
-    <script src="../semantic/semantic.js"></script>
-</body>
+  </body>
+
+   <!-- Always include these two JS files when adding a new page -->
+      <script src="../semantic/semantic.js"></script>
+   <!-- You can insert more JS files below -->
 </html>
