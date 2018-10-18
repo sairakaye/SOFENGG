@@ -1,6 +1,7 @@
 <!-- 
-    This is the page for request grants of the faculty.
-    October 17, 2018
+    This is the page for the FD1 form for the
+    faculty user to fill it up.
+    October 18, 2018
     @ver 1.0
     @author Sai Manalili
 -->
@@ -80,33 +81,18 @@
                 <div class="ui grid">
                     <div class="row">
                         <h1 class="ui huge header">
-                            Request for Faculty Grants
+                            [FD1] Incentive for Publication in Pre-Selected High Impact Journal
                         </h1>
                     </div>
                     <div class="ui divider"></div>
                     <div class="one column center aligned row">
-                        <div class="column">1st Term, AY 2018-2019</div>
+                        <div class="column"><h3>1st Term, AY 2018-2019</h3></div>
                     </div>
                     <!-- This is where the fields for the forms. -->
                     <div class="row">
                         <div class="one column">
                             <form action="/faculty/submit" method="post" class="ui form">
-                                <div class="field">
-                                    <label>Faculty Development Grant Form</label>
-                                    <div class="ui selection dropdown fluid" id="dp-grants">
-                                        <input type="hidden" id="form-dp" name="form-num"/>
-                                        <i class="dropdown icon"></i>
-                                        <div class="default text">Select forms....</div>
-                                        <div class="menu">
-                                            <div class="item" data-value="1">[FD1] Incentive for Publication in
-                                                Pre-Selected High Impact
-                                                Journal</div>
-                                            <div class="item" data-value="2">
-                                                [FD2] Incentive for Publication in Pre-Selected High Impact Conferences
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <input type="hidden" name="formNum" value="1"/>
                                 <div class="field"/>
                                     <label>Name</label>
                                     <div class="two fields">
@@ -312,9 +298,9 @@
                                             <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
                                         </div>
                                     </div>
-
+                                    <div class="ui error message"></div>
                                     <div class="field">
-                                        <input type="submit" class="ui button positive" value="Submit"/>
+                                        <div class="ui green submit button">Submit</div>
                                     </div>
                             </form>
                         </div>

@@ -24,7 +24,7 @@ const controllerUser = require("./index")
 router.use("/user", require("./user"))
 
 /**
- * Leads to the page for requesting grants 
+ * Leads to the page for requesting grants. 
  *
  * @param {Request} req
  * @param {Response} res
@@ -36,6 +36,21 @@ router.get("/request-grant", function(req, res){
 		user
 	})
 })
+
+/**
+ * Leads to the page of FD1 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/fd-1", function(req, res){
+	console.log("GET /fd-1")
+	var user = controllerUser.getCurrentUser() 
+	res.render("form1", {
+		user
+	})
+})
+
 
 /**
  * Leads to the page for viewing all applied grant requests
@@ -54,6 +69,7 @@ router.get("/my-requests", function(req, res) {
     res.send(err)
   })
 })
+
 
 /**
  * Adds to the database the entered information for the chosen
