@@ -1,12 +1,20 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This contains schema initialization and 
+ * model functions for the second form
+ * October 17, 2018
+ * @ver 1.0
+ * @author Christian Dequito
  */
 
+/**
+ * Module dependencies.
+ */
 const mongoose = require("mongoose");
 
+
+/**
+ * Setting up FD2 Form Schema
+ */
 var fdTwoSchema = mongoose.Schema({
     ownerUsername : String,
     term : String, 

@@ -1,10 +1,14 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This contains schema initialization and 
+ * model functions for the users
+ * October 17, 2018
+ * @ver 1.0
+ * @author Christian Dequito
  */
 
+/**
+ * Module dependencies.
+ */
 const mongoose = require("mongoose")
 const crypto = require("crypto")
 const fdOne = require("./fdOne.js")
@@ -12,6 +16,9 @@ const fdOneSchema = mongoose.model('fdOne').schema
 const fdTwo = require("./fdTwo.js")
 const fdTwoSchema = mongoose.model('fdTwo').schema
 
+/**
+ * Setting up User Schema
+ */
 var userSchema = mongoose.Schema({
     
     username : {
@@ -52,6 +59,12 @@ userSchema.pre("save", function(next){
 
 var User = mongoose.model("user", userSchema)
 
+
+/**
+ * Creates user record in User Schema 
+ *
+ * @param {user record to be created} user
+ */
 exports.create = function(user){
   return new Promise(function(resolve, reject){
     var u = new User(user)
@@ -64,6 +77,11 @@ exports.create = function(user){
   })
 }
 
+/**
+ * Authenticates user record in User Schema 
+ *
+ * @param {user record to be authenticated} user
+ */
 exports.authenticate = function(user){
   return new Promise(function(resolve, reject){
       
@@ -78,6 +96,11 @@ exports.authenticate = function(user){
   })
 }
 
+/**
+ * Gets one user record in User Schema 
+ *
+ * @param {user record to get by username} paramUsername
+ */
 exports.getUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
@@ -90,6 +113,11 @@ exports.getUser = function(paramUsername){
     })
 }
 
+/**
+ * Gets one user record in User Schema 
+ *
+ * @param {user record to get by name} paramName
+ */
 exports.getUserByName = function(paramName){
     return new Promise(function(resolve, reject){
         User.findOne({
@@ -102,6 +130,9 @@ exports.getUserByName = function(paramName){
     })
 }
 
+/**
+ * Gets all user record in User Schema 
+ */
 exports.getAllUser = function(){
     return new Promise(function(resolve, reject){
         User.find().then((users)=>{
@@ -112,6 +143,11 @@ exports.getAllUser = function(){
     })
 }
 
+/**
+ * Gets user record in user Schema by department
+ *
+ * @param {Filtering department} paramUserDepartment
+ */
 exports.getUserByDepartment = function(paramUserDepartment){
     return new Promise(function(resolve, reject){
         User.find({
@@ -125,6 +161,11 @@ exports.getUserByDepartment = function(paramUserDepartment){
     
 }
 
+/**
+ * Gets user record in user Schema by status
+ *
+ * @param {Filtering status} paramUserStatus
+ */
 exports.getUserByStatus = function(paramUserStatus){
     return new Promise(function(resolve, reject){
         User.find({
@@ -138,6 +179,11 @@ exports.getUserByStatus = function(paramUserStatus){
     
 }
 
+/**
+ * Gets FDOne records in user Schema
+ *
+ * @param {Username of user that contains FDOne} paramUsername
+ */
 exports.getFDOneFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
@@ -150,6 +196,11 @@ exports.getFDOneFormsByUser = function(paramUsername){
     })
 }
 
+/**
+ * Gets FDTwo records in user Schema
+ *
+ * @param {Username of user that contains FDTwo} paramUsername
+ */
 exports.getFDTwoFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
@@ -162,6 +213,11 @@ exports.getFDTwoFormsByUser = function(paramUsername){
     })
 }
 
+/**
+ * Adds FDOne record in User Schema 
+ *
+ * @param {FDOne record to be added} paramFDOne
+ */
 exports.addFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
@@ -176,6 +232,11 @@ exports.addFDOneInUser = function(paramFDOne){
     })
 }
 
+/**
+ * Deletes FDOne record in User Schema 
+ *
+ * @param {FDOne record to be deleted} paramFDOne
+ */
 exports.deleteFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
         User.findOne({
@@ -191,7 +252,11 @@ exports.deleteFDOneInUser = function(paramFDOne){
     })
 }
 
-//erroneous edit in user
+/**
+ * Edits FDOne record in User Schema 
+ *
+ * @param {FDOne record to be edited} paramFDOne
+ */
 exports.editFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({

@@ -19,8 +19,8 @@ router.use(urlencoder)
 const app = express()
 
 const User = require("../models/user")
-router.use("/user", require("./user"))
 router.use("/faculty", require("./faculty"))
+router.use("/admin", require("./admin"))
 
 /**
  * Leads to the login page index.hbs
@@ -29,7 +29,8 @@ router.use("/faculty", require("./faculty"))
  * @param {Response} res
  */
 router.get("/", function(req, res) {
-     console.log("GET /")
+	 console.log("GET /")
+	 
      res.render("index.hbs")
 })
 
@@ -46,7 +47,7 @@ router.post("/home", (req, res)=>{
   var idnumber = req.body.idnumber
   var password = req.body.password
 
-/*  
+/*  FOR ADDING USERS TO DB
 	var today = new Date();
 	today.setHours(0, 0, 0, 0);
 
@@ -69,7 +70,7 @@ router.post("/home", (req, res)=>{
 			console.log("ERROR")
 			console.log(error)
 	})
- */
+*/ 
 	
 	let user = {
 		username : idnumber,
@@ -78,10 +79,9 @@ router.post("/home", (req, res)=>{
 
 	User.authenticate(user).then((user)=>{
 		if(user){
-			console.log("User Found")
 			currentUser = user
-			console.log(currentUser)
-			if(user.userType == "Admin")
+			console.log("User Found")
+			if(user.userType == "Administator")
 				res.render("home-admin.hbs", {
 					user
 				})
@@ -101,6 +101,27 @@ router.post("/home", (req, res)=>{
 })
 
 /**
+ * Leads the page to home depending on user type
+ * after clicking the logo in menu bar
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/home", function(req, res){
+	console.log("GET /home")
+
+	user = currentUser
+	if(user.userType == "Administator")
+		res.render("home-admin.hbs", {
+			user
+		})
+	else if(user.userType == "Faculty" || user.userType == "Library Staff")
+		res.render("home-user.hbs", {
+			user
+		})
+})
+
+/**
  * Logs the user out of the web application and 
  * redirects to the login page index.hbs
  *
@@ -108,7 +129,8 @@ router.post("/home", (req, res)=>{
  * @param {Response} res
  */
 router.get("/logout", function(req, res){
-	 console.log("GET Lead to home")
+	 console.log("GET /logout")
+
 	 res.render("index.hbs")
 })
 

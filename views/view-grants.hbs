@@ -1,27 +1,25 @@
 <!-- 
-    This is the home page of the regular user or
-    the faculty.
+    This is the page where the admin
+    view the grants requested.
     October 15, 2018
-    @ver 1.0
-    @author Sai Manalili
+    @ver 1.1
+    @author Candace Mercado
 -->
 
-<!DOCTYPE html>
 <html>
   <head>
-    <title>My Requests</title>
    <!-- Always include these two css files when creating a new html file. -->
-      <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-      <link href="../css/main.css" type="text/css" rel="stylesheet"/>
+      <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet"/>
+      <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
    <!-- You can insert more CSS files below-->
   </head>
 
   <body>
     <!-- This is the menu bar. -->
     <div class="ui inverted huge borderless fixed fluid menu">
-      <a href="/home"class="header item">
+      <a href="/home" class="header item">
         <div class="ui mini image">
-          <img src="../images/dlsulogo.png"/>
+          <img src="../public/images/dlsulogo.png"/>
         </div>
        <div class="brand-text">
          Office of the Vice Chancellor <br> for Academics
@@ -63,12 +61,12 @@
               </div>
             </div>
           <!-- These are the side menubar items. -->
-          <a href="/faculty/request-grant" class="item">
-            Request Grant
+          <a href = "/home" class="item">
+            Overview
             <i class="chevron right icon"></i>
           </a>
-          <a href="/faculty/my-requests" class="active item">
-            My Requests
+          <a class="active item">
+            View Grants
             <i class="chevron right icon"></i>
           </a>
          </div>
@@ -77,6 +75,12 @@
        <!-- This is where you will put the content of the page. -->
        <div class="column" id="content">
          <div class="ui grid">
+           <div class="row">
+             <h1 class="ui huge header">
+                View Grants
+             </h1>
+            </div>
+            <div class="ui divider"></div>
             <div class="row">
               <div class="ui action input">
                 <input type="text" placeholder="Search...">
@@ -84,7 +88,7 @@
               </div>
             </div>
             <div class="row">
-              <table class="ui single line selectable table tablet stackable">
+              <table class="ui fixed single line selectable table tablet stackable">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -92,52 +96,52 @@
                     <th>Form</th>
                     <th>Status</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
-                  {{#each forms}}
-                     {{#showonlybyuser name}}
-                        {{#checkstatus 'Approved' grantStatus}}
-                            <tr class="positive">
-                        {{else}}
-                          <!-- dont show -->
-                        {{/checkstatus}}
-
-                        {{#checkstatus 'Rejected' grantStatus}}
-                            <tr class="negative">
-                        {{else}}
-                          <!-- dont show -->
-                        {{/checkstatus}}
-
-                        {{#checkstatus 'Pending' grantStatus}}
-                            <tr>
-                        {{else}}
-                          <!-- dont show -->
-                        {{/checkstatus}}
-                              <td>{{name}}</td>
-                              <td>{{department}}</td>
-                              <td>{{grantName}}</td>
-                              <td>{{grantStatus}}</td>
-                              <td>
-                                <button class="ui button fluid">View Details</button>
-                              </td>
-                            </tr>  
+              <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
+                {{#each forms}}
+                    {{#checkstatus 'Approved' grantStatus}}
+                        <tr class="positive">
                     {{else}}
-                      <!--  do not show -->
-                    {{/showonlybyuser}}
-                  {{/each}}                                  
+                      <!-- dont show -->
+                    {{/checkstatus}}
+
+                    {{#checkstatus 'Rejected' grantStatus}}
+                        <tr class="negative">
+                    {{else}}
+                      <!-- dont show -->
+                    {{/checkstatus}}
+
+                    {{#checkstatus 'Pending' grantStatus}}
+                        <tr>
+                    {{else}}
+                      <!-- dont show -->
+                    {{/checkstatus}}
+                          <td>{{name}}</td>
+                          <td>{{department}}</td>
+                          <td>{{grantName}}</td>
+                          <td>{{grantStatus}}</td>
+                          <td>
+                            <button class="ui button fluid">View Details</button>
+                          </td>
+                          <td>
+                            <button class="ui negative button fluid">Delete</button>
+                          </td>
+                        </tr>  
+                  {{/each}}         
                 </tbody>
              </table>
-            </div>             
+            </div>
+          </div>
          </div>
-       </div>
       </div>
     </div>
   </body>
   
   <!-- Always include these two JS files when adding a new page -->
-    <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../semantic/semantic.js"></script>
+    <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../public/semantic/semantic.js"></script>
   <!-- You can insert more JS files below -->
 </html>

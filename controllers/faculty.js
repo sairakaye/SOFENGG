@@ -11,6 +11,7 @@
  */
 const express = require("express")
 const bodyparser = require("body-parser")
+const hbs = require("hbs")
 const urlencoder = bodyparser.urlencoded({
   extended : true
 })
@@ -21,7 +22,6 @@ const app = express()
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
 const controllerUser = require("./index")
-router.use("/user", require("./user"))
 
 /**
  * Leads to the page for requesting grants. 
@@ -30,7 +30,8 @@ router.use("/user", require("./user"))
  * @param {Response} res
  */
 router.get("/request-grant", function(req, res){
-	console.log("GET /request-grant")
+  console.log("GET /request-grant")
+  
 	var user = controllerUser.getCurrentUser() 
 	res.render("request-grant.hbs", {
 		user
@@ -60,10 +61,12 @@ router.get("/fd-1", function(req, res){
  */
 router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
+
   var user = controllerUser.getCurrentUser() 
   fdOne.getAllFDOne().then((fdOneData)=> {
+    forms = fdOneData
     res.render("my-requests.hbs", {
-      user, fdOneData
+      user, forms
     })
   }, (err)=> {
     res.send(err)
@@ -79,6 +82,8 @@ router.get("/my-requests", function(req, res) {
  * @param {Response} res
  */
 router.post("/submit", urlencoder, function(req,res) {
+    console.log("POST /submit")
+    
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var department = req.body.department
@@ -145,6 +150,7 @@ router.post("/submit", urlencoder, function(req,res) {
       callForPapersOfConference = false;
     
     var fdOneData = {
+      grantName: "Incentive for Publication in Pre-Selected High Impact Journal",
       ownerIdNumber: 2018, term: "1st Term", startAY: 2018, endAY: 2019,
       name: firstName + " " + lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
@@ -165,3 +171,24 @@ router.post("/submit", urlencoder, function(req,res) {
 })
 
 module.exports = router
+
+/**
+ * Compares form's name from the .hbs files with
+ * the current logged in user's name to filter in the  
+ * view grants of the admin user
+ *
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('showonlybyuser', function(name, options) {  
+  var currentUser = controllerUser.getCurrentUser() 
+  var currentUserName = currentUser.name 
+  
+  if (currentUser != undefined || currentUser!= null){
+      if(name.toString() == currentUserName.toString()) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+  }
+})

@@ -1,13 +1,22 @@
 /**
- * <description>
- * <date created>
- * @ver
- * @author
+ * This contains schema initialization and 
+ * model functions for the first form
+ * October 17, 2018
+ * @ver 1.0
+ * @author Christian Dequito
  */
 
+/**
+ * Module dependencies.
+ */
 const mongoose = require("mongoose");
 
+
+/**
+ * Setting up FD1 Form Schema
+ */
 var fdOneSchema = mongoose.Schema({
+    grantName: String,
     ownerIdNumber : Number,
     term : String, 
     startAY : Number,
@@ -44,6 +53,12 @@ var fdOneSchema = mongoose.Schema({
 
 var fdOne = mongoose.model("fdOne", fdOneSchema)
 
+
+/**
+ * Creates FD1 record in FD1 Schema 
+ *
+ * @param {FD1 record to be created} paramFDOne
+ */
 exports.create = function(paramFDOne){
     return new Promise(function(resolve, reject){
         var f = new fdOne(paramFDOne)
@@ -56,6 +71,11 @@ exports.create = function(paramFDOne){
     })
 }
 
+/**
+ * Deletes FD1 record in FD1 Schema 
+ *
+ * @param {ID of the record to be deleted} paramID
+ */
 exports.delete = function(paramID){
     return new Promise(function(resolve, reject){
         fdOne.remove({
@@ -68,7 +88,11 @@ exports.delete = function(paramID){
     })
 }
 
-//edit probably erroneous
+/**
+ * Edits FD1 record in FD1 Schema 
+ *
+ * @param {FD1 record to be edited} paramFDOne
+ */
 exports.edit = function(paramFDOne){
     return new Promise(function(resolve, reject){
         fdOne.findOneAndUpdate({
@@ -81,6 +105,11 @@ exports.edit = function(paramFDOne){
     })
 }
 
+/**
+ * Gets one FD1 record in FD1 Schema 
+ *
+ * @param {FD1 record to get} paramFDOne
+ */
 exports.getFDOne = function(paramFDOne){
     return new Promise(function(resolve, reject){
         fdOne.findOne({
@@ -93,6 +122,9 @@ exports.getFDOne = function(paramFDOne){
     })
 }
 
+/**
+ * Gets all FD1 record in FD1 Schema 
+ */
 exports.getAllFDOne = function(){
     return new Promise(function(resolve, reject){
         fdOne.find().then((fdOneForms)=>{
@@ -103,6 +135,12 @@ exports.getAllFDOne = function(){
     })
 }
 
+
+/**
+ * Gets FD1 record in FD1 Schema by department
+ *
+ * @param {Filtering department} paramFDOneDepartment
+ */
 exports.getFDOneByDepartment = function(paramFDOneDepartment){
     return new Promise(function(resolve, reject){
         fdOne.find({
@@ -115,6 +153,12 @@ exports.getFDOneByDepartment = function(paramFDOneDepartment){
     })
 }
 
+
+/**
+ * Gets FD1 record in FD1 Schema by status
+ *
+ * @param {Filtering status} paramFDOnestatus
+ */
 exports.getFDOneByStatus = function(paramFDOneStatus){
     return new Promise(function(resolve, reject){
         fdOne.find({
