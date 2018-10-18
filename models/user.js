@@ -36,7 +36,7 @@ var userSchema = mongoose.Schema({
     
 	userType: String, //Admin, Faculty or Library Staff
 
-    status : Boolean, //true = permanent, false = probationary
+    status : String, //true = permanent, false = probationary
     
     dateHired : Date,
     

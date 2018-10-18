@@ -40,13 +40,13 @@ router.get("/", function(req, res) {
  * @param {Request} req
  * @param {Response} res
  */
-router.post("/login", (req, res)=>{
-  console.log("POST /user/login")
+router.post("/home", (req, res)=>{
+  console.log("POST /home")
 
   var idnumber = req.body.idnumber
   var password = req.body.password
 
-  	/* for adding user to DB
+/*  
 	var today = new Date();
 	today.setHours(0, 0, 0, 0);
 
@@ -55,7 +55,8 @@ router.post("/login", (req, res)=>{
 		password, 
 		name: 'Candace Claire M. Mercado',
 		department: "College of Computer Studies", 
-		status: "Student",
+		userType: "Faculty",
+		status: "Permanent",
 		dateHired: today, 
 		fdOneForms: null, 
 		fdTwoForms: null
@@ -67,8 +68,9 @@ router.post("/login", (req, res)=>{
 	}, (error)=>{
 			console.log("ERROR")
 			console.log(error)
-	}) */
-	      
+	})
+ */
+	
 	let user = {
 		username : idnumber,
 		password 
