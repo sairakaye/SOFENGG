@@ -48,19 +48,20 @@ router.post("/home", (req, res)=>{
   var password = req.body.password
 
 /*  FOR ADDING USERS TO DB */
-	var today = new Date();
-	today.setHours(0, 0, 0, 0);
-
+//	var today = new Date();
+//	today.setHours(0, 0, 0, 0);
+//
 //	var user = {
 //		username: idnumber,
 //		password, 
-//		name: 'Candace Claire M. Mercado',
+//		firstName: 'Candace Claire',
+//        lastName : "Mercado",
 //		department: "College of Computer Studies", 
-//		userType: "Faculty",
+//		userType: "Administrator",
 //		status: "Permanent",
-//		dateHired: today, 
+//		dateHired: today 
 //		//fdOneForms: null, 
-//		fdTwoForms: null
+//		//fdTwoForms: null
 //	}
 //	User.create(user).then((user)=>{
 //		 console.log("User Registration Successful")
@@ -81,7 +82,7 @@ router.post("/home", (req, res)=>{
 		if(user){
 			currentUser = user
 			console.log("User Found")
-			if(user.userType == "Administator")
+			if(user.userType == "Administrator")
 				res.render("home-admin.hbs", {
 					user
 				})
