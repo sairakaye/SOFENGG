@@ -48,7 +48,7 @@
                    </div>
                    <div class="row">
                      <div class="person-name">
-                       <p>{{user.name}}</p>
+                       <p>{{user.firstName}} {{user.lastName}}</p>
                      </div>
                      <div class="person-type">
                        {{user.userType}}
@@ -97,7 +97,7 @@
                 <tbody>
                 <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
-                     {{#showonlybyuser name}}
+                     {{#showonlybyuser firstName lastName}}
                         {{#checkstatus 'Approved' grantStatus}}
                             <tr class="positive">
                         {{else}}
@@ -115,7 +115,7 @@
                         {{else}}
                           <!-- dont show -->
                         {{/checkstatus}}
-                              <td>{{name}}</td>
+                              <td>{{firstName}} {{lastName}} </td>
                               <td>{{department}}</td>
                               <td>{{grantName}}</td>
                               <td>{{grantStatus}}</td>
