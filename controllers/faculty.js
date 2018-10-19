@@ -151,7 +151,7 @@ router.post("/submit", urlencoder, function(req,res) {
     
     var fdOneData = {
       grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
-      ownerIdNumber: 2018, term: "1st Term", startAY: 2018, endAY: 2019,
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
       name: firstName + " " + lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
       datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
@@ -161,13 +161,21 @@ router.post("/submit", urlencoder, function(req,res) {
     }
 
     fdOne.create(fdOneData).then((newFdOneData)=> {
-	  var user = controllerUser.getCurrentUser() 
-      res.render("home-user.hbs", {
-		  user
-	  })
+        
+        User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
+            var user = controllerUser.getCurrentUser() 
+            res.render("home-user.hbs", {
+                user
+            })
+        }, (err)=>{
+            res.send(err)
+        })
+        
     }, (err)=> {
-      res.send(err)
+        res.send(err)
     })
+    
+    
 })
 
 module.exports = router

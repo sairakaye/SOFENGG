@@ -17,7 +17,8 @@ const mongoose = require("mongoose");
  */
 var fdOneSchema = mongoose.Schema({
     grantName: String,
-    ownerIdNumber : Number,
+    ownerIdNumber : String,
+    dateSubmitted : Date,
     term : String, 
     startAY : Number,
     endAY : Number,

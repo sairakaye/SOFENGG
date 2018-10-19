@@ -1,6 +1,6 @@
 /**
  * This contains schema initialization and 
- * model functions for the second form
+ * model functions for the third form
  * October 17, 2018
  * @ver 1.0
  * @author Christian Dequito
@@ -13,17 +13,15 @@ const mongoose = require("mongoose");
 
 
 /**
- * Setting up FD2 Form Schema
+ * Setting up FD3 Form Schema
  */
-var fdTwoSchema = mongoose.Schema({
+var fdThreeSchema = mongoose.Schema({
     grantName : String,
     ownerIdNumber : String,
     dateSubmitted : Date,
-    term : String, 
-    startAY : Number,
-    endAY : Number,
-    name : String, 
+    nameOfFaculty : String, 
     department : String,
+    rank : String,
     dateHired : Date,
     rank : String,
     status : Boolean, //true = permanent, false = probationary
@@ -46,4 +44,4 @@ var fdTwoSchema = mongoose.Schema({
     updatedFacultyWebpage : Boolean
 })
 
-var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
+var fdThree = mongoose.model("fdThree", fdTwoSchema)

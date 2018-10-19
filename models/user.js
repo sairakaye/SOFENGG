@@ -221,10 +221,11 @@ exports.getFDTwoFormsByUser = function(paramUsername){
 exports.addFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDOne.ownerUsername
+            username : paramFDOne.ownerIdNumber
         }, {
-            $push : {fdOneForms : {paramFDOne}}
+            $push : {fdOneForms : paramFDOne}
         }).then((updatedUser)=>{
+            console.log("let it go, go go go")
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
