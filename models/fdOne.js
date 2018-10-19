@@ -155,7 +155,6 @@ exports.getFDOneByDepartment = function(paramFDOneDepartment){
     })
 }
 
-
 /**
  * Gets FD1 record in FD1 Schema by status
  *
@@ -164,7 +163,7 @@ exports.getFDOneByDepartment = function(paramFDOneDepartment){
 exports.getFDOneByStatus = function(paramFDOneStatus){
     return new Promise(function(resolve, reject){
         fdOne.find({
-            status : paramFDOneStatus
+            grantStatus : paramFDOneStatus
         }).then((statusFDOne)=>{
             resolve(statusFDOne)
         }, (err)=>{
@@ -172,4 +171,5 @@ exports.getFDOneByStatus = function(paramFDOneStatus){
         })
     })
 }
+
 

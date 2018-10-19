@@ -82,10 +82,30 @@
             </div>
             <div class="ui divider"></div>
             <div class="row">
-              <div class="ui action input">
-                <input type="text" placeholder="Search...">
-                <div class="ui button">Search</div>
+              
+            <div class="three wide column">
+              <div id = "status" class="ui selection dropdown fluid">                  
+                <i class="filter icon"></i>
+                <input type="hidden" name="gender">
+                <i class="dropdown icon"></i>
+                <div class="default text">Status</div>
+                <div class="menu">
+                  <div class="item" data-value="Approved" onclick="document.location.href = '/admin/filterApproved'">Approved</div>
+                  <div class="item" data-value="Pending" onclick="document.location.href = '/admin/filterPending'">Pending</div>
+                  <div class="item" data-value="Rejected" onclick="document.location.href = '/admin/filterRejected'">Rejected</div>
+                </div>
+            </div>
+          </div>
+
+            <div class="thirteen wide column">
+              <div class="ui action input fluid">
+               <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
+                <input type="text"  name = "search" placeholder="Search Name...">
+                <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
+                </form>
               </div>
+            </div>
+            
             </div>
             <div class="row">
               <table class="ui fixed single line selectable table tablet stackable">
@@ -103,19 +123,19 @@
               <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                 {{#each forms}}
                     {{#checkstatus 'Approved' grantStatus}}
-                        <tr class="positive">
+                        <tr class="positive listmember">
                     {{else}}
                       <!-- dont show -->
                     {{/checkstatus}}
 
                     {{#checkstatus 'Rejected' grantStatus}}
-                        <tr class="negative">
+                        <tr class="negative listmember">
                     {{else}}
                       <!-- dont show -->
                     {{/checkstatus}}
 
                     {{#checkstatus 'Pending' grantStatus}}
-                        <tr>
+                        <tr class = "listmember">
                     {{else}}
                       <!-- dont show -->
                     {{/checkstatus}}
@@ -139,9 +159,11 @@
       </div>
     </div>
   </body>
-  
+
   <!-- Always include these two JS files when adding a new page -->
     <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../public/semantic/semantic.js"></script>
   <!-- You can insert more JS files below -->
+    <script type="text/javascript" src="../public/js/view-grants.js"></script>
+
 </html>

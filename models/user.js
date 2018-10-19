@@ -46,10 +46,10 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
-	userType: String, //Admin, Faculty or Library Staff
+	userType: String, //Administrator or Faculty
 
-    status : String, //true = permanent, false = probationary
-    
+    status : String, 
+
     dateHired : Date,
     
     fdOneForms : [fdOneSchema],
@@ -185,6 +185,27 @@ exports.getFDOneFormsByUser = function(paramUsername){
 }
 
 /**
+ * @Overload
+ * Gets FDOne records in user Schema by Name
+ *
+ * @param {Name of user that contains FDOne} paramName
+ */
+exports.getFDOneFormsByName = function(paramName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            $or : [
+                {firstName : paramName},
+                {lastName : paramName}
+            ]
+        }).then((userFound)=>{
+            resolve(userFound.fdOneForms)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets FDOne records in user Schema by Name
  *
  * @param {First name of user that contains FDOne} paramFirstName
@@ -196,7 +217,9 @@ exports.getFDOneFormsByFullName = function(paramFirstName, paramLastName){
             firstName : paramFirstName,
             lastName : paramLastName
         }).then((userFound)=>{
-            resolve(userFound.fdOneForms)
+            console.log(userFound)
+            if (userFound != null)
+                resolve(userFound.fdOneForms)
         }, (err)=>{
             reject(err)
         })
@@ -214,10 +237,10 @@ exports.getFDOneFormsByName = function(paramName){
             $or : [
                 {firstName : paramName},
                 {lastName : paramName}
-            
             ]
         }).then((userFound)=>{
-            resolve(userFound.fdOneForms)
+            if (userFound!= null)
+                resolve(userFound.fdOneForms)
         }, (err)=>{
             reject(err)
         })

@@ -152,7 +152,7 @@ router.post("/submit", urlencoder, function(req,res) {
     var fdOneData = {
       grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
       ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
-      name: firstName + " " + lastName, department, dateHired, rank, status,
+      firstName, lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
       datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
       dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
