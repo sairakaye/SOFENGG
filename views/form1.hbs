@@ -93,34 +93,34 @@
                         <div class="one column">
                             <form action="/faculty/submit" method="post" class="ui form">
                                 <input type="hidden" name="formNum" value="1"/>
-                                <div class="field"/>
-                                    <label>Name</label>
-                                    <div class="two fields">
+                                <div class="two fields">
                                         <div class="field">
-                                            <input type="text" name="firstName" placeholder="First Name"/>
+                                            <label>First Name</label>
+                                            <input type="text" name="firstName"/>
                                         </div>
                                         <div class="field">
-                                            <input type="text" name="lastName" placeholder="Last Name"/>
+                                            <label>Last Name</label>
+                                            <input type="text" name="lastName"/>
                                         </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Faculty Information</label>
-                                        <div class="fields">
+                                </div>
+                                    <div class="fields">
                                             <div class="seven wide field">
-                                                <input type="text" name="department" placeholder="Department"/>
+                                                <label>Department</label>
+                                                <input type="text" name="department"/>
                                             </div>
                                             <div class="four wide field">
+                                                <label>Date Hired</label>
                                                 <div class="ui calendar" id="date-hired">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateHired" placeholder="Date Hired"/>
+                                                        <input type="text" name="dateHired" placeholder="Date"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="five wide field">
-                                                <input type="text" name="rank" placeholder="Rank"/>
+                                                <label>Rank</label>
+                                                <input type="text" name="rank"/>
                                             </div>
-                                        </div>
                                     </div>
                                     <div class="field">
                                         <label>Status</label>
@@ -140,32 +140,36 @@
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <input type="text" name="aveTeachingPerformance" placeholder="Average teaching performance for the last 3 academic years"/>
+                                        <label>Average teaching performance for the last 3 academic years</label>
+                                        <input type="text" name="aveTeachingPerformance"/>
                                     </div>
                                     <div class="field">
-                                        <label>Publication Details</label>
-                                        <input type="text" name="titleOfPaperOrPublication" placeholder="Title of Paper or Publication"/>
+                                        <label>Title of Paper or Publication</label>
+                                        <input type="text" name="titleOfPaperOrPublication"/>
                                     </div>
 
                                     <div class="field">
-                                        <input type="text" name="titleOfJournal" placeholder="Title of the Journal where paper was published"/>
+                                        <label>Title of the Journal where paper was published</label>
+                                        <input type="text" name="titleOfJournal"/>
                                     </div>
 
                                     <div class="field">
                                         <div class="fields">
                                             <div class="eight wide field">
+                                                <label>Date paper was submitted for publication</label>
                                                 <div class="ui calendar" id="submit-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="datePaperSubmitted" placeholder="Date paper was submitted for publication"/>
+                                                        <input type="text" name="datePaperSubmitted" placeholder="Date" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="eight wide field">
+                                                <label>Date paper was accepted for publication</label>
                                                 <div class="ui calendar" id="accept-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="datePaperAccepted" placeholder="Date paper was accepted for publication"/>
+                                                        <input type="text" name="datePaperAccepted" placeholder="Date" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,25 +177,29 @@
                                     </div>
 
                                     <div class="field">
-                                        <input type="text" name="nameOfConference" placeholder="Name of Conference"/>
+                                        <label>Name of Conference</label>
+                                        <input type="text" name="nameOfConference" />
                                     </div>
 
                                     <div class="field">
-                                        <input type="text" name="titleOfPaperToBePresented" placeholder="Title of paper to be presented"/>
+                                        <label>Title of paper to be presented</label>
+                                        <input type="text" name="titleOfPaperToBePresented" />
                                     </div>
 
                                     <div class="field">
                                         <div class="fields">
                                             <div class="eight wide field">
+                                                <label>Date of Conference</label>
                                                 <div class="ui calendar" id="conference-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfConference" placeholder="Date of Conference"/>
+                                                        <input type="text" name="dateOfConference" placeholder="Date"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="eight wide field">
-                                                <input type="text" name="placeAndVenue" placeholder="Place and Venue"/>
+                                                <label>Place and Venue</label>
+                                                <input type="text" name="placeAndVenue"/>
                                             </div>
                                         </div>
                                     </div>
@@ -199,18 +207,20 @@
                                     <div class="field">
                                         <div class="fields">
                                             <div class="eight wide field">
+                                                <label>Date of Departure</label> 
                                                 <div class="ui calendar" id="departure-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfDeparture" placeholder="Date of Departure"/>
+                                                        <input type="text" name="dateOfDeparture" placeholder="Date" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="eight wide field">
+                                                <label>Date of Return</label>
                                                 <div class="ui calendar" id="return-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfReturn" placeholder="Date of Return"/>
+                                                        <input type="text" name="dateOfReturn" placeholder="Date"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,18 +230,20 @@
                                     <div class="field">
                                         <div class="fields">
                                             <div class="eight wide field">
+                                                <label>Date of expected return to work</label>
                                                 <div class="ui calendar" id="expected-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfReturnToWork" placeholder="Date of expected return to work"/>
+                                                        <input type="text" name="dateOfReturnToWork" placeholder="Date"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="eight wide field">
+                                                <label>Date incentive was last availed of</label>
                                                 <div class="ui calendar" id="incentive-date">
                                                     <div class="ui input left icon">
                                                         <i class="calendar icon"></i>
-                                                        <input type="text" name="dateIncentiveLastAvailed" placeholder="Date incentive was last availed of"/>
+                                                        <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,14 +252,14 @@
                                     <div class="field">
                                         <label>Application should be accompanied by the following:</label>
                                         <div class="fields">
-                                            <div class="six wide field">
+                                            <div class="five wide field">
                                                 <div class="ui checkbox">
                                                     <input type="checkbox" name="applicationLetter"/>
                                                     <label>Application Letter</label>
                                                 </div>
                                             </div>
 
-                                            <div class="five wide field">
+                                            <div class="six wide field">
                                                 <div class="ui checkbox">
                                                     <input type="checkbox" name="proofOfAcceptance"/>
                                                     <label>Proof of acceptance from the journal editor</label>
@@ -263,14 +275,14 @@
                                     </div>
                                     <div class="field">
                                         <div class="fields">
-                                            <div class="six wide field">
+                                            <div class="five wide field">
                                                 <div class="ui checkbox">
                                                     <input type="checkbox" name="copyOfJournal"/>
                                                     <label>Copy of journal paper</label>
                                                 </div>
                                             </div>
 
-                                            <div class="five wide field">
+                                            <div class="six wide field">
                                                 <div class="ui checkbox">
                                                     <input type="checkbox" name="proofOfPaperAcceptance"/>
                                                     <label>Proof of paper acceptance for the conference</label>
@@ -298,7 +310,6 @@
                                             <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
                                         </div>
                                     </div>
-                                    <div class="ui error message"></div>
                                     <div class="field">
                                         <div class="ui green submit button">Submit</div>
                                     </div>

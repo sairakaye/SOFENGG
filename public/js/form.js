@@ -49,9 +49,13 @@ $('#incentive-date').calendar({
 
 $('.ui.form')
   .form({
+    inline: 'true',
+    on: 'blur',
     fields: {
       firstName: {
         identifier: 'firstName',
+        inline: true,
+        on: 'blur',
         rules: [
           {
             type   : 'empty',
