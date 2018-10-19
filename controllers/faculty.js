@@ -180,13 +180,15 @@ module.exports = router
  * @param {options} options.fn
  * @param {options} options.inverse
  */
-hbs.registerHelper('showonlybyuser', function(name, options) {  
+hbs.registerHelper('showonlybyuser', function(fname, lname, options) {  
   var currentUser = controllerUser.getCurrentUser() 
-  var currentUserName = currentUser.name 
-  
+  var firstName = currentUser.firstName
+  var lastName = currentUser.lastName
+
   if (currentUser != undefined || currentUser!= null){
-      if(name.toString() == currentUserName.toString()) {
-        return options.fn(this);
+      if(firstName+"" == fname+"") {
+        if (lastName+"" == lname+"")
+            return options.fn(this);
       } else {
         return options.inverse(this);
       }
