@@ -190,7 +190,7 @@ exports.getFDOneFormsByUser = function(paramUsername){
  * @param {First name of user that contains FDOne} paramFirstName
  * @param {Last name of user that contains FDOne} paramLasttName
  */
-exports.getFDOneFormsByName = function(paramFirstName, paramLastName){
+exports.getFDOneFormsByFullName = function(paramFirstName, paramLastName){
     return new Promise(function(resolve, reject){
         User.findOne({
             firstName : paramFirstName,
@@ -204,7 +204,6 @@ exports.getFDOneFormsByName = function(paramFirstName, paramLastName){
 }
 
 /**
- * @Overload
  * Gets FDOne records in user Schema by Name
  *
  * @param {Name of user that contains FDOne} paramName
