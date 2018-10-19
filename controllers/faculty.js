@@ -150,7 +150,7 @@ router.post("/submit", urlencoder, function(req,res) {
       callForPapersOfConference = false;
     
     var fdOneData = {
-      grantName: "Incentive for Publication in Pre-Selected High Impact Journal",
+      grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
       ownerIdNumber: 2018, term: "1st Term", startAY: 2018, endAY: 2019,
       name: firstName + " " + lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
