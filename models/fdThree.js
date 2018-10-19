@@ -1,7 +1,7 @@
 /**
  * This contains schema initialization and 
  * model functions for the third form
- * October 17, 2018
+ * October 19, 2018
  * @ver 1.0
  * @author Christian Dequito
  */
@@ -19,29 +19,34 @@ var fdThreeSchema = mongoose.Schema({
     grantName : String,
     ownerIdNumber : String,
     dateSubmitted : Date,
+    term : String, 
+    startAY : Number,
+    endAY : Number,
     nameOfFaculty : String, 
     department : String,
     rank : String,
     dateHired : Date,
     rank : String,
-    status : Boolean, //true = permanent, false = probationary
-    aveTeachingPerformance : String,
-    nameOfConference : String, 
+    status : Boolean, //true = full-time, false = part-time
+    noOfUnitsTaught : int, //ONLY IF PART-TIME
+    nameOfConference : String,
+    typeOfConference : Boolean, //true = local, false = international
     titleOfPaperToBePresented : String,
     dateOfConference : Date,
     dateOfDeparture : Date,
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
+    travelAndConferenceSubsidy : float, //MONEY
     dateIncentiveLastAvailed : Date,
     //CHECK BOX
     applicationLetter : Boolean,
-    copyOfJournal : Boolean,
-    proofOfAcceptance : Boolean,
+    copyOfAbstract : Boolean,
+    proofOfConference : Boolean,
     proofofPaperAcceptance : Boolean,
     callForPapersOfConference : Boolean,
     copyOfInvitation : Boolean,
     updatedFacultyWebpage : Boolean
 })
 
-var fdThree = mongoose.model("fdThree", fdTwoSchema)
+var fdThree = mongoose.model("fdThree", fdThreeSchema)
