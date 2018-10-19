@@ -54,6 +54,62 @@ router.get("/view-grants", function(req, res){
 
 })
 
+router.get("/filterApproved", function(req, res){
+  console.log("GET /filterApproved")
+
+  var user = controllerUser.getCurrentUser() 
+  fdOne.getFDOneByStatus('Approved').then((fdOneData)=>{
+    forms = fdOneData
+    res.render("view-grants.hbs", {
+       user, forms
+    })
+  })
+})
+
+router.get("/filterPending", function(req, res){
+  console.log("GET /filterPending")
+
+  var user = controllerUser.getCurrentUser() 
+  fdOne.getFDOneByStatus('Pending').then((fdOneData)=>{
+    forms = fdOneData
+    res.render("view-grants.hbs", {
+       user, forms
+    })
+  })
+})
+
+router.get("/filterRejected", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  fdOne.getFDOneByStatus('Rejected').then((fdOneData)=>{
+    forms = fdOneData
+    res.render("view-grants.hbs", {
+       user, forms
+    })
+  })
+})
+
+router.post("/searchName", function(req, res){
+  console.log("POST /searchName")
+
+  var searchName = req.body.search
+  var fullName = searchName.split(" ");
+  var firstName =fullName[0];
+  var lastName = fullName[1];
+
+  console.log(firstName)
+  console.log(lastName)
+  var user = controllerUser.getCurrentUser() 
+  User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
+    console.log(fdOneData)
+    forms = fdOneData
+    res.render("view-grants.hbs", {
+       user, forms
+    })
+  })
+})
+
 module.exports = router
 
 /**
