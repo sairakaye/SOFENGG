@@ -119,23 +119,6 @@ exports.getUser = function(paramUsername){
 }
 
 /**
- * Gets one user record in User Schema 
- *
- * @param {user record to get by name} paramName
- */
-exports.getUserByName = function(paramName){
-    return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramName
-        }).then((userFound)=>{
-            resolve(userFound)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-/**
  * Gets all user record in User Schema 
  */
 exports.getAllUser = function(){
@@ -185,7 +168,7 @@ exports.getUserByStatus = function(paramUserStatus){
 }
 
 /**
- * Gets FDOne records in user Schema
+ * Gets FDOne records in user Schema by username
  *
  * @param {Username of user that contains FDOne} paramUsername
  */
@@ -193,6 +176,25 @@ exports.getFDOneFormsByUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
+        }).then((userFound)=>{
+            resolve(userFound.fdOneForms)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDOne records in user Schema by Name
+ *
+ * @param {First name of user that contains FDOne} paramFirstName
+ * @param {Last name of user that contains FDOne} paramLasttName
+ */
+exports.getFDOneFormsByName = function(paramFirstName, paramLastName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            firstName : paramFirstName,
+            lastName : paramLastName
         }).then((userFound)=>{
             resolve(userFound.fdOneForms)
         }, (err)=>{

@@ -1,7 +1,7 @@
 /**
  * This contains schema initialization and 
  * model functions for the second form
- * October 17, 2018
+ * October 12, 2018
  * @ver 1.0
  * @author Christian Dequito
  */
