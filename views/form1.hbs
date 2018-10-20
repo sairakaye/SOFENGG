@@ -93,7 +93,7 @@
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
-              <form action="/faculty/submit" method="post" class="ui form">
+              <form action="/faculty/submit" method="post" class="ui form" id="request-form">
                 <input type="hidden" name="formNum" value="1" />
                 <div class="two fields disabled">
                   <div class="field">
@@ -337,7 +337,7 @@
                     <p>Once you click the "Ok" button, there is no turning back.</p>
                   </div>
                   <div class="actions">
-                    <input type="submit" value="Ok" form="grant" class="ui button positive">
+                    <input type="submit" value="Ok" form="request-form" class="ui button positive">
                     <div class="ui cancel button">Not yet</div>
                   </div>
                 </div>
