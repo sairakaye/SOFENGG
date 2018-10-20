@@ -1,19 +1,13 @@
 /**
  * This is the JS file of the form page.
- * October 17, 2018
+ * October 19, 2018
  * @ver 1.0
  * @author Sai Manalili
  */
 
- 
-$("#dp-grants").dropdown({
-    onChange: function() {
-      var formVal = parseInt($('#dp-grants').dropdown('get value'))
-      $("#form-dp").val(formVal);
-    }
-});
 
-$('#date-hired').calendar({
+ // Initialization of the date-pickers or the calendar.
+ $('#date-hired').calendar({
   type: 'date'
 })
 
@@ -47,6 +41,21 @@ $('#incentive-date').calendar({
   type: 'date'
 });
 
+// Initialization of the radio button found in the form.
+$('.ui.checkbox').checkbox();
+
+
+// Initialization of the Submit button.
+$("#confirm").click(function() {
+    var isValid = $('.form').form('validate form');
+
+    if (isValid) {
+      $('.ui.modal')
+        .modal('show');
+    }
+})
+
+// For validation of the text fields in the form.
 $('.ui.form')
   .form({
     inline: 'true',
@@ -108,39 +117,12 @@ $('.ui.form')
           }
         ]
       },
-      titleOfPaperOrPublication: {
-        identifier: 'titleOfPaperOrPublication',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter your title of publication.'
-          }
-        ]
-      },
       titleOfJournal: {
         identifier: 'titleOfJournal',
         rules: [
           {
             type   : 'empty',
             prompt : 'Please enter your title of journal.'
-          }
-        ]
-      },
-      datePaperSubmitted: {
-        identifier: 'datePaperSubmitted',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter when the paper is submitted.'
-          }
-        ]
-      },
-      datePaperAccepted: {
-        identifier: 'datePaperSubmitted',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter when the paper is accepted.'
           }
         ]
       },
@@ -209,15 +191,6 @@ $('.ui.form')
           }
         ]
       },
-      datePaperAccepted: {
-        identifier: 'datePaperAccepted',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter when the paper is accepted.'
-          }
-        ]
-      },
       dateIncentiveLastAvailed: {
         identifier: 'dateIncentiveLastAvailed',
         rules: [
@@ -237,5 +210,4 @@ $('.ui.form')
         ]
       }
     }
-  })
-;
+  });

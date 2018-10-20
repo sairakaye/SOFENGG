@@ -1,0 +1,301 @@
+<!-- 
+  This is the page for the FD16 form for the
+  faculty user to fill it up.
+  October 20, 2018
+  @ver 1.0
+  @author Sai Manalili
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Request Grant</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
+      </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.name}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a href="/logout" class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- These are the side menubar items. -->
+          <a class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              [FD16] Support for Membership in Professional Organizations
+            </h1>
+          </div>
+          <div class="ui divider"></div>
+          <div class="one column center aligned row">
+            <div class="column">
+              <h3>1st Term, AY 2018-2019</h3>
+            </div>
+          </div>
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column">
+              <form action="/faculty/submit" method="post" class="ui form" id="request-form">
+                <input type="hidden" name="formNum" value="1" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>First Name</label>
+                    <input type="text" name="firstName" />
+                  </div>
+                  <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" name="lastName" />
+                  </div>
+                </div>
+                <div class="fields">
+                  <div class="seven wide field">
+                    <label>Department</label>
+                    <input type="text" name="department" />
+                  </div>
+                  <div class="five wide field">
+                    <label>Rank</label>
+                    <input type="text" name="rank" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" value="Permanent" />
+                        <label>Permanent</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" value="Probationary" />
+                        <label>Probationary</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Name of Organization</label>
+                  <input type="text" name="blank" />
+                </div>
+
+                <div class="field">
+                  <label>Status</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="membership" value="Permanent" />
+                        <label>Local</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="membership" value="Probationary" />
+                        <label>International</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="membership2" value="Permanent" />
+                        <label>Annual</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="membership2" value="Probationary" />
+                        <label>Lifetime</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Membership Date</label>
+                      <div class="ui calendar" id="submit-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="blank" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide field">
+                      <label>Coverage</label>
+                      <input type="text" name="nameOfConference" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Membership Fee</label>
+                      <input type="number" name="blank" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>(check payable to)</label>
+                      <input type="text" name="blank" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Application should be accompanied by the following:</label>
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="applicationLetter" />
+                        <label>Membership form from the organization</label>
+                      </div>
+                    </div>
+
+                    <div class="six wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="proofOfAcceptance" />
+                        <label>Membership form from the organization</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="copyOfJournal" />
+                        <label>Print-outs/brochures of the organization</label>
+                      </div>
+                    </div>
+
+                    <div class="six wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="proofOfPaperAcceptance" />
+                        <label>Print-outs/brochures of the organization</label>
+                      </div>
+                      <b>/or</b>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="copyOfJournal" />
+                        <label>Copy of the organization’s annual conference and meeting program
+                          showing the paper presentations of the faculty;</label>
+                      </div>
+                      <b>or</b>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="copyOfJournal" />
+                        <label>Certification from the professional organization’s secretariat that the faculty member
+                          has presented at least five (5) papers (cumulative) in the
+                          organization’s annual conference and meetings.</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="sixteen wide field">
+                    <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui green button" id="confirm">Submit</div>
+                </div>
+
+                <div class="ui modal">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Once you click the "Ok" button, there is no turning back.</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Ok" form="request-form" class="ui button positive">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<!-- You can insert more JS files below -->
+<script type="text/javascript" src="../public/js/form1.js"></script>
+
+</html>
