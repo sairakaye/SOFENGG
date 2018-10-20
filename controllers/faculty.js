@@ -48,7 +48,7 @@ router.get("/fd-1", function(req, res){
 	console.log("GET /fd-1")
 	var user = controllerUser.getCurrentUser()
 	res.render("form1", {
-		user
+		  user
 	})
 })
 
