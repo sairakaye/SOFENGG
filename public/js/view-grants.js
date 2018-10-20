@@ -1,6 +1,5 @@
 $('.ui.dropdown').dropdown({forceSelection: false});
 
-
 $("button.delete").click(function () {
     var $tr = $(this).closest('tr'); 
     var id = $(this).attr("data-id")
@@ -9,7 +8,7 @@ $("button.delete").click(function () {
     .modal('show');
 
     $(".positive.delete").click(function(){
-        $.ajax({
+        $.ajax({ 
             method : "delete",
             url : "deleteform",
             data : {
