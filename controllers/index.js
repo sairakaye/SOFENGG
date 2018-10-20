@@ -75,28 +75,37 @@ router.post("/home", (req, res)=>{
 		password 
 	}
 
-	User.authenticate(user).then((user)=>{
+	User.authenticateUsername(user).then((user)=>{
 		if(user){
-			currentUser = user
-			console.log("User Found")
-			if(user.userType == "Administrator")
-				res.render("home-admin.hbs", {
-					user
-				})
-			else if(user.userType == "Faculty")
-				res.render("home-user.hbs", {
-					user
-				})
-		} else {			
+			var usernameFound = true
+		} else {
 			res.render("index.hbs", {
-				again: idnumber,
-				error: "Incorrect ID Number / password. Try again."
-			})
+				error: "Incorrect Username and Password. Try again."
+			})	
 		}
-	}, (error)=>{
-		console.log(error)
-		res.send(null)
 	})
+
+	if (usernameFound = true){
+		User.authenticatePassword(user).then((user)=>{
+			if(user){
+				currentUser = user
+				console.log("User Found")
+				if(user.userType == "Administrator")
+					res.render("home-admin.hbs", {
+						user
+					})
+				else if(user.userType == "Faculty")
+					res.render("home-user.hbs", {
+						user
+					})
+			} else {	
+				res.render("index.hbs", {
+					again: idnumber,
+					error: "Incorrect Password. Try again."
+				})	
+			}
+		})
+	} 
 })
 
 /**

@@ -89,11 +89,29 @@ exports.create = function(user){
  *
  * @param {user record to be authenticated} user
  */
-exports.authenticate = function(user){
+exports.authenticateUsername = function(user){
   return new Promise(function(resolve, reject){
       
     User.findOne({
       username : user.username,
+    }).then((user)=>{
+      resolve(user)
+    },(err)=>{
+      reject(err)
+    })
+  })
+}
+
+/**
+ * Authenticates user record in User Schema 
+ *
+ * @param {user record to be authenticated} user
+ */
+exports.authenticatePassword = function(user){
+  return new Promise(function(resolve, reject){
+      
+    User.findOne({
+      username: user.username,
       password : crypto.createHash("md5").update(user.password).digest("hex")
     }).then((user)=>{
       resolve(user)
