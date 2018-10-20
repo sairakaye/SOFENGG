@@ -48,27 +48,27 @@ router.post("/home", (req, res)=>{
   var password = req.body.password
 
 /*  FOR ADDING USERS TO DB */
-	var today = new Date();
-	today.setHours(0, 0, 0, 0);
-
-	// var user = {
-	// 	username: idnumber,
-	// 	password, 
-	// 	firstName: 'Sai', 
-	// 	lastName: 'Manalili', 
-	// 	department: "College of Computer Studies", 
-	// 	userType: "Faculty",
-	// 	status: "Permanent",
-	// 	dateHired: today,
-	// }
-	// User.create(user).then((user)=>{
-	// 	 console.log("User Registration Successful")
-	// 	 console.log(user)
-     
-	// }, (error)=>{
-	// 		console.log("ERROR")
-	// 		console.log(error)
-	// })
+//	var today = new Date();
+//	today.setHours(0, 0, 0, 0);
+//
+//	 var user = {
+//	 	username: idnumber,
+//	 	password, 
+//	 	firstName: 'Pedro', 
+//	 	lastName: 'Penduko', 
+//	 	department: "College of Computer Studies", 
+//	 	userType: "Administrator",
+//	 	status: "Permanent",
+//	 	dateHired: today,
+//	 }
+//	 User.create(user).then((user)=>{
+//	 	 console.log("User Registration Successful")
+//	 	 console.log(user)
+//     
+//	 }, (error)=>{
+//	 		console.log("ERROR")
+//	 		console.log(error)
+//	 })
  
 	let user = {
 		username : idnumber,

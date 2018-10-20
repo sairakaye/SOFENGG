@@ -100,7 +100,13 @@
             <div class="thirteen wide column">
               <div class="ui action input fluid">
                <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
-                <input type="text"  name = "search" placeholder="Search Name...">
+                <input type="text"  name = "firstNameSearch" placeholder="First Name">
+                   <input type="text"  name = "lastNameSearch" placeholder="Last Name">
+                   {{#if error}}
+                  <div class="error">
+                    <div class="ui red tiny message">{{error}}</div>
+                  </div>
+                {{/if}}
                 <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
                 </form>
               </div>

@@ -93,21 +93,72 @@ router.get("/filterRejected", function(req, res){
 router.post("/searchName", function(req, res){
   console.log("POST /searchName")
 
-  var searchName = req.body.search
-  var fullName = searchName.split(" ");
-  var firstName =fullName[0];
-  var lastName = fullName[1];
+  
+  var firstName =req.body.firstNameSearch
+  var lastName = req.body.lastNameSearch
 
   console.log(firstName)
   console.log(lastName)
   var user = controllerUser.getCurrentUser() 
-  User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
-    console.log(fdOneData)
-    forms = fdOneData
-    res.render("view-grants.hbs", {
-       user, forms
-    })
-  })
+  
+  if(firstName != "" && lastName != ""){
+      User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
+          forms = fdOneData
+          if(forms != null){
+              res.render("view-grants.hbs", {
+                  user, forms
+              })
+          }else{
+              fdOne.getAllFDOne().then((fdOneData)=>{
+                  forms = fdOneData
+                  res.render("view-grants.hbs", {
+                      user, forms,
+                      error : "Name not found"
+                  })
+              })
+          }
+      })
+      
+  } else if(firstName != ""){
+      User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
+          forms = fdOneData
+          if(forms != null){
+              res.render("view-grants.hbs", {
+                  user, forms
+              })
+          }else{
+              fdOne.getAllFDOne().then((fdOneData)=>{
+                  forms = fdOneData
+                  res.render("view-grants.hbs", {
+                      user, forms,
+                      error : "Name not found"
+                  })
+              })
+          }
+          
+      })
+      
+  } else if(lastName != ""){
+      User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
+          forms = fdOneData
+          if(forms != null){
+              res.render("view-grants.hbs", {
+                  user, forms
+              })
+          }else{
+              fdOne.getAllFDOne().then((fdOneData)=>{
+                  forms = fdOneData
+                  res.render("view-grants.hbs", {
+                      user, forms,
+                      error : "Name not found"
+                  })
+              })
+          }
+      })
+      
+  }
+  
+  
 })
 
 module.exports = router

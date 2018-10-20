@@ -184,26 +184,26 @@ exports.getFDOneFormsByUser = function(paramUsername){
     })
 }
 
-/**
- * @Overload
- * Gets FDOne records in user Schema by Name
- *
- * @param {Name of user that contains FDOne} paramName
- */
-exports.getFDOneFormsByName = function(paramName){
-    return new Promise(function(resolve, reject){
-        User.findOne({
-            $or : [
-                {firstName : paramName},
-                {lastName : paramName}
-            ]
-        }).then((userFound)=>{
-            resolve(userFound.fdOneForms)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
+///**
+// * @Overload
+// * Gets FDOne records in user Schema by Name
+// *
+// * @param {Name of user that contains FDOne} paramName
+// */
+//exports.getFDOneFormsByName = function(paramName){
+//    return new Promise(function(resolve, reject){
+//        User.findOne({
+//            $or : [
+//                {firstName : paramName},
+//                {lastName : paramName}
+//            ]
+//        }).then((userFound)=>{
+//            resolve(userFound.fdOneForms)
+//        }, (err)=>{
+//            reject(err)
+//        })
+//    })
+//}
 
 /**
  * Gets FDOne records in user Schema by Name
@@ -217,9 +217,9 @@ exports.getFDOneFormsByFullName = function(paramFirstName, paramLastName){
             firstName : paramFirstName,
             lastName : paramLastName
         }).then((userFound)=>{
-            console.log(userFound)
-            if (userFound != null)
+            if(userFound!=null)
                 resolve(userFound.fdOneForms)
+            
         }, (err)=>{
             reject(err)
         })
@@ -236,7 +236,9 @@ exports.getFDOneFormsByFirstName = function(paramFirstName){
         User.findOne({
             firstName : paramFirstName
         }).then((userFound)=>{
-            resolve(userFound.fdOneForms)
+            if(userFound!=null)
+                resolve(userFound.fdOneForms)
+            resolve(null)
         }, (err)=>{
             reject(err)
         })
@@ -251,13 +253,9 @@ exports.getFDOneFormsByFirstName = function(paramFirstName){
 exports.getFDOneFormsByLastName = function(paramLastName){
     return new Promise(function(resolve, reject){
         User.findOne({
-            $or : [
-                {firstName : paramName},
-                {lastName : paramName}
-            ]
+            lastName : paramLastName
         }).then((userFound)=>{
-            if (userFound!= null)
-                resolve(userFound.fdOneForms)
+            resolve(userFound.fdOneForms)
         }, (err)=>{
             reject(err)
         })
