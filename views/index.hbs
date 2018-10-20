@@ -45,7 +45,13 @@
           </h2>
           <div class="field">
             <div class="ui left input">
-              <input type="text" name="idnumber" placeholder="ID Number" required />
+
+              {{#if again}}
+                  <input type="text" name="idnumber" value = "{{again}}" placeholder="ID Number" required />
+                  {{else}}
+                  <input type="text" name="idnumber" placeholder="ID Number" required />
+              {{/if}}
+              
             </div>
           </div>
           <div class="field">

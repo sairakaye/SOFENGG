@@ -48,7 +48,7 @@ router.get("/fd-1", function(req, res){
 	console.log("GET /fd-1")
 	var user = controllerUser.getCurrentUser()
 	res.render("form1", {
-		user
+		  user
 	})
 })
 
@@ -85,7 +85,9 @@ router.post("/submit", urlencoder, function(req,res) {
     console.log("POST /submit")
     
     var firstName = req.body.firstName
+    console.log(firstName)
     var lastName = req.body.lastName
+    console.log(lastName)
     var department = req.body.department
     var rank = req.body.rank
     var dateHired = req.body.dateHired
