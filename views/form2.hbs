@@ -93,29 +93,28 @@
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
-              <form action="/faculty/submit" method="post" class="ui form">
-                <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+              <form action="/faculty/submit" method="post" class="ui form" id="request-form">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}"/>
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}"/>
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
-                    <input type="text" name="department" />
+                    <input type="text" name="department" value="{{user.department}}" />
                   </div>
-                  <div class="four wide field">
+                  <div class="four wide field disabled">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" />
+                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}"/>
                       </div>
                     </div>
                   </div>
@@ -127,18 +126,33 @@
                 <div class="field">
                   <label>Status</label>
                   <div class="fields">
+                    {{#facultystatus user.status}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="status" />
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="status" />
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" value="Probationary"/>
                         <label>Probationary</label>
                       </div>
                     </div>
+                    {{else}}
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" value="Permanent"/>
+                        <label>Permanent</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" value="Probationary" />
+                        <label>Probationary</label>
+                      </div>
+                    </div>                    
+                    {{/facultystatus}}
                   </div>
                 </div>
                 <div class="field">
@@ -282,7 +296,7 @@
                     <p>Once you click the "Ok" button, there is no turning back.</p>
                   </div>
                   <div class="actions">
-                    <input type="submit" value="Ok" form="grant" class="ui button positive">
+                    <input type="submit" value="Ok" form="request-form" class="ui button positive">
                     <div class="ui cancel button">Not yet</div>
                   </div>
                 </div>

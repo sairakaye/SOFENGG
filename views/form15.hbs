@@ -94,21 +94,20 @@
           <div class="row">
             <div class="one column">
               <form action="/faculty/submit" method="post" class="ui form" id="request-form">
-                <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
-                    <input type="text" name="department" />
+                    <input type="text" name="department" value="{{user.department}}" />
                   </div>
                   <div class="nine wide field">
                     <label>Rank</label>
@@ -117,16 +116,16 @@
                 </div>
                 <div class="field">
                   <label>Host Institution/Organization</label>
-                  <input type="text" name="blank" />
+                  <input type="text" name="hostInstitution" />
                 </div>
                 <div class="field">
                   <label>Title of Seminar</label>
-                  <input type="text" name="blank" />
+                  <input type="text" name="titleOfSeminar" />
                 </div>
 
                 <div class="field">
                   <label>Place</label>
-                  <input type="text" name="blank" />
+                  <input type="text" name="place" />
                 </div>
 
                 <div class="field">
@@ -136,7 +135,7 @@
                       <div class="ui calendar" id="submit-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="blank" placeholder="Date" />
+                          <input type="text" name="startTime" placeholder="Date" />
                         </div>
                       </div>
                     </div>
@@ -145,7 +144,7 @@
                       <div class="ui calendar" id="accept-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="blank" placeholder="Date" />
+                          <input type="text" name="endTime" placeholder="Date" />
                         </div>
                       </div>
                     </div>
@@ -154,7 +153,6 @@
 
                 <div class="field">
                   <div class="fields">
-
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
                       <div class="ui calendar" id="incentive-date">
@@ -167,7 +165,7 @@
 
                     <div class="eight wide field">
                       <label>Participant’s Fee (check payable to)k</label>
-                      <input type="text" name="blank">
+                      <input type="text" name="participantFee">
                     </div>
                   </div>
                 </div>
@@ -183,7 +181,7 @@
 
                     <div class="six wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfAcceptance" />
+                        <input type="checkbox" name="copyOfAcceptance" />
                         <label>Copy of acceptance to the training/seminar/workshop</label>
                       </div>
                     </div>

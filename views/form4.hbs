@@ -81,7 +81,7 @@
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-              [FD1] Incentive for Publication in Pre-Selected High Impact Journal
+              [FD4] Support for Participation in Local Conferences
             </h1>
           </div>
           <div class="ui divider"></div>
@@ -94,21 +94,20 @@
           <div class="row">
             <div class="one column">
               <form action="/faculty/submit" method="post" class="ui form" id="request-form">
-                <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
-                    <input type="text" name="department" />
+                    <input type="text" name="department" value="{{user.department}}" />
                   </div>
                   <div class="nine wide field">
                     <label>Rank</label>
@@ -176,14 +175,14 @@
                 </div>
                 <div class="field">
                   <label>Participant’s fee (check payable to)</label>
-                  <input type="text" name="blank" />
+                  <input type="text" name="participantFee" />
                 </div>
 
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
                       <label>No. of local conferences attended this academic year to date</label>
-                      <input type="text" name="blank" />
+                      <input type="number" name="noOfLocalConferencesAttendedThisYear" />
                     </div>
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
@@ -209,28 +208,19 @@
 
                     <div class="six wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfAcceptance" />
+                        <input type="checkbox" name="programOfConference" />
                         <label>Program conference</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="field">
-                  <div class="fields">
                     <div class="five wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="copyOfJournal" />
-                        <label>Copy of journal paper</label>
+                        <input type="checkbox" name="copyOfInvitation" />
+                        <label>Copy of invitation</label>
                       </div>
                     </div>
-
-                    <div class="six wide field">
-                      <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfPaperAcceptance" />
-                        <label>Copy of Invitation</label>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div class="field">
                   <div class="sixteen wide field">

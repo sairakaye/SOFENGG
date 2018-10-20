@@ -26,14 +26,14 @@ var fdSixteenSchema = mongoose.Schema({
     lastName: String,
     department : String,
     rank : String,
-    status : Boolean, //True = Permanent, False = Probationary
+    status : String, //True = Permanent, False = Probationary
     nameOfOrganization : String,
-    typeOfMembershipPlace : Boolean, //true = local, false = international
-    typeofMembershipDuration : Boolean, //true = annual, false = lifetime
+    typeOfMembershipPlace : String, //true = local, false = international
+    typeofMembershipDuration : String, //true = annual, false = lifetime
     membershipDate : Date,
     coverage : String,
-    membershipFee : float,
-    checkPayableTo : String,,
+    membershipFee : Number,
+    checkPayableTo : String,
     participantFee : float, //MONEY
     //CHECK BOX
     membershipFormForOrganizationForAnnual : Boolean,

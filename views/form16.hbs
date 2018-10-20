@@ -94,21 +94,20 @@
           <div class="row">
             <div class="one column">
               <form action="/faculty/submit" method="post" class="ui form" id="request-form">
-                <input type="hidden" name="formNum" value="1" />
                 <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
                   <div class="seven wide field">
                     <label>Department</label>
-                    <input type="text" name="department" />
+                    <input type="text" name="department" value="{{user.department}}" />
                   </div>
                   <div class="five wide field">
                     <label>Rank</label>
@@ -118,37 +117,52 @@
                 <div class="field">
                   <label>Status</label>
                   <div class="fields">
+                    {{#facultystatus user.status}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
+                      <div class="ui radio checkbox disabled">
                         <input type="radio" name="status" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="status" value="Probationary" />
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" value="Probationary"/>
                         <label>Probationary</label>
                       </div>
                     </div>
+                    {{else}}
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" value="Permanent"/>
+                        <label>Permanent</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" value="Probationary" />
+                        <label>Probationary</label>
+                      </div>
+                    </div>                    
+                    {{/facultystatus}}
                   </div>
                 </div>
                 <div class="field">
                   <label>Name of Organization</label>
-                  <input type="text" name="blank" />
+                  <input type="text" name="nameOfOrganization" />
                 </div>
 
                 <div class="field">
-                  <label>Status</label>
+                  <label>Type of membership</label>
                   <div class="fields">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="membership" value="Permanent" />
+                        <input type="radio" name="typeOfMembershipPlace" value="Local" />
                         <label>Local</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="membership" value="Probationary" />
+                        <input type="radio" name="typeOfMembershipPlace" value="International" />
                         <label>International</label>
                       </div>
                     </div>
@@ -159,13 +173,13 @@
                   <div class="fields">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="membership2" value="Permanent" />
+                        <input type="radio" name="typeofMembershipDuration" value="Annual" />
                         <label>Annual</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="membership2" value="Probationary" />
+                        <input type="radio" name="typeofMembershipDuration" value="Lifetime" />
                         <label>Lifetime</label>
                       </div>
                     </div>
@@ -179,13 +193,13 @@
                       <div class="ui calendar" id="submit-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="blank" placeholder="Date" />
+                          <input type="text" name="membershipDate" placeholder="Date" />
                         </div>
                       </div>
                     </div>
                     <div class="eight wide field">
                       <label>Coverage</label>
-                      <input type="text" name="nameOfConference" />
+                      <input type="text" name="coverage" />
                     </div>
                   </div>
                 </div>
@@ -194,11 +208,11 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Membership Fee</label>
-                      <input type="number" name="blank" />
+                      <input type="number" name="membershipFee" />
                     </div>
                     <div class="eight wide field">
                       <label>(check payable to)</label>
-                      <input type="text" name="blank" />
+                      <input type="text" name="checkPayableTo" />
                     </div>
                   </div>
                 </div>

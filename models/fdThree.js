@@ -27,7 +27,7 @@ var fdThreeSchema = mongoose.Schema({
     rank : String,
     dateHired : Date,
     rank : String,
-    status : Boolean, //true = full-time, false = part-time
+    status : String, //true = full-time, false = part-time
     noOfUnitsTaught : int, //ONLY IF PART-TIME
     nameOfConference : String,
     typeOfConference : Boolean, //true = local, false = international
@@ -37,7 +37,7 @@ var fdThreeSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    travelAndConferenceSubsidy : float, //MONEY
+    travelAndConferenceSubsidy : Number, //MONEY
     dateIncentiveLastAvailed : Date,
     //CHECK BOX
     applicationLetter : Boolean,

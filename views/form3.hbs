@@ -94,28 +94,27 @@
           <div class="row">
             <div class="one column">
               <form action="/faculty/submit" method="post" class="ui form" id="request-form">
-                <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
-                    <input type="text" name="department" />
-                  </div>
-                  <div class="four wide field">
+                    <input type="text" name="department" value="{{user.department}}" />
+                  </div>10
+                  <div class="four wide field disabled">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" />
+                        <input type="text" name="dateHired" placeholder="Date" value={{user.dateHired}} />
                       </div>
                     </div>
                   </div>
@@ -126,33 +125,50 @@
                 </div>
                 <div class="field">
                   <label>Status</label>
-                  <div class="fields">
+                  {{#employement user.employmentType}}
+                  <div class="fields disabled">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="status" id="partTime" />
+                        <input type="radio" name="status" checked="checked" value="Part-time" />
                         <label>Part-time</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="status" />
+                        <input type="radio" name="status" value="Full-time" />
                         <label>Full-time</label>
                       </div>
                     </div>
                   </div>
                   <label>If Part-Time, No. of units taught since hired</label>
                   <div class="four wide field">
-                    <input type="number" name="numTerms" />
+                    <input type="number" name="noOfUnitsTaught" />
                   </div>
+                  {{else}}
+                  <div class="fields disabled">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" value="Part-time" />
+                        <label>Part-time</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" checked="checked" value="Full-time" />
+                        <label>Full-time</label>
+                      </div>
+                    </div>
+                  </div>
+                  <label>If Part-Time, No. of units taught since hired</label>
+                  <div class="four wide field disabled">
+                    <input type="number" name="noOfUnitsTaught" value=" " />
+                  </div>
+                  {{/employment}}
                 </div>
-                <br>
                 <div class="field">
                   <label>Title of paper to be presented</label>
                   <input type="text" name="titleOfPaperToBePresented" />
                 </div>
-
-
-
 
                 <div class="field">
                   <div class="fields">
@@ -194,9 +210,6 @@
                     </div>
                   </div>
                 </div>
-
-
-
                 <div class="field">
                   <label>Date of expected return to work</label>
                   <div class="ui calendar" id="expected-date">
@@ -208,7 +221,7 @@
                 </div>
                 <div class="field">
                   <label>Travel and conference subsidy (pls. specify)</label>
-                  <input type="text" name="blank" />
+                  <input type="number" name="travelAndConferenceSubsidy" />
                 </div>
                 <div class="field">
                   <label>Date incentive was last availed of</label>
@@ -219,8 +232,6 @@
                     </div>
                   </div>
                 </div>
-
-
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
@@ -292,7 +303,7 @@
                     <p>Once you click the "Ok" button, there is no turning back.</p>
                   </div>
                   <div class="actions">
-                    <input type="submit" value="Ok" form="grant" class="ui button positive">
+                    <input type="submit" value="Ok" form="request-form" class="ui button positive">
                     <div class="ui cancel button">Not yet</div>
                   </div>
                 </div>
