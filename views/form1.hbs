@@ -1,331 +1,345 @@
 <!-- 
-    This is the page for the FD1 form for the
-    faculty user to fill it up.
-    October 18, 2018
-    @ver 1.0
-    @author Sai Manalili
+  This is the page for the FD1 form for the
+  faculty user to fill it up.
+  October 18, 2018
+  @ver 1.1
+  @author Sai Manalili
 -->
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Request Grant</title>
-   <!-- Always include these two css files when creating a new html file. -->
-      <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-      <link href="../css/main.css" type="text/css" rel="stylesheet"/>
-   <!-- You can insert more CSS files below-->
-      <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
+  <title>Request Grant</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
-    <!-- This is the menu bar. -->
-    <div class="ui inverted huge borderless fixed fluid menu">
-        <a href="/home" class="header item">
-            <div class="ui mini image">
-                <img src="../public/images/dlsulogo.png" />
-            </div>
-            <div class="brand-text">
-                Office of the Vice Chancellor <br/> for Academics
-            </div>
-        </a>
-        <div class="right menu">
-            <a class="item">
-                <i class="bell icon"></i>
-            </a>
-        </div>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
+      </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
     </div>
+  </div>
 
-    <div class="ui grid">
-        <!-- This is the side menubar. -->
-        <div class="row">
-            <div class="column" id="sidebar">
-                <div class="ui secondary vertical fluid menu">
-                    <div class="ui grid">
-                        <!-- This is where the short overview of the profile is placed. -->
-                        <div class="one column center aligned row">
-                            <div class="column profile">
-                                <div class="ui small image circular bordered">
-                                    <img src="../images/photo_template.jpg" />
-                                </div>
-                                <div class="row">
-                                    <div class="person-name">
-                                        <p>{{user.firstName}} {{user.lastName}}</p>
-                                    </div>
-                                    <div class="person-type">
-                                       {{user.userType}}
-                                    </div>
-                                    <div class="log-out">
-                                        <a href="/logout" class="ui tiny button">
-                                            Log Out
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- These are the side menubar items. -->
-                    <a class="active item">
-                        Request Grant
-                        <i class="chevron right icon"></i>
-                    </a>
-                       <a href="/faculty/my-requests" class="item">
-                        My Requests
-                        <i class="chevron right icon"></i>
-                    </a>
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
                 </div>
-            </div>
-
-            <!-- This is where you will put the content of the page. -->
-            <div class="column" id="content">
-                <div class="ui grid">
-                    <div class="row">
-                        <h1 class="ui huge header">
-                            [FD1] Incentive for Publication in Pre-Selected High Impact Journal
-                        </h1>
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="one column center aligned row">
-                        <div class="column"><h3>1st Term, AY 2018-2019</h3></div>
-                    </div>
-                    <!-- This is where the fields for the forms. -->
-                    <div class="row">
-                        <div class="one column">
-                            <form action="/faculty/submit" method="post" class="ui form">
-                                <input type="hidden" name="formNum" value="1"/>
-                                <div class="two fields">
-                                        <div class="field">
-                                            <label>First Name</label>
-                                            <input type="text" name="firstName"/>
-                                        </div>
-                                        <div class="field">
-                                            <label>Last Name</label>
-                                            <input type="text" name="lastName"/>
-                                        </div>
-                                </div>
-                                    <div class="fields">
-                                            <div class="seven wide field">
-                                                <label>Department</label>
-                                                <input type="text" name="department"/>
-                                            </div>
-                                            <div class="four wide field">
-                                                <label>Date Hired</label>
-                                                <div class="ui calendar" id="date-hired">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateHired" placeholder="Date"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="five wide field">
-                                                <label>Rank</label>
-                                                <input type="text" name="rank"/>
-                                            </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Status</label>
-                                        <div class="fields">
-                                            <div class="two wide field">
-                                                <div class="ui radio checkbox">
-                                                    <input type="radio" name="status"/>
-                                                    <label>Permanent</label>
-                                                </div>
-                                            </div>
-                                            <div class="two wide field">
-                                                <div class="ui radio checkbox">
-                                                    <input type="radio" name="status"/>
-                                                    <label>Probationary</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Average teaching performance for the last 3 academic years</label>
-                                        <input type="text" name="aveTeachingPerformance"/>
-                                    </div>
-                                    <div class="field">
-                                        <label>Title of Paper or Publication</label>
-                                        <input type="text" name="titleOfPaperOrPublication"/>
-                                    </div>
-
-                                    <div class="field">
-                                        <label>Title of the Journal where paper was published</label>
-                                        <input type="text" name="titleOfJournal"/>
-                                    </div>
-
-                                    <div class="field">
-                                        <div class="fields">
-                                            <div class="eight wide field">
-                                                <label>Date paper was submitted for publication</label>
-                                                <div class="ui calendar" id="submit-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="datePaperSubmitted" placeholder="Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="eight wide field">
-                                                <label>Date paper was accepted for publication</label>
-                                                <div class="ui calendar" id="accept-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="datePaperAccepted" placeholder="Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <label>Name of Conference</label>
-                                        <input type="text" name="nameOfConference" />
-                                    </div>
-
-                                    <div class="field">
-                                        <label>Title of paper to be presented</label>
-                                        <input type="text" name="titleOfPaperToBePresented" />
-                                    </div>
-
-                                    <div class="field">
-                                        <div class="fields">
-                                            <div class="eight wide field">
-                                                <label>Date of Conference</label>
-                                                <div class="ui calendar" id="conference-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfConference" placeholder="Date"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="eight wide field">
-                                                <label>Place and Venue</label>
-                                                <input type="text" name="placeAndVenue"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <div class="fields">
-                                            <div class="eight wide field">
-                                                <label>Date of Departure</label> 
-                                                <div class="ui calendar" id="departure-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfDeparture" placeholder="Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="eight wide field">
-                                                <label>Date of Return</label>
-                                                <div class="ui calendar" id="return-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfReturn" placeholder="Date"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="field">
-                                        <div class="fields">
-                                            <div class="eight wide field">
-                                                <label>Date of expected return to work</label>
-                                                <div class="ui calendar" id="expected-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateOfReturnToWork" placeholder="Date"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="eight wide field">
-                                                <label>Date incentive was last availed of</label>
-                                                <div class="ui calendar" id="incentive-date">
-                                                    <div class="ui input left icon">
-                                                        <i class="calendar icon"></i>
-                                                        <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Application should be accompanied by the following:</label>
-                                        <div class="fields">
-                                            <div class="five wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="applicationLetter"/>
-                                                    <label>Application Letter</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="six wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="proofOfAcceptance"/>
-                                                    <label>Proof of acceptance from the journal editor</label>
-                                                </div>
-                                            </div>
-                                            <div class="five wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="callForPapersOfConference"/>
-                                                    <label>Call for papers of conference/symposium</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <div class="fields">
-                                            <div class="five wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="copyOfJournal"/>
-                                                    <label>Copy of journal paper</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="six wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="proofOfPaperAcceptance"/>
-                                                    <label>Proof of paper acceptance for the conference</label>
-                                                </div>
-                                                <b>/or</b>
-                                            </div>
-                                            <div class="five wide field">
-                                                <div class="ui checkbox">
-                                                    <input type="checkbox" name="copyOfInvitation"/>
-                                                    <label>Copy of invitation to deliver keynote presentation as an
-                                                        invited speaker</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <div class="ui checkbox">
-                                            <input type="checkbox" name="updatedFacultyWebpage"/>
-                                            <label>Updated DLSU Faculty webpage <i>(please attach printout of updated
-                                                    faculty webpage) <a href="https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf">https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf</a></i></label>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <div class="sixteen wide field">
-                                            <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <div class="ui green submit button">Submit</div>
-                                    </div>
-                            </form>
-                        </div>
-                    </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a href="/logout" class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          <!-- These are the side menubar items. -->
+          <a class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
         </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              [FD1] Incentive for Publication in Pre-Selected High Impact Journal
+            </h1>
+          </div>
+          <div class="ui divider"></div>
+          <div class="one column center aligned row">
+            <div class="column">
+              <h3>1st Term, AY 2018-2019</h3>
+            </div>
+          </div>
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column">
+              <form action="/faculty/submit" method="post" class="ui form">
+                <input type="hidden" name="formNum" value="1" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>First Name</label>
+                    <input type="text" name="firstName" />
+                  </div>
+                  <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" name="lastName" />
+                  </div>
+                </div>
+                <div class="fields">
+                  <div class="seven wide field">
+                    <label>Department</label>
+                    <input type="text" name="department" />
+                  </div>
+                  <div class="four wide field">
+                    <label>Date Hired</label>
+                    <div class="ui calendar" id="date-hired">
+                      <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input type="text" name="dateHired" placeholder="Date" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five wide field">
+                    <label>Rank</label>
+                    <input type="text" name="rank" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" />
+                        <label>Permanent</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="status" />
+                        <label>Probationary</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Average teaching performance for the last 3 academic years</label>
+                  <input type="text" name="aveTeachingPerformance" />
+                </div>
+                <div class="field">
+                  <label>Title of Paper or Publication</label>
+                  <input type="text" name="titleOfPaperOrPublication" />
+                </div>
+
+                <div class="field">
+                  <label>Title of the Journal where paper was published</label>
+                  <input type="text" name="titleOfJournal" />
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date paper was submitted for publication</label>
+                      <div class="ui calendar" id="submit-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="datePaperSubmitted" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date paper was accepted for publication</label>
+                      <div class="ui calendar" id="accept-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="datePaperAccepted" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Name of Conference</label>
+                  <input type="text" name="nameOfConference" />
+                </div>
+
+                <div class="field">
+                  <label>Title of paper to be presented</label>
+                  <input type="text" name="titleOfPaperToBePresented" />
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of Conference</label>
+                      <div class="ui calendar" id="conference-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="dateOfConference" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide field">
+                      <label>Place and Venue</label>
+                      <input type="text" name="placeAndVenue" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of Departure</label>
+                      <div class="ui calendar" id="departure-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="dateOfDeparture" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date of Return</label>
+                      <div class="ui calendar" id="return-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="dateOfReturn" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of expected return to work</label>
+                      <div class="ui calendar" id="expected-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="dateOfReturnToWork" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date incentive was last availed of</label>
+                      <div class="ui calendar" id="incentive-date">
+                        <div class="ui input left icon">
+                          <i class="calendar icon"></i>
+                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Application should be accompanied by the following:</label>
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="applicationLetter" />
+                        <label>Application Letter</label>
+                      </div>
+                    </div>
+
+                    <div class="six wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="proofOfAcceptance" />
+                        <label>Proof of acceptance from the journal editor</label>
+                      </div>
+                    </div>
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="callForPapersOfConference" />
+                        <label>Call for papers of conference/symposium</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="copyOfJournal" />
+                        <label>Copy of journal paper</label>
+                      </div>
+                    </div>
+
+                    <div class="six wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="proofOfPaperAcceptance" />
+                        <label>Proof of paper acceptance for the conference</label>
+                      </div>
+                      <b>/or</b>
+                    </div>
+                    <div class="five wide field">
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="copyOfInvitation" />
+                        <label>Copy of invitation to deliver keynote presentation as an
+                          invited speaker</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="updatedFacultyWebpage" />
+                    <label>Updated DLSU Faculty webpage <i>(please attach printout of updated
+                        faculty webpage) <a href="https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf">https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf</a></i></label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="sixteen wide field">
+                    <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui green button" id="confirm">Submit</div>
+                </div>
+
+                <div class="ui modal">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Once you click the "Ok" button, there is no turning back.</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Ok" form="grant" class="ui button positive">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 
 <!-- Always include these two JS files when adding a new page -->
-    <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../public/semantic/semantic.js"></script>
-    <script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
-    <script type="text/javascript" src="../public/js/form.js"></script>
+<script type="text/javascript" src="../public/js/form.js"></script>
+
 </html>

@@ -1,71 +1,73 @@
 <!-- 
-    This is the login page for the system
-    October 14, 2018
-    @ver 1.0
-    @author Candace Mercado
+  This is the login page for the system
+  October 14, 2018
+  @ver 1.0
+  @author Candace Mercado
 -->
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Faculty Development Grants</title>
-    <!-- Always include these two css files when creating a new html file. -->
-        <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-        <link href="../css/index.css" type="text/css" rel="stylesheet"/>
-    <!-- You can insert more CSS files below-->
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+  <title>Faculty Development Grants</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/index.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="ui middle aligned center aligned grid countier">
-      <!-- This is the mini header with logo and office name-->
-        <div class="column">
-            <div class="ui items">
-                <div class="item">
-                    <a class="ui tiny image">
-                        <img src="../images/dlsulogo.png"/>
-                    </a>
-                     <div class="content">                          
-                        <div class="description">
-                            <p>De La Salle University</p>
-                            <p>Office of the Vice Chancellor for Academics</p>
-                        </div>
-                     </div>
-                </div>
+  <div class="ui middle aligned center aligned grid countier">
+    <!-- This is the mini header with logo and office name-->
+    <div class="column">
+      <div class="ui items">
+        <div class="item">
+          <a class="ui tiny image">
+            <img src="../images/dlsulogo.png" />
+          </a>
+          <div class="content">
+            <div class="description">
+              <p>De La Salle University</p>
+              <p>Office of the Vice Chancellor for Academics</p>
             </div>
-
-          <!-- This is the main login form -->
-            <form id = "loginform" class="ui large form" action = "/home" method = "post">
-                <div class="ui  secondary  segment">
-                    <h2 class="ui image header">
-                        <div class="content">
-                            Log In to Your Account
-                        </div>
-                    </h2>
-                    <div class="field">
-                        <div class="ui left input">
-                            <input type="text" name="idnumber" placeholder="ID Number" required/>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui left input">
-                            <input type="password" name="password" placeholder="Password" required />
-                        </div>
-                    </div>
-                    <div class="ui fluid large darkgreen submit button" onclick="loginform.submit();"> Log In </div>
-                </div>
-              <!-- If wrong credentials are entered, an error message will show up -->
-                {{#if error}}
-                  <div class="error">
-                    <div class="ui red tiny message">{{error}}</div>
-                  </div>
-                {{/if}}
-            </form>
+          </div>
         </div>
-    </div>
-  </body>
+      </div>
 
-   <!-- Always include these two JS files when adding a new page -->
-      <script src="../semantic/semantic.js"></script>
-   <!-- You can insert more JS files below -->
+      <!-- This is the main login form -->
+      <form id="loginform" class="ui large form" action="/home" method="post">
+        <div class="ui  secondary  segment">
+          <h2 class="ui image header">
+            <div class="content">
+              Log In to Your Account
+            </div>
+          </h2>
+          <div class="field">
+            <div class="ui left input">
+              <input type="text" name="idnumber" placeholder="ID Number" required />
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left input">
+              <input type="password" name="password" placeholder="Password" required />
+            </div>
+          </div>
+          <div class="ui fluid large darkgreen submit button" onclick="loginform.submit();"> Log In </div>
+        </div>
+        <!-- If wrong credentials are entered, an error message will show up -->
+        {{#if error}}
+        <div class="error">
+          <div class="ui red tiny message">{{error}}</div>
+        </div>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script src="../semantic/semantic.js"></script>
+<!-- You can insert more JS files below -->
+
 </html>

@@ -103,3 +103,24 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .person-name {
+    font-size: 100%;
+    padding: 10px;
+  }
+  
+  .person-type {
+    font-size: 80%;
+  }
+
+  .log-out .ui.tiny.button {
+    width: 60%;
+    height: 60%;
+    font-size: 50%;
+  }
+
+  a.item {
+    font-size: 60%;
+  }
+}

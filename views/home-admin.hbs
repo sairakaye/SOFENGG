@@ -1,105 +1,107 @@
 <!-- 
-    This is the home page of the admin.
-    October 15, 2018
-    @ver 1.0
-    @author Sai Manalili
+  This is the home page of the admin.
+  October 15, 2018
+  @ver 1.0
+  @author Sai Manalili
 -->
 
 <!DOCTYPE html>
 <html>
-  <head>
-   <title>Home</title>
-   <!-- Always include these two css files when creating a new html file. -->
-      <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet"/>
-      <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
-   <!-- You can insert more CSS files below-->
-   </head>
 
-  <body>
-    <!-- This is the menu bar. -->
-    <div class="ui inverted huge borderless fixed fluid menu">
-      <a href="/home" class="header item">
-        <div class="ui mini image">
-          <img src="../public/images/dlsulogo.png"/>
-        </div>
-       <div class="brand-text">
-         Office of the Vice Chancellor <br/> for Academics
-       </div>
-      </a>
-      <div class="right menu">
-        <a class="item">
-          <i class="bell icon"></i>
-        </a>
+<head>
+  <title>Home</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../public/css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
       </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
     </div>
+  </div>
 
-    <div class="ui grid">
-      <!-- This is the side menubar. -->
-      <div class="row">
-        <div class="column" id="sidebar">
-          <div class="ui secondary vertical fluid menu">
-            <div class="ui grid">
-              <!-- This is where the short overview of the profile is placed. -->
-              <div class="one column center aligned row">
-                <div class="column profile">
-                   <div class="ui small image circular bordered">
-                     <img src="../images/photo_template.jpg"/>
-                   </div>
-                   <div class="row">
-                     <div class="person-name">
-                       <p>{{user.firstName}} {{user.lastName}}</p>
-                     </div>
-                     <div class="person-type">
-                       {{user.userType}}
-                     </div>
-                     <div class="log-out">
-                       <a href="/logout" class="ui tiny button">
-                         Log Out
-                       </a>
-                     </div>
-                    </div>
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a href="/logout" class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
           <!-- These are the side menubar items. -->
           <a class="active item">
             Overview
             <i class="chevron right icon"></i>
           </a>
-          <a href= "admin/view-grants" class="item">
+          <a href="admin/view-grants" class="item">
             View Grants
             <i class="chevron right icon"></i>
           </a>
-         </div>
         </div>
-       
-       <!-- This is where you will put the content of the page. -->
-       <div class="column" id="content">
-         <div class="ui grid">
-           <div class="row">
-             <h1 class="ui huge header">
-                Welcome, {{user.firstName}}!
-             </h1>
-            </div>
-            <div class="ui divider"></div>
-            <div class="two column center aligned row">
-              <div class="column">
-                <h1>OVERVIEW</h1>
-                <p>SCREEN NOT COMPLETED YET</p>
-              </div>
-              <div class="column">
-                <h1>OVERVIEW</h1>
-                <p>SCREEN NOT COMPLETED YET</p>
-              </div>
-             </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              Welcome, {{user.firstName}}!
+            </h1>
           </div>
-         </div>
+          <div class="ui divider"></div>
+          <div class="two column center aligned row">
+            <div class="column">
+              <h1>OVERVIEW</h1>
+              <p>SCREEN NOT COMPLETED YET</p>
+            </div>
+            <div class="column">
+              <h1>OVERVIEW</h1>
+              <p>SCREEN NOT COMPLETED YET</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
-  
-  <!-- Always include these two JS files when adding a new page -->
-    <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../public/semantic/semantic.js"></script>
-  <!-- You can insert more JS files below -->
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<!-- You can insert more JS files below -->
+
 </html>
