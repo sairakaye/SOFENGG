@@ -80,7 +80,7 @@ exports.create = function(paramFDOne){
  */
 exports.delete = function(paramID){
     return new Promise(function(resolve, reject){
-        fdOne.remove({
+        fdOne.deleteOne({
             _id : paramID
         }).then((deletedFDOne)=>{
             resolve(deletedFDOne)

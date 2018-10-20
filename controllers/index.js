@@ -109,7 +109,7 @@ router.get("/home", function(req, res){
 	console.log("GET /home")
 
 	user = currentUser
-	if(user.userType == "Administator")
+	if(user.userType == "Administrator")
 		res.render("home-admin.hbs", {
 			user
 		})
