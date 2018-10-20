@@ -125,39 +125,42 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-              <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
-                {{#each forms}}
-                    {{#checkstatus 'Approved' grantStatus}}
-                        <tr class="positive listmember">
-                    {{else}}
-                      <!-- dont show -->
-                    {{/checkstatus}}
+ 
+                <tbody >
+                 <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
+                  {{#each forms}}
+                    <div data-id="{{_id}}">
+                      {{#checkstatus 'Approved' grantStatus}}
+                          <tr class="positive listmember">
+                      {{else}}
+                        <!-- dont show -->
+                      {{/checkstatus}}
 
-                    {{#checkstatus 'Rejected' grantStatus}}
-                        <tr class="negative listmember">
-                    {{else}}
-                      <!-- dont show -->
-                    {{/checkstatus}}
+                      {{#checkstatus 'Rejected' grantStatus}}
+                          <tr class="negative listmember">
+                      {{else}}
+                        <!-- dont show -->
+                      {{/checkstatus}}
 
-                    {{#checkstatus 'Pending' grantStatus}}
-                        <tr class = "listmember">
-                    {{else}}
-                      <!-- dont show -->
-                    {{/checkstatus}}
-                          <td>{{firstName}} {{lastName}} </td>
-                          <td>{{department}}</td>
-                          <td>{{grantName}}</td>
-                          <td>{{grantStatus}}</td>
-                          <td>
-                            <button class="ui button fluid">View Details</button>
-                          </td>
-                          <td>
-                            <button class="ui negative button fluid">Delete</button>
-                          </td>
-                        </tr>  
-                  {{/each}}         
-                </tbody>
+                      {{#checkstatus 'Pending' grantStatus}}
+                          <tr class = "listmember">
+                      {{else}}
+                        <!-- dont show -->
+                      {{/checkstatus}}
+                            <td>{{firstName}} {{lastName}} </td>
+                            <td>{{department}}</td>
+                            <td>{{grantName}}</td>
+                            <td>{{grantStatus}}</td>
+                            <td>
+                              <button class="ui button fluid">View Details</button>
+                            </td>
+                            <td>
+                              <button class="ui negative button fluid delete" data-id="{{_id}}">Delete</button>
+                            </td>
+                          </tr>  
+                        </div>    
+                    {{/each}}   
+                </tbody>  
              </table>
             </div>
           </div>

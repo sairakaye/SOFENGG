@@ -29,18 +29,6 @@ const controllerUser = require("./index")
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/overview", function(req, res){
-  console.log("GET /overview")
-  
-	res.render("home.hbs")
-})
-
-/**
- * Leads to the page for requesting grants 
- *
- * @param {Request} req
- * @param {Response} res
- */
 router.get("/view-grants", function(req, res){
   console.log("GET /view-grants")
   
@@ -160,6 +148,21 @@ router.post("/searchName", function(req, res){
   
   
 })
+
+/**
+ * Deletes a grant request form
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.delete("/deleteform", urlencoder, (req, res) => {
+	console.log("POST /deleteform " + req.body.id)
+	
+	fdOne.delete(req.body.id).then((result) => {
+		res.send(result)
+	})
+})
+
 
 module.exports = router
 
