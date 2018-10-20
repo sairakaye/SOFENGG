@@ -125,6 +125,23 @@ exports.getFDOne = function(paramFDOne){
 }
 
 /**
+ * Gets one FD1 record in FD1 Schema by _id as the parameter
+ *
+ * @param {id to use} id
+ */
+exports.getFDOneByID = function(id){
+    return new Promise(function(resolve, reject){
+        fdOne.findOne({
+            _id : id
+        }).then((foundFDOne)=>{
+            resolve(foundFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets all FD1 record in FD1 Schema 
  */
 exports.getAllFDOne = function(){
