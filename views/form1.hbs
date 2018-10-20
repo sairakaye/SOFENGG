@@ -95,27 +95,27 @@
             <div class="one column">
               <form action="/faculty/submit" method="post" class="ui form">
                 <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" />
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" />
+                    <input type="text" name="lastName" value="{{user.lastName}}"/>
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
-                    <input type="text" name="department" />
+                    <input type="text" name="department" value="{{user.department}}"/>
                   </div>
-                  <div class="four wide field">
+                  <div class="four wide field disabled">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" />
+                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
                       </div>
                     </div>
                   </div>
@@ -127,18 +127,33 @@
                 <div class="field">
                   <label>Status</label>
                   <div class="fields">
+                    {{#facultystatus user.status}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
+                      <div class="ui radio checkbox disabled">
                         <input type="radio" name="status" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="status" />
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" />
                         <label>Probationary</label>
                       </div>
                     </div>
+                    {{else}}
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" checked="checked" />
+                        <label>Permanent</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox disabled">
+                        <input type="radio" name="status" />
+                        <label>Probationary</label>
+                      </div>
+                    </div>                    
+                    {{/facultystatus}}
                   </div>
                 </div>
                 <div class="field">
@@ -340,6 +355,6 @@
 <script type="text/javascript" src="../public/semantic/semantic.js"></script>
 <script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
-<script type="text/javascript" src="../public/js/form.js"></script>
+<script type="text/javascript" src="../public/js/form1.js"></script>
 
 </html>

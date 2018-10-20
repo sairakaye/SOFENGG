@@ -46,7 +46,7 @@ router.get("/request-grant", function(req, res){
  */
 router.get("/fd-1", function(req, res){
 	console.log("GET /fd-1")
-	var user = controllerUser.getCurrentUser() 
+	var user = controllerUser.getCurrentUser()
 	res.render("form1", {
 		user
 	})
@@ -200,5 +200,13 @@ hbs.registerHelper('showonlybyuser', function(fname, lname, options) {
       } else {
         return options.inverse(this);
       }
+  }
+})
+
+hbs.registerHelper('facultystatus', function(status, options) { 
+  if(status == "Probationary") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
   }
 })
