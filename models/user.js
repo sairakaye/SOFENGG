@@ -48,7 +48,9 @@ var userSchema = mongoose.Schema({
     
 	userType: String, //Administrator or Faculty
 
-    status : String, 
+    status : String, // Probationary or Permanent
+
+    employmentType : String, // Part-Time or Full-Time
 
     dateHired : Date,
     
