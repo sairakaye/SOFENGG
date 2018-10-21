@@ -262,7 +262,7 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
 })
 
 /**
- * Leads to the page of FD1 form.
+ * Leads to the page of FD3 form.
  *
  * @param {Request} req
  * @param {Response} res
@@ -276,7 +276,7 @@ router.get("/fd-3", function(req, res){
 })
 
 /**
- * Adds to the database the entered information for FD1
+ * Adds to the database the entered information for FD3
  * form and sets grant status to pending for admin approval
  *
  * @param {Request} req
@@ -351,7 +351,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
     callForPapersOfConference = false;
   
   var fdThreeData = {
-    grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
+    grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
@@ -376,7 +376,6 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
       res.send(err)
   })
 })
-
 
 /**
  * Leads to the page for viewing all applied grant requests
