@@ -34,7 +34,7 @@ var fdSixteenSchema = mongoose.Schema({
     coverage : String,
     membershipFee : Number,
     checkPayableTo : String,
-    participantFee : float, //MONEY
+    participantFee : Number, //MONEY
     //CHECK BOX
     membershipFormForOrganizationForAnnual : Boolean,
     printoutsOfOrganizationForAnnual : Boolean,

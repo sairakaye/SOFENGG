@@ -28,7 +28,7 @@ var fdThreeSchema = mongoose.Schema({
     dateHired : Date,
     rank : String,
     status : String, //true = full-time, false = part-time
-    noOfUnitsTaught : int, //ONLY IF PART-TIME
+    noOfUnitsTaught : Number, //ONLY IF PART-TIME
     nameOfConference : String,
     typeOfConference : Boolean, //true = local, false = international
     titleOfPaperToBePresented : String,
