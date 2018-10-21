@@ -15,6 +15,8 @@ const fdOne = require("./fdOne.js")
 const fdOneSchema = mongoose.model('fdOne').schema
 const fdTwo = require("./fdTwo.js")
 const fdTwoSchema = mongoose.model('fdTwo').schema
+const fdThree = require("./fdThree.js")
+const fdThreeSchema = mongoose.model('fdThree').schema
 
 /**
  * Setting up User Schema
@@ -56,7 +58,9 @@ var userSchema = mongoose.Schema({
     
     fdOneForms : [fdOneSchema],
     
-    fdTwoForms : [fdTwoSchema]
+    fdTwoForms : [fdTwoSchema],
+
+    fdThreeForms : [fdThreeSchema]
 })
 
 userSchema.pre("save", function(next){
@@ -265,23 +269,6 @@ exports.getFDOneFormsByLastName = function(paramLastName){
 }
 
 /**
- * Gets FDTwo records in user Schema
- *
- * @param {Username of user that contains FDTwo} paramUsername
- */
-exports.getFDTwoFormsByUser = function(paramUsername){
-    return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramUsername
-        }).then((userFound)=>{
-            resolve(userFound.fdTwoForms)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-/**
  * Adds FDOne record in User Schema 
  *
  * @param {FDOne record to be added} paramFDOne
@@ -332,6 +319,289 @@ exports.editFDOneInUser = function(paramFDOne){
             username : user.username
         }, {
             $set : { "fdOneForms.$" : paramFDOne}
+        }).then((updatedUser)=>{
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDTwo records in user Schema
+ *
+ * @param {Username of user that contains FDTwo} paramUsername
+ */
+exports.getFDTwoFormsByUser = function(paramUsername){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramUsername
+        }).then((userFound)=>{
+            resolve(userFound.fdTwoForms)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+/**
+ * Gets FDOne records in user Schema by Name
+ *
+ * @param {First name of user that contains FDOne} paramFirstName
+ * @param {Last name of user that contains FDOne} paramLastName
+ */
+exports.getFDTwoFormsByFullName = function(paramFirstName, paramLastName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            firstName : paramFirstName,
+            lastName : paramLastName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdTwoForms)
+            
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDOne records in user Schema by First Name
+ *
+ * @param {First Name of user that contains FDOne} paramFirstName
+ */
+exports.getFDTwoFormsByFirstName = function(paramFirstName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            firstName : paramFirstName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdTwoForms)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDOne records in user Schema by Last Name
+ *
+ * @param {Last Name of user that contains FDOne} paramLastName
+ */
+exports.getFDTwoFormsByLastName = function(paramLastName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            lastName : paramLastName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdTwoForms)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Adds FDOne record in User Schema 
+ *
+ * @param {FDOne record to be added} paramFDOne
+ */
+exports.addFDTwoInUser = function(paramFDTwo){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : paramFDTwo.ownerIdNumber
+        }, {
+            $push : {fdTwoForms : paramFDTwo}
+        }).then((updatedUser)=>{
+            console.log("let it go, go go go")
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes FDOne record in User Schema 
+ *
+ * @param {FDOne record to be deleted} paramFDOne
+ */
+exports.deleteFDTwoInUser = function(paramFDTwo){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramFDTwo.username
+        }).then((foundUser)=>{
+            foundUser.fdOneForms.remove({
+                _id : paramFDTwo._id
+            })
+            resolve(foundUser) // error?
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Edits FDOne record in User Schema 
+ *
+ * @param {FDOne record to be edited} paramFDOne
+ */
+exports.editFDTwoInUser = function(paramFDTwo){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : user.username
+        }, {
+            $set : { "fdTwoForms.$" : paramFDTwo}
+        }).then((updatedUser)=>{
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+/* FD 3EE */
+/**
+ * Gets FDTwo records in user Schema
+ *
+ * @param {Username of user that contains FDTwo} paramUsername
+ */
+exports.getFDThreeFormsByUser = function(paramUsername){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramUsername
+        }).then((userFound)=>{
+            resolve(userFound.fdThreeForms)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+/**
+ * Gets FDOne records in user Schema by Name
+ *
+ * @param {First name of user that contains FDOne} paramFirstName
+ * @param {Last name of user that contains FDOne} paramLastName
+ */
+exports.getFDThreeFormsByFullName = function(paramFirstName, paramLastName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            firstName : paramFirstName,
+            lastName : paramLastName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdThreeForms)
+            
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDOne records in user Schema by First Name
+ *
+ * @param {First Name of user that contains FDOne} paramFirstName
+ */
+exports.getFDThreeFormsByFirstName = function(paramFirstName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            firstName : paramFirstName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdThreeForms)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FDOne records in user Schema by Last Name
+ *
+ * @param {Last Name of user that contains FDOne} paramLastName
+ */
+exports.getFDThreeFormsByLastName = function(paramLastName){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            lastName : paramLastName
+        }).then((userFound)=>{
+            if(userFound!=null)
+                resolve(userFound.fdThreeForms)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Adds FDOne record in User Schema 
+ *
+ * @param {FDOne record to be added} paramFDOne
+ */
+exports.addFDThreeInUser = function(paramFDThree){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : paramFDThree.ownerIdNumber
+        }, {
+            $push : {fdThreeForms : paramFDThree}
+        }).then((updatedUser)=>{
+            console.log("let it go, go go go")
+            resolve(updatedUser)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes FDOne record in User Schema 
+ *
+ * @param {FDOne record to be deleted} paramFDOne
+ */
+exports.deleteFDThreeInUser = function(paramFDThree){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            username : paramFDThree.username
+        }).then((foundUser)=>{
+            foundUser.fdThreeForms.remove({
+                _id : paramFDThree._id
+            })
+            resolve(foundUser) // error?
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Edits FDOne record in User Schema 
+ *
+ * @param {FDOne record to be edited} paramFDOne
+ */
+exports.editFDThreeInUser = function(paramFDThree){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : user.username
+        }, {
+            $set : { "fdThreeForms.$" : paramFDThree}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
