@@ -156,11 +156,17 @@ router.post("/searchName", function(req, res){
  * @param {Response} res
  */
 router.delete("/deleteform", urlencoder, (req, res) => {
-	console.log("POST /deleteform " + req.body.id)
-	
-	fdOne.delete(req.body.id).then((result) => {
-		res.send(result)
-	})
+    console.log("POST /deleteform " + req.body.id)
+    
+    
+    fdOne.getFDOneByID(req.body.id).then((foundFDOne)=>{
+        User.deleteFDOneInUser(foundFDOne).then((updatedUser)=>{
+            fdOne.delete(req.body.id).then((result) => {	
+                res.send(result)
+            })
+        })
+    })
+    
 })
 
 

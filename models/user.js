@@ -307,14 +307,14 @@ exports.addFDOneInUser = function(paramFDOne){
  * @param {FDOne record to be deleted} paramFDOne
  */
 exports.deleteFDOneInUser = function(paramFDOne){
+    
     return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramFDOne.username
+        User.findOneAndUpdate({
+            username : paramFDOne.ownerIdNumber
+        }, {
+            $pull : {fdOneForms : {_id : paramFDOne._id}}
         }).then((foundUser)=>{
-            foundUser.fdOneForms.remove({
-                _id : paramFDOne._id
-            })
-            resolve(foundUser) // error?
+            resolve(foundUser)
         }, (err)=>{
             reject(err)
         })
