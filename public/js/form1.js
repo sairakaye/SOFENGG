@@ -1,10 +1,9 @@
 /**
- * This is the JS file of the form page.
+ * This is the JS file of the FD1 page.
  * October 17, 2018
  * @ver 1.1
  * @author Sai Manalili
  */
-
 
 /**
  * Initializes the Date Hired field.

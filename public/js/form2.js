@@ -1,74 +1,102 @@
 /**
- * This is the JS file of the form page.
+ * This is the JS file of the FD2 page.
  * October 19, 2018
  * @ver 1.0
  * @author Sai Manalili
  */
 
-
- // Initialization of the date-pickers or the calendar.
- $('#date-hired').calendar({
+/**
+ * Initializes the Date Hired field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#date-hired').calendar({
   type: 'date'
 })
 
-$('#submit-date').calendar({
-  type: 'date'
-});
-
-$('#accept-date').calendar({
-  type: 'date'
-});
-
+/**
+ * Initializes the Date of Conference field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
 $('#conference-date').calendar({
   type: 'date'
 });
 
+/**
+ * Initializes the Date of Departure field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
 $('#departure-date').calendar({
   type: 'date'
 });
 
+/**
+ * Initializes the Date of Return field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
 $('#return-date').calendar({
   type: 'date'
 });
 
-
+/**
+ * Initializes the Date of Expected to Return
+ * to Work field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
 $('#expected-date').calendar({
   type: 'date'
 });
 
-
+/**
+ * Initializes the Date of last incentive availed field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
 $('#incentive-date').calendar({
   type: 'date'
 });
 
-// Initialization of the radio button found in the form.
+/**
+ * Initializes the checkbox buttons including
+ * radio buttons.
+ */
 $('.ui.checkbox').checkbox();
 
+/**
+ * Initializes the button with #confirm and checks whether
+ * it will show the confirmation modal or not.
+ */
+$("#confirm").click(function () {
+  var isValid = $('.form').form('validate form');
 
-// Initialization of the Submit button.
-$("#confirm").click(function() {
-    var isValid = $('.form').form('validate form');
-
-    if (isValid) {
-      $('.ui.modal')
-        .modal('show');
-    }
+  if (isValid) {
+    $('.ui.modal')
+      .modal('show');
+  }
 })
 
-// For validation of the text fields in the form.
+/**
+ * Initializes the form in order for the form to do
+ * form validation.
+ * @param {Object} settings - customizing the settings of
+ * the form
+ */
 $('.ui.form')
   .form({
     inline: 'true',
     on: 'blur',
     fields: {
+      // This rule is for validating the first name field.
       firstName: {
         identifier: 'firstName',
-        inline: true,
-        on: 'blur',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your first name.'
+            type: 'empty',
+            prompt: 'Please enter your first name.'
           }
         ]
       },
@@ -76,8 +104,8 @@ $('.ui.form')
         identifier: 'lastName',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your last name.'
+            type: 'empty',
+            prompt: 'Please enter your last name.'
           }
         ]
       },
@@ -85,8 +113,8 @@ $('.ui.form')
         identifier: 'department',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your department.'
+            type: 'empty',
+            prompt: 'Please enter your department.'
           }
         ]
       },
@@ -94,8 +122,8 @@ $('.ui.form')
         identifier: 'dateHired',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter when you were hired.'
+            type: 'empty',
+            prompt: 'Please enter when you were hired.'
           }
         ]
       },
@@ -103,8 +131,17 @@ $('.ui.form')
         identifier: 'rank',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your rank.'
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+          }
+        ]
+      },
+      status: {
+        identifier: 'status',
+        rules: [
+          {
+            type: 'checked',
+            prompt: 'Please state your status.'
           }
         ]
       },
@@ -112,17 +149,8 @@ $('.ui.form')
         identifier: 'aveTeachingPerformance',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your average teaching performance.'
-          }
-        ]
-      },
-      titleOfJournal: {
-        identifier: 'titleOfJournal',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter your title of journal.'
+            type: 'empty',
+            prompt: 'Please enter your average teaching performance.'
           }
         ]
       },
@@ -130,8 +158,8 @@ $('.ui.form')
         identifier: 'nameOfConference',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the name of the conference.'
+            type: 'empty',
+            prompt: 'Please enter the name of the conference.'
           }
         ]
       },
@@ -139,28 +167,26 @@ $('.ui.form')
         identifier: 'titleOfPaperToBePresented',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the name of the conference.'
+            type: 'empty',
+            prompt: 'Please enter the title of the paper to be presented.'
           }
         ]
       },
-
       dateOfConference: {
         identifier: 'dateOfConference',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the date of the conference.'
+            type: 'empty',
+            prompt: 'Please enter the date of the conference.'
           }
         ]
       },
-
       placeAndVenue: {
         identifier: 'placeAndVenue',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the place and venue.'
+            type: 'empty',
+            prompt: 'Please enter the place and venue.'
           }
         ]
       },
@@ -168,8 +194,8 @@ $('.ui.form')
         identifier: 'dateOfDeparture',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the date of departure.'
+            type: 'empty',
+            prompt: 'Please enter the date of departure.'
           }
         ]
       },
@@ -177,8 +203,8 @@ $('.ui.form')
         identifier: 'dateOfReturn',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the date of return.'
+            type: 'empty',
+            prompt: 'Please enter the date of return.'
           }
         ]
       },
@@ -186,8 +212,8 @@ $('.ui.form')
         identifier: 'dateOfReturnToWork',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the date of return to work.'
+            type: 'empty',
+            prompt: 'Please enter the date of return to work.'
           }
         ]
       },
@@ -195,17 +221,8 @@ $('.ui.form')
         identifier: 'dateIncentiveLastAvailed',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter the date of last availed incentive.'
-          }
-        ]
-      },
-      status: {
-        identifier  : 'status',
-        rules: [
-          {
-            type   : 'checked',
-            prompt : 'Please state your status.'
+            type: 'empty',
+            prompt: 'Please enter the date of last availed incentive.'
           }
         ]
       }
