@@ -136,15 +136,6 @@ $('.ui.form')
           }
         ]
       },
-      status: {
-        identifier: 'status',
-        rules: [
-          {
-            type: 'checked',
-            prompt: 'Please state your status.'
-          }
-        ]
-      },
       aveTeachingPerformance: {
         identifier: 'aveTeachingPerformance',
         rules: [

@@ -235,15 +235,6 @@
               prompt : 'Please enter the date of last availed incentive.'
             }
           ]
-        },
-        status: {
-          identifier  : 'status',
-          rules: [
-            {
-              type   : 'checked',
-              prompt : 'Please state your status.'
-            }
-          ]
         }
       }
     });

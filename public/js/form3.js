@@ -143,16 +143,7 @@ $("#confirm").click(function () {
               prompt : 'Please enter when you were hired.'
             }
           ]
-        },
-        status: {
-          identifier  : 'status',
-          rules: [
-            {
-              type   : 'checked',
-              prompt : 'Please state your status.'
-            }
-          ]
-        },        
+        },     
         rank: {
           identifier: 'rank',
           rules: [
