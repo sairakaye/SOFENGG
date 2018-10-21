@@ -27,10 +27,10 @@ var fdThreeSchema = mongoose.Schema({
     rank : String,
     dateHired : Date,
     rank : String,
-    status : String, //true = full-time, false = part-time
+    status : String,
     noOfUnitsTaught : Number, //ONLY IF PART-TIME
     nameOfConference : String,
-    typeOfConference : Boolean, //true = local, false = international
+    typeOfConference : String,
     titleOfPaperToBePresented : String,
     dateOfConference : Date,
     dateOfDeparture : Date,
@@ -56,12 +56,12 @@ var fdThree = mongoose.model("fdThree", fdThreeSchema)
  *
  * @param {FD1 record to be created} paramFDOne
  */
-exports.create = function(paramFDTwo){
+exports.create = function(paramFDThree){
     return new Promise(function(resolve, reject){
-        var f = new fdTwo(paramFDTwo)
+        var f = new fdThree(paramFDThree)
         
-        f.save().then((newFDTwo)=>{
-            resolve(newFDTwo)
+        f.save().then((newFDThree)=>{
+            resolve(newFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -75,10 +75,10 @@ exports.create = function(paramFDTwo){
  */
 exports.delete = function(paramID){
     return new Promise(function(resolve, reject){
-        fdTwo.deleteOne({
+        fdThree.deleteOne({
             _id : paramID
-        }).then((deletedFDTwo)=>{
-            resolve(deletedFDTwo)
+        }).then((deletedFDThree)=>{
+            resolve(deletedFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -90,12 +90,12 @@ exports.delete = function(paramID){
  *
  * @param {FD1 record to be edited} paramFDOne
  */
-exports.edit = function(paramFDTwo){
+exports.edit = function(paramFDThree){
     return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramFDTwo._id
-        }, paramFDTwo).then((updatedFDTwo)=>{
-            resolve(updatedFDTwo)
+        fdThree.findOneAndUpdate({
+            _id : paramFDThree._id
+        }, paramFDThree).then((updatedFDThree)=>{
+            resolve(updatedFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -107,12 +107,12 @@ exports.edit = function(paramFDTwo){
  *
  * @param {FD1 record to get} paramFDOne
  */
-exports.getFDTwo = function(paramFDTwo){
+exports.getFDThree = function(paramFDThree){
     return new Promise(function(resolve, reject){
-        fdTwo.findOne({
-            _id : paramFDTwo._id
-        }).then((foundFDTwo)=>{
-            resolve(foundFDTwo)
+        fdThree.findOne({
+            _id : paramFDThree._id
+        }).then((foundFDThree)=>{
+            resolve(foundFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -124,12 +124,12 @@ exports.getFDTwo = function(paramFDTwo){
  *
  * @param {id to use} id
  */
-exports.getFDTwoByID = function(id){
+exports.getFDThreeByID = function(id){
     return new Promise(function(resolve, reject){
-        fdTwo.findOne({
+        fdThree.findOne({
             _id : id
-        }).then((foundFDTwo)=>{
-            resolve(foundFDTwo)
+        }).then((foundFDThree)=>{
+            resolve(foundFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -139,10 +139,10 @@ exports.getFDTwoByID = function(id){
 /**
  * Gets all FD1 record in FD1 Schema 
  */
-exports.getAllFDTwo = function(){
+exports.getAllFDThree = function(){
     return new Promise(function(resolve, reject){
-        fdTwo.find().then((fdTwoForms)=>{
-            resolve(fdTwoForms)
+        fdThree.find().then((fdThreeForms)=>{
+            resolve(fdThreeForms)
         }, (err)=>{
             reject(err)
         })
@@ -155,12 +155,12 @@ exports.getAllFDTwo = function(){
  *
  * @param {Filtering department} paramFDOneDepartment
  */
-exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
+exports.getFDThreeByDepartment = function(paramFDThreeDepartment){
     return new Promise(function(resolve, reject){
-        fdTwo.find({
-            department : paramFDTwoDepartment
-        }).then((departmentFDTwo)=>{
-            resolve(departmentFDTwo)
+        fdThree.find({
+            department : paramFDThreeDepartment
+        }).then((departmentFDThree)=>{
+            resolve(departmentFDThree)
         }, (err)=>{
             reject(err)
         })
@@ -172,12 +172,12 @@ exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
  *
  * @param {Filtering status} paramFDOnestatus
  */
-exports.getFDTwoByStatus = function(paramFDTwoStatus){
+exports.getFDThreeByStatus = function(paramFDThreeStatus){
     return new Promise(function(resolve, reject){
-        fdTwo.find({
-            grantStatus : paramFDTwoStatus
-        }).then((statusFDTwo)=>{
-            resolve(statusFDTwo)
+        fdThree.find({
+            grantStatus : paramFDThreeStatus
+        }).then((statusFDThree)=>{
+            resolve(statusFDThree)
         }, (err)=>{
             reject(err)
         })

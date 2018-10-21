@@ -32,7 +32,7 @@ var fdFifteenSchema = mongoose.Schema({
     startTime : Date,
     endTime : Date,
     dateIncentiveLastAvailed : Date,
-    participantFee : Number, //MONEY
+    participantFee : String, //MONEY
     //CHECK BOX
     applicationLetter : Boolean,
     copyOfAcceptance : Boolean

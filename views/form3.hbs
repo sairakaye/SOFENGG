@@ -65,7 +65,7 @@
             </div>
           </div>
           <!-- These are the side menubar items. -->
-          <a class="active item">
+          <a href="/faculty/request-grant" class="active item">
             Request Grant
             <i class="chevron right icon"></i>
           </a>
@@ -93,7 +93,7 @@
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
-              <form action="/faculty/submit" method="post" class="ui form" id="request-form">
+              <form action="/faculty/submit-fd3" method="post" class="ui form" id="request-form" autocomplete="off">
                 <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
@@ -108,13 +108,13 @@
                   <div class="seven wide field disabled">
                     <label>Department</label>
                     <input type="text" name="department" value="{{user.department}}" />
-                  </div>10
+                  </div>
                   <div class="four wide field disabled">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" value={{user.dateHired}} />
+                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
                       </div>
                     </div>
                   </div>
@@ -235,21 +235,23 @@
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
-                    <div class="five wide field">
+                    <div class="four wide field">
                       <div class="ui checkbox">
                         <input type="checkbox" name="applicationLetter" />
                         <label>Application Letter</label>
                       </div>
                     </div>
 
-                    <div class="six wide field">
+                    <div class="three wide field">
                       <div class="ui checkbox">
                         <input type="checkbox" name="proofOfAcceptance" />
                         <label>Program of the conference</label>
                       </div>
+                    </div>
+                    <div class="one wide field">
                       <b>or</b>
                     </div>
-                    <div class="five wide field">
+                    <div class="eight wide field">
                       <div class="ui checkbox">
                         <input type="checkbox" name="callForPapersOfConference" />
                         <label>Call for papers of conference/symposium</label>
@@ -259,21 +261,23 @@
                 </div>
                 <div class="field">
                   <div class="fields">
-                    <div class="five wide field">
+                    <div class="four wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="copyOfJournal" />
+                        <input type="checkbox" name="copyOfAbstract" />
                         <label>Copy of abstract</label>
                       </div>
                     </div>
 
-                    <div class="six wide field">
+                    <div class="three wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfPaperAcceptance" />
+                        <input type="checkbox" name="proofofPaperAcceptance" />
                         <label>Proof of paper acceptance</label>
                       </div>
+                    </div>
+                    <div class="one wide field">
                       <b>or</b>
                     </div>
-                    <div class="five wide field">
+                    <div class="eight wide field">
                       <div class="ui checkbox">
                         <input type="checkbox" name="copyOfInvitation" />
                         <label>Copy of invitation</label>

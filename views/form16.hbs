@@ -65,7 +65,7 @@
             </div>
           </div>
           <!-- These are the side menubar items. -->
-          <a class="active item">
+          <a href="/faculty/request-grant" class="active item">
             Request Grant
             <i class="chevron right icon"></i>
           </a>
@@ -93,8 +93,8 @@
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
-              <form action="/faculty/submit" method="post" class="ui form" id="request-form">
-                <div class="two fields">
+              <form action="/faculty/submit-fd16" method="post" class="ui form" id="request-form">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
                     <input type="text" name="firstName" value="{{user.firstName}}" />
@@ -105,11 +105,11 @@
                   </div>
                 </div>
                 <div class="fields">
-                  <div class="seven wide field">
+                  <div class="seven wide field disabled">
                     <label>Department</label>
                     <input type="text" name="department" value="{{user.department}}" />
                   </div>
-                  <div class="five wide field">
+                  <div class="nine wide field">
                     <label>Rank</label>
                     <input type="text" name="rank" />
                   </div>
@@ -216,20 +216,22 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
+
                     <div class="five wide field">
+                      <label>For Annual Membership</label>
                       <div class="ui checkbox">
-                        <input type="checkbox" name="applicationLetter" />
+                        <input type="checkbox" name="membershipFormForOrganizationForAnnual" />
                         <label>Membership form from the organization</label>
                       </div>
                     </div>
 
                     <div class="six wide field">
+                      <label>For Lifetime Membership</label>
                       <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfAcceptance" />
+                        <input type="checkbox" name="membershipFormForOrganizationForLifetime" />
                         <label>Membership form from the organization</label>
                       </div>
                     </div>
@@ -239,37 +241,36 @@
                   <div class="fields">
                     <div class="five wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="copyOfJournal" />
+                        <input type="checkbox" name="printoutsOfOrganizationForAnnual" />
                         <label>Print-outs/brochures of the organization</label>
                       </div>
                     </div>
-
                     <div class="six wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="proofOfPaperAcceptance" />
+                        <input type="checkbox" name="printoutsOfOrganizationForLifetime" />
                         <label>Print-outs/brochures of the organization</label>
                       </div>
-                      <b>/or</b>
                     </div>
                   </div>
                 </div>
                 <div class="field">
                   <div class="fields">
+                    <div class="five wide field"></div>
                     <div class="five wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="copyOfJournal" />
+                        <input type="checkbox" name="copyOfOrganizationAnnualConferenceAndMeetingProgram" />
                         <label>Copy of the organization’s annual conference and meeting program
-                          showing the paper presentations of the faculty;</label>
+                          showing the paper presentations of the faculty; <b>or</b></label>
                       </div>
-                      <b>or</b>
                     </div>
                   </div>
                 </div>
                 <div class="field">
                   <div class="fields">
+                    <div class="five wide field"></div>
                     <div class="five wide field">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="copyOfJournal" />
+                        <input type="checkbox" name="certificationFromTheProfessionalOrganization" />
                         <label>Certification from the professional organization’s secretariat that the faculty member
                           has presented at least five (5) papers (cumulative) in the
                           organization’s annual conference and meetings.</label>
@@ -310,6 +311,6 @@
 <script type="text/javascript" src="../public/semantic/semantic.js"></script>
 <script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
-<script type="text/javascript" src="../public/js/form1.js"></script>
+<script type="text/javascript" src="../public/js/form16.js"></script>
 
 </html>

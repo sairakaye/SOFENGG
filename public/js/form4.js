@@ -5,57 +5,95 @@
  * @author Sai Manalili
  */
 
+/**
+ * Initializes the Date of Paper Submitted field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#submit-date').calendar({
+  type: 'date'
+});
 
- // Initialization of the date-pickers or the calendar.
- $('#date-hired').calendar({
-    type: 'date'
-  })
-  
-  $('#submit-date').calendar({
-    type: 'date'
-  });
-  
-  $('#accept-date').calendar({
-    type: 'date'
-  });
-  
-  $('#conference-date').calendar({
-    type: 'date'
-  });
-  
-  $('#departure-date').calendar({
-    type: 'date'
-  });
-  
-  $('#return-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#expected-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#incentive-date').calendar({
-    type: 'date'
-  });
-  
-  // Initialization of the radio button found in the form.
-  $('.ui.checkbox').checkbox();
-  
-  
-  // Initialization of the Submit button.
-  $("#confirm").click(function() {
-      var isValid = $('.form').form('validate form');
-  
-      if (isValid) {
-        $('.ui.modal')
-          .modal('show');
-      }
-  })
-  
-  // For validation of the text fields in the form.
+/**
+ * Initializes the Date of Acceptance field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#accept-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of Conference field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#conference-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of Departure field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#departure-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of Return field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#return-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of Expected to Return
+ * to Work field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#expected-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of last incentive availed field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#incentive-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the checkbox buttons including
+ * radio buttons.
+ */
+$('.ui.checkbox').checkbox();
+
+/**
+ * Initializes the button with #confirm and checks whether
+ * it will show the confirmation modal or not.
+ */
+$("#confirm").click(function () {
+  var isValid = $('.form').form('validate form');
+
+  if (isValid) {
+    $('.ui.modal')
+      .modal('show');
+  }
+})
+
+/**
+ * Initializes the form in order for the form to do
+ * form validation.
+ * @param {Object} settings - customizing the settings of
+ * the form
+ */
   $('.ui.form')
     .form({
       inline: 'true',
@@ -63,8 +101,6 @@
       fields: {
         firstName: {
           identifier: 'firstName',
-          inline: true,
-          on: 'blur',
           rules: [
             {
               type   : 'empty',
@@ -90,66 +126,12 @@
             }
           ]
         },
-        dateHired: {
-          identifier: 'dateHired',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when you were hired.'
-            }
-          ]
-        },
         rank: {
           identifier: 'rank',
           rules: [
             {
               type   : 'empty',
               prompt : 'Please enter your rank.'
-            }
-          ]
-        },
-        aveTeachingPerformance: {
-          identifier: 'aveTeachingPerformance',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your average teaching performance.'
-            }
-          ]
-        },
-        titleOfPaperOrPublication: {
-          identifier: 'titleOfPaperOrPublication',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of publication.'
-            }
-          ]
-        },
-        titleOfJournal: {
-          identifier: 'titleOfJournal',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of journal.'
-            }
-          ]
-        },
-        datePaperSubmitted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is submitted.'
-            }
-          ]
-        },
-        datePaperAccepted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
             }
           ]
         },
@@ -162,16 +144,6 @@
             }
           ]
         },
-        titleOfPaperToBePresented: {
-          identifier: 'titleOfPaperToBePresented',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
-            }
-          ]
-        },
-  
         dateOfConference: {
           identifier: 'dateOfConference',
           rules: [
@@ -181,7 +153,6 @@
             }
           ]
         },
-  
         placeAndVenue: {
           identifier: 'placeAndVenue',
           rules: [
@@ -218,12 +189,21 @@
             }
           ]
         },
-        datePaperAccepted: {
-          identifier: 'datePaperAccepted',
+        participantFee: {
+          identifier: 'participantFee',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
+              prompt : "Please enter the participant's fee (check payable to)",
+            }
+          ]
+        },
+        noOfLocalConferencesAttendedThisYear: {
+          identifier: 'noOfLocalConferencesAttendedThisYear',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter the number of local conferences attended this year.'
             }
           ]
         },
@@ -233,15 +213,6 @@
             {
               type   : 'empty',
               prompt : 'Please enter the date of last availed incentive.'
-            }
-          ]
-        },
-        status: {
-          identifier  : 'status',
-          rules: [
-            {
-              type   : 'checked',
-              prompt : 'Please state your status.'
             }
           ]
         }

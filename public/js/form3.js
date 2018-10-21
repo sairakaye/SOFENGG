@@ -144,64 +144,21 @@ $("#confirm").click(function () {
             }
           ]
         },
+        status: {
+          identifier  : 'status',
+          rules: [
+            {
+              type   : 'checked',
+              prompt : 'Please state your status.'
+            }
+          ]
+        },        
         rank: {
           identifier: 'rank',
           rules: [
             {
               type   : 'empty',
               prompt : 'Please enter your rank.'
-            }
-          ]
-        },
-        numTerms: {
-            identifier: 'numTerms',
-            rules: [{
-              type: 'empty',
-              prompt: 'Please enter the number of terms.'
-            }]
-        },
-        titleOfPaperOrPublication: {
-          identifier: 'titleOfPaperOrPublication',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of publication.'
-            }
-          ]
-        },
-        titleOfJournal: {
-          identifier: 'titleOfJournal',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of journal.'
-            }
-          ]
-        },
-        datePaperSubmitted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is submitted.'
-            }
-          ]
-        },
-        datePaperAccepted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
-            }
-          ]
-        },
-        nameOfConference: {
-          identifier: 'nameOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
             }
           ]
         },
@@ -214,7 +171,6 @@ $("#confirm").click(function () {
             }
           ]
         },
-  
         dateOfConference: {
           identifier: 'dateOfConference',
           rules: [
@@ -224,7 +180,6 @@ $("#confirm").click(function () {
             }
           ]
         },
-  
         placeAndVenue: {
           identifier: 'placeAndVenue',
           rules: [
@@ -261,12 +216,12 @@ $("#confirm").click(function () {
             }
           ]
         },
-        datePaperAccepted: {
-          identifier: 'datePaperAccepted',
+        travelAndConferenceSubsidy: {
+          identifier: 'travelAndConferenceSubsidy',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
+              prompt : 'Please specify your travel and conference subsidy.'
             }
           ]
         },
@@ -276,15 +231,6 @@ $("#confirm").click(function () {
             {
               type   : 'empty',
               prompt : 'Please enter the date of last availed incentive.'
-            }
-          ]
-        },
-        status: {
-          identifier  : 'status',
-          rules: [
-            {
-              type   : 'checked',
-              prompt : 'Please state your status.'
             }
           ]
         }

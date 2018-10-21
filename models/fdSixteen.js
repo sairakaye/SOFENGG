@@ -40,7 +40,7 @@ var fdSixteenSchema = mongoose.Schema({
     printoutsOfOrganizationForAnnual : Boolean,
     membershipFormForOrganizationForLifetime : Boolean,
     printoutsOfOrganizationForLifetime : Boolean,
-    copyOfOrganizationAnnualCoferenceAndMeetingProgram : Boolean,
+    copyOfOrganizationAnnualConferenceAndMeetingProgram : Boolean,
     certificationFromTheProfessionalOrganization : Boolean
 })
 

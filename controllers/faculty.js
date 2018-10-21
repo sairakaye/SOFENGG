@@ -23,6 +23,9 @@ const User = require("../models/user")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
+const fdFour = require("../models/fdFour")
+const fdFifteen = require("../models/fdFifteen")
+const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
 
 /**
@@ -283,7 +286,7 @@ router.get("/fd-3", function(req, res){
  * @param {Response} res
  */
 router.post("/submit-fd3", urlencoder, function(req,res) {
-  console.log("POST /submit")
+  console.log("POST /submit-fd3")
   
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -377,6 +380,269 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   })
 })
 
+/**
+ * Leads to the page of FD1 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/fd-4", function(req, res){
+	console.log("GET /fd-4")
+	var user = controllerUser.getCurrentUser()
+	res.render("form4", {
+		  user
+	})
+})
+
+/**
+ * Adds to the database the entered information for FD1
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/submit-fd4", urlencoder, function(req,res) {
+  console.log("POST /submit-fd4")
+  
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var nameOfConference = req.body.nameOfConference
+  var dateOfConference = req.body.dateOfConference
+  var placeAndVenue = req.body.placeAndVenue
+  var dateOfDeparture = req.body.dateOfDeparture
+  var dateOfReturn = req.body.dateOfReturn
+  var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var participantFee = req.body.participantFee
+  var noOfLocalConferencesAttendedThisYear = 
+      req.body.noOfLocalConferencesAttendedThisYear
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var grantStatus = "Pending"
+
+  // Checkboxes
+  var applicationLetter = req.body.applicationLetter
+  var programOfConference = req.body.programOfConference
+  var copyOfInvitation = req.body.copyOfInvitation
+
+  if (applicationLetter != null)
+    applicationLetter = true;
+  else
+    applicationLetter = false;
+
+  if (programOfConference != null)
+    programOfConference = true;
+  else
+    programOfConference = false;
+
+  if (copyOfInvitation != null)
+    copyOfInvitation = true;
+  else
+    copyOfInvitation = false;
+
+  var fdFourData = {
+    grantName: "[FD4] Support for Participation in Local Conferences",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, nameOfConference,
+    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear, 
+    applicationLetter, programOfConference, copyOfInvitation, grantStatus
+  }
+
+  fdFour.create(fdFourData).then((newFdFourData)=> {
+      
+      User.addFDFourInUser(newFdFourData).then((updatedUser)=>{
+          var user = controllerUser.getCurrentUser()
+          res.render("success.hbs", {
+              user, formName : "[FD4] Support for Participation in Local Conferences"
+          })
+      }, (err)=>{
+          res.send(err)
+      })
+      
+  }, (err)=> {
+      res.send(err)
+  })
+})
+
+/**
+ * Leads to the page of FD15 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/fd-15", function(req, res){
+	console.log("GET /fd-15")
+	var user = controllerUser.getCurrentUser()
+	res.render("form15", {
+		  user
+	})
+})
+
+/**
+ * Adds to the database the entered information for FD1
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/submit-fd15", urlencoder, function(req,res) {
+  console.log("POST /submit-fd15")
+  
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var hostInstitution = req.body.hostInstitution
+  var titleOfSeminar = req.body.titleOfSeminar
+  var place = req.body.place
+  var startTime = req.body.startTime
+  var endTime = req.body.endTime
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var participantFee = req.body.participantFee
+  var grantStatus = "Pending"
+
+  // Checkboxes
+  var applicationLetter = req.body.applicationLetter
+  var copyOfAcceptance = req.body.copyOfAcceptance
+
+  if (applicationLetter != null)
+    applicationLetter = true;
+  else
+    applicationLetter = false;
+
+  if (copyOfAcceptance != null)
+    copyOfAcceptance = true;
+  else
+    copyOfAcceptance = false;
+  
+  var fdFifteenData = {
+    grantName: "[FD15] Incentive for Publication in Pre-Selected High Impact Journal",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, hostInstitution,
+    titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed, 
+    participantFee, applicationLetter, copyOfAcceptance, grantStatus
+  }
+
+  fdFifteen.create(fdFifteenData).then((newFdFifteenData)=> {
+      
+      User.addFDFifteenInUser(newFdFifteenData).then((updatedUser)=>{
+          var user = controllerUser.getCurrentUser()
+          res.render("success.hbs", {
+              user, formName : "[FD15] Support for Local Trainings, Seminars and Workshops"
+          })
+      }, (err)=>{
+          res.send(err)
+      })
+      
+  }, (err)=> {
+      res.send(err)
+  })
+})
+
+/**
+ * Leads to the page of FD1 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/fd-16", function(req, res){
+	console.log("GET /fd-16")
+	var user = controllerUser.getCurrentUser()
+	res.render("form16", {
+		  user
+	})
+})
+
+/**
+ * Adds to the database the entered information for FD1
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/submit-fd16", urlencoder, function(req,res) {
+  console.log("POST /submit-fd16")
+  
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var status = req.body.status
+  var nameOfOrganization = req.body.nameOfOrganization
+  var typeOfMembershipPlace = req.body.typeOfMembershipPlace
+  var typeofMembershipDuration = req.body.typeofMembershipDuration
+  var membershipDate = req.body.membershipDate
+  var coverage = req.body.coverage
+  var membershipFee = req.body.membershipFee
+  var checkPayableTo = req.body.checkPayableTo
+  var grantStatus = "Pending"
+
+  // Checkboxes
+  var membershipFormForOrganizationForAnnual = 
+    req.body.membershipFormForOrganizationForAnnual
+  var membershipFormForOrganizationForLifetime = 
+    req.body.membershipFormForOrganizationForLifetime
+  var printoutsOfOrganizationForAnnual = 
+    req.body.printoutsOfOrganizationForAnnual
+  var printoutsOfOrganizationForLifetime = 
+    req.body.printoutsOfOrganizationForLifetime
+  var copyOfOrganizationAnnualConferenceAndMeetingProgram 
+    = req.body.copyOfOrganizationAnnualConferenceAndMeetingProgram
+
+  if (membershipFormForOrganizationForAnnual != null)
+    membershipFormForOrganizationForAnnual = true;
+  else
+    membershipFormForOrganizationForAnnual = false;
+
+  if (membershipFormForOrganizationForLifetime != null)
+    membershipFormForOrganizationForLifetime = true;
+  else
+    membershipFormForOrganizationForLifetime = false;
+  
+  if (printoutsOfOrganizationForAnnual != null)
+    printoutsOfOrganizationForAnnual = true;
+  else
+    printoutsOfOrganizationForAnnual = false;
+
+  if (printoutsOfOrganizationForLifetime != null)
+    printoutsOfOrganizationForLifetime = true;
+  else
+    printoutsOfOrganizationForLifetime = false;
+
+  if (copyOfOrganizationAnnualConferenceAndMeetingProgram 
+      != null)
+    copyOfOrganizationAnnualConferenceAndMeetingProgram = true;
+  else
+    copyOfOrganizationAnnualConferenceAndMeetingProgram = false;
+
+  var fdSixteenData = {
+    grantName: "[FD16] Support for Membership in Professional Organizations",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, status, nameOfOrganization,
+    typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
+    coverage, membershipFee, checkPayableTo, membershipFormForOrganizationForAnnual,
+    membershipFormForOrganizationForLifetime, printoutsOfOrganizationForAnnual,
+    printoutsOfOrganizationForLifetime, 
+    copyOfOrganizationAnnualConferenceAndMeetingProgram,
+    grantStatus
+  }
+
+  fdSixteen.create(fdSixteenData).then((newFdSixteenData)=> {
+      
+      User.addFDOneInUser(newFdSixteenData).then((updatedUser)=>{
+          var user = controllerUser.getCurrentUser()
+          res.render("success.hbs", {
+              user, formName : "[FD16] Support for Membership in Professional Organizations"
+          })
+      }, (err)=>{
+          res.send(err)
+      })
+      
+  }, (err)=> {
+      res.send(err)
+  })
+})
 
 /**
  * Leads to the page for viewing all applied grant requests

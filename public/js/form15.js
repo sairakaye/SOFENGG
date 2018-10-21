@@ -6,64 +6,64 @@
  */
 
 
- // Initialization of the date-pickers or the calendar.
- $('#date-hired').calendar({
-    type: 'date'
-  })
-  
-  $('#submit-date').calendar({
-    type: 'date'
-  });
-  
-  $('#accept-date').calendar({
-    type: 'date'
-  });
-  
-  $('#conference-date').calendar({
-    type: 'date'
-  });
-  
-  $('#departure-date').calendar({
-    type: 'date'
-  });
-  
-  $('#return-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#expected-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#incentive-date').calendar({
-    type: 'date'
-  });
-  
-  // Initialization of the radio button found in the form.
-  $('.ui.checkbox').checkbox();
-  
-  
-  // Initialization of the Submit button.
-  $("#confirm").click(function() {
-      var isValid = $('.form').form('validate form');
-  
-      if (isValid) {
-        $('.ui.modal')
-          .modal('show');
-      }
-  })
-  
-  // For validation of the text fields in the form.
+/**
+ * Initializes the Duration Start field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#duration-start').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Duration End field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#duration-end').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the Date of last incentive availed field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#incentive-date').calendar({
+  type: 'date'
+});
+
+/**
+ * Initializes the checkbox buttons including
+ * radio buttons.
+ */
+$('.ui.checkbox').checkbox();
+
+/**
+ * Initializes the button with #confirm and checks whether
+ * it will show the confirmation modal or not.
+ */
+$("#confirm").click(function () {
+  var isValid = $('.form').form('validate form');
+
+  if (isValid) {
+    $('.ui.modal')
+      .modal('show');
+  }
+})
+
+/**
+ * Initializes the form in order for the form to do
+ * form validation.
+ * @param {Object} settings - customizing the settings of
+ * the form
+ */
   $('.ui.form')
     .form({
       inline: 'true',
       on: 'blur',
       fields: {
         firstName: {
-          identifier: 'firstName',
-          inline: true,
           on: 'blur',
           rules: [
             {
@@ -90,140 +90,30 @@
             }
           ]
         },
-        dateHired: {
-          identifier: 'dateHired',
+        hostInstitution: {
+          identifier: 'hostInstitution',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter when you were hired.'
+              prompt : 'Please enter the host institution.'
             }
           ]
         },
-        rank: {
-          identifier: 'rank',
+        titleOfSeminar: {
+          identifier: 'titleOfSeminar',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your rank.'
+              prompt : 'Please enter the title of the seminar.'
             }
           ]
         },
-        aveTeachingPerformance: {
-          identifier: 'aveTeachingPerformance',
+        place: {
+          identifier: 'place',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your average teaching performance.'
-            }
-          ]
-        },
-        titleOfPaperOrPublication: {
-          identifier: 'titleOfPaperOrPublication',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of publication.'
-            }
-          ]
-        },
-        titleOfJournal: {
-          identifier: 'titleOfJournal',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your title of journal.'
-            }
-          ]
-        },
-        datePaperSubmitted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is submitted.'
-            }
-          ]
-        },
-        datePaperAccepted: {
-          identifier: 'datePaperSubmitted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
-            }
-          ]
-        },
-        nameOfConference: {
-          identifier: 'nameOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
-            }
-          ]
-        },
-        titleOfPaperToBePresented: {
-          identifier: 'titleOfPaperToBePresented',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
-            }
-          ]
-        },
-  
-        dateOfConference: {
-          identifier: 'dateOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of the conference.'
-            }
-          ]
-        },
-  
-        placeAndVenue: {
-          identifier: 'placeAndVenue',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the place and venue.'
-            }
-          ]
-        },
-        dateOfDeparture: {
-          identifier: 'dateOfDeparture',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of departure.'
-            }
-          ]
-        },
-        dateOfReturn: {
-          identifier: 'dateOfReturn',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return.'
-            }
-          ]
-        },
-        dateOfReturnToWork: {
-          identifier: 'dateOfReturnToWork',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return to work.'
-            }
-          ]
-        },
-        datePaperAccepted: {
-          identifier: 'datePaperAccepted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
+              prompt : 'Please enter the place.'
             }
           ]
         },
@@ -236,14 +126,14 @@
             }
           ]
         },
-        status: {
-          identifier  : 'status',
+        participantFee: {
+          identifier: 'participantFee',
           rules: [
             {
-              type   : 'checked',
-              prompt : 'Please state your status.'
+              type   : 'empty',
+              prompt : "Please enter the participant's fee."
             }
           ]
-        }
+        },
       }
     });

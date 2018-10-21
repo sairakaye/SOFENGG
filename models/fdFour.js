@@ -32,7 +32,7 @@ var fdFourSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    participantFee : Number, //MONEY
+    participantFee : String, //MONEY
     noOfLocalConferencesAttendedThisYear : Number,
     dateIncentiveLastAvailed : Date,
     //CHECK BOX
