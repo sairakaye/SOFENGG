@@ -1,6 +1,6 @@
 /**
- * This is the JS file of the form page.
- * October 17, 2018
+ * This is the JS file of the FD15 page.
+ * October 20, 2018
  * @ver 1.0
  * @author Sai Manalili
  */
@@ -53,12 +53,38 @@ $("#confirm").click(function () {
 })
 
 /**
+ * Checks if all input have values, if it does not
+ * it scrolls and focuses to that field
+ */
+function check(){
+
+  var items = [];
+  var count = 0;
+
+  $('.check').each(function (i, e) {
+    if (count == 0){
+      var name = ($(e).attr("name")) 
+      var val = $("#" + name).val(); 
+      
+      if (val == "" || val == null){
+        count = 1
+        $("#" + name).focus();
+
+        $('body').animate({
+          scrollTop: $("#" + name).offset()
+        }, 2000);
+      }
+    }
+  });
+}
+
+/**
  * Initializes the form in order for the form to do
  * form validation.
  * @param {Object} settings - customizing the settings of
  * the form
  */
-  $('.ui.form')
+$('#request-form')
     .form({
       inline: 'true',
       on: 'blur',

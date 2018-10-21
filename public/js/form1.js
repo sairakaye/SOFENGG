@@ -98,6 +98,7 @@ $("#confirm").click(function () {
         .modal('show');
     }
 })
+
 /**
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
@@ -122,7 +123,6 @@ function check(){
       }
     }
   });
-
 }
 
 /**
@@ -131,7 +131,7 @@ function check(){
  * @param {Object} settings - customizing the settings of
  * the form
  */
-$('.ui.form')
+$('#request-form')
   .form({
     inline: 'true',
     on: 'blur',

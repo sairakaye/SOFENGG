@@ -1,62 +1,74 @@
 /**
- * This is the JS file of the form page.
- * October 17, 2018
+ * This is the JS file of the FD16 page.
+ * October 20, 2018
  * @ver 1.0
  * @author Sai Manalili
  */
 
 
- // Initialization of the date-pickers or the calendar.
- $('#date-hired').calendar({
-    type: 'date'
-  })
+ /**
+ * Initializes the Membership Date field.
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#membership-date').calendar({
+  type: 'date'
+})
+
+/**
+ * Initializes the checkbox buttons including
+ * radio buttons.
+ */
+$('.ui.checkbox').checkbox();
+
+/**
+ * Initializes the button with #confirm and checks whether
+ * it will show the confirmation modal or not.
+ */
+$("#confirm").click(function () {
+    check();
+
+    var isValid = $('.form').form('validate form');
+
+    if (isValid) {
+      $('.ui.modal')
+        .modal('show');
+    }
+})
   
-  $('#submit-date').calendar({
-    type: 'date'
-  });
-  
-  $('#accept-date').calendar({
-    type: 'date'
-  });
-  
-  $('#conference-date').calendar({
-    type: 'date'
-  });
-  
-  $('#departure-date').calendar({
-    type: 'date'
-  });
-  
-  $('#return-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#expected-date').calendar({
-    type: 'date'
-  });
-  
-  
-  $('#incentive-date').calendar({
-    type: 'date'
-  });
-  
-  // Initialization of the radio button found in the form.
-  $('.ui.checkbox').checkbox();
-  
-  
-  // Initialization of the Submit button.
-  $("#confirm").click(function() {
-      var isValid = $('.form').form('validate form');
-  
-      if (isValid) {
-        $('.ui.modal')
-          .modal('show');
+/**
+ * Checks if all input have values, if it does not
+ * it scrolls and focuses to that field
+ */
+function check(){
+
+  var items = [];
+  var count = 0;
+
+  $('.check').each(function (i, e) {
+    if (count == 0){
+      var name = ($(e).attr("name")) 
+      var val = $("#" + name).val(); 
+      
+      if (val == "" || val == null){
+        count = 1
+        $("#" + name).focus();
+
+        $('body').animate({
+          scrollTop: $("#" + name).offset()
+        }, 2000);
       }
-  })
-  
-  // For validation of the text fields in the form.
-  $('.ui.form')
+    }
+  });
+}
+
+/**
+ * Initializes the form in order for the form to do
+ * form validation.
+ * @param {Object} settings - customizing the settings of
+ * the form
+ */
+$('#request-form')
     .form({
       inline: 'true',
       on: 'blur',
@@ -90,15 +102,6 @@
             }
           ]
         },
-        dateHired: {
-          identifier: 'dateHired',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when you were hired.'
-            }
-          ]
-        },
         rank: {
           identifier: 'rank',
           rules: [
@@ -108,131 +111,48 @@
             }
           ]
         },
-        aveTeachingPerformance: {
-          identifier: 'aveTeachingPerformance',
+        nameOfOrganization: {
+          identifier: 'nameOfOrganization',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your average teaching performance.'
+              prompt : 'Please enter the name of the organization.'
             }
           ]
         },
-        titleOfPaperOrPublication: {
-          identifier: 'titleOfPaperOrPublication',
+        membershipDate: {
+          identifier: 'membershipDate',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your title of publication.'
+              prompt : 'Please enter the membership date.'
             }
           ]
         },
-        titleOfJournal: {
-          identifier: 'titleOfJournal',
+        coverage: {
+          identifier: 'coverage',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter your title of journal.'
+              prompt : 'Please indicate the coverage.'
             }
           ]
         },
-        datePaperSubmitted: {
-          identifier: 'datePaperSubmitted',
+        membershipFee: {
+          identifier: 'membershipFee',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter when the paper is submitted.'
+              prompt : 'Please enter the membership fee.'
             }
           ]
         },
-        datePaperAccepted: {
-          identifier: 'datePaperSubmitted',
+        checkPayableTo: {
+          identifier: 'checkPayableTo',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
-            }
-          ]
-        },
-        nameOfConference: {
-          identifier: 'nameOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
-            }
-          ]
-        },
-        titleOfPaperToBePresented: {
-          identifier: 'titleOfPaperToBePresented',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
-            }
-          ]
-        },
-  
-        dateOfConference: {
-          identifier: 'dateOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of the conference.'
-            }
-          ]
-        },
-  
-        placeAndVenue: {
-          identifier: 'placeAndVenue',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the place and venue.'
-            }
-          ]
-        },
-        dateOfDeparture: {
-          identifier: 'dateOfDeparture',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of departure.'
-            }
-          ]
-        },
-        dateOfReturn: {
-          identifier: 'dateOfReturn',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return.'
-            }
-          ]
-        },
-        dateOfReturnToWork: {
-          identifier: 'dateOfReturnToWork',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return to work.'
-            }
-          ]
-        },
-        datePaperAccepted: {
-          identifier: 'datePaperAccepted',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when the paper is accepted.'
-            }
-          ]
-        },
-        dateIncentiveLastAvailed: {
-          identifier: 'dateIncentiveLastAvailed',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of last availed incentive.'
+              prompt : 'Please indicate the check payable to.'
             }
           ]
         }
