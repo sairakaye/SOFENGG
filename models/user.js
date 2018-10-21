@@ -295,13 +295,12 @@ exports.addFDOneInUser = function(paramFDOne){
  */
 exports.deleteFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramFDOne.username
+        User.findOneAndUpdate({
+            username : paramFDOne.ownerIdNumber
+        }, {
+            $pull : {fdOneForms : {_id : paramFDOne._id}}
         }).then((foundUser)=>{
-            foundUser.fdOneForms.remove({
-                _id : paramFDOne._id
-            })
-            resolve(foundUser) // error?
+            resolve(foundUser)
         }, (err)=>{
             reject(err)
         })
@@ -431,13 +430,12 @@ exports.addFDTwoInUser = function(paramFDTwo){
  */
 exports.deleteFDTwoInUser = function(paramFDTwo){
     return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramFDTwo.username
+        User.findOneAndUpdate({
+            username : paramFDTwo.ownerIdNumber
+        }, {
+            $pull : {fdTwoForms : {_id : paramFDTwo._id}}
         }).then((foundUser)=>{
-            foundUser.fdOneForms.remove({
-                _id : paramFDTwo._id
-            })
-            resolve(foundUser) // error?
+            resolve(foundUser)
         }, (err)=>{
             reject(err)
         })
@@ -578,13 +576,12 @@ exports.addFDThreeInUser = function(paramFDThree){
  */
 exports.deleteFDThreeInUser = function(paramFDThree){
     return new Promise(function(resolve, reject){
-        User.findOne({
-            username : paramFDThree.username
+        User.findOneAndUpdate({
+            username : paramFDThree.ownerIdNumber
+        }, {
+            $pull : {fdThreeForms : {_id : paramFDThree._id}}
         }).then((foundUser)=>{
-            foundUser.fdThreeForms.remove({
-                _id : paramFDThree._id
-            })
-            resolve(foundUser) // error?
+            resolve(foundUser)
         }, (err)=>{
             reject(err)
         })
