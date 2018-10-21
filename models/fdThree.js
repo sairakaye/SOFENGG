@@ -18,7 +18,7 @@ const mongoose = require("mongoose");
 var fdThreeSchema = mongoose.Schema({
     grantName : String,
     ownerIdNumber : String,
-    dateSubmitted : Date,
+    grantStatus: String,
     term : String, 
     startAY : Number,
     endAY : Number,

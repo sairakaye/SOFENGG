@@ -18,7 +18,7 @@ const mongoose = require("mongoose");
 var fdFifteenSchema = mongoose.Schema({
     grantName : String,
     ownerIdNumber : String,
-    dateSubmitted : Date,
+    grantStatus: String,
     term : String, 
     startAY : Number,
     endAY : Number,
@@ -39,3 +39,136 @@ var fdFifteenSchema = mongoose.Schema({
 })
 
 var fdFifteen = mongoose.model("fdFifteen", fdFifteenSchema)
+
+/**
+ * Creates FD15 record in FD15 Schema 
+ *
+ * @param {FD15 record to be created} paramFDOne
+ */
+exports.create = function(paramFDFifteen){
+    return new Promise(function(resolve, reject){
+        var f = new fdFifteen(paramFDFifteen)
+        
+        f.save().then((newFDFifteen)=>{
+            resolve(newFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes FD15 record in FD15 Schema 
+ *
+ * @param {ID of the record to be deleted} paramID
+ */
+exports.delete = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdFifteen.deleteOne({
+            _id : paramID
+        }).then((deletedFDFifteen)=>{
+            resolve(deletedFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Edits FD15 record in FD15 Schema 
+ *
+ * @param {FD15 record to be edited} paramFDOne
+ */
+exports.edit = function(paramFDFifteen){
+    return new Promise(function(resolve, reject){
+        fdFifteen.findOneAndUpdate({
+            _id : paramFDFifteen._id
+        }, paramFDFifteen).then((updatedFDFifteen)=>{
+            resolve(updatedFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets one FD15 record in FD15 Schema 
+ *
+ * @param {FD15 record to get} paramFDOne
+ */
+exports.getFDFifteen = function(paramFDFifteen){
+    return new Promise(function(resolve, reject){
+        fdFifteen.findOne({
+            _id : paramFDFifteen._id
+        }).then((foundFDFifteen)=>{
+            resolve(foundFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets one FD15 record in FD15 Schema by _id as the parameter
+ *
+ * @param {id to use} id
+ */
+exports.getFDFifteenByID = function(id){
+    return new Promise(function(resolve, reject){
+        fdFifteen.findOne({
+            _id : id
+        }).then((foundFDFifteen)=>{
+            resolve(foundFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets all FD15 record in FD15 Schema 
+ */
+exports.getAllFDFifteen = function(){
+    return new Promise(function(resolve, reject){
+        fdFifteen.find().then((fdFifteenForms)=>{
+            resolve(fdFifteenForms)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+/**
+ * Gets FD15 record in FD15 Schema by department
+ *
+ * @param {Filtering department} paramFDOneDepartment
+ */
+exports.getFDFifteenByDepartment = function(paramFDFifteenDepartment){
+    return new Promise(function(resolve, reject){
+        fdFifteen.find({
+            department : paramFDFifteenDepartment
+        }).then((departmentFDFifteen)=>{
+            resolve(departmentFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets FD15 record in FD15 Schema by status
+ *
+ * @param {Filtering status} paramFDOnestatus
+ */
+exports.getFDFifteenByStatus = function(paramFDFifteenStatus){
+    return new Promise(function(resolve, reject){
+        fdFifteen.find({
+            grantStatus : paramFDFifteenStatus
+        }).then((statusFDFifteen)=>{
+            resolve(statusFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
