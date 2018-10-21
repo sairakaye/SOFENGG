@@ -17,6 +17,12 @@ const fdTwo = require("./fdTwo.js")
 const fdTwoSchema = mongoose.model('fdTwo').schema
 const fdThree = require("./fdThree.js")
 const fdThreeSchema = mongoose.model('fdThree').schema
+const fdFour = require("./fdFour.js")
+const fdFourSchema = mongoose.model('fdFour').schema
+const fdFifteen = require("./fdFifteen.js")
+const fdFifteenSchema = mongoose.model('fdFifteen').schema
+const fdSixteen = require("./fdSixteen.js")
+const fdSixteenSchema = mongoose.model('fdSixteen').schema
 
 /**
  * Setting up User Schema
@@ -56,11 +62,12 @@ var userSchema = mongoose.Schema({
 
     dateHired : Date,
     
-    fdOneForms : [fdOneSchema],
-    
+    fdOneForms : [fdOneSchema],  
     fdTwoForms : [fdTwoSchema],
-
-    fdThreeForms : [fdThreeSchema]
+    fdThreeForms : [fdThreeSchema],
+    fdFourForms : [fdFourSchema],
+    fdFifteenForms : [fdFifteenSchema],
+    fdSixteenForms : [fdSixteenSchema],
 })
 
 userSchema.pre("save", function(next){
