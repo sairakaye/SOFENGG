@@ -18,7 +18,7 @@ const mongoose = require("mongoose");
 var fdOneSchema = mongoose.Schema({
     grantName: String,
     ownerIdNumber : String,
-    // dateSubmitted : Date,
+    grantStatus: String,
     term : String, 
     startAY : Number,
     endAY : Number,
@@ -41,7 +41,7 @@ var fdOneSchema = mongoose.Schema({
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
     dateIncentiveLastAvailed : Date,
-    grantStatus: String,
+    
     
     //CHECK BOX
     applicationLetter : Boolean,

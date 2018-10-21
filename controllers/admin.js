@@ -21,6 +21,11 @@ const app = express()
 
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
+const fdTwo = require("../models/fdTwo")
+const fdThree = require("../models/fdThree")
+const fdFour = require("../models/fdFour")
+const fdFifteen = require("../models/fdFifteen")
+const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
 
 /**
@@ -30,16 +35,17 @@ const controllerUser = require("./index")
  * @param {Response} res
  */
 router.get("/view-grants", function(req, res){
-  console.log("GET /view-grants")
-  
-  var user = controllerUser.getCurrentUser() 
-  fdOne.getAllFDOne().then((fdOneData)=>{
-    forms = fdOneData
+    console.log("GET /view-grants")
+    
+    var user = controllerUser.getCurrentUser() 
+    var forms
+    forms = getAllForms(forms)
+    
     res.render("view-grants.hbs", {
-       user, forms
+        user, forms
     })
-  })
-
+    
+    
 })
 
 router.get("/filterApproved", function(req, res){
@@ -186,3 +192,32 @@ hbs.registerHelper('checkstatus', function(p1, p2, options) {
     return options.inverse(this);
   }
 })
+
+/**
+ * Gets all forms
+ *
+ * @param {Array to store forms} forms
+ */
+function getAllForms(forms){
+    
+    fdOne.getAllFDOne().then((fdOneData)=>{
+        forms = fdOneData
+        fdTwo.getAllFDTwo().then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            fdThree.getAllFDThree().then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                fdFour.getAllFDFour().then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    fdFifteen.getAllFDFifteen().then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        fdSixteen.getAllFDSixteen().then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            return forms
+                        })
+                    })
+                })
+            })
+        })
+        
+    })
+}

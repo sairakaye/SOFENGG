@@ -89,13 +89,41 @@ $('.ui.checkbox').checkbox();
  * it will show the confirmation modal or not.
  */
 $("#confirm").click(function () {
-  var isValid = $('.form').form('validate form');
+    check();
 
-  if (isValid) {
-    $('.ui.modal')
-      .modal('show');
-  }
+    var isValid = $('.form').form('validate form');
+
+    if (isValid) {
+      $('.ui.modal')
+        .modal('show');
+    }
 })
+/**
+ * Checks if all input have values, if it does not
+ * it scrolls and focuses to that field
+ */
+function check(){
+
+  var items = [];
+  var count = 0;
+
+  $('.check').each(function (i, e) {
+    if (count == 0){
+      var name = ($(e).attr("name")) 
+      var val = $("#" + name).val(); 
+      
+      if (val == "" || val == null){
+        count = 1
+        $("#" + name).focus();
+
+        $('body').animate({
+          scrollTop: $("#" + name).offset()
+        }, 2000);
+      }
+    }
+  });
+
+}
 
 /**
  * Initializes the form in order for the form to do
