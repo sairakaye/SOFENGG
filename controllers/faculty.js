@@ -28,6 +28,7 @@ const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
 
+var forms
 /**
  * Leads to the page for requesting grants. 
  *
@@ -654,13 +655,10 @@ router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
 
   var user = controllerUser.getCurrentUser() 
-  fdOne.getAllFDOne().then((fdOneData)=> {
-    forms = fdOneData
-    res.render("my-requests.hbs", {
-      user, forms
-    })
-  }, (err)=> {
-    res.send(err)
+  forms = getAllForms(forms, function(forms){
+      res.render("my-requests.hbs", {
+          user, forms
+      })
   })
 })
 
@@ -721,3 +719,31 @@ hbs.registerHelper('employment', function(status, options) {
     return options.inverse(this);
   }
 })
+
+/**
+ * Gets all forms
+ *
+ * @param {Array to store forms} forms
+ */
+function getAllForms(forms, callback){
+    
+  fdOne.getAllFDOne().then((fdOneData)=>{
+      forms = fdOneData
+      fdTwo.getAllFDTwo().then((fdTwoData)=>{
+          forms = forms.concat(fdTwoData)
+          fdThree.getAllFDThree().then((fdThreeData)=>{
+              forms = forms.concat(fdThreeData)
+              fdFour.getAllFDFour().then((fdFourData)=>{
+                  forms = forms.concat(fdFourData)
+                  fdFifteen.getAllFDFifteen().then((fdFifteenData)=>{
+                      forms = forms.concat(fdFifteenData)
+                      fdSixteen.getAllFDSixteen().then((fdSixteenData)=>{
+                          forms = forms.concat(fdSixteenData)
+                          callback(forms)
+                      })
+                  })
+              })
+          })
+      })
+  })
+}

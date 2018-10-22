@@ -54,10 +54,10 @@ router.post("/home", (req, res)=>{
 	//  var user = {
 	//  	username: idnumber,
 	//  	password, 
-	//  	firstName: 'Juana', 
-	//  	lastName: 'Dela Cruz', 
+	//  	firstName: 'Saira Kaye', 
+	//  	lastName: 'Manalili', 
 	//  	department: "College of Computer Studies", 
-	//  	userType: "Administrator",
+	//  	userType: "Faculty",
 	//  	status: "Permanent",
 	//  	dateHired: today,
 	//  }

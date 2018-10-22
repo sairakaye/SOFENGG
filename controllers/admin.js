@@ -28,47 +28,46 @@ const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
 
+var forms
+
 /**
  * Leads to the page for requesting grants 
  *
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/view-grants", function(req, res){
+router.get("/view-grants", function(req, res, callback){
     console.log("GET /view-grants")
     
     var user = controllerUser.getCurrentUser() 
-    var forms
-    forms = getAllForms(forms)
-    
-    res.render("view-grants.hbs", {
-        user, forms
+    forms = getAllForms(forms, function(forms){
+        res.render("view-grants.hbs", {
+            user, forms
+        })
     })
-    
-    
+
 })
 
 router.get("/filterApproved", function(req, res){
-  console.log("GET /filterApproved")
+    console.log("GET /filterApproved")
 
-  var user = controllerUser.getCurrentUser() 
-  fdOne.getFDOneByStatus('Approved').then((fdOneData)=>{
-    forms = fdOneData
-    res.render("view-grants.hbs", {
-       user, forms
+    var user = controllerUser.getCurrentUser() 
+    var forms = filterAllForms('Approved', function(forms){
+        res.render("view-grants.hbs", {
+            user, forms
+        })
     })
-  })
 })
+
 
 router.get("/filterPending", function(req, res){
   console.log("GET /filterPending")
 
   var user = controllerUser.getCurrentUser() 
-  fdOne.getFDOneByStatus('Pending').then((fdOneData)=>{
-    forms = fdOneData
-    res.render("view-grants.hbs", {
-       user, forms
-    })
+  var forms = filterAllForms('Pending', function(forms){
+      res.render("view-grants.hbs", {
+          user, forms
+      })
   })
 })
 
@@ -76,18 +75,16 @@ router.get("/filterRejected", function(req, res){
   console.log("GET /filterRejected")
 
   var user = controllerUser.getCurrentUser() 
-  fdOne.getFDOneByStatus('Rejected').then((fdOneData)=>{
-    forms = fdOneData
-    res.render("view-grants.hbs", {
-       user, forms
-    })
+  var forms = filterAllForms('Rejected', function(forms){
+      res.render("view-grants.hbs", {
+          user, forms
+      })
   })
 })
 
 router.post("/searchName", function(req, res){
   console.log("POST /searchName")
 
-  
   var firstName =req.body.firstNameSearch
   var lastName = req.body.lastNameSearch
 
@@ -198,7 +195,7 @@ hbs.registerHelper('checkstatus', function(p1, p2, options) {
  *
  * @param {Array to store forms} forms
  */
-function getAllForms(forms){
+function getAllForms(forms, callback){
     
     fdOne.getAllFDOne().then((fdOneData)=>{
         forms = fdOneData
@@ -212,12 +209,40 @@ function getAllForms(forms){
                         forms = forms.concat(fdFifteenData)
                         fdSixteen.getAllFDSixteen().then((fdSixteenData)=>{
                             forms = forms.concat(fdSixteenData)
-                            return forms
+                            callback(forms)
                         })
                     })
                 })
             })
         })
-        
     })
 }
+
+/**
+ * Gets all forms
+ *
+ * @param {Array to store forms} forms
+ */
+function filterAllForms(status, callback){
+    
+    fdOne.getFDOneByStatus(status).then((fdOneData)=>{
+        forms = fdOneData
+        fdTwo.getFDTwoByStatus(status).then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            fdThree.getFDThreeByStatus(status).then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                fdFour.getFDFourByStatus(status).then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    fdFifteen.getFDFifteenByStatus(status).then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        fdSixteen.getFDSixteenByStatus(status).then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+    return forms;
+} 
