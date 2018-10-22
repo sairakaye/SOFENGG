@@ -4,8 +4,7 @@
  * @ver 1.0
  * @author Sai Manalili
  */
-
-
+var today = new Date();
  /**
  * Initializes the Membership Date field.
  * @param {Object} settings - customizing the settings of

@@ -4,14 +4,15 @@
  * @ver 1.0
  * @author Sai Manalili
  */
-
+var today = new Date();
 /**
  * Initializes the Date Hired field.
  * @param {Object} settings - customizing the settings of
  * the calendar
  */
 $('#date-hired').calendar({
-  type: 'date'
+  type: 'date', 
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 })
 
 /**
@@ -38,7 +39,8 @@ $('#accept-date').calendar({
  * the calendar
  */
 $('#conference-date').calendar({
-  type: 'date'
+  type: 'date', 
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -47,7 +49,8 @@ $('#conference-date').calendar({
  * the calendar
  */
 $('#departure-date').calendar({
-  type: 'date'
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -56,7 +59,8 @@ $('#departure-date').calendar({
  * the calendar
  */
 $('#return-date').calendar({
-  type: 'date'
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -66,7 +70,8 @@ $('#return-date').calendar({
  * the calendar
  */
 $('#expected-date').calendar({
-  type: 'date'
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -75,7 +80,8 @@ $('#expected-date').calendar({
  * the calendar
  */
 $('#incentive-date').calendar({
-  type: 'date'
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**

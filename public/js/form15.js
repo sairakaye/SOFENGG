@@ -4,15 +4,15 @@
  * @ver 1.0
  * @author Sai Manalili
  */
-
-
+var today = new Date();
 /**
  * Initializes the Duration Start field.
  * @param {Object} settings - customizing the settings of
  * the calendar
  */
 $('#duration-start').calendar({
-  type: 'date'
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -21,7 +21,8 @@ $('#duration-start').calendar({
  * the calendar
  */
 $('#duration-end').calendar({
-  type: 'date'
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**
@@ -30,7 +31,8 @@ $('#duration-end').calendar({
  * the calendar
  */
 $('#incentive-date').calendar({
-  type: 'date'
+  type: 'date', 
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**

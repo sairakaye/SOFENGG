@@ -18,7 +18,7 @@ const urlencoder = bodyparser.urlencoded({
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
-
+   
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
