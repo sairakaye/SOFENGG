@@ -38,3 +38,23 @@ p{
 img.dlsulogoindex{
   cursor: default
 }
+
+.loggedout {
+  -webkit-animation: fadeinout 5s linear forwards;
+  animation: fadeinout 5s linear forwards;
+}
+
+.error {
+  -webkit-animation: fadeinout 5s linear forwards;
+  animation: fadeinout 5s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+100% { opacity: 0; }
+50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+100% { opacity: 0; }
+50% { opacity: 1; }
+}

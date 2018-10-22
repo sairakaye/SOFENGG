@@ -139,7 +139,9 @@ router.get("/home", function(req, res){
 router.get("/logout", function(req, res){
 	 console.log("GET /logout")
 
-	 res.render("index.hbs")
+	res.render("index.hbs", {
+		loggedout: "You have successfully logged out."
+	})	
 })
 
 module.exports = router

@@ -66,6 +66,12 @@
             <div class="ui red tiny message">{{error}}</div>
           </div>
         {{/if}}
+        <!-- If the user has logged out, an message prompt will show up -->
+        {{#if loggedout}}
+          <div class="loggedout">
+            <div class="ui green tiny message">{{loggedout}}</div>
+          </div>
+        {{/if}}
       </form>
     </div>
   </div>
