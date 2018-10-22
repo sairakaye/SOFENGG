@@ -10,7 +10,7 @@
 <html>
 
 <head>
-  <title>Request Grant</title>
+  <title>Request Grant - FD2</title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../css/main.css" type="text/css" rel="stylesheet" />
@@ -93,16 +93,15 @@
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
-              <form action="/faculty/submit-fd2" method="post" class="ui form" id="request-form"
-                autocomplete="off">
+              <form action="/faculty/submit-fd2" method="post" class="ui form" id="request-form" autocomplete="off">
                 <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" value="{{user.firstName}}"/>
+                    <input type="text" name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" value="{{user.lastName}}"/>
+                    <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
@@ -115,7 +114,7 @@
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}"/>
+                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
                       </div>
                     </div>
                   </div>
@@ -136,14 +135,14 @@
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Probationary"/>
+                        <input type="radio" name="status" checked="checked" value="Probationary" />
                         <label>Probationary</label>
                       </div>
                     </div>
                     {{else}}
                     <div class="two wide field">
                       <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Permanent"/>
+                        <input type="radio" name="status" checked="checked" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
@@ -152,7 +151,7 @@
                         <input type="radio" name="status" value="Probationary" />
                         <label>Probationary</label>
                       </div>
-                    </div>                    
+                    </div>
                     {{/facultystatus}}
                   </div>
                 </div>

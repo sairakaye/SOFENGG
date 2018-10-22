@@ -1,67 +1,68 @@
 <!-- 
-    This is the home page of the regular user or
-    the faculty.
-    October 15, 2018
-    @ver 1.0
-    @author Sai Manalili
+  This is the home page of the regular user or
+  the faculty.
+  October 15, 2018
+  @ver 1.0
+  @author Sai Manalili
 -->
 
 <!DOCTYPE html>
 <html>
-  <head>
-   <title>Home</title>
-   <!-- Always include these two css files when creating a new html file. -->
-      <link href="../semantic/semantic.css" type="text/css" rel="stylesheet"/>
-      <link href="../css/main.css" type="text/css" rel="stylesheet"/>
-   <!-- You can insert more CSS files below-->
-  </head>
 
-  <body>
-    <!-- This is the menu bar. -->
-    <div class="ui inverted huge borderless fixed fluid menu">
-      <a href="/home"class="header item">
-        <div class="ui mini image">
-          <img src="../images/dlsulogo.png"/>
-        </div>
-       <div class="brand-text">
-         Office of the Vice Chancellor <br/> for Academics
-       </div>
-      </a>
-      <div class="right menu">
-        <a class="item">
-          <i class="bell icon"></i>
-        </a>
+<head>
+  <title>Request Grant</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../images/dlsulogo.png" />
       </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
     </div>
+  </div>
 
-    <div class="ui grid">
-      <!-- This is the side menubar. -->
-      <div class="row">
-        <div class="column" id="sidebar">
-          <div class="ui secondary vertical fluid menu">
-            <div class="ui grid">
-              <!-- This is where the short overview of the profile is placed. -->
-              <div class="one column center aligned row">
-                <div class="column profile">
-                   <div class="ui small image circular bordered">
-                     <img src="../images/photo_template.jpg"/>
-                   </div>
-                   <div class="row">
-                     <div class="person-name stackable">
-                       <p>{{user.firstName}} {{user.lastName}}</p>
-                     </div>
-                     <div class="person-type stackable">
-                       {{user.userType}}
-                     </div>
-                     <div class="log-out">
-                       <a href="/logout" class="ui tiny button">
-                         Log Out
-                       </a>
-                     </div>
-                    </div>
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a href="/logout" class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
           <!-- These are the side menubar items. -->
           <a href="/faculty/request-grant" class="active item">
             Request Grant
@@ -71,45 +72,49 @@
             My Requests
             <i class="chevron right icon"></i>
           </a>
-         </div>
         </div>
-       
-       <!-- This is where you will put the content of the page. -->
-       <div class="column" id="content">
-         <div class="ui grid">
-           <div class="row">
-             <h1 class="ui huge header">
-                Request a Grant
-             </h1>
-            </div>
-            <div class="ui divider"></div>
+      </div>
 
-            <div class="row">
-              <a href="/faculty/fd-1"class="button ui fluid">[FD1] Incentive for Publication in Pre-Selected High Impact Journal</a>
-            </div>
-            <div class="row">
-              <a href="/faculty/fd-2" class="button ui fluid">[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</a>
-            </div>
-            <div class="row">
-              <a href="/faculty/fd-3" class="button ui fluid">[FD3] Support for Paper Presentations in Conferences</a>
-            </div>
-            <div class="row">
-              <a href="/faculty/fd-4" class="button ui fluid">[FD4] Support for Participation in Local Conferences</a>
-            </div>            
-            <div class="row">
-              <a href="/faculty/fd-15" class="button ui fluid">[FD15] Support for Local Trainings, Seminars and Workshops</a>
-            </div>
-            <div class="row">
-              <a href="/faculty/fd-16" class="button ui fluid">[FD16] Support for Membership in Professional Organizations</a>
-            </div>                                         
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              Request a Grant
+            </h1>
           </div>
-         </div>
+          <div class="ui divider"></div>
+
+          <div class="row">
+            <a href="/faculty/fd-1" class="button ui fluid">[FD1] Incentive for Publication in Pre-Selected High Impact
+              Journal</a>
+          </div>
+          <div class="row">
+            <a href="/faculty/fd-2" class="button ui fluid">[FD2] Incentive for Publication in Pre-Selected High Impact
+              Conferences</a>
+          </div>
+          <div class="row">
+            <a href="/faculty/fd-3" class="button ui fluid">[FD3] Support for Paper Presentations in Conferences</a>
+          </div>
+          <div class="row">
+            <a href="/faculty/fd-4" class="button ui fluid">[FD4] Support for Participation in Local Conferences</a>
+          </div>
+          <div class="row">
+            <a href="/faculty/fd-15" class="button ui fluid">[FD15] Support for Local Trainings, Seminars and Workshops</a>
+          </div>
+          <div class="row">
+            <a href="/faculty/fd-16" class="button ui fluid">[FD16] Support for Membership in Professional
+              Organizations</a>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
-  
-  <!-- Always include these two JS files when adding a new page -->
-    <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../semantic/semantic.js"></script>
-  <!-- You can insert more JS files below -->
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../semantic/semantic.js"></script>
+<!-- You can insert more JS files below -->
+
 </html>
