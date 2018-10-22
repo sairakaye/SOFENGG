@@ -91,6 +91,7 @@ $('.ui.checkbox').checkbox();
  * it will show the confirmation modal or not.
  */
 $("#confirm").click(function () {
+  check();
   var isValid = $('.form').form('validate form');
 
   if (isValid) {
@@ -104,8 +105,6 @@ $("#confirm").click(function () {
  * it scrolls and focuses to that field
  */
 function check(){
-
-  var items = [];
   var count = 0;
 
   $('.check').each(function (i, e) {

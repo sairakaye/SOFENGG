@@ -58,8 +58,10 @@ var userSchema = mongoose.Schema({
 
     status : String, // Probationary or Permanent
 
-    employmentType : String, // Part-Time or Full-Time
+    employmentType : String, // Part-time or Full-time
 
+    rank : String, 
+    
     dateHired : Date,
     
     fdOneForms : [fdOneSchema],  

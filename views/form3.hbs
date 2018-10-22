@@ -105,12 +105,12 @@
                     <input type="text" name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
-                <div class="fields">
-                  <div class="seven wide field disabled">
+                <div class="fields disabled">
+                  <div class="seven wide field">
                     <label>Department</label>
                     <input type="text" name="department" value="{{user.department}}" />
                   </div>
-                  <div class="four wide field disabled">
+                  <div class="four wide field">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
@@ -121,7 +121,7 @@
                   </div>
                   <div class="five wide field">
                     <label>Rank</label>
-                    <input type="text" name="rank" />
+                    <input type="text" name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
                 <div class="field">

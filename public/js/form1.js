@@ -11,7 +11,7 @@ var today = new Date();
  * the calendar
  */
 $('#date-hired').calendar({
-  type: 'date', 
+  type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 })
 
@@ -21,19 +21,19 @@ $('#date-hired').calendar({
  * the calendar
  */
 $('#submit-date').calendar({
-  type: 'date', 
-  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
-  onChange:function (date) {
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+  onChange: function (date) {
     var year = date.getFullYear();
-    var month = date.getMonth() ;
+    var month = date.getMonth();
     var day = date.getDate();
-    
+
     $('#accept-date').calendar({
       type: 'date',
-      minDate: new Date(year, month, day), 
+      minDate: new Date(year, month, day),
       maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
     });
-   }
+  }
 });
 
 /**
@@ -53,7 +53,7 @@ $('#accept-date').calendar({
  * the calendar
  */
 $('#conference-date').calendar({
-  type: 'date', 
+  type: 'date',
   minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -63,9 +63,9 @@ $('#conference-date').calendar({
  * the calendar
  */
 $('#departure-date').calendar({
-  type: 'date', 
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
-  onChange:function (date) {
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+  onChange: function (date) {
     var year = date.getFullYear();
     var month = date.getMonth();
     var day = date.getDate();
@@ -73,12 +73,12 @@ $('#departure-date').calendar({
     $('#return-date').calendar({
       type: 'date',
       minDate: new Date(year, month, day)
-    });    
+    });
     $('#expected-date').calendar({
       type: 'date',
       minDate: new Date(year, month, day)
     });
-   }
+  }
 });
 
 /**
@@ -87,7 +87,7 @@ $('#departure-date').calendar({
  * the calendar
  */
 $('#return-date').calendar({
-  type: 'date', 
+  type: 'date',
   minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -108,7 +108,7 @@ $('#expected-date').calendar({
  * the calendar
  */
 $('#incentive-date').calendar({
-  type: 'date', 
+  type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -123,31 +123,29 @@ $('.ui.checkbox').checkbox();
  * it will show the confirmation modal or not.
  */
 $("#confirm").click(function () {
-    check();
+  check();
 
-    var isValid = $('.form').form('validate form');
+  var isValid = $('.form').form('validate form');
 
-    if (isValid) {
-      $('.ui.modal')
-        .modal('show');
-    }
+  if (isValid) {
+    $('.ui.modal')
+      .modal('show');
+  }
 })
 
 /**
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
  */
-function check(){
-
-  var items = [];
+function check() {
   var count = 0;
 
   $('.check').each(function (i, e) {
-    if (count == 0){
-      var name = ($(e).attr("name")) 
-      var val = $("#" + name).val(); 
-      
-      if (val == "" || val == null){
+    if (count == 0) {
+      var name = ($(e).attr("name"))
+      var val = $("#" + name).val();
+
+      if (val == "" || val == null) {
         count = 1
         $("#" + name).focus();
 
