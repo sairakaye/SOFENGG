@@ -22,7 +22,18 @@ $('#date-hired').calendar({
  */
 $('#submit-date').calendar({
   type: 'date', 
-  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  onChange:function (date) {
+    var year = date.getFullYear();
+    var month = date.getMonth() ;
+    var day = date.getDate();
+    
+    $('#accept-date').calendar({
+      type: 'date',
+      minDate: new Date(year, month, day), 
+      maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+    });
+   }
 });
 
 /**
@@ -33,6 +44,7 @@ $('#submit-date').calendar({
 $('#accept-date').calendar({
   type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+
 });
 
 /**
@@ -52,7 +64,21 @@ $('#conference-date').calendar({
  */
 $('#departure-date').calendar({
   type: 'date', 
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  onChange:function (date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+
+    $('#return-date').calendar({
+      type: 'date',
+      minDate: new Date(year, month, day)
+    });    
+    $('#expected-date').calendar({
+      type: 'date',
+      minDate: new Date(year, month, day)
+    });
+   }
 });
 
 /**
