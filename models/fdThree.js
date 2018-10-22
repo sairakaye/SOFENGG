@@ -39,15 +39,7 @@ var fdThreeSchema = mongoose.Schema({
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
     travelAndConferenceSubsidy : Number, //MONEY
-    dateIncentiveLastAvailed : Date,
-    //CHECK BOX
-    applicationLetter : Boolean,
-    copyOfAbstract : Boolean,
-    proofOfConference : Boolean,
-    proofofPaperAcceptance : Boolean,
-    callForPapersOfConference : Boolean,
-    copyOfInvitation : Boolean,
-    updatedFacultyWebpage : Boolean
+    dateIncentiveLastAvailed : Date
 })
 
 var fdThree = mongoose.model("fdThree", fdThreeSchema)

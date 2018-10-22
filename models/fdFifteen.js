@@ -33,9 +33,6 @@ var fdFifteenSchema = mongoose.Schema({
     endTime : Date,
     dateIncentiveLastAvailed : Date,
     participantFee : String, //MONEY
-    //CHECK BOX
-    applicationLetter : Boolean,
-    copyOfAcceptance : Boolean
 })
 
 var fdFifteen = mongoose.model("fdFifteen", fdFifteenSchema)

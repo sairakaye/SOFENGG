@@ -36,15 +36,7 @@ var fdTwoSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    dateIncentiveLastAvailed : Date,
-    //CHECK BOX
-    applicationLetter : Boolean,
-    copyOfJournal : Boolean,
-    proofOfAcceptance : Boolean,
-    proofofPaperAcceptance : Boolean,
-    callForPapersOfConference : Boolean,
-    copyOfInvitation : Boolean,
-    updatedFacultyWebpage : Boolean
+    dateIncentiveLastAvailed : Date
 })
 
 var fdTwo = mongoose.model("fdTwo", fdTwoSchema)

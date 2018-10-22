@@ -34,11 +34,7 @@ var fdFourSchema = mongoose.Schema({
     dateOfReturnToWork : Date,
     participantFee : String, //MONEY
     noOfLocalConferencesAttendedThisYear : Number,
-    dateIncentiveLastAvailed : Date,
-    //CHECK BOX
-    applicationLetter : Boolean,
-    programOfConference : Boolean,
-    copyOfInvitation : Boolean
+    dateIncentiveLastAvailed : Date
 })
 
 var fdFour = mongoose.model("fdFour", fdFourSchema)

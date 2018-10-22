@@ -89,50 +89,6 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
 
-  // Checkboxes
-  var applicationLetter = req.body.applicationLetter
-  var copyOfJournal = req.body.copyOfJournal
-  var proofOfAcceptance = req.body.proofOfAcceptance
-  var proofOfPaperAcceptance = req.body.proofOfPaperAcceptance
-  var copyOfInvitation = req.body.copyOfInvitation
-  var updatedFacultyWebpage = req.body.updatedFacultyWebpage
-  var callForPapersOfConference = req.body.callForPapersOfConference
-
-  if (applicationLetter != null)
-    applicationLetter = true;
-  else
-    applicationLetter = false;
-
-  if (copyOfJournal != null)
-    copyOfJournal = true;
-  else
-    copyOfJournal = false;
-  
-  if (proofOfAcceptance != null)
-    proofOfAcceptance = true;
-  else
-    proofOfAcceptance = false;
-
-  if (proofOfPaperAcceptance != null)
-    proofOfPaperAcceptance = true;
-  else
-    proofOfPaperAcceptance = false;
-
-  if (copyOfInvitation != null)
-    copyOfInvitation = true;
-  else
-    copyOfInvitation = false;
-
-  if (updatedFacultyWebpage != null)
-    updatedFacultyWebpage = true;
-  else
-    updatedFacultyWebpage = false;
-
-  if (callForPapersOfConference != null)
-    callForPapersOfConference = true;
-  else
-    callForPapersOfConference = false;
-  
   var fdOneData = {
     grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
@@ -140,8 +96,7 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
     dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, applicationLetter, copyOfJournal, proofOfAcceptance, proofOfPaperAcceptance,
-    copyOfInvitation, updatedFacultyWebpage, callForPapersOfConference, grantStatus
+    dateIncentiveLastAvailed, grantStatus
   }
 
   fdOne.create(fdOneData).then((newFdOneData)=> {
@@ -200,44 +155,6 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
-
-  // Checkboxes
-  var applicationLetter = req.body.applicationLetter
-  var callForPapersOfConference = req.body.callForPapersOfConference
-  var copyOfConferencePaper = req.body.copyOfConferencePaper
-  var proofOfAcceptance = req.body.proofOfAcceptance
-  var copyOfInvitation = req.body.copyOfInvitation
-  var updatedFacultyWebpage = req.body.updatedFacultyWebpage
-
-  if (applicationLetter != null)
-    applicationLetter = true;
-  else
-    applicationLetter = false;
-
-  if (copyOfConferencePaper != null)
-    copyOfConferencePaper = true;
-  else
-    copyOfConferencePaper = false;
-  
-  if (proofOfAcceptance != null)
-    proofOfAcceptance = true;
-  else
-    proofOfAcceptance = false;
-
-  if (copyOfInvitation != null)
-    copyOfInvitation = true;
-  else
-    copyOfInvitation = false;
-
-  if (updatedFacultyWebpage != null)
-    updatedFacultyWebpage = true;
-  else
-    updatedFacultyWebpage = false;
-
-  if (callForPapersOfConference != null)
-    callForPapersOfConference = true;
-  else
-    callForPapersOfConference = false;
   
   var fdTwoData = {
     grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
@@ -245,8 +162,7 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, applicationLetter, copyOfConferencePaper, proofOfAcceptance,
-    copyOfInvitation, updatedFacultyWebpage, callForPapersOfConference, grantStatus
+    dateIncentiveLastAvailed, grantStatus
   }
 
   fdTwo.create(fdTwoData).then((newFdTwoData)=> {
@@ -309,50 +225,6 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
-
-  // Checkboxes
-  var applicationLetter = req.body.applicationLetter
-  var copyOfJournal = req.body.copyOfJournal
-  var proofOfAcceptance = req.body.proofOfAcceptance
-  var proofOfPaperAcceptance = req.body.proofOfPaperAcceptance
-  var copyOfInvitation = req.body.copyOfInvitation
-  var updatedFacultyWebpage = req.body.updatedFacultyWebpage
-  var callForPapersOfConference = req.body.callForPapersOfConference
-
-  if (applicationLetter != null)
-    applicationLetter = true;
-  else
-    applicationLetter = false;
-
-  if (copyOfJournal != null)
-    copyOfJournal = true;
-  else
-    copyOfJournal = false;
-  
-  if (proofOfAcceptance != null)
-    proofOfAcceptance = true;
-  else
-    proofOfAcceptance = false;
-
-  if (proofOfPaperAcceptance != null)
-    proofOfPaperAcceptance = true;
-  else
-    proofOfPaperAcceptance = false;
-
-  if (copyOfInvitation != null)
-    copyOfInvitation = true;
-  else
-    copyOfInvitation = false;
-
-  if (updatedFacultyWebpage != null)
-    updatedFacultyWebpage = true;
-  else
-    updatedFacultyWebpage = false;
-
-  if (callForPapersOfConference != null)
-    callForPapersOfConference = true;
-  else
-    callForPapersOfConference = false;
   
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
@@ -361,8 +233,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
     dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, applicationLetter, copyOfJournal, proofOfAcceptance, proofOfPaperAcceptance,
-    copyOfInvitation, updatedFacultyWebpage, callForPapersOfConference, grantStatus
+    dateIncentiveLastAvailed, grantStatus
   }
 
   fdThree.create(fdThreeData).then((newFdThreeData)=> {
@@ -421,33 +292,13 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
 
-  // Checkboxes
-  var applicationLetter = req.body.applicationLetter
-  var programOfConference = req.body.programOfConference
-  var copyOfInvitation = req.body.copyOfInvitation
-
-  if (applicationLetter != null)
-    applicationLetter = true;
-  else
-    applicationLetter = false;
-
-  if (programOfConference != null)
-    programOfConference = true;
-  else
-    programOfConference = false;
-
-  if (copyOfInvitation != null)
-    copyOfInvitation = true;
-  else
-    copyOfInvitation = false;
-
   var fdFourData = {
     grantName: "[FD4] Support for Participation in Local Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear, 
-    applicationLetter, programOfConference, copyOfInvitation, grantStatus
+    grantStatus
   }
 
   fdFour.create(fdFourData).then((newFdFourData)=> {
@@ -503,26 +354,12 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
   var participantFee = req.body.participantFee
   var grantStatus = "Pending"
 
-  // Checkboxes
-  var applicationLetter = req.body.applicationLetter
-  var copyOfAcceptance = req.body.copyOfAcceptance
-
-  if (applicationLetter != null)
-    applicationLetter = true;
-  else
-    applicationLetter = false;
-
-  if (copyOfAcceptance != null)
-    copyOfAcceptance = true;
-  else
-    copyOfAcceptance = false;
-  
   var fdFifteenData = {
     grantName: "[FD15] Incentive for Publication in Pre-Selected High Impact Journal",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed, 
-    participantFee, applicationLetter, copyOfAcceptance, grantStatus
+    participantFee, grantStatus
   }
 
   fdFifteen.create(fdFifteenData).then((newFdFifteenData)=> {
@@ -579,54 +416,12 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
 
-  // Checkboxes
-  var membershipFormForOrganizationForAnnual = 
-    req.body.membershipFormForOrganizationForAnnual
-  var membershipFormForOrganizationForLifetime = 
-    req.body.membershipFormForOrganizationForLifetime
-  var printoutsOfOrganizationForAnnual = 
-    req.body.printoutsOfOrganizationForAnnual
-  var printoutsOfOrganizationForLifetime = 
-    req.body.printoutsOfOrganizationForLifetime
-  var copyOfOrganizationAnnualConferenceAndMeetingProgram 
-    = req.body.copyOfOrganizationAnnualConferenceAndMeetingProgram
-
-  if (membershipFormForOrganizationForAnnual != null)
-    membershipFormForOrganizationForAnnual = true;
-  else
-    membershipFormForOrganizationForAnnual = false;
-
-  if (membershipFormForOrganizationForLifetime != null)
-    membershipFormForOrganizationForLifetime = true;
-  else
-    membershipFormForOrganizationForLifetime = false;
-  
-  if (printoutsOfOrganizationForAnnual != null)
-    printoutsOfOrganizationForAnnual = true;
-  else
-    printoutsOfOrganizationForAnnual = false;
-
-  if (printoutsOfOrganizationForLifetime != null)
-    printoutsOfOrganizationForLifetime = true;
-  else
-    printoutsOfOrganizationForLifetime = false;
-
-  if (copyOfOrganizationAnnualConferenceAndMeetingProgram 
-      != null)
-    copyOfOrganizationAnnualConferenceAndMeetingProgram = true;
-  else
-    copyOfOrganizationAnnualConferenceAndMeetingProgram = false;
-
   var fdSixteenData = {
     grantName: "[FD16] Support for Membership in Professional Organizations",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, membershipFee, checkPayableTo, membershipFormForOrganizationForAnnual,
-    membershipFormForOrganizationForLifetime, printoutsOfOrganizationForAnnual,
-    printoutsOfOrganizationForLifetime, 
-    copyOfOrganizationAnnualConferenceAndMeetingProgram,
-    grantStatus
+    coverage, membershipFee, checkPayableTo, grantStatus
   }
 
   fdSixteen.create(fdSixteenData).then((newFdSixteenData)=> {

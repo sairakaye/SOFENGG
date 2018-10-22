@@ -35,13 +35,6 @@ var fdSixteenSchema = mongoose.Schema({
     membershipFee : Number,
     checkPayableTo : String,
     participantFee : Number, //MONEY
-    //CHECK BOX
-    membershipFormForOrganizationForAnnual : Boolean,
-    printoutsOfOrganizationForAnnual : Boolean,
-    membershipFormForOrganizationForLifetime : Boolean,
-    printoutsOfOrganizationForLifetime : Boolean,
-    copyOfOrganizationAnnualConferenceAndMeetingProgram : Boolean,
-    certificationFromTheProfessionalOrganization : Boolean
 })
 
 var fdSixteen = mongoose.model("fdSixteen", fdSixteenSchema)
