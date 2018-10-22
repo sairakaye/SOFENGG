@@ -65,7 +65,7 @@ router.get("/fd-1", function(req, res){
  * @param {Response} res
  */
 router.post("/submit-fd1", urlencoder, function(req,res) {
-  console.log("POST /submit")
+  console.log("POST /submit-fd1")
   
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -381,7 +381,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
 })
 
 /**
- * Leads to the page of FD1 form.
+ * Leads to the page of FD4 form.
  *
  * @param {Request} req
  * @param {Response} res
@@ -395,7 +395,7 @@ router.get("/fd-4", function(req, res){
 })
 
 /**
- * Adds to the database the entered information for FD1
+ * Adds to the database the entered information for FD4
  * form and sets grant status to pending for admin approval
  *
  * @param {Request} req
@@ -480,7 +480,7 @@ router.get("/fd-15", function(req, res){
 })
 
 /**
- * Adds to the database the entered information for FD1
+ * Adds to the database the entered information for FD15
  * form and sets grant status to pending for admin approval
  *
  * @param {Request} req
@@ -541,7 +541,7 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
 })
 
 /**
- * Leads to the page of FD1 form.
+ * Leads to the page of FD16 form.
  *
  * @param {Request} req
  * @param {Response} res
@@ -555,7 +555,7 @@ router.get("/fd-16", function(req, res){
 })
 
 /**
- * Adds to the database the entered information for FD1
+ * Adds to the database the entered information for FD16
  * form and sets grant status to pending for admin approval
  *
  * @param {Request} req
@@ -689,6 +689,15 @@ hbs.registerHelper('showonlybyuser', function(fname, lname, options) {
   }
 })
 
+/**
+ * Compares the faculty status from the .hbs files that
+ * is retrieved from the database.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+
 hbs.registerHelper('facultystatus', function(status, options) { 
   if(status == "Probationary") {
     return options.fn(this);
@@ -697,6 +706,14 @@ hbs.registerHelper('facultystatus', function(status, options) {
   }
 })
 
+/**
+ * Compares the employment type (status) from the 
+ * .hbs files that is retrieved from the database.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
 hbs.registerHelper('employment', function(status, options) { 
   if(status == "Part-time") {
     return options.fn(this);
