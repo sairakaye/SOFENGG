@@ -88,8 +88,12 @@
                 <i class="filter icon"></i>
                 <input type="hidden" name="gender">
                 <i class="dropdown icon"></i>
+                {{#if filter}}
+                <div class="default text">{{filter}}</div>
+                    {{else}}
                 <div class="default text">Status</div>
-                <div class="menu">
+                {{/if}}
+                 <div class="menu">
                   <div class="item" data-value="Approved" onclick="document.location.href = '/admin/filterApproved'">Approved</div>
                   <div class="item" data-value="Pending" onclick="document.location.href = '/admin/filterPending'">Pending</div>
                   <div class="item" data-value="Rejected" onclick="document.location.href = '/admin/filterRejected'">Rejected</div>

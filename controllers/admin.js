@@ -52,9 +52,10 @@ router.get("/filterApproved", function(req, res){
     console.log("GET /filterApproved")
 
     var user = controllerUser.getCurrentUser() 
-    var forms = filterAllForms('Approved', function(forms){
+    var filter = 'Approved'
+    var forms = filterAllForms(filter, function(forms){
         res.render("view-grants.hbs", {
-            user, forms
+            user, forms, filter
         })
     })
 })
@@ -64,9 +65,10 @@ router.get("/filterPending", function(req, res){
   console.log("GET /filterPending")
 
   var user = controllerUser.getCurrentUser() 
-  var forms = filterAllForms('Pending', function(forms){
+  var filter = 'Pending'
+  var forms = filterAllForms(filter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms
+          user, forms, filter
       })
   })
 })
@@ -75,9 +77,10 @@ router.get("/filterRejected", function(req, res){
   console.log("GET /filterRejected")
 
   var user = controllerUser.getCurrentUser() 
-  var forms = filterAllForms('Rejected', function(forms){
+  var filter = 'Rejected'
+  var forms = filterAllForms(filter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms
+          user, forms, filter
       })
   })
 })
@@ -294,5 +297,4 @@ function filterAllForms(status, callback){
             })
         })
     })
-    return forms;
 } 
