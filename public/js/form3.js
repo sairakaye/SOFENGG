@@ -130,7 +130,7 @@ $("#confirm").click(function () {
   var isValid = $('.form').form('validate form');
 
   if (isValid) {
-    $('.ui.modal')
+    $('.ui.modal.submit')
       .modal('show');
   }
 })
@@ -289,13 +289,3 @@ $('#request-form')
         }
       }
     });
-
-    $("div.log-out").click(function () {
-
-      $('.ui.modal.logout')
-      .modal('show');
-  
-      $(".positive.logout").click(function(){
-          window.location = "/logout";
-      })
-    })
