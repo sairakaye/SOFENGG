@@ -89,7 +89,7 @@
                         <input type="hidden" name="gender">
                         <i class="dropdown icon"></i>
                         {{#if filter}}
-                        <div class="default text">{{filter}}</div>
+                        <div class="default text">{{statusFilter}}</div>
                         {{else}}
                         <div class="default text">Status</div>
                         {{/if}}
@@ -107,7 +107,7 @@
                         <input type="hidden" name="gender">
                         <i class="dropdown icon"></i>
                         {{#if filter}}
-                        <div class="default text">{{filter}}</div>
+                        <div class="default text">{{departmentFilter}}</div>
                         {{else}}
                         <div class="default text">Department</div>
                         {{/if}}
@@ -120,6 +120,27 @@
                             <div class="item" data-value="COE" onclick="document.location.href = '/admin/filterCOE'">College of Engineering</div>
                             <div class="item" data-value="COB" onclick="document.location.href = '/admin/filterCOB'">College of Business</div>
                             <div class="item" data-value="SOE" onclick="document.location.href = '/admin/filterSOE'">School of Economics</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="three wide column">
+                    <div id = "status" class="ui selection dropdown fluid">                  
+                        <i class="filter icon"></i>
+                        <input type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        {{#if filter}}
+                        <div class="default text">{{formFilter}}</div>
+                        {{else}}
+                        <div class="default text">Forms</div>
+                        {{/if}}
+                        <div class="menu">
+                            <div class="item" data-value="FD1" onclick="document.location.href = '/admin/filterFD1'">[FD1] Incentive for Publication in Pre-Selected High Impact Journal</div>
+                            <div class="item" data-value="FD2" onclick="document.location.href = '/admin/filterFD2'">[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</div>
+                            <div class="item" data-value="FD3" onclick="document.location.href = '/admin/filterFD3'">[FD3] Support for Paper Presentations in Conferences</div>
+                            <div class="item" data-value="FD4" onclick="document.location.href = '/admin/filterFD3'">[FD4] Support for Participation in Local Conferences</div>
+                            <div class="item" data-value="FD15" onclick="document.location.href = '/admin/filterFD15'">[FD15] Incentive for Publication in Pre-Selected High Impact Journal</div>
+                            <div class="item" data-value="FD16" onclick="document.location.href = '/admin/filterFD16'">[FD16] Support for Membership in Professional Organizations</div>
                         </div>
                     </div>
                 </div>

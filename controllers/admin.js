@@ -52,10 +52,10 @@ router.get("/filterApproved", function(req, res){
     console.log("GET /filterApproved")
 
     var user = controllerUser.getCurrentUser() 
-    var filter = 'Approved'
-    var forms = filterAllFormsByStatus(filter, function(forms){
+    var statusFilter = 'Approved'
+    var forms = filterAllFormsByStatus(statusFilter, function(forms){
         res.render("view-grants.hbs", {
-            user, forms, filter
+            user, forms, statusFilter
         })
     })
 })
@@ -65,10 +65,10 @@ router.get("/filterPending", function(req, res){
   console.log("GET /filterPending")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'Pending'
-  var forms = filterAllFormsByStatus(filter, function(forms){
+  var statusFilter = 'Pending'
+  var forms = filterAllFormsByStatus(statusFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, statusFilter
       })
   })
 })
@@ -77,106 +77,184 @@ router.get("/filterRejected", function(req, res){
   console.log("GET /filterRejected")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'Rejected'
-  var forms = filterAllFormsByStatus(filter, function(forms){
+  var statusFilter = 'Rejected'
+  var forms = filterAllFormsByStatus(statusFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, statusFilter
       })
   })
 })
 
 router.get("/filterCED", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCED")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Education'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Education'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCCS", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCCS")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Computer Studies'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Computer Studies'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCOL", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCOL")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Law'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Law'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCLA", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCLA")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Liberal Arts'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Liberal Arts'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCOS", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCOS")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Science'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Science'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCOE", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCOE")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Engineering'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Engineering'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterCOB", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterCOB")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'College of Business'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'College of Business'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
       })
   })
 })
 
 router.get("/filterSOE", function(req, res){
-  console.log("GET /filterRejected")
+  console.log("GET /filterSOE")
 
   var user = controllerUser.getCurrentUser() 
-  var filter = 'School of Economics'
-  var forms = filterAllFormsByDepartment(filter, function(forms){
+  var departmentFilter = 'School of Economics'
+  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
-          user, forms, filter
+          user, forms, departmentFilter
+      })
+  })
+})
+
+router.get("/filterFD1", function(req, res){
+  console.log("GET /filterFD1")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD1'
+  
+  fdOne.getAllFDOne().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
+      })
+  })
+})
+
+router.get("/filterFD2", function(req, res){
+  console.log("GET /filterFD2")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD2'
+  
+  fdTwo.getAllFDTwo().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
+      })
+  })
+})
+
+router.get("/filterFD3", function(req, res){
+  console.log("GET /filterFD3")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD3'
+  
+  fdThree.getAllFDThree().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
+      })
+  })
+})
+
+router.get("/filterFD4", function(req, res){
+  console.log("GET /filterFD4")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD4'
+  
+  fdFour.getAllFDFour().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
+      })
+  })
+})
+
+router.get("/filterFD15", function(req, res){
+  console.log("GET /filterFD15")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD15'
+  
+  fdFifteen.getAllFDFifteen().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
+      })
+  })
+})
+
+router.get("/filterFD16", function(req, res){
+  console.log("GET /filterFD16")
+
+  var user = controllerUser.getCurrentUser() 
+  var formFilter = 'FD16'
+  
+  fdSixteen.getAllFDSixteen().then((forms)=>{
+      res.render("view-grants.hbs", {
+          user, forms, formFilter
       })
   })
 })
