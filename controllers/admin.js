@@ -39,19 +39,18 @@ var forms
 router.get("/view-grants", function(req, res, callback){
     console.log("GET /view-grants")
     
-    var user = controllerUser.getCurrentUser() 
+    var user = req.session.user
     forms = getAllForms(function(forms){
         res.render("view-grants.hbs", {
             user, forms
         })
     })
-
 })
 
 router.get("/filterApproved", function(req, res){
     console.log("GET /filterApproved")
 
-    var user = controllerUser.getCurrentUser() 
+    var user = req.session.user
     var statusFilter = 'Approved'
     var forms = filterAllFormsByStatus(statusFilter, function(forms){
         res.render("view-grants.hbs", {
@@ -64,7 +63,7 @@ router.get("/filterApproved", function(req, res){
 router.get("/filterPending", function(req, res){
   console.log("GET /filterPending")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var statusFilter = 'Pending'
   var forms = filterAllFormsByStatus(statusFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -76,7 +75,7 @@ router.get("/filterPending", function(req, res){
 router.get("/filterRejected", function(req, res){
   console.log("GET /filterRejected")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var statusFilter = 'Rejected'
   var forms = filterAllFormsByStatus(statusFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -88,7 +87,7 @@ router.get("/filterRejected", function(req, res){
 router.get("/filterCED", function(req, res){
   console.log("GET /filterCED")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Education'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -100,7 +99,7 @@ router.get("/filterCED", function(req, res){
 router.get("/filterCCS", function(req, res){
   console.log("GET /filterCCS")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Computer Studies'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -112,7 +111,7 @@ router.get("/filterCCS", function(req, res){
 router.get("/filterCOL", function(req, res){
   console.log("GET /filterCOL")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Law'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -124,7 +123,7 @@ router.get("/filterCOL", function(req, res){
 router.get("/filterCLA", function(req, res){
   console.log("GET /filterCLA")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Liberal Arts'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -136,7 +135,7 @@ router.get("/filterCLA", function(req, res){
 router.get("/filterCOS", function(req, res){
   console.log("GET /filterCOS")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Science'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -148,7 +147,7 @@ router.get("/filterCOS", function(req, res){
 router.get("/filterCOE", function(req, res){
   console.log("GET /filterCOE")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Engineering'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -160,7 +159,7 @@ router.get("/filterCOE", function(req, res){
 router.get("/filterCOB", function(req, res){
   console.log("GET /filterCOB")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'College of Business'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -172,7 +171,7 @@ router.get("/filterCOB", function(req, res){
 router.get("/filterSOE", function(req, res){
   console.log("GET /filterSOE")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var departmentFilter = 'School of Economics'
   var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
       res.render("view-grants.hbs", {
@@ -184,7 +183,7 @@ router.get("/filterSOE", function(req, res){
 router.get("/filterFD1", function(req, res){
   console.log("GET /filterFD1")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var formFilter = 'FD1'
   
   fdOne.getAllFDOne().then((forms)=>{
@@ -197,7 +196,7 @@ router.get("/filterFD1", function(req, res){
 router.get("/filterFD2", function(req, res){
   console.log("GET /filterFD2")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user 
   var formFilter = 'FD2'
   
   fdTwo.getAllFDTwo().then((forms)=>{
@@ -210,7 +209,7 @@ router.get("/filterFD2", function(req, res){
 router.get("/filterFD3", function(req, res){
   console.log("GET /filterFD3")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var formFilter = 'FD3'
   
   fdThree.getAllFDThree().then((forms)=>{
@@ -223,7 +222,7 @@ router.get("/filterFD3", function(req, res){
 router.get("/filterFD4", function(req, res){
   console.log("GET /filterFD4")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var formFilter = 'FD4'
   
   fdFour.getAllFDFour().then((forms)=>{
@@ -236,7 +235,7 @@ router.get("/filterFD4", function(req, res){
 router.get("/filterFD15", function(req, res){
   console.log("GET /filterFD15")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var formFilter = 'FD15'
   
   fdFifteen.getAllFDFifteen().then((forms)=>{
@@ -249,7 +248,7 @@ router.get("/filterFD15", function(req, res){
 router.get("/filterFD16", function(req, res){
   console.log("GET /filterFD16")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   var formFilter = 'FD16'
   
   fdSixteen.getAllFDSixteen().then((forms)=>{
@@ -279,10 +278,9 @@ router.post("/searchName", function(req, res){
 
     console.log(firstName)
     console.log(lastName)
-    var user = controllerUser.getCurrentUser() 
     
     if(firstName != "" && lastName != ""){ 
-        var forms = filterAllFormsByLastName(firstName, lastName, function(forms){
+        var forms = filterAllFormsByFullName(firstName, lastName, function(forms){
             if(forms != null){
                 res.render("view-grants.hbs", {
                     user, forms
@@ -331,7 +329,10 @@ router.post("/searchName", function(req, res){
                 })
             }
         })
+        
     }
+    
+    
 })
 
 /**
@@ -557,7 +558,7 @@ function filterAllFormsByLastName(lastName, callback){
  * @param {Filter} fullName
  * @param {Callback function} callback
  */
-function filterAllFormsByLastName(firstName, lastName, callback){
+function filterAllFormsByFullName(firstName, lastName, callback){
     
     User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
         forms = fdOneData

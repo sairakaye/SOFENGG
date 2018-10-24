@@ -12,8 +12,8 @@
       <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet"/>
       <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
    <!-- You can insert more CSS files below-->
-  </head>
 
+  </head>
   <body>
     <!-- This is the menu bar. -->
     <div class="ui inverted huge borderless fixed fluid menu">
@@ -144,13 +144,13 @@
                         </div>
                     </div>
                 </div>
-                          
+      
             <div class="three wide column">
               <div class="ui action input fluid">
                <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
                 <input type="text"  name = "firstNameSearch" placeholder="First Name">
-                   <input type="text"  name = "lastNameSearch" placeholder="Last Name">
-                   {{#if error}}
+                <input type="text"  name = "lastNameSearch" placeholder="Last Name">
+                {{#if error}}
                   <div class="error">
                     <div class="ui red tiny message">{{error}}</div>
                   </div>
@@ -158,9 +158,9 @@
                 <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
                 </form>
               </div>
-            </div>
-            
-          </div>
+            </div>    
+        </div>
+        
           <div class="row">
             <table class="ui single line selectable table tablet stackable">
               <thead>

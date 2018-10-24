@@ -11,6 +11,7 @@
  */
 const express = require("express")
 const bodyparser = require("body-parser")
+const session = require("express-session")
 const hbs = require("hbs")
 const mongoose = require("mongoose")
 
@@ -29,6 +30,13 @@ mongoose.connect("mongodb://localhost:27017/VCA-Database",{
 app.set("view engine", "hbs")
 app.use(express.static(__dirname))
 app.use(express.static(__dirname + "/public"))
+
+app.use(session({
+    secret : "secret",
+    name : "secretname",
+    resave: true,
+    saveUninitialized :true,
+  }))
 
 app.use(require("./controllers"))
 

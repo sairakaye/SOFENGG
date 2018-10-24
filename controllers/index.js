@@ -90,6 +90,7 @@ router.post("/home", (req, res)=>{
 		User.authenticatePassword(user).then((user)=>{
 			if(user){
 				currentUser = user
+				req.session.user = user
 				console.log("User Found")
 				if(user.userType == "Administrator")
 					res.render("home-admin.hbs", {
@@ -119,7 +120,7 @@ router.post("/home", (req, res)=>{
 router.get("/home", function(req, res){
 	console.log("GET /home")
 
-	user = currentUser
+	user = req.session.user
 	if(user.userType == "Administrator")
 		res.render("home-admin.hbs", {
 			user
@@ -138,8 +139,16 @@ router.get("/home", function(req, res){
  * @param {Response} res
  */
 router.get("/logout", function(req, res){
-	 console.log("GET /logout")
+	console.log("GET /logout")
 
+	if (req.session) {
+		req.session.destroy((err) => {      
+			if (err) {
+				console.log(err)
+			} 
+		})
+	}
+		
 	res.render("index.hbs", {
 		loggedout: "You have successfully logged out."
 	})	

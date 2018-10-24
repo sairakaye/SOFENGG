@@ -38,7 +38,7 @@ var forms
 router.get("/request-grant", function(req, res){
   console.log("GET /request-grant")
   
-	var user = controllerUser.getCurrentUser() 
+    var user = req.session.user
 	res.render("request-grant.hbs", {
 		user
 	})
@@ -51,8 +51,9 @@ router.get("/request-grant", function(req, res){
  * @param {Response} res
  */
 router.get("/fd-1", function(req, res){
-	console.log("GET /fd-1")
-	var user = controllerUser.getCurrentUser()
+    console.log("GET /fd-1")
+    
+    var user = req.session.user
 	res.render("form1", {
 		  user
 	})
@@ -102,7 +103,7 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   fdOne.create(fdOneData).then((newFdOneData)=> {
       
       User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+          var user = req.session.user
           res.render("success.hbs", {
               user, formName : "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
           })
@@ -123,7 +124,7 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
  */
 router.get("/fd-2", function(req, res){
 	console.log("GET /fd-2")
-	var user = controllerUser.getCurrentUser()
+    var user = req.session.user
 	res.render("form2", {
 		  user
 	})
@@ -168,7 +169,7 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
   fdTwo.create(fdTwoData).then((newFdTwoData)=> {
       
       User.addFDTwoInUser(newFdTwoData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+          var user = req.session.user     
           res.render("success.hbs", {
               user, formName : "Incentive for Publication in Pre-Selected High Impact Conferences"
           })
@@ -189,7 +190,7 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
  */
 router.get("/fd-3", function(req, res){
 	console.log("GET /fd-3")
-	var user = controllerUser.getCurrentUser()
+    var user = req.session.user
 	res.render("form3", {
 		  user
 	})
@@ -239,7 +240,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   fdThree.create(fdThreeData).then((newFdThreeData)=> {
       
       User.addFDThreeInUser(newFdThreeData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+        var user = req.session.user 
           res.render("success.hbs", {
               user, formName : "[FD3] Support for Paper Presentations in Conferences"
           })
@@ -260,7 +261,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
  */
 router.get("/fd-4", function(req, res){
 	console.log("GET /fd-4")
-	var user = controllerUser.getCurrentUser()
+    var user = req.session.user
 	res.render("form4", {
 		  user
 	})
@@ -304,7 +305,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   fdFour.create(fdFourData).then((newFdFourData)=> {
       
       User.addFDFourInUser(newFdFourData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+        var user = req.session.user
           res.render("success.hbs", {
               user, formName : "[FD4] Support for Participation in Local Conferences"
           })
@@ -325,7 +326,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
  */
 router.get("/fd-15", function(req, res){
 	console.log("GET /fd-15")
-	var user = controllerUser.getCurrentUser()
+    var user = req.session.user
 	res.render("form15", {
 		  user
 	})
@@ -365,7 +366,7 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
   fdFifteen.create(fdFifteenData).then((newFdFifteenData)=> {
       
       User.addFDFifteenInUser(newFdFifteenData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+        var user = req.session.user
           res.render("success.hbs", {
               user, formName : "[FD15] Support for Local Trainings, Seminars and Workshops"
           })
@@ -386,7 +387,7 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
  */
 router.get("/fd-16", function(req, res){
 	console.log("GET /fd-16")
-	var user = controllerUser.getCurrentUser()
+    var user = req.session.user
 	res.render("form16", {
 		  user
 	})
@@ -427,7 +428,7 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
   fdSixteen.create(fdSixteenData).then((newFdSixteenData)=> {
       
       User.addFDOneInUser(newFdSixteenData).then((updatedUser)=>{
-          var user = controllerUser.getCurrentUser()
+        var user = req.session.user
           res.render("success.hbs", {
               user, formName : "[FD16] Support for Membership in Professional Organizations"
           })
@@ -449,7 +450,7 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
 router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
 
-  var user = controllerUser.getCurrentUser() 
+  var user = req.session.user
   forms = getAllForms(forms, function(forms){
       res.render("my-requests.hbs", {
           user, forms
@@ -468,11 +469,12 @@ module.exports = router
  * @param {options} options.inverse
  */
 hbs.registerHelper('showonlybyuser', function(fname, lname, options) {  
-  var currentUser = controllerUser.getCurrentUser() 
-  var firstName = currentUser.firstName
-  var lastName = currentUser.lastName
 
-  if (currentUser != undefined || currentUser!= null){
+  var user = controllerUser.getCurrentUser() 
+  var firstName = user.firstName
+  var lastName = user.lastName
+
+  if (user != undefined || user!= null){
       if(firstName+"" == fname+"") {
         if (lastName+"" == lname+"")
             return options.fn(this);
