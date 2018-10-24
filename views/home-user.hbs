@@ -55,7 +55,7 @@
                     {{user.userType}}
                   </div>
                   <div class="log-out">
-                    <a href="/logout" class="ui tiny button">
+                    <a class="ui tiny button">
                       Log Out
                     </a>
                   </div>
@@ -103,6 +103,18 @@
       </div>
     </div>
   </div>
+
+  <div class="ui modal logout">
+    <div class="header">Are you sure?</div>
+    <div class="content">
+      <p>Do you really want to log out?</p>
+    </div>
+    <div class="actions">
+      <input type="submit" value="Log out" class="ui button positive logout">
+      <div class="ui cancel button">Not yet</div>
+    </div>
+  </div>
+
 </body>
 
 <!-- Always include these two JS files when adding a new page -->
@@ -110,4 +122,5 @@
 <script type="text/javascript" src="../semantic/semantic.js"></script>
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/home-user.js"></script>
+<script type="text/javascript" src="../public/js/nonforms.js"></script>
 </html>
