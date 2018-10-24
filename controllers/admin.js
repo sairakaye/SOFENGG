@@ -168,7 +168,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
     var grant = req.body.grant
     var id = req.body.id
     
-    if(grant = "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+    if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
         fdOne.getFDOneByID(id).then((foundFDOne)=>{
             User.deleteFDOneInUser(foundFDOne).then((updatedUser)=>{
                 fdOne.delete(req.body.id).then((result) => {	
@@ -177,7 +177,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
             })
         })
     }
-    else if(grant = "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+    else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
         fdTwo.getFDTwoByID(id).then((foundFDTwo)=>{
             User.deleteFDTwoInUser(foundFDTwo).then((updatedUser)=>{
                 fdTwo.delete(req.body.id).then((result) => {	
@@ -186,7 +186,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
             })
         })  
     }
-    else if(grant = "[FD3] Support for Paper Presentations in Conferences"){
+    else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
         fdThree.getFDThreeByID(id).then((foundFDThree)=>{
             User.deleteFDThreeInUser(foundFDThree).then((updatedUser)=>{
                 fdThree.delete(req.body.id).then((result) => {	
@@ -195,7 +195,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
             })
         }) 
     }
-    else if(grant = "[FD4] Support for Participation in Local Conferences"){
+    else if(grant == "[FD4] Support for Participation in Local Conferences"){
         fdFour.getFDFourByID(id).then((foundFDFour)=>{
             User.deleteFDFourInUser(foundFDFour).then((updatedUser)=>{
                 fdFour.delete(req.body.id).then((result) => {	
@@ -204,7 +204,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
             })
         }) 
     }
-    else if(grant = "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
+    else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
         fdFifteen.getFDFifteenByID(id).then((foundFDFifteen)=>{
             User.deleteFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
                 fdFifteen.delete(req.body.id).then((result) => {	
@@ -213,7 +213,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
             })
         }) 
     }
-    else if(grant = "[FD16] Support for Membership in Professional Organizations"){
+    else if(grant == "[FD16] Support for Membership in Professional Organizations"){
         fdSixteen.getFDSixteenByID(id).then((foundFDSixteen)=>{
             User.deleteFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
                 fdSixteen.delete(req.body.id).then((result) => {	
