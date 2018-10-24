@@ -260,73 +260,87 @@ router.get("/filterFD16", function(req, res){
 })
 
 router.post("/searchName", function(req, res){
-  console.log("POST /searchName")
+    console.log("POST /searchName")
+    
+    var firstName =req.body.firstNameSearch
+    var lastName = req.body.lastNameSearch
+    
+    
 
-  var firstName =req.body.firstNameSearch
-  var lastName = req.body.lastNameSearch
+    firstName = firstName.toLowerCase().split(' ');
+    for (var i = 0; i < firstName.length; i++) {
+        firstName[i] = firstName[i].charAt(0).toUpperCase() + firstName[i].slice(1); 
+    }
+    firstName =  firstName.join(' ');
+    
+    lastName = lastName.toLowerCase().split(' ');
+    for (var i = 0; i < lastName.length; i++) {
+        lastName[i] = lastName[i].charAt(0).toUpperCase() + lastName[i].slice(1); 
+    }
+    lastName =  lastName.join(' ');
 
-  console.log(firstName)
-  console.log(lastName)
-  var user = controllerUser.getCurrentUser() 
-  
-  if(firstName != "" && lastName != ""){
-      User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
-          forms = fdOneData
-          if(forms != null){
-              res.render("view-grants.hbs", {
-                  user, forms
-              })
-          }else{
-              fdOne.getAllFDOne().then((fdOneData)=>{
-                  forms = fdOneData
-                  res.render("view-grants.hbs", {
-                      user, forms,
-                      error : "Name not found"
-                  })
-              })
-          }
-      })
-      
-  } else if(firstName != ""){
-      User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
-          forms = fdOneData
-          if(forms != null){
-              res.render("view-grants.hbs", {
-                  user, forms
-              })
-          }else{
-              fdOne.getAllFDOne().then((fdOneData)=>{
-                  forms = fdOneData
-                  res.render("view-grants.hbs", {
-                      user, forms,
-                      error : "Name not found"
-                  })
-              })
-          }
-          
-      })
-      
-  } else if(lastName != ""){
-      User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
-          forms = fdOneData
-          if(forms != null){
-              res.render("view-grants.hbs", {
-                  user, forms
-              })
-          }else{
-              fdOne.getAllFDOne().then((fdOneData)=>{
-                  forms = fdOneData
-                  res.render("view-grants.hbs", {
-                      user, forms,
-                      error : "Name not found"
-                  })
-              })
-          }
-      })
-      
-  }
-  
-  
+    console.log(firstName)
+    console.log(lastName)
+    var user = controllerUser.getCurrentUser() 
+    
+    if(firstName != "" && lastName != ""){
+        User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
+            forms = fdOneData
+            if(forms != null){
+                res.render("view-grants.hbs", {
+                    user, forms
+                })
+            }else{
+                fdOne.getAllFDOne().then((fdOneData)=>{
+                    forms = fdOneData
+                    res.render("view-grants.hbs", {
+                        user, forms,
+                        error : "Name not found"
+                    })
+                })
+            }
+        })
+        
+    } else if(firstName != ""){
+        User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
+            forms = fdOneData
+            if(forms != null){
+                res.render("view-grants.hbs", {
+                    user, forms
+                })
+            }else{
+                fdOne.getAllFDOne().then((fdOneData)=>{
+                    forms = fdOneData
+                    res.render("view-grants.hbs", {
+                        user, forms,
+                        error : "Name not found"
+                    })
+                })
+            }
+            
+        })
+        
+    } else if(lastName != ""){
+        User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
+            forms = fdOneData
+            if(forms != null){
+                res.render("view-grants.hbs", {
+                    user, forms
+                })
+            }else{
+                fdOne.getAllFDOne().then((fdOneData)=>{
+                    forms = fdOneData
+                    res.render("view-grants.hbs", {
+                        user, forms,
+                        error : "Name not found"
+                    })
+                })
+            }
+        })
+        
+    }
+    
+    
 })
 
 /**
