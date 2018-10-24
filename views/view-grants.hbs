@@ -82,24 +82,49 @@
             </div>
             <div class="ui divider"></div>
             <div class="row">
-              
-            <div class="three wide column">
-              <div id = "status" class="ui selection dropdown fluid">                  
-                <i class="filter icon"></i>
-                <input type="hidden" name="gender">
-                <i class="dropdown icon"></i>
-                {{#if filter}}
-                <div class="default text">{{filter}}</div>
-                    {{else}}
-                <div class="default text">Status</div>
-                {{/if}}
-                 <div class="menu">
-                  <div class="item" data-value="Approved" onclick="document.location.href = '/admin/filterApproved'">Approved</div>
-                  <div class="item" data-value="Pending" onclick="document.location.href = '/admin/filterPending'">Pending</div>
-                  <div class="item" data-value="Rejected" onclick="document.location.href = '/admin/filterRejected'">Rejected</div>
+                
+                <div class="three wide column">
+                    <div id = "status" class="ui selection dropdown fluid">                  
+                        <i class="filter icon"></i>
+                        <input type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        {{#if filter}}
+                        <div class="default text">{{filter}}</div>
+                        {{else}}
+                        <div class="default text">Status</div>
+                        {{/if}}
+                        <div class="menu">
+                            <div class="item" data-value="Approved" onclick="document.location.href = '/admin/filterApproved'">Approved</div>
+                            <div class="item" data-value="Pending" onclick="document.location.href = '/admin/filterPending'">Pending</div>
+                            <div class="item" data-value="Rejected" onclick="document.location.href = '/admin/filterRejected'">Rejected</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-          </div>
+                
+                <div class="three wide column">
+                    <div id = "status" class="ui selection dropdown fluid">                  
+                        <i class="filter icon"></i>
+                        <input type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        {{#if filter}}
+                        <div class="default text">{{filter}}</div>
+                        {{else}}
+                        <div class="default text">Department</div>
+                        {{/if}}
+                        <div class="menu">
+                            <div class="item" data-value="CED" onclick="document.location.href = '/admin/filterCED'">College of Education</div>
+                            <div class="item" data-value="CCS" onclick="document.location.href = '/admin/filterCCS'">College of Computer Studies</div>
+                            <div class="item" data-value="COL" onclick="document.location.href = '/admin/filterCOL'">College of Law</div>
+                            <div class="item" data-value="CLA" onclick="document.location.href = '/admin/filterCLA'">College of Liberal Arts</div>
+                            <div class="item" data-value="COS" onclick="document.location.href = '/admin/filterCOS'">College of Science</div>
+                            <div class="item" data-value="COE" onclick="document.location.href = '/admin/filterCOE'">College of Engineering</div>
+                            <div class="item" data-value="COB" onclick="document.location.href = '/admin/filterCOB'">College of Business</div>
+                            <div class="item" data-value="SOE" onclick="document.location.href = '/admin/filterSOE'">School of Economics</div>
+                        </div>
+                    </div>
+                </div>
+                          
+        
 
             <div class="thirteen wide column">
               <div class="ui action input fluid">

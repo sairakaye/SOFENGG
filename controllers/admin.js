@@ -53,7 +53,7 @@ router.get("/filterApproved", function(req, res){
 
     var user = controllerUser.getCurrentUser() 
     var filter = 'Approved'
-    var forms = filterAllForms(filter, function(forms){
+    var forms = filterAllFormsByStatus(filter, function(forms){
         res.render("view-grants.hbs", {
             user, forms, filter
         })
@@ -66,7 +66,7 @@ router.get("/filterPending", function(req, res){
 
   var user = controllerUser.getCurrentUser() 
   var filter = 'Pending'
-  var forms = filterAllForms(filter, function(forms){
+  var forms = filterAllFormsByStatus(filter, function(forms){
       res.render("view-grants.hbs", {
           user, forms, filter
       })
@@ -78,7 +78,103 @@ router.get("/filterRejected", function(req, res){
 
   var user = controllerUser.getCurrentUser() 
   var filter = 'Rejected'
-  var forms = filterAllForms(filter, function(forms){
+  var forms = filterAllFormsByStatus(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCED", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Education'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCCS", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Computer Studies'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCOL", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Law'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCLA", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Liberal Arts'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCOS", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Science'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCOE", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Engineering'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterCOB", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'College of Business'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
+      res.render("view-grants.hbs", {
+          user, forms, filter
+      })
+  })
+})
+
+router.get("/filterSOE", function(req, res){
+  console.log("GET /filterRejected")
+
+  var user = controllerUser.getCurrentUser() 
+  var filter = 'School of Economics'
+  var forms = filterAllFormsByDepartment(filter, function(forms){
       res.render("view-grants.hbs", {
           user, forms, filter
       })
@@ -244,11 +340,11 @@ hbs.registerHelper('checkstatus', function(p1, p2, options) {
 })
 
 /**
- * Gets all forms
+ * Gets all forms by Status
  *
- * @param {Array to store forms} forms
+ * @param {Callback function} callback
  */
-function getAllForms(forms, callback){
+function getAllForms(callback){
     
     fdOne.getAllFDOne().then((fdOneData)=>{
         forms = fdOneData
@@ -272,11 +368,12 @@ function getAllForms(forms, callback){
 }
 
 /**
- * Gets all forms
+ * Gets all forms by Status
  *
- * @param {Array to store forms} forms
+ * @param {Filter} status
+ * @param {Callback function} callback
  */
-function filterAllForms(status, callback){
+function filterAllFormsByStatus(status, callback){
     
     fdOne.getFDOneByStatus(status).then((fdOneData)=>{
         forms = fdOneData
@@ -289,6 +386,35 @@ function filterAllForms(status, callback){
                     fdFifteen.getFDFifteenByStatus(status).then((fdFifteenData)=>{
                         forms = forms.concat(fdFifteenData)
                         fdSixteen.getFDSixteenByStatus(status).then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 
+
+/**
+ * Gets all forms by Department
+ *
+ * @param {Filter} department
+ * @param {Callback function} callback
+ */
+function filterAllFormsByDepartment(department, callback){
+    
+    fdOne.getFDOneByDepartment(department).then((fdOneData)=>{
+        forms = fdOneData
+        fdTwo.getFDTwoByDepartment(department).then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            fdThree.getFDThreeByDepartment(department).then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                fdFour.getFDFourByDepartment(department).then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    fdFifteen.getFDFifteenByDepartment(department).then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        fdSixteen.getFDSixteenByDepartment(department).then((fdSixteenData)=>{
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
