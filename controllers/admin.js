@@ -40,7 +40,7 @@ router.get("/view-grants", function(req, res, callback){
     console.log("GET /view-grants")
     
     var user = controllerUser.getCurrentUser() 
-    forms = getAllForms(forms, function(forms){
+    forms = getAllForms(function(forms){
         res.render("view-grants.hbs", {
             user, forms
         })
