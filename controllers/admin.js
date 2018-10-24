@@ -265,8 +265,6 @@ router.post("/searchName", function(req, res){
     var firstName =req.body.firstNameSearch
     var lastName = req.body.lastNameSearch
     
-    
-
     firstName = firstName.toLowerCase().split(' ');
     for (var i = 0; i < firstName.length; i++) {
         firstName[i] = firstName[i].charAt(0).toUpperCase() + firstName[i].slice(1); 
@@ -283,9 +281,8 @@ router.post("/searchName", function(req, res){
     console.log(lastName)
     var user = controllerUser.getCurrentUser() 
     
-    if(firstName != "" && lastName != ""){
-        User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
-            forms = fdOneData
+    if(firstName != "" && lastName != ""){ 
+        var forms = filterAllFormsByLastName(firstName, lastName, function(forms){
             if(forms != null){
                 res.render("view-grants.hbs", {
                     user, forms
@@ -301,9 +298,8 @@ router.post("/searchName", function(req, res){
             }
         })
         
-    } else if(firstName != ""){
-        User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
-            forms = fdOneData
+    } else if(firstName != ""){ 
+        var forms = filterAllFormsByFirstName(firstName, function(forms){
             if(forms != null){
                 res.render("view-grants.hbs", {
                     user, forms
@@ -317,12 +313,10 @@ router.post("/searchName", function(req, res){
                     })
                 })
             }
-            
         })
         
     } else if(lastName != ""){
-        User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
-            forms = fdOneData
+        var forms = filterAllFormsByLastName(lastName, function(forms){
             if(forms != null){
                 res.render("view-grants.hbs", {
                     user, forms
@@ -337,10 +331,7 @@ router.post("/searchName", function(req, res){
                 })
             }
         })
-        
     }
-    
-    
 })
 
 /**
@@ -417,22 +408,7 @@ router.delete("/deleteform", urlencoder, (req, res) => {
 module.exports = router
 
 /**
- * Compares two values from the .hbs files for ease of
- *  display and acts like an if-else condition function
- *
- * @param {options} options.fn
- * @param {options} options.inverse
- */
-hbs.registerHelper('checkstatus', function(p1, p2, options) { 
-  if(p1 == p2) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-})
-
-/**
- * Gets all forms by Status
+ * Gets all forms
  *
  * @param {Callback function} callback
  */
@@ -516,3 +492,106 @@ function filterAllFormsByDepartment(department, callback){
         })
     })
 } 
+
+/**
+ * Gets all forms by First Name
+ *
+ * @param {Filter} firstName
+ * @param {Callback function} callback
+ */
+function filterAllFormsByFirstName(firstName, callback){
+    
+    User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
+        forms = fdOneData
+        User.getFDTwoFormsByFirstName(firstName).then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            User.getFDThreeFormsByFirstName(firstName).then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                User.getFDFourFormsByFirstName(firstName).then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    User.getFDFifteenFormsByFirstName(firstName).then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        User.getFDSixteenFormsByFirstName(firstName).then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 
+
+/**
+ * Gets all forms by Last Name
+ *
+ * @param {Filter} lastName
+ * @param {Callback function} callback
+ */
+function filterAllFormsByLastName(lastName, callback){
+    
+    User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
+        forms = fdOneData
+        User.getFDTwoFormsByLastName(lastName).then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            User.getFDThreeFormsByLastName(lastName).then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                User.getFDFourFormsByLastName(lastName).then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    User.getFDFifteenFormsByLastName(lastName).then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        User.getFDSixteenFormsByLastName(lastName).then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 
+
+/**
+ * Gets all forms by Full Name
+ *
+ * @param {Filter} fullName
+ * @param {Callback function} callback
+ */
+function filterAllFormsByLastName(firstName, lastName, callback){
+    
+    User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
+        forms = fdOneData
+        User.getFDTwoFormsByFullName(firstName, lastName).then((fdTwoData)=>{
+            forms = forms.concat(fdTwoData)
+            User.getFDThreeFormsByFullName(firstName, lastName).then((fdThreeData)=>{
+                forms = forms.concat(fdThreeData)
+                User.getFDFourFormsByFullName(firstName, lastName).then((fdFourData)=>{
+                    forms = forms.concat(fdFourData)
+                    User.getFDFifteenFormsByFullName(firstName, lastName).then((fdFifteenData)=>{
+                        forms = forms.concat(fdFifteenData)
+                        User.getFDSixteenFormsByFullName(firstName, lastName).then((fdSixteenData)=>{
+                            forms = forms.concat(fdSixteenData)
+                            callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 
+
+/**
+ * Compares two values from the .hbs files for ease of
+ *  display and acts like an if-else condition function
+ *
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('checkstatus', function(p1, p2, options) { 
+    if(p1 == p2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  })
+  
