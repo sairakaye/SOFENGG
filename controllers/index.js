@@ -58,6 +58,7 @@ router.post("/home", (req, res)=>{
 	//  	lastName: 'Manalili', 
 	//  	department: "College of Computer Studies", 
 	//  	userType: "Faculty",
+	//		rank: 'Assistant Professor'
 	//  	status: "Permanent",
 	//  	dateHired: today,
 	//  }

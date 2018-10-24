@@ -48,11 +48,17 @@ $('#departure-date').calendar({
 
     $('#return-date').calendar({
       type: 'date',
-      minDate: new Date(year, month, day)
-    });    
-    $('#expected-date').calendar({
-      type: 'date',
-      minDate: new Date(year, month, day)
+      minDate: new Date(year, month, day) ,
+        onChange: function (date) {
+          var year = date.getFullYear();
+          var month = date.getMonth();
+          var day = date.getDate();
+      
+          $('#expected-date').calendar({
+            type: 'date',
+            minDate: new Date(year, month, day)
+          });
+        }
     });
    }
 });
