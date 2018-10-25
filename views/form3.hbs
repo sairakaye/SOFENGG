@@ -130,9 +130,9 @@
                     <input type="text" name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
-                <div class="field">
+                <div class="field disabled">
                   <label>Status</label>
-                  {{#employment user.employmentType}}
+                {{#employment user.status}}
                   <div class="fields disabled">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
@@ -147,11 +147,12 @@
                       </div>
                     </div>
                   </div>
-                  <label>If Part-Time, No. of units taught since hired</label>
-                  <div class="four wide field">
-                    <input type="number" name="noOfUnitsTaught" />
-                  </div>
-                  {{else}}
+                </div>
+                <label>If Part-Time, No. of units taught since hired</label>
+                <div class="four wide field">
+                  <input type="number" name="noOfUnitsTaught" />
+                </div>
+                {{else}}
                   <div class="fields disabled">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
@@ -166,15 +167,12 @@
                       </div>
                     </div>
                   </div>
-                  <label>If Part-Time, No. of units taught since hired</label>
-                  <div class="four wide field disabled">
-                    <input type="number" name="noOfUnitsTaught" value=" " />
-                  </div>
-                  {{/employment}}
                 </div>
+              {{/employment}}
+
                 <div class="field">
                   <label>Title of paper to be presented</label>
-                  <input type="text" name="titleOfPaperToBePresented" />
+                  <input type="text" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check"/>
                 </div>
 
                 <div class="field">
@@ -184,7 +182,7 @@
                       <div class="ui calendar" id="conference-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfConference" placeholder="Date" />
+                          <input type="text" name="dateOfConference" placeholder="Date" id = "dateOfConference" class = "check" />
                         </div>
                       </div>
                     </div>
@@ -202,7 +200,7 @@
                       <div class="ui calendar" id="departure-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfDeparture" placeholder="Date" />
+                          <input type="text" name="dateOfDeparture" placeholder="Date" id ="dateOfDeparture" class = "check"/>
                         </div>
                       </div>
                     </div>
@@ -211,7 +209,7 @@
                       <div class="ui calendar" id="return-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfReturn" placeholder="Date" />
+                          <input type="text" name="dateOfReturn" placeholder="Date" id = "dateOfReturn" class = "check"/>
                         </div>
                       </div>
                     </div>
@@ -222,7 +220,7 @@
                   <div class="ui calendar" id="expected-date">
                     <div class="ui input left icon">
                       <i class="calendar icon"></i>
-                      <input type="text" name="dateOfReturnToWork" placeholder="Date" />
+                      <input type="text" name="dateOfReturnToWork" placeholder="Date"  id = "dateOfReturnToWork" class = "check"/>
                     </div>
                   </div>
                 </div>
@@ -235,7 +233,7 @@
                   <div class="ui calendar" id="incentive-date">
                     <div class="ui input left icon">
                       <i class="calendar icon"></i>
-                      <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" />
+                      <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id = "dateIncentiveLastAvailed" class = "check"/>
                     </div>
                   </div>
                 </div>

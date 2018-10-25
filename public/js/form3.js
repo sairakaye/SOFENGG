@@ -143,11 +143,11 @@ function check(){
   var count = 0;
 
   $('.check').each(function (i, e) {
-    if (count == 0){
-      var name = ($(e).attr("name")) 
-      var val = $("#" + name).val(); 
-      
-      if (val == "" || val == null){
+    if (count == 0) {
+      var name = ($(e).attr("name"))
+      var val = $("#" + name).val();
+
+      if (val == "" || val == null) {
         count = 1
         $("#" + name).focus();
 
