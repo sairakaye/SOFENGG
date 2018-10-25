@@ -31,7 +31,19 @@ router.use("/admin", require("./admin"))
 router.get("/", function(req, res) {
 	 console.log("GET /")
 	 
-     res.render("index.hbs")
+	user = req.session.user
+	if(user){
+		if(user.userType == "Administrator")
+			res.render("home-admin.hbs", {
+				user
+			})
+		else if(user.userType == "Faculty")
+			res.render("home-user.hbs", {
+				user
+			})
+	} else {
+		res.render("index.hbs")
+	}
 })
 
 /**
@@ -91,7 +103,6 @@ router.post("/home", (req, res)=>{
 			if(user){
 				currentUser = user
 				req.session.user = user
-				console.log("User Found")
 				if(user.userType == "Administrator")
 					res.render("home-admin.hbs", {
 						user
@@ -121,14 +132,18 @@ router.get("/home", function(req, res){
 	console.log("GET /home")
 
 	user = req.session.user
-	if(user.userType == "Administrator")
-		res.render("home-admin.hbs", {
-			user
-		})
-	else if(user.userType == "Faculty" || user.userType == "Library Staff")
-		res.render("home-user.hbs", {
-			user
-		})
+	if (user){
+		if(user.userType == "Administrator")
+			res.render("home-admin.hbs", {
+				user
+			})
+		else if(user.userType == "Faculty" || user.userType == "Library Staff")
+			res.render("home-user.hbs", {
+				user
+			})
+	} else {
+		res.redirect("/")
+	}
 })
 
 /**
@@ -147,6 +162,7 @@ router.get("/logout", function(req, res){
 				console.log(err)
 			} 
 		})
+		currentUser = null
 	}
 		
 	res.render("index.hbs", {

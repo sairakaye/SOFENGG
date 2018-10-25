@@ -7,6 +7,7 @@ $("div.log-out").click(function () {
     })
   })
 
+
   
 //   noBack();
 //   window.onload=noBack;

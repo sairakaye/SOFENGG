@@ -27,8 +27,8 @@ const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
-
 var forms
+
 /**
  * Leads to the page for requesting grants. 
  *
@@ -39,9 +39,13 @@ router.get("/request-grant", function(req, res){
   console.log("GET /request-grant")
   
     var user = req.session.user
-	res.render("request-grant.hbs", {
-		user
-	})
+    if (user) {
+        res.render("request-grant.hbs", {
+            user
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -54,9 +58,13 @@ router.get("/fd-1", function(req, res){
     console.log("GET /fd-1")
     
     var user = req.session.user
-	res.render("form1", {
-		  user
-	})
+    if (user){
+        res.render("form1", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -103,10 +111,14 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   fdOne.create(fdOneData).then((newFdOneData)=> {
       
       User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
-          var user = req.session.user
+        var user = req.session.user
+        if (user) {
           res.render("success.hbs", {
               user, formName : "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
           })
+        } else {
+            res.redirect("/")
+        }
       }, (err)=>{
           res.send(err)
       })
@@ -124,10 +136,15 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
  */
 router.get("/fd-2", function(req, res){
 	console.log("GET /fd-2")
+
     var user = req.session.user
-	res.render("form2", {
-		  user
-	})
+    if (user){
+        res.render("form2", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -170,9 +187,13 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
       
       User.addFDTwoInUser(newFdTwoData).then((updatedUser)=>{
           var user = req.session.user     
+        if (user) {
           res.render("success.hbs", {
               user, formName : "Incentive for Publication in Pre-Selected High Impact Conferences"
           })
+        } else {
+            res.redirect("/")
+        }
       }, (err)=>{
           res.send(err)
       })
@@ -190,10 +211,15 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
  */
 router.get("/fd-3", function(req, res){
 	console.log("GET /fd-3")
+
     var user = req.session.user
-	res.render("form3", {
-		  user
-	})
+    if (user){
+        res.render("form3", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -241,9 +267,13 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
       
       User.addFDThreeInUser(newFdThreeData).then((updatedUser)=>{
         var user = req.session.user 
+        if (user) {
           res.render("success.hbs", {
               user, formName : "[FD3] Support for Paper Presentations in Conferences"
           })
+        } else {
+            res.redirect("/")
+        }
       }, (err)=>{
           res.send(err)
       })
@@ -261,10 +291,15 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
  */
 router.get("/fd-4", function(req, res){
 	console.log("GET /fd-4")
+
     var user = req.session.user
-	res.render("form4", {
-		  user
-	})
+    if (user){
+        res.render("form4", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -306,9 +341,13 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
       
       User.addFDFourInUser(newFdFourData).then((updatedUser)=>{
         var user = req.session.user
+        if (user) {
           res.render("success.hbs", {
               user, formName : "[FD4] Support for Participation in Local Conferences"
           })
+        } else {
+            res.redirect("/")
+        }
       }, (err)=>{
           res.send(err)
       })
@@ -326,10 +365,15 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
  */
 router.get("/fd-15", function(req, res){
 	console.log("GET /fd-15")
+
     var user = req.session.user
-	res.render("form15", {
-		  user
-	})
+    if (user){
+        res.render("form15", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -367,9 +411,13 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
       
       User.addFDFifteenInUser(newFdFifteenData).then((updatedUser)=>{
         var user = req.session.user
+        if (user) {
           res.render("success.hbs", {
               user, formName : "[FD15] Support for Local Trainings, Seminars and Workshops"
           })
+        } else {
+            res.redirect("/")
+        }
       }, (err)=>{
           res.send(err)
       })
@@ -387,10 +435,15 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
  */
 router.get("/fd-16", function(req, res){
 	console.log("GET /fd-16")
+
     var user = req.session.user
-	res.render("form16", {
-		  user
-	})
+    if (user){
+        res.render("form16", {
+            user
+        })
+    }else{
+        res.redirect("/")
+    }
 })
 
 /**
@@ -428,10 +481,14 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
   fdSixteen.create(fdSixteenData).then((newFdSixteenData)=> {
       
       User.addFDOneInUser(newFdSixteenData).then((updatedUser)=>{
-        var user = req.session.user
-          res.render("success.hbs", {
-              user, formName : "[FD16] Support for Membership in Professional Organizations"
-          })
+          var user = req.session.user
+          if (user){
+            res.render("success.hbs", {
+                user, formName : "[FD16] Support for Membership in Professional Organizations"
+            })
+          } else {
+              res.redirect("/")
+          }
       }, (err)=>{
           res.send(err)
       })
@@ -451,11 +508,15 @@ router.get("/my-requests", function(req, res) {
   console.log("GET /my-requests")
 
   var user = req.session.user
-  forms = getAllForms(forms, function(forms){
-      res.render("my-requests.hbs", {
-          user, forms
-      })
-  })
+  if (user){
+    forms = getAllForms(forms, function(forms){
+        res.render("my-requests.hbs", {
+            user, forms
+        })
+    })
+  } else {
+      res.redirect("/")
+  }
 })
 
 module.exports = router

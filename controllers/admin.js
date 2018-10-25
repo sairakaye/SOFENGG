@@ -26,8 +26,6 @@ const fdThree = require("../models/fdThree")
 const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
-const controllerUser = require("./index")
-
 var forms
 
 /**
@@ -36,226 +34,292 @@ var forms
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/view-grants", function(req, res, callback){
+router.get("/view-grants", function(req, res){
     console.log("GET /view-grants")
     
     var user = req.session.user
-    forms = getAllForms(function(forms){
-        res.render("view-grants.hbs", {
-            user, forms
+    if(user){
+        forms = getAllForms(function(forms){
+            res.render("view-grants.hbs", {
+                user, forms
+            })
         })
-    })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterApproved", function(req, res){
     console.log("GET /filterApproved")
 
     var user = req.session.user
-    var statusFilter = 'Approved'
-    var forms = filterAllFormsByStatus(statusFilter, function(forms){
-        res.render("view-grants.hbs", {
-            user, forms, statusFilter
+    if(user){
+        var statusFilter = 'Approved'
+        var forms = filterAllFormsByStatus(statusFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, statusFilter
+            })
         })
-    })
+    } else {
+        res.redirect("/")
+    }
 })
 
 
 router.get("/filterPending", function(req, res){
-  console.log("GET /filterPending")
+    console.log("GET /filterPending")
 
-  var user = req.session.user
-  var statusFilter = 'Pending'
-  var forms = filterAllFormsByStatus(statusFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, statusFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var statusFilter = 'Pending'
+        var forms = filterAllFormsByStatus(statusFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, statusFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterRejected", function(req, res){
-  console.log("GET /filterRejected")
+    console.log("GET /filterRejected")
 
-  var user = req.session.user
-  var statusFilter = 'Rejected'
-  var forms = filterAllFormsByStatus(statusFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, statusFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var statusFilter = 'Rejected'
+        var forms = filterAllFormsByStatus(statusFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, statusFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterCED", function(req, res){
   console.log("GET /filterCED")
 
-  var user = req.session.user
-  var departmentFilter = 'College of Education'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var departmentFilter = 'College of Education'
+        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterCCS", function(req, res){
   console.log("GET /filterCCS")
 
-  var user = req.session.user
-  var departmentFilter = 'College of Computer Studies'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var departmentFilter = 'College of Computer Studies'
+        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterCOL", function(req, res){
-  console.log("GET /filterCOL")
+    console.log("GET /filterCOL")
 
-  var user = req.session.user
-  var departmentFilter = 'College of Law'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var departmentFilter = 'College of Law'
+        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterCLA", function(req, res){
   console.log("GET /filterCLA")
 
   var user = req.session.user
-  var departmentFilter = 'College of Liberal Arts'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
+  if(user){
+      var departmentFilter = 'College of Liberal Arts'
+      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+          res.render("view-grants.hbs", {
+              user, forms, departmentFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterCOS", function(req, res){
   console.log("GET /filterCOS")
 
-  var user = req.session.user
-  var departmentFilter = 'College of Science'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var departmentFilter = 'College of Science'
+        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterCOE", function(req, res){
   console.log("GET /filterCOE")
 
   var user = req.session.user
-  var departmentFilter = 'College of Engineering'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
+  if(user){
+      var departmentFilter = 'College of Engineering'
+      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+          res.render("view-grants.hbs", {
+              user, forms, departmentFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterCOB", function(req, res){
   console.log("GET /filterCOB")
 
   var user = req.session.user
-  var departmentFilter = 'College of Business'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
+  if(user){
+      var departmentFilter = 'College of Business'
+      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+          res.render("view-grants.hbs", {
+              user, forms, departmentFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterSOE", function(req, res){
-  console.log("GET /filterSOE")
+   console.log("GET /filterSOE")
 
-  var user = req.session.user
-  var departmentFilter = 'School of Economics'
-  var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-      res.render("view-grants.hbs", {
-          user, forms, departmentFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var departmentFilter = 'School of Economics'
+        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterFD1", function(req, res){
-  console.log("GET /filterFD1")
+    console.log("GET /filterFD1")
 
-  var user = req.session.user
-  var formFilter = 'FD1'
-  
-  fdOne.getAllFDOne().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
-      })
-  })
+    var user = req.session.user
+    if(user){
+        var formFilter = 'FD1'
+        fdOne.getAllFDOne().then((forms)=>{
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 router.get("/filterFD2", function(req, res){
   console.log("GET /filterFD2")
 
-  var user = req.session.user 
-  var formFilter = 'FD2'
-  
-  fdTwo.getAllFDTwo().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
+  var user = req.session.user
+  if(user){
+      var formFilter = 'FD2'
+      fdOne.getAllFDOne().then((forms)=>{
+          res.render("view-grants.hbs", {
+              user, forms, formFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterFD3", function(req, res){
   console.log("GET /filterFD3")
 
   var user = req.session.user
-  var formFilter = 'FD3'
-  
-  fdThree.getAllFDThree().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
+  if(user){
+      var formFilter = 'FD3'
+      fdOne.getAllFDOne().then((forms)=>{
+          res.render("view-grants.hbs", {
+              user, forms, formFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterFD4", function(req, res){
   console.log("GET /filterFD4")
 
   var user = req.session.user
-  var formFilter = 'FD4'
-  
-  fdFour.getAllFDFour().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
+  if(user){
+      var formFilter = 'FD4'
+      fdOne.getAllFDOne().then((forms)=>{
+          res.render("view-grants.hbs", {
+              user, forms, formFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterFD15", function(req, res){
   console.log("GET /filterFD15")
 
   var user = req.session.user
-  var formFilter = 'FD15'
-  
-  fdFifteen.getAllFDFifteen().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
+  if(user){
+      var formFilter = 'FD15'
+      fdOne.getAllFDOne().then((forms)=>{
+          res.render("view-grants.hbs", {
+              user, forms, formFilter
+          })
       })
-  })
+  } else {
+    res.redirect("/")
+  }
 })
 
 router.get("/filterFD16", function(req, res){
   console.log("GET /filterFD16")
 
   var user = req.session.user
-  var formFilter = 'FD16'
-  
-  fdSixteen.getAllFDSixteen().then((forms)=>{
-      res.render("view-grants.hbs", {
-          user, forms, formFilter
+  if(user){
+      var formFilter = 'FD16'
+      fdOne.getAllFDOne().then((forms)=>{
+          res.render("view-grants.hbs", {
+              user, forms, formFilter
+          })
       })
-  })
+  } else {
+      res.redirect("/")
+  }
 })
 
 router.post("/searchName", function(req, res){
@@ -276,16 +340,15 @@ router.post("/searchName", function(req, res){
     }
     lastName =  lastName.join(' ');
 
-    console.log(firstName)
-    console.log(lastName)
+    var user = req.session.user
     
     if(firstName != "" && lastName != ""){ 
         var forms = filterAllFormsByFullName(firstName, lastName, function(forms){
-            if(forms != null){
+            if(forms != null && user){
                 res.render("view-grants.hbs", {
                     user, forms
                 })
-            }else{
+            }else if (forms == null) {
                 fdOne.getAllFDOne().then((fdOneData)=>{
                     forms = fdOneData
                     res.render("view-grants.hbs", {
@@ -293,16 +356,18 @@ router.post("/searchName", function(req, res){
                         error : "Name not found"
                     })
                 })
+            } else {
+                res.redirect("/")
             }
         })
         
     } else if(firstName != ""){ 
         var forms = filterAllFormsByFirstName(firstName, function(forms){
-            if(forms != null){
+            if(forms != null && user){
                 res.render("view-grants.hbs", {
                     user, forms
                 })
-            }else{
+            }else if (forms == null){
                 fdOne.getAllFDOne().then((fdOneData)=>{
                     forms = fdOneData
                     res.render("view-grants.hbs", {
@@ -310,16 +375,18 @@ router.post("/searchName", function(req, res){
                         error : "Name not found"
                     })
                 })
+            } else {
+                res.redirect("/")
             }
         })
         
     } else if(lastName != ""){
         var forms = filterAllFormsByLastName(lastName, function(forms){
-            if(forms != null){
+            if(forms != null && user){
                 res.render("view-grants.hbs", {
                     user, forms
                 })
-            }else{
+            }else if (forms == null) {
                 fdOne.getAllFDOne().then((fdOneData)=>{
                     forms = fdOneData
                     res.render("view-grants.hbs", {
@@ -327,6 +394,8 @@ router.post("/searchName", function(req, res){
                         error : "Name not found"
                     })
                 })
+            } else {
+                res.redirect("/")
             }
         })
         
@@ -343,7 +412,6 @@ router.post("/searchName", function(req, res){
  */
 router.delete("/deleteform", urlencoder, (req, res) => {
     console.log("POST /deleteform " + req.body.id)
-    
     
     var grant = req.body.grant
     var id = req.body.id
