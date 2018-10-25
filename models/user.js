@@ -98,29 +98,11 @@ exports.create = function(user){
 }
 
 /**
- * Authenticates user record in User Schema 
+ * Authenticates user record 
  *
  * @param {user record to be authenticated} user
  */
-exports.authenticateUsername = function(user){
-  return new Promise(function(resolve, reject){
-      
-    User.findOne({
-      username : user.username,
-    }).then((user)=>{
-      resolve(user)
-    },(err)=>{
-      reject(err)
-    })
-  })
-}
-
-/**
- * Authenticates user record in User Schema 
- *
- * @param {user record to be authenticated} user
- */
-exports.authenticatePassword = function(user){
+exports.authenticate = function(user){
   return new Promise(function(resolve, reject){
       
     User.findOne({

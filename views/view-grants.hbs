@@ -87,8 +87,8 @@
              </h1>
             </div>
             <div class="ui divider"></div>
+
             <div class="row">
-                
                 <div class="three wide column">
                     <div id = "status" class="ui selection dropdown fluid">                  
                         <i class="filter icon"></i>
@@ -166,7 +166,7 @@
               </div>
             </div>    
         </div>
-        
+
           <div class="row">
             <table class="ui single line selectable table tablet stackable">
               <thead>
@@ -178,7 +178,6 @@
                   <th></th>
                 </tr>
               </thead>
- 
                 <tbody >
                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
@@ -224,10 +223,20 @@
                       <div class="ui cancel button">Not yet</div>
                     </div>
                   </div>
-
                 </tbody>  
              </table>
+            </div>   
+
+          {{#if noforms}}
+          <div class = "row">
+            <div class="ui one column stackable center aligned page grid">
+              <div class="column sixteen wide">
+                <div class="ui tiny red message">{{noforms}}</div>
+              </div>
             </div>
+            </div>
+          {{/if}}
+          
           </div>
          </div>
       </div>
