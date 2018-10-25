@@ -193,10 +193,11 @@ function check(){
  */
 $('#request-form')
     .form({
-      inline: 'true',
+      inline: true,
       on: 'blur',
+      keyboardShortcuts: false,
+      
       fields: {
-        keyboardShortcuts: 'false',
         firstName: {
           identifier: 'firstName',
           rules: [
@@ -239,6 +240,15 @@ $('#request-form')
             {
               type   : 'empty',
               prompt : 'Please enter your rank.'
+            }
+          ]
+        },
+        noOfUnitsTaught: {
+          identifier: 'noOfUnitsTaught',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter the number of units taught.'
             }
           ]
         },
