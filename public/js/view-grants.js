@@ -8,7 +8,7 @@ $("button.delete").click(function () {
     $('.ui.modal.deletion')
     .modal('show');
 
-    $(".negative.delete").click(function(){
+    $(".negative.delete.final").click(function(){
         $.ajax({ 
             method : "delete",
             url : "deleteform",

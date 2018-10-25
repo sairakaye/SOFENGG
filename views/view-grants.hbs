@@ -162,7 +162,6 @@
                <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
                 <input type="text"  name = "firstNameSearch" placeholder="First Name">
                 <input type="text"  name = "lastNameSearch" placeholder="Last Name">
-                
                 <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
                 </form>
               </div>
@@ -182,7 +181,7 @@
                   <th></th>
                 </tr>
               </thead>
-                <tbody >
+                <tbody>
 
                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
@@ -225,7 +224,7 @@
                       <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
                     </div>
                     <div class="actions">
-                      <input type="submit" value="Delete" class="ui button negative delete">
+                      <input type="submit" value="Delete" class="ui button negative delete final">
                       <div class="ui cancel button">Not yet</div>
                     </div>
                   </div>
