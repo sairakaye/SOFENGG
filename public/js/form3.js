@@ -1,7 +1,7 @@
 /**
  * This is the JS file of the FD3 page.
  * October 17, 2018
- * @ver 1.0
+ * @ver 1.3
  * @author Sai Manalili
  */
 
