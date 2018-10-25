@@ -125,8 +125,8 @@ $('#request-form')
       inline: 'true',
       on: 'blur',
       fields: {
+        keyboardShortcuts: 'false',
         firstName: {
-          keyboardShortcuts: 'false',
           on: 'blur',
           rules: [
             {
