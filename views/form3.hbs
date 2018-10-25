@@ -130,9 +130,9 @@
                     <input type="text" name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
+                {{#employment user.status}}
                 <div class="field disabled">
                   <label>Status</label>
-                {{#employment user.status}}
                   <div class="fields disabled">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
@@ -153,6 +153,8 @@
                   <input type="number" name="noOfUnitsTaught" />
                 </div>
                 {{else}}
+                  <div class="field disabled">
+                  <label>Status</label>
                   <div class="fields disabled">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
