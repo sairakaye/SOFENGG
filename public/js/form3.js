@@ -242,6 +242,15 @@ $('#request-form')
             }
           ]
         },
+        noOfUnitsTaught: {
+          identifier: 'noOfUnitsTaught',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter the number of units taught.'
+            }
+          ]
+        },
         titleOfPaperToBePresented: {
           identifier: 'titleOfPaperToBePresented',
           rules: [

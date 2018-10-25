@@ -122,8 +122,10 @@ function check(){
  */
 $('#request-form')
     .form({
-      inline: 'true',
+      inline: true,
       on: 'blur',
+      keyboardShortcuts: false,
+      
       fields: {
         keyboardShortcuts: 'false',
         firstName: {
