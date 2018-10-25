@@ -180,7 +180,6 @@ $('#request-form')
     keyboardShortcuts: false,
     
     fields: {
-      keyboardShortcuts: 'false',
       firstName: {
         identifier: 'firstName',
         rules: [

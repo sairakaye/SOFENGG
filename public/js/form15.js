@@ -127,9 +127,8 @@ $('#request-form')
       keyboardShortcuts: false,
       
       fields: {
-        keyboardShortcuts: 'false',
         firstName: {
-          on: 'blur',
+          identifier: 'firstName',
           rules: [
             {
               type   : 'empty',

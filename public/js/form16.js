@@ -96,11 +96,8 @@ $('#request-form')
       keyboardShortcuts: false,
       
       fields: {
-        keyboardShortcuts: 'false',
         firstName: {
           identifier: 'firstName',
-          inline: true,
-          on: 'blur',
           rules: [
             {
               type   : 'empty',
