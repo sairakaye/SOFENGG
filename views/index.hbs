@@ -61,18 +61,21 @@
           </div>
           <div > <input type = "submit" value = "Log In" class="ui fluid large darkgreen submit button" onclick="loginform.submit();"> </div>
         </div>
+
         <!-- If wrong credentials are entered, an error message will show up -->
         {{#if error}}
           <div class="error">
             <div class="ui red tiny message">{{error}}</div>
           </div>
         {{/if}}
+
         <!-- If the user has logged out, an message prompt will show up -->
         {{#if loggedout}}
           <div class="loggedout">
             <div class="ui green tiny message">{{loggedout}}</div>
           </div>
         {{/if}}
+        
       </form>
     </div>
   </div>

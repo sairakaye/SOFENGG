@@ -49,6 +49,12 @@ router.get("/view-grants", function(req, res){
     }
 })
 
+/**
+ * Filters all Approved Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterApproved", function(req, res){
     console.log("GET /filterApproved")
 
@@ -71,7 +77,12 @@ router.get("/filterApproved", function(req, res){
     }
 })
 
-
+/**
+ * Filters all Pending Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterPending", function(req, res){
     console.log("GET /filterPending")
 
@@ -94,6 +105,12 @@ router.get("/filterPending", function(req, res){
     }
 })
 
+/**
+ * Filters all Rejected Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterRejected", function(req, res){
     console.log("GET /filterRejected")
 
@@ -116,6 +133,12 @@ router.get("/filterRejected", function(req, res){
     }
 })
 
+/**
+ * Filters all CED Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCED", function(req, res){
   console.log("GET /filterCED")
 
@@ -138,6 +161,12 @@ router.get("/filterCED", function(req, res){
     }
 })
 
+/**
+ * Filters all CCS Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCCS", function(req, res){
   console.log("GET /filterCCS")
 
@@ -160,6 +189,12 @@ router.get("/filterCCS", function(req, res){
     }
 })
 
+/**
+ * Filters all COL Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCOL", function(req, res){
     console.log("GET /filterCOL")
 
@@ -182,6 +217,12 @@ router.get("/filterCOL", function(req, res){
     }
 })
 
+/**
+ * Filters all CLA Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCLA", function(req, res){
   console.log("GET /filterCLA")
 
@@ -204,6 +245,12 @@ router.get("/filterCLA", function(req, res){
   }
 })
 
+/**
+ * Filters all COS Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCOS", function(req, res){
   console.log("GET /filterCOS")
 
@@ -226,6 +273,12 @@ router.get("/filterCOS", function(req, res){
     }
 })
 
+/**
+ * Filters all COE Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCOE", function(req, res){
   console.log("GET /filterCOE")
 
@@ -248,6 +301,12 @@ router.get("/filterCOE", function(req, res){
   }
 })
 
+/**
+ * Filters all COB Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterCOB", function(req, res){
   console.log("GET /filterCOB")
 
@@ -270,6 +329,12 @@ router.get("/filterCOB", function(req, res){
   }
 })
 
+/**
+ * Filters all SOE Departments
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterSOE", function(req, res){
    console.log("GET /filterSOE")
 
@@ -292,6 +357,12 @@ router.get("/filterSOE", function(req, res){
     }
 })
 
+/**
+ * Filters all FD1 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD1", function(req, res){
     console.log("GET /filterFD1")
 
@@ -314,6 +385,12 @@ router.get("/filterFD1", function(req, res){
     }
 })
 
+/**
+ * Filters all FD2 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD2", function(req, res){
   console.log("GET /filterFD2")
 
@@ -336,6 +413,12 @@ router.get("/filterFD2", function(req, res){
   }
 })
 
+/**
+ * Filters all FD3 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD3", function(req, res){
   console.log("GET /filterFD3")
 
@@ -358,6 +441,12 @@ router.get("/filterFD3", function(req, res){
   }
 })
 
+/**
+ * Filters all FD4 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD4", function(req, res){
   console.log("GET /filterFD4")
 
@@ -380,6 +469,12 @@ router.get("/filterFD4", function(req, res){
   }
 })
 
+/**
+ * Filters all FD15 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD15", function(req, res){
   console.log("GET /filterFD15")
 
@@ -402,6 +497,12 @@ router.get("/filterFD15", function(req, res){
   }
 })
 
+/**
+ * Filters all FD16 Forms
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/filterFD16", function(req, res){
   console.log("GET /filterFD16")
 
@@ -424,6 +525,12 @@ router.get("/filterFD16", function(req, res){
   }
 })
 
+/**
+ * Searches the users by name
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.post("/searchName", function(req, res){
     console.log("POST /searchName")
     

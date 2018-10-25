@@ -171,12 +171,10 @@
                   </div>
                 </div>
               {{/employment}}
-
                 <div class="field">
                   <label>Title of paper to be presented</label>
                   <input type="text" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check"/>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -194,7 +192,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -240,6 +237,8 @@
                     </div>
                   </div>
                 </div>
+
+               <!-- This is where you will put the additional requirements. -->
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
@@ -299,6 +298,7 @@
                   <div class="ui green button" id="confirm">Submit</div>
                 </div>
 
+              <!-- This the modal for submit confirmation -->
                 <div class="ui modal submit">
                   <div class="header">Are you sure?</div>
                   <div class="content">
@@ -310,17 +310,17 @@
                   </div>
                 </div>
                 
-              <div class="ui modal logout">
-                <div class="header">Are you sure?</div>
-                <div class="content">
-                  <p>Do you really want to log out?</p>
+             <!-- This the modal for logout confirmation -->
+                <div class="ui modal logout">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Do you really want to log out?</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Log out" class="ui button positive logout">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
                 </div>
-                <div class="actions">
-                  <input type="submit" value="Log out" class="ui button positive logout">
-                  <div class="ui cancel button">Not yet</div>
-                </div>
-              </div>
-
               </form>
             </div>
           </div>

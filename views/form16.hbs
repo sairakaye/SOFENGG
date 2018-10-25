@@ -48,6 +48,7 @@
       <div class="column" id="sidebar">
         <div class="ui secondary vertical fluid menu">
           <div class="ui grid">
+
             <!-- This is where the short overview of the profile is placed. -->
             <div class="one column center aligned row">
               <div class="column profile">
@@ -70,6 +71,7 @@
               </div>
             </div>
           </div>
+
           <!-- These are the side menubar items. -->
           <a href="/faculty/request-grant" class="active item">
             Request Grant
@@ -96,6 +98,7 @@
               <h3>1st Term, AY 2018-2019</h3>
             </div>
           </div>
+
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
@@ -157,7 +160,6 @@
                   <label>Name of Organization</label>
                   <input type="text" name="nameOfOrganization" id = "nameOfOrganization" class = "check"/>
                 </div>
-
                 <div class="field">
                   <label>Type of membership</label>
                   <div class="fields">
@@ -192,7 +194,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -210,7 +211,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -224,6 +224,8 @@
                     </div>
                   </div>
                 </div>
+                
+               <!-- This is where you will put the additional requirements. -->
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
@@ -232,7 +234,6 @@
                       <i class="right triangle icon"></i>
                       Membership form from the organization
                     </div>
-
                     <div class="six wide field">
                       <label>For Lifetime Membership</label>
                       <i class="right triangle icon"></i>
@@ -282,6 +283,7 @@
                   <div class="ui green button" id="confirm">Submit</div>
                 </div>
 
+              <!-- This the modal for submit confirmation -->
                 <div class="ui modal submit">
                   <div class="header">Are you sure?</div>
                   <div class="content">
@@ -293,17 +295,17 @@
                   </div>
                 </div>
 
-                <div class="ui modal logout">
-                  <div class="header">Are you sure?</div>
-                  <div class="content">
-                    <p>Do you really want to log out?</p>
+             <!-- This the modal for logout confirmation -->
+                  <div class="ui modal logout">
+                    <div class="header">Are you sure?</div>
+                    <div class="content">
+                      <p>Do you really want to log out?</p>
+                    </div>
+                    <div class="actions">
+                      <input type="submit" value="Log out" class="ui button positive logout">
+                      <div class="ui cancel button">Not yet</div>
+                    </div>
                   </div>
-                  <div class="actions">
-                    <input type="submit" value="Log out" class="ui button positive logout">
-                    <div class="ui cancel button">Not yet</div>
-                  </div>
-                </div>
-
               </form>
             </div>
           </div>

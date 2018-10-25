@@ -44,6 +44,7 @@
         <div class="column" id="sidebar">
           <div class="ui secondary vertical fluid menu">
             <div class="ui grid">
+
               <!-- This is where the short overview of the profile is placed. -->
               <div class="one column center aligned row">
                 <div class="column profile">
@@ -66,6 +67,7 @@
                 </div>
               </div>
             </div>
+
           <!-- These are the side menubar items. -->
           <a href = "/home" class="item">
             Overview
@@ -88,6 +90,7 @@
             </div>
             <div class="ui divider"></div>
 
+          <!-- This the filter for grant status -->
             <div class="row">
                 <div class="three wide column">
                     <div id = "status" class="ui selection dropdown fluid">                  
@@ -107,6 +110,7 @@
                     </div>
                 </div>
                 
+               <!-- This the filter for department -->
                 <div class="three wide column">
                     <div id = "status" class="ui selection dropdown fluid">                  
                         <i class="filter icon"></i>
@@ -130,6 +134,7 @@
                     </div>
                 </div>
                 
+              <!-- This the filter for department -->
                 <div class="three wide column">
                     <div id = "status" class="ui selection dropdown fluid">                  
                         <i class="filter icon"></i>
@@ -151,22 +156,20 @@
                     </div>
                 </div>
       
+          <!-- This the filter search bar for name -->
             <div class="three wide column">
               <div class="ui action input fluid">
                <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
                 <input type="text"  name = "firstNameSearch" placeholder="First Name">
                 <input type="text"  name = "lastNameSearch" placeholder="Last Name">
-                {{#if error}}
-                  <div class="error">
-                    <div class="ui red tiny message">{{error}}</div>
-                  </div>
-                {{/if}}
+                
                 <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
                 </form>
               </div>
             </div>    
         </div>
 
+          <!-- This the table for the list of grants submitted -->
           <div class="row">
             <table class="ui single line selectable table tablet stackable">
               <thead>
@@ -180,6 +183,7 @@
                 </tr>
               </thead>
                 <tbody >
+
                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
                     <div data-id="{{_id}}">
@@ -214,6 +218,7 @@
                         </div>    
                     {{/each}}   
 
+                <!-- This the modal for grant deletion -->
                   <div class="ui modal deletion">
                     <div class="header">Are you sure?</div>
                     <div class="content">
@@ -228,6 +233,7 @@
              </table>
             </div>   
 
+        <!-- Show message if no forms are returned by the filter request -->
           {{#if noforms}}
           <div class = "row">
             <div class="ui one column stackable center aligned page grid">
@@ -243,6 +249,7 @@
       </div>
     </div>
 
+  <!-- This the modal for logout confirmation -->
     <div class="ui modal logout">
       <div class="header">Are you sure?</div>
       <div class="content">
@@ -253,7 +260,6 @@
         <div class="ui cancel button">Not yet</div>
       </div>
     </div>
-
   </body>
 
   <!-- Always include these two JS files when adding a new page -->

@@ -48,6 +48,7 @@
       <div class="column" id="sidebar">
         <div class="ui secondary vertical fluid menu">
           <div class="ui grid">
+
             <!-- This is where the short overview of the profile is placed. -->
             <div class="one column center aligned row">
               <div class="column profile">
@@ -70,6 +71,7 @@
               </div>
             </div>
           </div>
+
           <!-- These are the side menubar items. -->
           <a href="/faculty/request-grant" class="active item">
             Request Grant
@@ -96,6 +98,7 @@
               <h3>1st Term, AY 2018-2019</h3>
             </div>
           </div>
+
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
@@ -125,8 +128,6 @@
                   <label>Name of Conference</label>
                   <input type="text" name="nameOfConference" id = "nameOfConference" class = "check"/>
                 </div>
-
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -144,7 +145,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -167,7 +167,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="field">
                   <label>Date of expected return to work</label>
                   <div class="ui calendar" id="expected-date">
@@ -183,7 +182,6 @@
                   <label>Participant’s fee (check payable to)</label>
                   <input type="text" name="participantFee" id  = "participantFee" class = "check"/>
                 </div>
-
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
@@ -203,6 +201,7 @@
                   </div>
                 </div>
 
+               <!-- This is where you will put the additional requirements. -->
                 <div class="field">
                   <label>Application should be accompanied by the following:</label>
                   <div class="fields">
@@ -231,6 +230,7 @@
                   <div class="ui green button" id="confirm">Submit</div>
                 </div>
 
+              <!-- This the modal for submit confirmation -->
                 <div class="ui modal submit">
                   <div class="header">Are you sure?</div>
                   <div class="content">
@@ -242,17 +242,17 @@
                   </div>
                 </div>
 
-              <div class="ui modal logout">
-                <div class="header">Are you sure?</div>
-                <div class="content">
-                  <p>Do you really want to log out?</p>
+             <!-- This the modal for logout confirmation -->
+                <div class="ui modal logout">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Do you really want to log out?</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Log out" class="ui button positive logout">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
                 </div>
-                <div class="actions">
-                  <input type="submit" value="Log out" class="ui button positive logout">
-                  <div class="ui cancel button">Not yet</div>
-                </div>
-              </div>
-
               </form>
             </div>
           </div>
