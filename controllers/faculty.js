@@ -572,9 +572,9 @@ hbs.registerHelper('facultystatus', function(status, options) {
  */
 hbs.registerHelper('employment', function(status, options) { 
   if(status == "Part-time") {
-    return options.inverse(this);
-  } else {
     return options.fn(this);
+  } else {
+    return options.inverse(this);
   }
 })
 
