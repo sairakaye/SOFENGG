@@ -248,7 +248,7 @@ router.get("/filterFD2", function(req, res){
   var user = req.session.user
   if(user){
       var formFilter = 'FD2'
-      fdOne.getAllFDOne().then((forms)=>{
+      fdTwo.getAllFDTwo().then((forms)=>{
           res.render("view-grants.hbs", {
               user, forms, formFilter
           })
@@ -264,7 +264,7 @@ router.get("/filterFD3", function(req, res){
   var user = req.session.user
   if(user){
       var formFilter = 'FD3'
-      fdOne.getAllFDOne().then((forms)=>{
+      fdThree.getAllFDThree().then((forms)=>{
           res.render("view-grants.hbs", {
               user, forms, formFilter
           })
@@ -280,7 +280,7 @@ router.get("/filterFD4", function(req, res){
   var user = req.session.user
   if(user){
       var formFilter = 'FD4'
-      fdOne.getAllFDOne().then((forms)=>{
+      fdFour.getAllFDFour().then((forms)=>{
           res.render("view-grants.hbs", {
               user, forms, formFilter
           })
@@ -296,7 +296,7 @@ router.get("/filterFD15", function(req, res){
   var user = req.session.user
   if(user){
       var formFilter = 'FD15'
-      fdOne.getAllFDOne().then((forms)=>{
+      fdFifteen.getAllFDFifteen().then((forms)=>{
           res.render("view-grants.hbs", {
               user, forms, formFilter
           })
@@ -312,7 +312,7 @@ router.get("/filterFD16", function(req, res){
   var user = req.session.user
   if(user){
       var formFilter = 'FD16'
-      fdOne.getAllFDOne().then((forms)=>{
+      fdSixteen.getAllFDSixteen().then((forms)=>{
           res.render("view-grants.hbs", {
               user, forms, formFilter
           })
