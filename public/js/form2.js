@@ -4,7 +4,33 @@
  * @ver 1.0
  * @author Sai Manalili
  */
-var today = new Date();
+
+ /**
+  * This is variable creates the date
+  * today.
+  */
+ var today = new Date();
+
+ /**
+  * Prevents the enter key to be pressed in forms.
+  * @param {Event} e
+  */
+ function stopEnterKey(e) { 
+   var e = (e) ? e : ((event) ? event : null); 
+   var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null); 
+   if ((e.keyCode == 13) && ((node.type=="text") 
+       || node.type=="number")) {
+     return false;
+   }
+ }
+ 
+ /**
+  * This is initialize to the page where
+  * when a key is pressed, it calls for
+  * stopEnterKey function.
+  */
+ document.onkeypress = stopEnterKey;
+  
 /**
  * Initializes the Date Hired field.
  * @param {Object} settings - customizing the settings of
@@ -152,7 +178,7 @@ $('#request-form')
     inline: 'true',
     on: 'blur',
     fields: {
-      // This rule is for validating the first name field.
+      keyboardShortcuts: 'false',
       firstName: {
         identifier: 'firstName',
         rules: [
