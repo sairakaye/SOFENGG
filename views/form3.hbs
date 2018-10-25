@@ -228,7 +228,8 @@
                 </div>
                 <div class="field">
                   <label>Travel and conference subsidy (pls. specify)</label>
-                  <input type="number" name="travelAndConferenceSubsidy" />
+                  <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                         min = "0" name="travelAndConferenceSubsidy" id = "travelAndConferenceSubsidy" class = "check" />
                 </div>
                 <div class="field">
                   <label>Date incentive was last availed of</label>
