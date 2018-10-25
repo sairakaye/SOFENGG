@@ -167,7 +167,6 @@ $('.ui.checkbox').checkbox();
  */
 $("#confirm").click(function () {
   check();
-
   var isValid = $('.form').form('validate form');
 
   if (isValid) {

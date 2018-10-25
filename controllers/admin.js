@@ -56,9 +56,15 @@ router.get("/filterApproved", function(req, res){
     if(user){
         var statusFilter = 'Approved'
         var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, statusFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, statusFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, statusFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -73,9 +79,15 @@ router.get("/filterPending", function(req, res){
     if(user){
         var statusFilter = 'Pending'
         var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, statusFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, statusFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, statusFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -89,9 +101,15 @@ router.get("/filterRejected", function(req, res){
     if(user){
         var statusFilter = 'Rejected'
         var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, statusFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, statusFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, statusFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -105,9 +123,15 @@ router.get("/filterCED", function(req, res){
     if(user){
         var departmentFilter = 'College of Education'
         var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -121,9 +145,15 @@ router.get("/filterCCS", function(req, res){
     if(user){
         var departmentFilter = 'College of Computer Studies'
         var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -137,9 +167,15 @@ router.get("/filterCOL", function(req, res){
     if(user){
         var departmentFilter = 'College of Law'
         var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -153,9 +189,15 @@ router.get("/filterCLA", function(req, res){
   if(user){
       var departmentFilter = 'College of Liberal Arts'
       var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-          res.render("view-grants.hbs", {
-              user, forms, departmentFilter
-          })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, departmentFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        }
       })
   } else {
     res.redirect("/")
@@ -169,9 +211,15 @@ router.get("/filterCOS", function(req, res){
     if(user){
         var departmentFilter = 'College of Science'
         var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -185,9 +233,15 @@ router.get("/filterCOE", function(req, res){
   if(user){
       var departmentFilter = 'College of Engineering'
       var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-          res.render("view-grants.hbs", {
-              user, forms, departmentFilter
-          })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, departmentFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, departmentFilter
+            })
+        }
       })
   } else {
     res.redirect("/")
@@ -201,9 +255,15 @@ router.get("/filterCOB", function(req, res){
   if(user){
       var departmentFilter = 'College of Business'
       var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, departmentFilter, noforms: "There are no matches found"
+            })
+        } else {
           res.render("view-grants.hbs", {
               user, forms, departmentFilter
           })
+        }
       })
   } else {
     res.redirect("/")
@@ -217,9 +277,15 @@ router.get("/filterSOE", function(req, res){
     if(user){
         var departmentFilter = 'School of Economics'
         var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -233,9 +299,15 @@ router.get("/filterFD1", function(req, res){
     if(user){
         var formFilter = 'FD1'
         fdOne.getAllFDOne().then((forms)=>{
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
         })
     } else {
         res.redirect("/")
@@ -249,10 +321,16 @@ router.get("/filterFD2", function(req, res){
   if(user){
       var formFilter = 'FD2'
       fdTwo.getAllFDTwo().then((forms)=>{
-          res.render("view-grants.hbs", {
-              user, forms, formFilter
-          })
-      })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, formFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        }
+    })
   } else {
     res.redirect("/")
   }
@@ -265,10 +343,16 @@ router.get("/filterFD3", function(req, res){
   if(user){
       var formFilter = 'FD3'
       fdThree.getAllFDThree().then((forms)=>{
-          res.render("view-grants.hbs", {
-              user, forms, formFilter
-          })
-      })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, formFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        }
+    })
   } else {
     res.redirect("/")
   }
@@ -281,10 +365,16 @@ router.get("/filterFD4", function(req, res){
   if(user){
       var formFilter = 'FD4'
       fdFour.getAllFDFour().then((forms)=>{
-          res.render("view-grants.hbs", {
-              user, forms, formFilter
-          })
-      })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, formFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        }
+    })
   } else {
     res.redirect("/")
   }
@@ -297,10 +387,16 @@ router.get("/filterFD15", function(req, res){
   if(user){
       var formFilter = 'FD15'
       fdFifteen.getAllFDFifteen().then((forms)=>{
-          res.render("view-grants.hbs", {
-              user, forms, formFilter
-          })
-      })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, formFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        }
+    })
   } else {
     res.redirect("/")
   }
@@ -313,10 +409,16 @@ router.get("/filterFD16", function(req, res){
   if(user){
       var formFilter = 'FD16'
       fdSixteen.getAllFDSixteen().then((forms)=>{
-          res.render("view-grants.hbs", {
-              user, forms, formFilter
-          })
-      })
+        if (forms == ""){
+            res.render("view-grants.hbs", {
+                user, formFilter, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("view-grants.hbs", {
+                user, forms, formFilter
+            })
+        }
+    })
   } else {
       res.redirect("/")
   }

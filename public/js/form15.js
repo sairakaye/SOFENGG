@@ -162,6 +162,24 @@ $('#request-form')
             }
           ]
         },
+        startTime: {
+          identifier: 'startTime',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter your the duration start.'
+            }
+          ]
+        },
+        endTime: {
+          identifier: 'endTime',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter your the duration end.'
+            }
+          ]
+        },
         titleOfSeminar: {
           identifier: 'titleOfSeminar',
           rules: [
