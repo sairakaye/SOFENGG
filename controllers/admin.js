@@ -40,9 +40,15 @@ router.get("/view-grants", function(req, res){
     var user = req.session.user
     if(user){
         forms = getAllForms(function(forms){
-            res.render("view-grants.hbs", {
-                user, forms
-            })
+            if (forms == ""){
+                res.render("view-grants.hbs", {
+                    user, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms
+                })
+            }
         })
     } else {
         res.redirect("/")
