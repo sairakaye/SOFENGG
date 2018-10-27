@@ -400,7 +400,7 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
   var grantStatus = "Pending"
 
   var fdFifteenData = {
-    grantName: "[FD15] Incentive for Publication in Pre-Selected High Impact Journal",
+    grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed, 
