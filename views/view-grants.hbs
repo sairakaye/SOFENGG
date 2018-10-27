@@ -8,6 +8,7 @@
 
 <html>
   <head>
+  <title>View Grants</title>
    <!-- Always include these two css files when creating a new html file. -->
       <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet"/>
       <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
@@ -156,14 +157,14 @@
                     </div>
                 </div>
       
-          <!-- This the filter search bar for name -->
+          <!-- ITERATION 2 This the filter search bar for name -->
             <div class="three wide column">
               <div class="ui action input fluid">
-               <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
+               {{!-- <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
                 <input type="text"  name = "firstNameSearch" placeholder="First Name">
                 <input type="text"  name = "lastNameSearch" placeholder="Last Name">
                 <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
-                </form>
+                </form> --}}
               </div>
             </div>    
         </div>
@@ -237,7 +238,7 @@
           <div class = "row">
             <div class="ui one column stackable center aligned page grid">
               <div class="column sixteen wide">
-                <div class="ui tiny red message">{{noforms}}</div>
+                <div class="ui tiny yellow message">{{noforms}}</div>
               </div>
             </div>
             </div>
