@@ -89,6 +89,44 @@ exports.edit = function(paramFDFifteen){
 }
 
 /**
+ * Approves FD15 record in FD15 Schema 
+ *
+ * @param {FD15 record to be approved} paramID
+ */
+exports.approveFDFifteen = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdFifteen.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Approve"}
+        }).then((updatedFDFifteen)=>{
+            resolve(updatedFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Rejects FD15 record in FD15 Schema 
+ *
+ * @param {FD15 record to be reject} paramID
+ */
+exports.rejectFDFifteen = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdFifteen.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Reject"}
+        }).then((updatedFDFifteen)=>{
+            resolve(updatedFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets one FD15 record in FD15 Schema 
  *
  * @param {FD15 record to get} paramFDOne

@@ -79,7 +79,7 @@ exports.delete = function(paramID){
 }
 
 /**
- * Edits FD1 record in FD1 Schema 
+ * Edits FD3 record in FD1 Schema 
  *
  * @param {FD1 record to be edited} paramFDOne
  */
@@ -88,6 +88,44 @@ exports.edit = function(paramFDThree){
         fdThree.findOneAndUpdate({
             _id : paramFDThree._id
         }, paramFDThree).then((updatedFDThree)=>{
+            resolve(updatedFDThree)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Approves FD3 record in FD3 Schema 
+ *
+ * @param {FD3 record to be approved} paramID
+ */
+exports.approveFDThree = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdThree.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Approve"}
+        }).then((updatedFDThree)=>{
+            resolve(updatedFDThree)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Rejects FD3 record in FD3 Schema 
+ *
+ * @param {FD3 record to be reject} paramID
+ */
+exports.rejectFDThree = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdThree.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Reject"}
+        }).then((updatedFDThree)=>{
             resolve(updatedFDThree)
         }, (err)=>{
             reject(err)
