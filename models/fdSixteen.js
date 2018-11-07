@@ -91,6 +91,44 @@ exports.edit = function(paramFDSixteen){
 }
 
 /**
+ * Approves FD16 record in FD16 Schema 
+ *
+ * @param {FD16 record to be approved} paramID
+ */
+exports.approveFDSixteen = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Approve"}
+        }).then((updatedFDSixteen)=>{
+            resolve(updatedFDSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Rejects FD16 record in FD16 Schema 
+ *
+ * @param {FD16 record to be reject} paramID
+ */
+exports.rejectFDSixteen = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Reject"}
+        }).then((updatedFDSixteen)=>{
+            resolve(updatedFDSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets one FD16 record in FD16 Schema 
  *
  * @param {FD16 record to get} paramFDOne

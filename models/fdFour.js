@@ -91,6 +91,44 @@ exports.edit = function(paramFDFour){
 }
 
 /**
+ * Approves FD4 record in FD4 Schema 
+ *
+ * @param {FD4 record to be approved} paramID
+ */
+exports.approveFDFour = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdFour.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Approve"}
+        }).then((updatedFDFour)=>{
+            resolve(updatedFDFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Rejects FD4 record in FD4 Schema 
+ *
+ * @param {FD4 record to be reject} paramID
+ */
+exports.rejectFDFour = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdFour.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Reject"}
+        }).then((updatedFDFour)=>{
+            resolve(updatedFDFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets one FD4 record in FD4 Schema 
  *
  * @param {FD4 record to get} paramFDOne

@@ -98,6 +98,44 @@ exports.edit = function(paramFDOne){
 }
 
 /**
+ * Approves FD1 record in FD1 Schema 
+ *
+ * @param {FD1 record to be approved} paramID
+ */
+exports.approveFDOne = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdOne.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Approve"}
+        }).then((updatedFDOne)=>{
+            resolve(updatedFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Rejects FD1 record in FD1 Schema 
+ *
+ * @param {FD1 record to be reject} paramID
+ */
+exports.rejectFDOne = function(paramID){
+    return new Promise(function(resolve, reject){
+        fdOne.findOneAndUpdate({
+            _id : paramID
+        }, {
+            "$set" : {"grantStatus" : "Reject"}
+        }).then((updatedFDOne)=>{
+            resolve(updatedFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets one FD1 record in FD1 Schema 
  *
  * @param {FD1 record to get} paramFDOne
