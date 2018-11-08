@@ -7,17 +7,3 @@ $("div.log-out").click(function () {
     })
   })
 
-
-  
-//   noBack();
-//   window.onload=noBack;
-
-//   function noBack(){
-//     window.history.forward();
-//   }
-//   window.onpageshow=function(evt){
-//     if(evt.persisted)noBack();
-//   }
-//   window.onunload=function(){
-//     void(0);
-//   }

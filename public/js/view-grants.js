@@ -1,3 +1,10 @@
+/**
+ * This is the JS file of the view grants page.
+ * October 20, 2018
+ * @ver 1.0
+ * @author Candace Mercado
+ */
+
 $('.ui.dropdown').dropdown({forceSelection: false});
 
 $("button.delete").click(function () {

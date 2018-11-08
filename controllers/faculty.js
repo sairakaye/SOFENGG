@@ -519,6 +519,16 @@ router.get("/my-requests", function(req, res) {
   }
 })
 
+router.get("/printform", urlencoder, (req, res) => {
+    console.log("POST /printform ")
+    
+    var id = req.query.id
+
+    var forms = getFormById(id, function(forms){
+        res.send(forms)
+    }) 
+})
+
 module.exports = router
 
 /**
@@ -605,3 +615,43 @@ function getAllForms(forms, callback){
       })
   })
 }
+
+/**
+ * Gets a form (By ID)
+ *
+ * @param {Filter} id
+ * @param {Callback function} callback
+ */
+function getFormById(id, callback){
+    
+    fdOne.getFDOneByID(id).then((fdOneData)=>{
+        forms = fdOneData
+        if (forms != null)
+            callback(forms)
+        fdTwo.getFDTwoByID(id).then((fdTwoData)=>{
+            forms = fdTwoData
+            if (forms != null)
+                callback(forms)
+            fdThree.getFDThreeByID(id).then((fdThreeData)=>{
+                forms = fdThreeData
+                if (forms != null)
+                    callback(forms)
+                fdFour.getFDFourByID(id).then((fdFourData)=>{
+                    forms = fdFourData
+                    if (forms != null)
+                        callback(forms)
+                    fdFifteen.getFDFifteenByID(id).then((fdFifteenData)=>{
+                        forms = fdFifteenData
+                        if (forms != null)
+                            callback(forms)
+                        fdSixteen.getFDSixteenByID(id).then((fdSixteenData)=>{
+                            forms = fdSixteenData
+                            if (forms != null)
+                                callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 
