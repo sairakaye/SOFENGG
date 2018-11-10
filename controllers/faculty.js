@@ -243,6 +243,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   var titleOfJournal = req.body.titleOfJournal
   var datePaperSubmitted = req.body.datePaperSubmitted
   var datePaperAccepted = req.body.datePaperAccepted
+  var typeOfConference = req.body.typeOfConference
   var nameOfConference = req.body.nameOfConference
   var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
   var dateOfConference = req.body.dateOfConference
@@ -251,6 +252,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
   var grantStatus = "Pending"
   
   var fdThreeData = {
@@ -258,9 +260,9 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
-    datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
-    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus
+    datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
+    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
+    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
   }
 
   fdThree.create(fdThreeData).then((newFdThreeData)=> {

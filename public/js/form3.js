@@ -251,13 +251,22 @@ $('#request-form')
               prompt : 'Please enter the number of units taught.'
             }
           ]
+        },        
+        nameOfConference: {
+          identifier: 'nameOfConference',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter the name of conference.'
+            }
+          ]
         },
         titleOfPaperToBePresented: {
           identifier: 'titleOfPaperToBePresented',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter the name of the conference.'
+              prompt : 'Please enter the title of paper to be presented.'
             }
           ]
         },
