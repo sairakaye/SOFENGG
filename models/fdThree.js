@@ -39,7 +39,7 @@ var fdThreeSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    travelAndConferenceSubsidy : Number, //MONEY
+    travelAndConferenceSubsidy : String, 
     dateIncentiveLastAvailed : Date
 })
 
