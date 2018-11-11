@@ -16,6 +16,7 @@ const mongoose = require("mongoose");
  * Setting up FD1 Form Schema
  */
 var fdOneSchema = mongoose.Schema({
+    timestamp: { type: Date, default: Date.now },
     grantName: String,
     ownerIdNumber : String,
     grantStatus: String,
