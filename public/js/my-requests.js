@@ -26,18 +26,18 @@ $(".button.printform").click(function () {
                     
                     doc.text(244,83, form.term + "")
                     doc.text(244,571, form.term + "")
-                    doc.text(300,83, form.startAY + "")
-                    doc.text(300,571, form.startAY + "")
-                    doc.text(37,83, form.endAY + "")
-                    doc.text(37,571, form.endAY + "")
+                    doc.text(304,83, form.startAY + "")
+                    doc.text(304,571, form.startAY + "")
+                    doc.text(338,83, form.endAY + "")
+                    doc.text(338,571, form.endAY + "")
                     doc.text(135,100, form.firstName +" " +form.lastName)
                     doc.text(135,588, form.firstName +" " +form.lastName)
                     doc.text(401,100, form.department + "")
                     doc.text(401,588, form.department + "")
                     doc.text(80,117, moment(form.dateHired).format('LL')+ "")
-                    doc.text(80,605, moment(form.dateHired).format('LL') + "")
+                    doc.text(85,606, moment(form.dateHired).format('LL') + "")
                     doc.text(231,117, form.rank + "")
-                    doc.text(231,605, form.rank + "")
+                    doc.text(234,605, form.rank + "")
                     doc.text(258,134, form.aveTeachingPerformance + "")
                     doc.text(258,622, form.aveTeachingPerformance + "")
                     doc.text(133,147, form.titleOfPaperOrPublication + "")
@@ -66,21 +66,23 @@ $(".button.printform").click(function () {
                     doc.text(165,778, moment(form.dateIncentiveLastAvailed).format('LL') + "")    
                     
                     if (form.status == "Permanent"){
-                        doc.text(536,164, "/") 
-                        doc.text(536,843, "/") 
+                        doc.text(388,119, "/") 
+                        doc.text(388,607, "/") 
                     } else {
-                        doc.text(645,164, "/")
-                        doc.text(645,843, "/")
+                        doc.text(466,119, "/")
+                        doc.text(466,607, "/")
                     }
+                    
+                    doc.save('[F1] FacultyDevelopmentGrant.pdf')
                     
                 } else if (form.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                     doc.addImage(form2image, 'JPEG', 0, 0, 612, 1008)
                     doc.text(244,118, form.term + "")
-                    doc.text(244,605, form.term + "")
+                    doc.text(245,596, form.term + "")
                     doc.text(306,118, form.startAY + "")
-                    doc.text(306,605, form.startAY + "")
+                    doc.text(304,596, form.startAY + "")
                     doc.text(338,118, form.endAY + "")
-                    doc.text(338,605, form.endAY + "")
+                    doc.text(338,596, form.endAY + "")
                     doc.text(130,136, form.firstName +" " +form.lastName)
                     doc.text(130,623, form.firstName +" " +form.lastName)
                     doc.text(400,136, form.department + "")
@@ -109,13 +111,14 @@ $(".button.printform").click(function () {
                     doc.text(164,747, moment(form.dateIncentiveLastAvailed).format('LL'))
                     
                     if (form.status == "Permanent"){
-                        doc.text(536,213, "/") 
-                        doc.text(536,888, "/") 
+                        doc.text(388,155, "/") 
+                        doc.text(388,642, "/") 
                     } else {
-                        doc.text(645,888, "/")
-                        doc.text(645,213, "/")
+                        doc.text(466,155, "/")
+                        doc.text(466,642, "/")
                     }
                     
+                    doc.save('[F2] FacultyDevelopmentGrant.pdf')
                 } else if (form.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                     doc.addImage(form3image, 'JPEG', 0, 0, 612, 1008)
 
