@@ -16,6 +16,7 @@ const mongoose = require("mongoose");
  * Setting up FD3 Form Schema
  */
 var fdThreeSchema = mongoose.Schema({
+    timestamp: { type: Date, default: Date.now },
     grantName : String,
     ownerIdNumber : String,
     grantStatus: String,
@@ -38,7 +39,7 @@ var fdThreeSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    travelAndConferenceSubsidy : Number, //MONEY
+    travelAndConferenceSubsidy : String, 
     dateIncentiveLastAvailed : Date
 })
 
