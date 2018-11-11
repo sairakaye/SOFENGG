@@ -1,0 +1,286 @@
+<!-- 
+This is the page for the preview of the
+FD1 form.
+November 10, 2018
+@ver 1.0
+@author Sai Manalili
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Preview - FD1</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href=".../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="..favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
+      </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- These are the side menubar items. -->
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              Preview Form
+            </h1>
+          </div>
+          <div class="ui divider"></div>
+          <br>
+
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column">
+              <div class="ui attached message">
+                <div class="one column center aligned row">
+                  <div class="column">
+                    <h2>[FD1] Incentive for Publication in Pre-Selected High Impact Journal</h2>
+                  </div>
+                  <div class="column">
+                    <h3>1st Term, AY 2018-2019</h3>
+                  </div>
+                </div>
+              </div>
+              <form action="/faculty/submit-fd1" method="post" class="ui form attached fluid segment" id="preview-form">
+                <input type="hidden" name="formNum" value="1" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>First Name</label>
+                    <p>{{fdOneData.firstName}}</p>
+                    <input type="hidden" name="firstName" value="{{fdOneData.firstName}}" />
+                  </div>
+                  <div class="field">
+                    <label>Last Name</label>
+                    <p>{{fdOneData.lastName}}</p>
+                    <input type="hidden" name="lastName" value="{{fdOneData.lastName}}" />
+                  </div>
+                </div>
+                <div class="fields">
+                  <div class="seven wide field">
+                    <label>Department</label>
+                    <p>{{fdOneData.department}}</p>
+                    <input type="hidden" name="department" value="{{fdOneData.department}}" />
+                  </div>
+                  <div class="four wide field">
+                    <label>Date Hired</label>
+                    <p>{{fdOneData.dateHired}}</p>
+                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdOneData.dateHired}}" />
+                  </div>
+                  <div class="five wide field">
+                    <label>Rank</label>
+                    <p>{{fdOneData.rank}}</p>
+                    <input type="hidden" name="rank" value="{{fdOneData.rank}}" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <p>{{fdOneData.status}}</p>
+                      <input type="hidden" name="status" id="status" value="{{fdOneData.status}}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Average teaching performance for the last 3 academic years</label>
+                  <p>{{fdOneData.aveTeachingPerformance}}</p>
+                  <input type="hidden" name="aveTeachingPerformance" id="aveTeachingPerformance" class="check" value="{{fdOneData.aveTeachingPerformance}}" />
+                </div>
+                <div class="field">
+                  <label>Title of Paper or Publication</label>
+                  <p>{{fdOneData.titleOfPaperOrPublication}}</p>
+                  <input type="hidden" name="titleOfPaperOrPublication" id="titleOfPaperOrPublication" class="check"
+                    value="{{fdOneData.titleOfPaperOrPublication}}" />
+                </div>
+                <div class="field">
+                  <label>Title of the Journal where paper was published</label>
+                  <p>{{fdOneData.titleOfJournal}}</p>
+                  <input type="hidden" name="titleOfJournal" id="titleOfJournal" class="check" value="{{fdOneData.titleOfPaperOrPublication}}" />
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date paper was submitted for publication</label>
+                      <p>{{fdOneData.datePaperSubmitted}}</p>
+                      <input type="hidden" name="datePaperSubmitted" placeholder="Date" id="datePaperSubmitted" class="check"
+                        value="{{fdOneData.datePaperSubmitted}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date paper was accepted for publication</label>
+                      <p>{{fdOneData.datePaperAccepted}}</p>
+                      <input type="hidden" name="datePaperAccepted" placeholder="Date" id="datePaperAccepted" class="check"
+                        value="{{fdOneData.datePaperAccepted}}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Name of Conference</label>
+                  <p>{{fdOneData.nameOfConference}}</p>
+                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdOneData.nameOfConference}}" />
+                </div>
+                <div class="field">
+                  <label>Title of paper to be presented</label>
+                  <p>{{fdOneData.titleOfPaperToBePresented}}</p>
+                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
+                    value="{{fdOneData.titleOfPaperToBePresented}}" />
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of Conference</label>
+                      <p>{{fdOneData.dateOfConference}}</p>
+                      <input type="hidden" name="dateOfConference" placeholder="Date" id="dateOfConference" class="check"
+                        value="{{fdOneData.dateOfConference}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Place and Venue</label>
+                      <p>{{fdOneData.placeAndVenue}}</p>
+                      <input type="hidden" name="placeAndVenue" id="placeAndVenue" class="check" value="{{fdOneData.placeAndVenue}}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of Departure</label>
+                      <p>{{fdOneData.dateOfDeparture}}</p>
+                      <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
+                        value="{{fdOneData.dateOfDeparture}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date of Return</label>
+                      <p>{{fdOneData.dateOfReturn}}</p>
+                      <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdOneData.dateOfReturn}}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of expected return to work</label>
+                      <p>{{fdOneData.dateOfReturnToWork}}</p>
+                      <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
+                        value="{{fdOneData.dateOfReturnToWork}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Date incentive was last availed of</label>
+                      <p>{{fdOneData.dateIncentiveLastAvailed}}</p>
+                      <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                        class="check" value="{{fdOneData.dateIncentiveLastAvailed}}" />
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="ui divider"></div>
+                <br>
+                <!-- This is where you will put the additional requirements. -->
+                <div class="field">
+                  <label>Note</label>
+                  <p>Once you clicked submit, you may not be able to revise it.</p>
+                  <p></p>
+                </div>
+                <br>
+                <div class="field">
+                  <button class="ui submit green button" type="Submit">
+                    Submit
+                  </button>
+                  <a href="#" class="ui button">
+                    Back
+                  </a>
+              </form>
+
+              <!-- This the modal for logout confirmation -->
+              <div class="ui modal logout">
+                <div class="header">Are you sure?</div>
+                <div class="content">
+                  <p>Do you really want to log out?</p>
+                </div>
+                <div class="actions">
+                  <input type="submit" value="Log out" class="ui button positive logout">
+                  <div class="ui cancel button">Not yet</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<!-- You can insert more JS files below -->
+<script type="text/javascript" src="../public/js/preview.js"></script>
+<script type="text/javascript" src="../public/js/nonforms.js"></script>
+
+</html>

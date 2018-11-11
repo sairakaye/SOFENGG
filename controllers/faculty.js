@@ -74,6 +74,57 @@ router.get("/fd-1", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
+router.post("/preview-fd1", urlencoder, function(req,res) {
+    console.log("POST /preview-fd1")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var dateHired = req.body.dateHired
+    var status = req.body.status
+    var aveTeachingPerformance = req.body.aveTeachingPerformance
+    var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
+    var titleOfJournal = req.body.titleOfJournal
+    var datePaperSubmitted = req.body.datePaperSubmitted
+    var datePaperAccepted = req.body.datePaperAccepted
+    var nameOfConference = req.body.nameOfConference
+    var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+    var dateOfConference = req.body.dateOfConference
+    var placeAndVenue = req.body.placeAndVenue
+    var dateOfDeparture = req.body.dateOfDeparture
+    var dateOfReturn = req.body.dateOfReturn
+    var dateOfReturnToWork = req.body.dateOfReturnToWork
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var grantStatus = "Pending"
+  
+    var fdOneData = {
+      grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, dateHired, rank, status,
+      aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
+      datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
+      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateIncentiveLastAvailed, grantStatus
+    }
+
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form1.hbs", {
+            user, fdOneData
+        })
+    }
+  })
+
+
+
+/**
+ * Adds to the database the entered information for FD1
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.post("/submit-fd1", urlencoder, function(req,res) {
   console.log("POST /submit-fd1")
   
