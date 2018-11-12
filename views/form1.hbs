@@ -133,7 +133,7 @@
                     <input type="text" name="rank" value="{{user.rank}}" />
                   </div>
                 </div>
-                <div class="field">
+                <div class="field disabled">
                   <label>Status</label>
                   <div class="fields">
                     {{#facultystatus user.status}}
@@ -167,7 +167,8 @@
                 </div>
                 <div class="field">
                   <label>Average teaching performance for the last 3 academic years</label>
-                  <input type="text" name="aveTeachingPerformance" id = "aveTeachingPerformance" class = " check" />
+                  <input type="number"onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46"
+                         min = "0" step=".01"  name="aveTeachingPerformance" id = "aveTeachingPerformance" class = " check" />
                 </div>
                 <div class="field">
                   <label>Title of Paper or Publication</label>
@@ -355,6 +356,5 @@
 <script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/form1.js"></script>
-<script type="text/javascript" src="../public/js/nonforms.js"></script>
-
+<script type="text/javascript" src="../public/js/log-out.js"></script>
 </html>
