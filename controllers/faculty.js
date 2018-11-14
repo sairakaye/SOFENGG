@@ -109,6 +109,7 @@ router.post("/preview-fd1", urlencoder, function(req,res) {
     }
 
     var user = req.session.user
+    
     if (user != null) {
         res.render("preview-form1.hbs", {
             user, fdOneData
