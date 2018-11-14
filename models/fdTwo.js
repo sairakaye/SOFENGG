@@ -29,7 +29,7 @@ var fdTwoSchema = mongoose.Schema({
     dateHired : Date,
     rank : String,
     status : String, //true = permanent, false = probationary
-    aveTeachingPerformance : String,
+    aveTeachingPerformance : Number,
     nameOfConference : String, 
     titleOfPaperToBePresented : String,
     dateOfConference : Date,

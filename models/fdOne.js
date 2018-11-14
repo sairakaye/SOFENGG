@@ -29,7 +29,7 @@ var fdOneSchema = mongoose.Schema({
     dateHired : Date,
     rank : String,
     status : String,
-    aveTeachingPerformance : String,
+    aveTeachingPerformance : Number,
     titleOfPaperOrPublication : String,
     titleOfJournal : String, 
     datePaperSubmitted : Date,
