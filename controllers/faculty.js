@@ -117,6 +117,100 @@ router.post("/preview-fd1", urlencoder, function(req,res) {
     }
   })
 
+/**
+ * Adds to the database the entered information for FD2
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/preview-fd2", urlencoder, function(req,res) {
+    console.log("POST /preview-fd2")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var dateHired = req.body.dateHired
+    var rank = req.body.rank
+    var status = req.body.status
+    var aveTeachingPerformance = req.body.aveTeachingPerformance
+    var nameOfConference = req.body.nameOfConference
+    var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+    var dateOfConference = req.body.dateOfConference
+    var placeAndVenue = req.body.placeAndVenue
+    var dateOfDeparture = req.body.dateOfDeparture
+    var dateOfReturn = req.body.dateOfReturn
+    var dateOfReturnToWork = req.body.dateOfReturnToWork
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var grantStatus = "Pending"
+    
+    var fdTwoData = {
+      grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, dateHired, rank, status,
+      aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
+      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateIncentiveLastAvailed, grantStatus
+    }
+    
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form2.hbs", {
+            user, fdTwoData
+        })
+    }
+  })
+
+  /**
+ * Adds to the database the entered information for FD3
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/preview-fd3", urlencoder, function(req,res) {
+    console.log("POST /preview-fd3")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var dateHired = req.body.dateHired
+    var status = req.body.status
+    var aveTeachingPerformance = req.body.aveTeachingPerformance
+    var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
+    var titleOfJournal = req.body.titleOfJournal
+    var datePaperSubmitted = req.body.datePaperSubmitted
+    var datePaperAccepted = req.body.datePaperAccepted
+    var typeOfConference = req.body.typeOfConference
+    var nameOfConference = req.body.nameOfConference
+    var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+    var dateOfConference = req.body.dateOfConference
+    var placeAndVenue = req.body.placeAndVenue
+    var dateOfDeparture = req.body.dateOfDeparture
+    var dateOfReturn = req.body.dateOfReturn
+    var dateOfReturnToWork = req.body.dateOfReturnToWork
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
+    var grantStatus = "Pending"
+    
+    var fdThreeData = {
+      grantName: "[FD3] Support for Paper Presentations in Conferences",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, dateHired, rank, status,
+      aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
+      datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
+      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
+      travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
+    }
+    
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form3.hbs", {
+            user, fdThreeData
+        })
+    }
+  })
 
 
 /**
