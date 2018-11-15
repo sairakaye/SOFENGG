@@ -91,8 +91,8 @@ $(".button.printform").click(function () {
                     doc.text(85,639, moment(form.dateHired).format('LL'))
                     doc.text(232,152, form.rank)
                     doc.text(232,639, form.rank)
-                    doc.text(257,168, form.aveTeachingPerformance)
-                    doc.text(262,655, form.aveTeachingPerformance)
+                    doc.text(257,168, form.aveTeachingPerformance+"")
+                    doc.text(262,655, form.aveTeachingPerformance+"")
                     doc.text(120,181, form.nameOfConference)
                     doc.text(120,668, form.nameOfConference)
                     doc.text(147,197, form.titleOfPaperToBePresented)
@@ -278,6 +278,8 @@ $(".button.printform").click(function () {
                         doc.text(490,185, "/")
                         doc.text(504,658, "/")
                     }
+                    //add status permanent / probationary
+                    
                     doc.save('[F16] FacultyDevelopmentGrant.pdf')
                 }
             } 
