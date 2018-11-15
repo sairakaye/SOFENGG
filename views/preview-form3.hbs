@@ -1,16 +1,16 @@
 <!-- 
-  This is the page for the preview of the
-  FD1 form.
-  November 15, 2018
-  @ver 1.0
-  @author Candace Mercado
+This is the page for the preview of the
+FD3 form.
+November 15, 2018
+@ver 1.0
+@author Candace Mercado
 -->
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Preview - FD2</title>
+  <title>Preview - FD3</title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../css/main.css" type="text/css" rel="stylesheet" />
@@ -48,6 +48,7 @@
       <div class="column" id="sidebar">
         <div class="ui secondary vertical fluid menu">
           <div class="ui grid">
+
             <!-- This is where the short overview of the profile is placed. -->
             <div class="one column center aligned row">
               <div class="column profile">
@@ -98,87 +99,91 @@
             </div>
           </div>
 
+
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
               <div class="ui attached message">
                 <div class="one column center aligned row">
                   <div class="column">
-                    <h2>[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</h2>
+                    <h2> [FD3] Support for Paper Presentations in Conferences</h2>
                   </div>
                   <div class="column">
                     <h3>1st Term, AY 2018-2019</h3>
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd2" method="post" class="ui form attached fluid segment" id="request-form" autocomplete="off">
+              <form action="/faculty/submit-fd3" method="post" class="ui form attached fluid segment" id="preview-form">
                 <input type="hidden" name="formNum" value="1" />
                 <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <p>{{fdTwoData.firstName}}</p>
-                    <input type="hidden" name="firstName" value="{{fdTwoData.firstName}}" />
+                    <p>{{fdThreeData.firstName}}</p>
+                    <input type="hidden" name="firstName" value="{{fdThreeData.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <p>{{fdTwoData.lastName}}</p>
-                    <input type="hidden" name="lastName" value="{{fdTwoData.lastName}}" />
+                    <p>{{fdThreeData.lastName}}</p>
+                    <input type="hidden" name="lastName" value="{{fdThreeData.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
                   <div class="seven wide field">
                     <label>Department</label>
-                    <p>{{fdTwoData.department}}</p>
-                    <input type="hidden" name="department" value="{{fdTwoData.department}}" />
+                    <p>{{fdThreeData.department}}</p>
+                    <input type="hidden" name="department" value="{{fdThreeData.department}}" />
                   </div>
                   <div class="four wide field">
                     <label>Date Hired</label>
-                    <p>{{fdTwoData.dateHired}}</p>
-                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdTwoData.dateHired}}" />
+                    <p>{{fdThreeData.dateHired}}</p>
+                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
                   </div>
                   <div class="five wide field">
                     <label>Rank</label>
-                    <p>{{fdTwoData.rank}}</p>
-                    <input type="hidden" name="rank" value="{{fdTwoData.rank}}" />
+                    <p>{{fdThreeData.rank}}</p>
+                    <input type="hidden" name="rank" value="{{fdThreeData.rank}}" />
                   </div>
                 </div>
                 <div class="field">
                   <label>Status</label>
                   <div class="fields">
                     <div class="two wide field">
-                      <p>{{fdTwoData.status}}</p>
-                      <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
+                      <p>{{fdThreeData.status}}</p>
+                      <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
                     </div>
                   </div>
                 </div>
                 <div class="field">
-                  <label>Average teaching performance for the last 3 academic years</label>
-                  <p>{{fdTwoData.aveTeachingPerformance}}</p>
-                  <input type="hidden" name="aveTeachingPerformance" id="aveTeachingPerformance" class="check" value="{{fdTwoData.aveTeachingPerformance}}" />
+                  <label>Name of Conference</label>
+                  <p>{{fdThreeData.nameOfConference}}</p>
+                  <input type="hidden" name="nameOfConference" id  = "nameOfConference" class= "check" value="{{fdThreeData.nameOfConference}}"/>
                 </div>
                 <div class="field">
-                  <label>Name of Conference</label>
-                  <p>{{fdTwoData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdTwoData.nameOfConference}}" />
+                  <label>Type of Conference</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <p>{{fdThreeData.typeOfConference}}</p>
+                      <input type="hidden" name="typeOfConference" id="typeOfConference" value="{{fdThreeData.typeOfConference}}" />
+                    </div>
+                  </div>
                 </div>
                 <div class="field">
                   <label>Title of paper to be presented</label>
-                  <p>{{fdTwoData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
-                    value="{{fdTwoData.titleOfPaperToBePresented}}" />
+                  <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
+                  <input type="hidden" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check" value = "{{fdThreeData.titleOfPaperToBePresented}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference</label>
-                      <p>{{fdTwoData.dateOfConference}}</p>
+                      <p>{{fdThreeData.dateOfConference}}</p>
                       <input type="hidden" name="dateOfConference" placeholder="Date" id="dateOfConference" class="check"
-                        value="{{fdTwoData.dateOfConference}}" />
+                        value="{{fdThreeData.dateOfConference}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Place and Venue</label>
-                      <p>{{fdTwoData.placeAndVenue}}</p>
-                      <input type="hidden" name="placeAndVenue" id="placeAndVenue" class="check" value="{{fdTwoData.placeAndVenue}}" />
+                      <p>{{fdThreeData.placeAndVenue}}</p>
+                      <input type="hidden" name="placeAndVenue" id="placeAndVenue" class="check" value="{{fdThreeData.placeAndVenue}}" />
                     </div>
                   </div>
                 </div>
@@ -186,37 +191,39 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
-                      <p>{{fdTwoData.dateOfDeparture}}</p>
+                      <p>{{fdThreeData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
-                        value="{{fdTwoData.dateOfDeparture}}" />
+                        value="{{fdThreeData.dateOfDeparture}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
-                      <p>{{fdTwoData.dateOfReturn}}</p>
-                      <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdTwoData.dateOfReturn}}" />
+                      <p>{{fdThreeData.dateOfReturn}}</p>
+                      <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdThreeData.dateOfReturn}}" />
                     </div>
                   </div>
                 </div>
-                <div class="field">
-                  <div class="fields">
                     <div class="eight wide field">
                       <label>Date of expected return to work</label>
-                      <p>{{fdTwoData.dateOfReturnToWork}}</p>
+                      <p>{{fdThreeData.dateOfReturnToWork}}</p>
                       <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
-                        value="{{fdTwoData.dateOfReturnToWork}}" />
+                        value="{{fdThreeData.dateOfReturnToWork}}" />
                     </div>
+                  <div class="field">
+                    <label>Travel and conference subsidy</label>
+                    <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
+                    <input type="hidden" name="travelAndConferenceSubsidy" id = "travelAndConferenceSubsidy" class = "check"  
+                        value="{{fdThreeData.travelAndConferenceSubsidy}}" />
+                  </div>
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
-                      <p>{{fdTwoData.dateIncentiveLastAvailed}}</p>
+                      <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                        class="check" value="{{fdTwoData.dateIncentiveLastAvailed}}" />
+                        class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
                     </div>
-                  </div>
-                </div>
-
                 
-              <div class="ui divider"></div>
-               <br>
+                <div class="ui divider"></div>
+                <br>
+                <!-- This is where you will put the additional requirements. -->
                 <div class="field">
                   <label>Note</label>
                   <p>Once you clicked submit, you may not be able to revise it.</p>
@@ -232,7 +239,8 @@
                   </a>
               </form>
 
-               <div class="ui modal logout">
+              <!-- This the modal for logout confirmation -->
+              <div class="ui modal logout">
                 <div class="header">Are you sure?</div>
                 <div class="content">
                   <p>Do you really want to log out?</p>
