@@ -1,0 +1,243 @@
+<!-- 
+  This is the page for the preview of the
+  FD15 form.
+  November 15, 2018
+  @ver 1.0
+  @author Sai Manalili
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Request Grant - FD15</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href=".../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="..favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
+      </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- These are the side menubar items. -->
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              [FD15] Support for Local Trainings, Seminars and Workshops
+            </h1>
+          </div>
+          <div class="ui divider"></div>
+          <div class="one column center aligned row">
+            <div class="column">
+              <h3>1st Term, AY 2018-2019</h3>
+            </div>
+          </div>
+
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column">
+              <div class="ui attached message">
+                <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
+                  autocomplete="off">
+                  <div class="two fields disabled">
+                    <div class="field">
+                      <label>First Name</label>
+                      <p>{{fdFifteenData.firstName}}</p>
+                      <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
+                    </div>
+                    <div class="field">
+                      <label>Last Name</label>
+                      <p>{{fdFifteenData.lastName}}</p>
+                      <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                    </div>
+                  </div>
+                  <div class="fields disabled">
+                    <div class="seven wide field">
+                      <label>Department</label>
+                      <p>{{fdFifteenData.department}}</p>
+                      <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
+                    </div>
+                    <div class="nine wide field">
+                      <label>Rank</label>
+                      <p>{{fdFifteenData.rank}}</p>
+                      <input type="hidden" name="rank" value="{{fdFifteenData.rank}}" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Host Institution/Organization</label>
+                    <p>{{fdFifteenData.hostInstitution}}</p>
+                    <input type="hidden" name="hostInstitution" id="hostInstitution" class="check" value="{{fdFifteenData.hostInstitution}}" />
+                  </div>
+                  <div class="field">
+                    <label>Title of Seminar</label>
+                    <p>{{fdFifteenData.titleOfSeminar}}</p>
+                    <input type="hidden" name="titleOfSeminar" id="titleOfSeminar" class="check" value="{{fdFifteenData.titleOfSeminar}}" />
+                  </div>
+                  <div class="field">
+                    <label>Place</label>
+                    <p>{{fdFifteenData.place}}</p>
+                    <input type="hidden" name="place" id="place" class="check" value="{{fdFifteenData.place}}" />
+                  </div>
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <label>Duration Start</label>
+                        <p>{{fdFifteenData.startTime}}</p>
+                        <input type="hidden" name="startTime" placeholder="Date" id="startTime" class="check" value="{{fdFifteenData.startTime}}" />
+                      </div>
+                      <div class="eight wide field">
+                        <label>Duration End</label>
+                        <p>{{fdFifteenData.endTime}}</p>
+                        <input type="hidden" name="endTime" placeholder="Date" id="endTime" class="check" value="{{fdFifteenData.endTime}}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <label>Date incentive was last availed of</label>
+                        <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
+                        <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                          class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
+                      </div>
+                      <div class="eight wide field">
+                        <label>Participant’s Fee (check payable to)</label>
+                        <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFifteenData.participantFee}}" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- This is where you will put the additional requirements. -->
+                  <div class="field">
+                    <label>Application should be accompanied by the following:</label>
+                    <div class="fields">
+                      <div class="five wide field">
+                        <i class="right triangle icon"></i>
+                        Application Letter
+                      </div>
+
+                      <div class="six wide field">
+                        <i class="right triangle icon"></i>
+                        Copy of acceptance to the training/seminar/workshop
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="sixteen wide field">
+                      <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf"
+                        target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
+                    </div>
+                  </div>
+
+                  <div class="ui divider"></div>
+                  <br>
+                  <!-- This is where you will put the additional requirements. -->
+                  <div class="field">
+                    <label>Note</label>
+                    <p>Once you clicked submit, you may not be able to revise it.</p>
+                    <p></p>
+                  </div>
+                  <br>
+                  <div class="field">
+                    <button class="ui submit green button" type="Submit">
+                      Submit
+                    </button>
+                    <a href="#" class="ui button">
+                      Back
+                    </a>
+                </form>
+
+                <!-- This the modal for logout confirmation -->
+                <div class="ui modal logout">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Do you really want to log out?</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Log out" class="ui button positive logout">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<!-- You can insert more JS files below -->
+<script type="text/javascript" src="../public/js/form15.js"></script>
+<script type="text/javascript" src="../public/js/log-out.js"></script>
+
+</html>

@@ -1,0 +1,244 @@
+<!-- 
+  This is the page for the preview of the
+  FD4 form.
+  November 15, 2018
+  @ver 1.0
+  @author Sai Manalili
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Preview - FD1</title>
+  <!-- Always include these two css files when creating a new html file. -->
+  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
+  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+  <!-- You can insert more CSS files below-->
+  <link href="../public/semantic-ui-calendar/dist/calendar.min.css" type="text/css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href=".../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+  <link rel="manifest" href="..favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <!-- This is the menu bar. -->
+  <div class="ui inverted huge borderless fixed fluid menu">
+    <a href="/home" class="header item">
+      <div class="ui mini image">
+        <img src="../public/images/dlsulogo.png" />
+      </div>
+      <div class="brand-text">
+        Office of the Vice Chancellor <br /> for Academics
+      </div>
+    </a>
+    <div class="right menu">
+      <a class="item">
+        <i class="bell icon"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <!-- This is the side menubar. -->
+    <div class="row">
+      <div class="column" id="sidebar">
+        <div class="ui secondary vertical fluid menu">
+          <div class="ui grid">
+
+            <!-- This is where the short overview of the profile is placed. -->
+            <div class="one column center aligned row">
+              <div class="column profile">
+                <div class="ui small image circular bordered">
+                  <img src="../images/photo_template.jpg" />
+                </div>
+                <div class="row">
+                  <div class="person-name stackable">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="person-type stackable">
+                    {{user.userType}}
+                  </div>
+                  <div class="log-out">
+                    <a class="ui tiny button">
+                      Log Out
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- These are the side menubar items. -->
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- This is where you will put the content of the page. -->
+      <div class="column" id="content">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui huge header">
+              Preview Form
+            </h1>
+          </div>
+          <div class="ui divider"></div>
+          <div class="one column center aligned row">
+            <div class="column">
+              <h3>1st Term, AY 2018-2019</h3>
+            </div>
+          </div>
+
+
+          <!-- This is where the fields for the forms. -->
+          <div class="row">
+            <div class="one column">
+              <div class="ui attached message">
+                <form action="/faculty/submit-fd4" method="post" class="ui form attached fluid segment" id="request-form"
+                  autocomplete="off">
+                  <div class="two fields disabled">
+                    <div class="field">
+                      <label>First Name</label>
+                      <p>{{fdFourData.firstName}}</p>
+                      <input type="hidden" name="firstName" value="{{fdFourData.firstName}}" />
+                    </div>
+                    <div class="field">
+                      <label>Last Name</label>
+                      <p>{{fdFourData.lastName}}</p>
+                      <input type="hidden" name="lastName" value="{{fdFourData.lastName}}" />
+                    </div>
+                  </div>
+                  <div class="fields disabled">
+                    <div class="seven wide field">
+                      <label>Department</label>
+                      <p>{{fdFourData.department}}</p>
+                      <input type="hidden" name="department" value="{{fdFourData.department}}" />
+                    </div>
+                    <div class="nine wide field">
+                      <label>Rank</label>
+                      <p>{{fdFourData.rank}}</p>
+                      <input type="hidden" name="rank" value="{{fdFourData.rank}}" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Name of Conference</label>
+                    {{fdFourData.nameOfConference}}
+                    <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdFourData.rank}}" />
+                  </div>
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <label>Date of Conference</label>
+                        <div class="ui calendar" id="conference-date">
+                          <p>{{fdFourData.dateOfConference}}</p>
+                          <input type="hidden" name="dateOfConference" placeholder="Date" id="dateOfConference" class="check"
+                            value="{{fdFourData.dateOfConference}}" />
+                        </div>
+                        <div class="eight wide field">
+                          <label>Place and Venue</label>
+                          <p>{{fdFourData.placeAndVenue}}</p>
+                          <input type="hidden" name="placeAndVenue" id="placeAndVenue" class="check" value="{{fdFourData.placeAndVenue}}" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="fields">
+                        <div class="eight wide field">
+                          <label>Date of Departure</label>
+                          <p>{{fdFourData.dateOfDeparture}}</p>
+                          <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
+                            value="{{fdFourData.dateOfDeparture}}" />
+                        </div>
+                        <div class="eight wide field">
+                          <label>Date of Return</label>
+                          <p>{{fdFourData.dateOfReturn}}</p>
+                          <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check"
+                            value="{{fdFourData.dateOfReturn}}" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label>Date of expected return to work</label>
+                      <p>{{fdFourData.dateOfReturnToWork}}</p>
+                      <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class="check"
+                        value="{{fdFourData.dateOfReturnToWork}}" />
+                    </div>
+                    <div class="field">
+                      <label>Participant’s fee (check payable to)</label>
+                      <p>{{fdFourData.participantFee}}</p>
+                      <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                    </div>
+                    <div class="field">
+                      <div class="fields">
+                        <div class="eight wide field">
+                          <label>No. of local conferences attended this academic year to date</label>
+                          <p>{{fdFourData.noOfLocalConferencesAttendedThisYear}}</p>
+                          <input type="hidden" id="noOfLocalConferencesAttendedThisYear" class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
+                        </div>
+                        <div class="eight wide field">
+                          <label>Date incentive was last availed of</label>
+                          <p>{{fdFourData.dateIncentiveLastAvailed}}</p>
+                          <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                            class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ui divider"></div>
+                    <br>
+                    <!-- This is where you will put the additional requirements. -->
+                    <div class="field">
+                      <label>Note</label>
+                      <p>Once you clicked submit, you may not be able to revise it.</p>
+                      <p></p>
+                    </div>
+                    <br>
+                    <div class="field">
+                      <button class="ui submit green button" type="Submit">
+                        Submit
+                      </button>
+                      <a href="#" class="ui button">
+                        Back
+                      </a>
+                </form>
+
+                <!-- This the modal for logout confirmation -->
+                <div class="ui modal logout">
+                  <div class="header">Are you sure?</div>
+                  <div class="content">
+                    <p>Do you really want to log out?</p>
+                  </div>
+                  <div class="actions">
+                    <input type="submit" value="Log out" class="ui button positive logout">
+                    <div class="ui cancel button">Not yet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Always include these two JS files when adding a new page -->
+<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.js"></script>
+<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<!-- You can insert more JS files below -->
+<script type="text/javascript" src="../public/js/preview.js"></script>
+<script type="text/javascript" src="../public/js/log-out.js"></script>
+
+</html>

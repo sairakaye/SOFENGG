@@ -212,6 +212,124 @@ router.post("/preview-fd3", urlencoder, function(req,res) {
     }
   })
 
+/**
+ * Adds to the database the entered information for FD4
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/preview-fd4", urlencoder, function(req,res) {
+    console.log("POST /preview-fd4")
+
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var nameOfConference = req.body.nameOfConference
+    var dateOfConference = req.body.dateOfConference
+    var placeAndVenue = req.body.placeAndVenue
+    var dateOfDeparture = req.body.dateOfDeparture
+    var dateOfReturn = req.body.dateOfReturn
+    var dateOfReturnToWork = req.body.dateOfReturnToWork
+    var participantFee = req.body.participantFee
+    var noOfLocalConferencesAttendedThisYear =  req.body.noOfLocalConferencesAttendedThisYear
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var grantStatus = "Pending"
+    
+    var fdFourData = {
+      grantName: "[FD4] Support for Participation in Local Conferences",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, rank, nameOfConference,
+      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear, 
+      grantStatus
+    }
+    
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form4.hbs", {
+            user, fdFourData
+        })
+    }
+  })
+
+  /**
+ * Adds to the database the entered information for FD2
+ * form and sets grant status to pending for admin approval
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/preview-fd15", urlencoder, function(req,res) {
+    console.log("POST /preview-fd15")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var hostInstitution = req.body.hostInstitution
+    var titleOfSeminar = req.body.titleOfSeminar
+    var place = req.body.place
+    var startTime = req.body.startTime
+    var endTime = req.body.endTime
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var participantFee = req.body.participantFee
+    var grantStatus = "Pending"
+  
+    var fdFifteenData = {
+      grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, rank, hostInstitution,
+      titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed, 
+      participantFee, grantStatus
+    }
+    
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form15.hbs", {
+            user, fdFifteenData
+        })
+    }
+  })
+
+router.post("/preview-fd16", urlencoder, function(req,res) {
+    console.log("POST /preview-fd16")
+
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var status = req.body.status
+    var nameOfOrganization = req.body.nameOfOrganization
+    var typeOfMembershipPlace = req.body.typeOfMembershipPlace
+    var typeofMembershipDuration = req.body.typeofMembershipDuration
+    var membershipDate = req.body.membershipDate
+    var coverage = req.body.coverage
+    var membershipFee = req.body.membershipFee
+    var checkPayableTo = req.body.checkPayableTo
+    var grantStatus = "Pending"
+  
+    var fdSixteenData = {
+      grantName: "[FD16] Support for Membership in Professional Organizations",
+      ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+      firstName, lastName, department, rank, status, nameOfOrganization,
+      typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
+      coverage, membershipFee, checkPayableTo, grantStatus
+    }
+    
+    var user = req.session.user
+    if (user != null) {
+        res.render("preview-form16.hbs", {
+            user, fdSixteenData
+        })
+    }
+})
+  
+/*************************************/
+
+
+
 
 /**
  * Adds to the database the entered information for FD1
