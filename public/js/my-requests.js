@@ -278,8 +278,13 @@ $(".button.printform").click(function () {
                         doc.text(490,185, "/")
                         doc.text(504,658, "/")
                     }
-                    //add status permanent / probationary
-                    
+                    if (form.status == "Permanent"){
+                        doc.text(72,152, "/") 
+                        doc.text(87,625, "/") 
+                    } else {
+                        doc.text(150,151, "/")
+                        doc.text(165,624, "/")
+                    }
                     doc.save('[F16] FacultyDevelopmentGrant.pdf')
                 }
             } 

@@ -115,7 +115,7 @@ November 15, 2018
               </div>
               <form action="/faculty/submit-fd3" method="post" class="ui form attached fluid segment" id="preview-form">
                 <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
                     <p>{{fdThreeData.firstName}}</p>
@@ -127,32 +127,30 @@ November 15, 2018
                     <input type="hidden" name="lastName" value="{{fdThreeData.lastName}}" />
                   </div>
                 </div>
-                <div class="fields">
-                  <div class="seven wide field">
+                <div class="three fields disabled">
+                  <div class="field">
                     <label>Department</label>
                     <p>{{fdThreeData.department}}</p>
                     <input type="hidden" name="department" value="{{fdThreeData.department}}" />
                   </div>
-                  <div class="four wide field">
+                  <div class="field">
                     <label>Date Hired</label>
                     <p>{{fdThreeData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
                   </div>
-                  <div class="five wide field">
+                  <div class="field">
                     <label>Rank</label>
                     <p>{{fdThreeData.rank}}</p>
                     <input type="hidden" name="rank" value="{{fdThreeData.rank}}" />
                   </div>
                 </div>
+              <div class = "fields disabled">
                 <div class="field">
                   <label>Status</label>
-                  <div class="fields">
-                    <div class="two wide field">
                       <p>{{fdThreeData.status}}</p>
                       <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
-                    </div>
-                  </div>
                 </div>
+              </div>
                 <div class="field">
                   <label>Name of Conference</label>
                   <p>{{fdThreeData.nameOfConference}}</p>

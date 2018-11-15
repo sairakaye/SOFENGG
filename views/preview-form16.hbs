@@ -10,7 +10,7 @@
 <html>
 
 <head>
-  <title>Preview - FD1</title>
+  <title>Preview - FD16</title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../css/main.css" type="text/css" rel="stylesheet" />
@@ -113,7 +113,7 @@
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd1" method="post" class="ui form attached fluid segment" id="preview-form">
+              <form action="/faculty/submit-fd16" method="post" class="ui form attached fluid segment" id="preview-form">
                 <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
@@ -126,22 +126,24 @@
                     <input type="hidden" name="lastName" value="{{fdSixteenData.lastName}}" />
                   </div>
                 </div>
-                <div class="fields">
-                  <div class="seven wide field">
+                <div class="two fields disabled">
+                  <div class=" field">
                     <label>Department</label>
                     <p>{{fdSixteenData.department}}</p>
                     <input type="hidden" name="department" value="{{fdSixteenData.department}}" />
                   </div>
-                  <div class="nine wide field">
+                  <div class=" field">
                     <label>Rank</label>
                     <p>{{fdSixteenData.rank}}</p>
                     <input type="hidden" name="rank" value="{{fdSixteenData.rank}}"/>
                   </div>
                 </div>
-                <div class="field">
-                  <label>Status</label>
-                  <p>{{fdSixteenData.status}}</p>
-                  <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
+                <div class="two fields disabled">
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdSixteenData.status}}</p>
+                    <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <label>Name of Organization</label>
@@ -154,6 +156,7 @@
                   <input type="hidden" name="typeOfMembershipPlace" value="{{fdSixteenData.typeOfMembershipPlace}}" />
                 </div>
                 <div class="field">
+                  <label>Type of membership</label>
                   <p>{{fdSixteenData.typeofMembershipDuration}}</p>
                   <input type="hidden" name="typeofMembershipDuration" value="{{fdSixteenData.typeofMembershipDuration}}" />
                 </div>
@@ -183,61 +186,6 @@
                       <p>{{fdSixteenData.checkPayableTo}}</p>
                       <input type="hidden" name="checkPayableTo" id = "checkPayableTo" class = "check" value="{{fdSixteenData.checkPayableTo}}" />
                     </div>
-                  </div>
-                </div>
-                
-               <!-- This is where you will put the additional requirements. -->
-                <div class="field">
-                  <label>Application should be accompanied by the following:</label>
-                  <div class="fields">
-                    <div class="five wide field">
-                      <label>For Annual Membership</label>
-                      <i class="right triangle icon"></i>
-                      Membership form from the organization
-                    </div>
-                    <div class="six wide field">
-                      <label>For Lifetime Membership</label>
-                      <i class="right triangle icon"></i>
-                      Membership form from the organization
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="fields">
-                    <div class="five wide field">
-                      <i class="right triangle icon"></i>
-                      Print-outs/brochures of the organization
-                    </div>
-                    <div class="six wide field">
-                      <i class="right triangle icon"></i>
-                      Print-outs/brochures of the organization
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="fields">
-                    <div class="five wide field"></div>
-                    <div class="five wide field">
-                      <i class="right triangle icon"></i>
-                      Copy of the organization’s annual conference and meeting program
-                      showing the paper presentations of the faculty; <b>or</b>
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="fields">
-                    <div class="five wide field"></div>
-                    <div class="five wide field">
-                      <i class="right triangle icon"></i>
-                      Certification from the professional organization’s secretariat that the faculty member
-                      has presented at least five (5) papers (cumulative) in the
-                      organization’s annual conference and meetings.
-                    </div>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="sixteen wide field">
-                    <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf" target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
                   </div>
                 </div>
                 

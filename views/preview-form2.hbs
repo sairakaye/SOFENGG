@@ -113,7 +113,7 @@
               </div>
               <form action="/faculty/submit-fd2" method="post" class="ui form attached fluid segment" id="request-form" autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
                     <p>{{fdTwoData.firstName}}</p>
@@ -125,30 +125,28 @@
                     <input type="hidden" name="lastName" value="{{fdTwoData.lastName}}" />
                   </div>
                 </div>
-                <div class="fields">
-                  <div class="seven wide field">
+                <div class="three fields disabled">
+                  <div class="field">
                     <label>Department</label>
                     <p>{{fdTwoData.department}}</p>
                     <input type="hidden" name="department" value="{{fdTwoData.department}}" />
                   </div>
-                  <div class="four wide field">
+                  <div class="field">
                     <label>Date Hired</label>
                     <p>{{fdTwoData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdTwoData.dateHired}}" />
                   </div>
-                  <div class="five wide field">
+                  <div class=" field">
                     <label>Rank</label>
                     <p>{{fdTwoData.rank}}</p>
                     <input type="hidden" name="rank" value="{{fdTwoData.rank}}" />
                   </div>
                 </div>
+              <div class = "fields disabled">
                 <div class="field">
                   <label>Status</label>
-                  <div class="fields">
-                    <div class="two wide field">
                       <p>{{fdTwoData.status}}</p>
                       <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
-                    </div>
                   </div>
                 </div>
                 <div class="field">

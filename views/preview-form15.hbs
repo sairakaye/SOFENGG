@@ -10,7 +10,7 @@
 <html>
 
 <head>
-  <title>Request Grant - FD15</title>
+  <title>Preview - FD15</title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../css/main.css" type="text/css" rel="stylesheet" />
@@ -102,6 +102,15 @@
           <div class="row">
             <div class="one column">
               <div class="ui attached message">
+                <div class="one column center aligned row">
+                  <div class="column">
+                    <h2>   [FD15] Support for Local Trainings, Seminars and Workshops</h2>
+                  </div>
+                  <div class="column">
+                    <h3>1st Term, AY 2018-2019</h3>
+                  </div>
+                </div>
+              </div>
                 <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
                   autocomplete="off">
                   <div class="two fields disabled">
@@ -116,13 +125,13 @@
                       <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
                     </div>
                   </div>
-                  <div class="fields disabled">
-                    <div class="seven wide field">
+                  <div class="two fields disabled">
+                    <div class=" field">
                       <label>Department</label>
                       <p>{{fdFifteenData.department}}</p>
                       <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
                     </div>
-                    <div class="nine wide field">
+                    <div class="field">
                       <label>Rank</label>
                       <p>{{fdFifteenData.rank}}</p>
                       <input type="hidden" name="rank" value="{{fdFifteenData.rank}}" />
@@ -167,30 +176,9 @@
                       </div>
                       <div class="eight wide field">
                         <label>Participant’s Fee (check payable to)</label>
+                        <p>{{fdFifteenData.participantFee}}</p>
                         <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFifteenData.participantFee}}" />
                       </div>
-                    </div>
-                  </div>
-
-                  <!-- This is where you will put the additional requirements. -->
-                  <div class="field">
-                    <label>Application should be accompanied by the following:</label>
-                    <div class="fields">
-                      <div class="five wide field">
-                        <i class="right triangle icon"></i>
-                        Application Letter
-                      </div>
-
-                      <div class="six wide field">
-                        <i class="right triangle icon"></i>
-                        Copy of acceptance to the training/seminar/workshop
-                      </div>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="sixteen wide field">
-                      <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf"
-                        target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
                     </div>
                   </div>
 
