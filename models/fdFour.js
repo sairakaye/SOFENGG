@@ -10,13 +10,13 @@
  * Module dependencies.
  */
 const mongoose = require("mongoose");
-
+const moment = require("moment")
 
 /**
  * Setting up FD4 Form Schema
  */
 var fdFourSchema = mongoose.Schema({
-    timestamp: { type: Date, default: Date.now },
+    timestamp: { type: String, default: moment().format('LLL')+"" },
     grantName : String,
     ownerIdNumber : String,
     grantStatus: String,
@@ -33,7 +33,7 @@ var fdFourSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    participantFee : String, //MONEY
+    participantFee : String, 
     noOfLocalConferencesAttendedThisYear : Number,
     dateIncentiveLastAvailed : Date
 })

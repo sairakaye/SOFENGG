@@ -588,7 +588,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
-  var participantFee = req.body.participantFee
+  var participantFee = req.body.participantFee     
   var noOfLocalConferencesAttendedThisYear =  req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
