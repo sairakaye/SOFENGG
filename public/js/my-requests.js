@@ -1,7 +1,7 @@
 /**
  * This is the JS file of the my requests page.
- * November 18, 2018
- * @ver 1.1
+ * November 19, 2018
+ * @ver 1.2
  * @author Candace Mercado
  */
 $('.ui.dropdown').dropdown({forceSelection: false});

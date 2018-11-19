@@ -92,11 +92,7 @@
             </h1>
           </div>
           <div class="ui divider"></div>
-          <div class="one column center aligned row">
-            <div class="column">
-              <h3>1st Term, AY 2018-2019</h3>
-            </div>
-          </div>
+          <br>
 
           <!-- This is where the fields for the forms. -->
           <div class="row">
@@ -113,7 +109,7 @@
               </div>
                 <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
                   autocomplete="off">
-                  <div class="two fields disabled">
+                  <div class="two fields">
                     <div class="field">
                       <label>First Name</label>
                       <p>{{fdFifteenData.firstName}}</p>
@@ -125,7 +121,7 @@
                       <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
                     </div>
                   </div>
-                  <div class="two fields disabled">
+                  <div class="two fields">
                     <div class=" field">
                       <label>Department</label>
                       <p>{{fdFifteenData.department}}</p>

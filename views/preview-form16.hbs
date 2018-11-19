@@ -93,12 +93,7 @@
             </h1>
           </div>
           <div class="ui divider"></div>
-          <div class="one column center aligned row">
-            <div class="column">
-              <h3>1st Term, AY 2018-2019</h3>
-            </div>
-          </div>
-
+          <br>
 
           <!-- This is where the fields for the forms. -->
           <div class="row">
@@ -114,7 +109,7 @@
                 </div>
               </div>
               <form action="/faculty/submit-fd16" method="post" class="ui form attached fluid segment" id="preview-form">
-                <div class="two fields disabled">
+                <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
                     <p>{{fdSixteenData.firstName}}</p>
@@ -126,7 +121,7 @@
                     <input type="hidden" name="lastName" value="{{fdSixteenData.lastName}}" />
                   </div>
                 </div>
-                <div class="two fields disabled">
+                <div class="two fields">
                   <div class=" field">
                     <label>Department</label>
                     <p>{{fdSixteenData.department}}</p>
@@ -135,20 +130,18 @@
                   <div class=" field">
                     <label>Rank</label>
                     <p>{{fdSixteenData.rank}}</p>
-                    <input type="hidden" name="rank" value="{{fdSixteenData.rank}}"/>
+                    <input type="hidden" name="rank" value="{{fdSixteenData.rank}}" />
                   </div>
                 </div>
-                <div class="two fields disabled">
-                  <div class="field">
-                    <label>Status</label>
-                    <p>{{fdSixteenData.status}}</p>
-                    <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
-                  </div>
+                <div class="field">
+                  <label>Status</label>
+                  <p>{{fdSixteenData.status}}</p>
+                  <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
                 </div>
                 <div class="field">
                   <label>Name of Organization</label>
                   <p>{{fdSixteenData.nameOfOrganization}}</p>
-                  <input type="hidden" name="nameOfOrganization" id = "nameOfOrganization" class = "check" value="{{fdSixteenData.nameOfOrganization}}" />
+                  <input type="hidden" name="nameOfOrganization" id="nameOfOrganization" class="check" value="{{fdSixteenData.nameOfOrganization}}" />
                 </div>
                 <div class="field">
                   <label>Type of membership</label>
@@ -165,12 +158,13 @@
                     <div class="eight wide field">
                       <label>Membership Date</label>
                       <p>{{fdSixteenData.membershipDate}}</p>
-                      <input type="hidden" name="membershipDate" placeholder="Date" id = "membershipDate" class = "check" value="{{fdSixteenData.membershipDate}}" />
+                      <input type="hidden" name="membershipDate" placeholder="Date" id="membershipDate" class="check"
+                        value="{{fdSixteenData.membershipDate}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Coverage</label>
                       <p>{{fdSixteenData.coverage}}</p>
-                      <input type="hidden" name="coverage" id = "coverage" class = "check" value="{{fdSixteenData.coverage}}"/>
+                      <input type="hidden" name="coverage" id="coverage" class="check" value="{{fdSixteenData.coverage}}" />
                     </div>
                   </div>
                 </div>
@@ -179,16 +173,16 @@
                     <div class="eight wide field">
                       <label>Membership Fee</label>
                       <p>{{fdSixteenData.membershipFee}}</p>
-                      <input type="hidden" name="membershipFee" id = "membershipFee" class = "check" value="{{fdSixteenData.membershipFee}}" />
+                      <input type="hidden" name="membershipFee" id="membershipFee" class="check" value="{{fdSixteenData.membershipFee}}" />
                     </div>
                     <div class="eight wide field">
                       <label>(check payable to)</label>
                       <p>{{fdSixteenData.checkPayableTo}}</p>
-                      <input type="hidden" name="checkPayableTo" id = "checkPayableTo" class = "check" value="{{fdSixteenData.checkPayableTo}}" />
+                      <input type="hidden" name="checkPayableTo" id="checkPayableTo" class="check" value="{{fdSixteenData.checkPayableTo}}" />
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="ui divider"></div>
                 <br>
                 <!-- This is where you will put the additional requirements. -->
@@ -233,4 +227,5 @@
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/preview.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
+
 </html>
