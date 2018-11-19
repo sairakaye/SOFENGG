@@ -132,7 +132,7 @@
                     <td>{{grantName}}</td>
                     <td>{{grantStatus}}</td>
                     <td>
-                      <button class="ui button fluid">View Details</button>
+                      <button class="ui button fluid viewdetails" data-id="{{_id}}">View Details</button>
                     </td>
                     <td>
                       <div class="ui fluid dropdown icon labeled button">
@@ -159,6 +159,15 @@
           </div>
         </div>
       </div>
+    </div>
+
+  <!-- This the modal for view details -->
+    <div class="ui modal viewdetails">
+      <i class="close icon"></i>
+      <div class="header">Form details</div>
+       <div class="ui embed pdf"> 
+         <iframe class = "iframe pdf" type="application/pdf"> </iframe>
+       </div>
     </div>
 
   <!-- This the modal for logout confirmation -->
