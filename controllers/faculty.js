@@ -588,7 +588,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
-  var participantFee = req.body.participantFee
+  var participantFee = req.body.participantFee     
   var noOfLocalConferencesAttendedThisYear =  req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
@@ -784,6 +784,30 @@ router.get("/my-requests", function(req, res) {
   }
 })
 
+/**
+ * Gets the form with the id being requested, this is 
+ * used in exporting the form as pdf file.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/saveform", urlencoder, (req, res) => {
+    console.log("POST /saveform ")
+    
+    var id = req.query.id
+
+    var forms = getFormById(id, function(forms){
+        res.send(forms)
+    }) 
+})
+
+/**
+ * Gets the form with the id being requested, this is 
+ * used in printing the form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
 router.get("/printform", urlencoder, (req, res) => {
     console.log("POST /printform ")
     
@@ -793,6 +817,7 @@ router.get("/printform", urlencoder, (req, res) => {
         res.send(forms)
     }) 
 })
+
 
 module.exports = router
 

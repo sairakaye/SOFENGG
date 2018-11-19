@@ -10,13 +10,13 @@
  * Module dependencies.
  */
 const mongoose = require("mongoose");
-
+const moment = require("moment")
 
 /**
  * Setting up FD2 Form Schema
  */
 var fdTwoSchema = mongoose.Schema({
-    timestamp: { type: Date, default: Date.now },
+    timestamp: { type: String, default: moment().format('LLL')+"" },
     grantName : String,
     ownerIdNumber : String,
     grantStatus : String,

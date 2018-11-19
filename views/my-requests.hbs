@@ -99,8 +99,7 @@
               <table class="ui single line selectable table tablet stackable">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Department</th>
+                    <th>Timestamp</th>
                     <th>Form</th>
                     <th>Status</th>
                     <th></th>
@@ -129,15 +128,25 @@
                     {{else}}
                     <!-- dont show -->
                     {{/checkstatus}}
-                    <td>{{firstName}} {{lastName}} </td>
-                    <td>{{department}}</td>
+                    <td>{{timestamp}} </td>
                     <td>{{grantName}}</td>
                     <td>{{grantStatus}}</td>
                     <td>
                       <button class="ui button fluid">View Details</button>
                     </td>
                     <td>
-                      <button id="printform" class="ui button fluid printform" data-id="{{_id}}">Save Form</button>
+                      <div class="ui fluid dropdown icon labeled button">
+                        Export
+                        <i class="arrow alternate circle down icon"></i>
+                        <div class="menu">
+                          <div class="header">
+                            Choose how to export
+                          </div>
+                          <div class="divider"></div>
+                          <div class="item ui fluid saveform" data-id="{{_id}}"> Save </div>
+                          <div class="item ui fluid printform" data-id="{{_id}}"> Print </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   {{else}}
