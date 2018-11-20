@@ -17,6 +17,7 @@ const moment = require("moment")
  */
 var fdThreeSchema = mongoose.Schema({
     timestamp: { type: String, default: moment().format('LLL')+"" },
+    formId : String,
     grantName : String,
     ownerIdNumber : String,
     grantStatus: String,
@@ -54,11 +55,19 @@ exports.create = function(paramFDThree){
     return new Promise(function(resolve, reject){
         var f = new fdThree(paramFDThree)
         
-        f.save().then((newFDThree)=>{
-            resolve(newFDThree)
+        fdThree.countDocuments().then((count) => {
+            f.formId = f.formId + count
+            f.save().then((newFDThree)=>{
+                resolve(newFDThree)
+            }, (err)=>{
+                reject(err)
+            })
+            
         }, (err)=>{
             reject(err)
         })
+        
+        
     })
 }
 

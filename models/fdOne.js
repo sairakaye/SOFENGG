@@ -18,6 +18,7 @@ const moment = require("moment")
  */
 var fdOneSchema = mongoose.Schema({
     timestamp: { type: String, default: moment().format('LLL')+"" },
+    formId : String,
     grantName: String,
     ownerIdNumber : String,
     grantStatus: String,
@@ -55,13 +56,22 @@ var fdOne = mongoose.model("fdOne", fdOneSchema)
  */
 exports.create = function(paramFDOne){
     return new Promise(function(resolve, reject){
+        
         var f = new fdOne(paramFDOne)
         
-        f.save().then((newFDOne)=>{
-            resolve(newFDOne)
+        fdOne.countDocuments().then((count) => {
+            f.formId = f.formId + count
+            
+            f.save().then((newFDOne)=>{    
+                resolve(newFDOne)
+            }, (err)=>{
+                reject(err)
+            })
+            
         }, (err)=>{
             reject(err)
         })
+        
     })
 }
 

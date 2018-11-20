@@ -363,7 +363,7 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   var grantStatus = "Pending"
 
   var fdOneData = {
-    grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
+    formId : "FD1", grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
@@ -437,9 +437,10 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
+  var id = "FD2"
   
   var fdTwoData = {
-    grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
+    formId : "FD2", grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
@@ -520,7 +521,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   var grantStatus = "Pending"
   
   var fdThreeData = {
-    grantName: "[FD3] Support for Paper Presentations in Conferences",
+    formId : "FD3", grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
@@ -594,7 +595,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   var grantStatus = "Pending"
   
   var fdFourData = {
-    grantName: "[FD4] Support for Participation in Local Conferences",
+    formId : "FD4", grantName: "[FD4] Support for Participation in Local Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -665,7 +666,7 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
   var grantStatus = "Pending"
 
   var fdFifteenData = {
-    grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
+    formId : "FD15", grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed, 
@@ -736,7 +737,7 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
   var grantStatus = "Pending"
 
   var fdSixteenData = {
-    grantName: "[FD16] Support for Membership in Professional Organizations",
+    formId : "FD16", grantName: "[FD16] Support for Membership in Professional Organizations",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,

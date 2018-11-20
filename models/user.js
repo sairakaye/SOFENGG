@@ -271,7 +271,7 @@ exports.addFDOneInUser = function(paramFDOne){
         }, {
             $push : {fdOneForms : paramFDOne}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
@@ -446,7 +446,7 @@ exports.addFDTwoInUser = function(paramFDTwo){
         }, {
             $push : {fdTwoForms : paramFDTwo}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
@@ -630,7 +630,7 @@ exports.addFDThreeInUser = function(paramFDThree){
         }, {
             $push : {fdThreeForms : paramFDThree}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
@@ -813,7 +813,7 @@ exports.addFDFourInUser = function(paramFDFour){
         }, {
             $push : {fdFourForms : paramFDFour}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
@@ -993,7 +993,7 @@ exports.addFDFifteenInUser = function(paramFDFifteen){
         }, {
             $push : {fdFifteenForms : paramFDFifteen}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
@@ -1173,7 +1173,7 @@ exports.addFDSixteenInUser = function(paramFDSixteen){
         }, {
             $push : {fdSixteenForms : paramFDSixteen}
         }).then((updatedUser)=>{
-            console.log("let it go, go go go")
+            
             resolve(updatedUser)
         }, (err)=>{
             reject(err)
