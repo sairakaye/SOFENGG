@@ -49,6 +49,56 @@ router.get("/request-grant", function(req, res){
 })
 
 /**
+ * Views details based on form id
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/view-details", urlencoder, function(req,res) {
+    console.log("POST /view-details")
+     
+    var user = req.session.user
+    var id = req.body.details
+    
+    if (user != null) {
+        var forms = getFormById(id, function(forms){
+            if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+                var fdOneData = forms
+                res.render("preview-form1.hbs", {
+                    user, fdOneData, viewdetails: "View Details"
+                })
+            } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+                var fdTwoData = forms
+                res.render("preview-form2.hbs", {
+                    user, fdTwoData, viewdetails: "View Details"
+                })
+            } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
+                var fdThreeData = forms
+                res.render("preview-form3.hbs", {
+                    user, fdThreeData, viewdetails: "View Details"
+                })
+            } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
+                var fdFourData = forms
+                res.render("preview-form4.hbs", {
+                    user, fdFourData, viewdetails: "View Details"
+                })
+            } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
+                var fdFifteenData = forms
+                res.render("preview-form15.hbs", {
+                    user, fdFifteenData, viewdetails: "View Details"
+                })
+            } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
+                var fdSixteenData = forms
+                res.render("preview-form16.hbs", {
+                    user, fdSixteenData, viewdetails: "View Details"
+                })
+            } 
+        })
+    } else {
+        res.redirect("/")
+    }
+  })
+/**
  * Leads to the page of FD1 form.
  *
  * @param {Request} req
@@ -117,54 +167,6 @@ router.post("/preview-fd1", urlencoder, function(req,res) {
     }
   })
 
-/**
- * Views details based on form id
- *
- * @param {Request} req
- * @param {Response} res
- */
-router.post("/view-details", urlencoder, function(req,res) {
-    console.log("POST /view-details")
-     
-    var user = req.session.user
-    var id = req.body.details
-    
-    if (user != null) {
-        var forms = getFormById(id, function(forms){
-            if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-                var fdOneData = forms
-                res.render("preview-form1.hbs", {
-                    user, fdOneData, viewdetails: "View Details"
-                })
-            } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-                var fdTwoData = forms
-                res.render("preview-form2.hbs", {
-                    user, fdTwoData, viewdetails: "View Details"
-                })
-            } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
-                var fdThreeData = forms
-                res.render("preview-form3.hbs", {
-                    user, fdThreeData, viewdetails: "View Details"
-                })
-            } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
-                var fdFourData = forms
-                res.render("preview-form4.hbs", {
-                    user, fdFourData, viewdetails: "View Details"
-                })
-            } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
-                var fdFifteenData = forms
-                res.render("preview-form15.hbs", {
-                    user, fdFifteenData, viewdetails: "View Details"
-                })
-            } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
-                var fdSixteenData = forms
-                res.render("preview-form16.hbs", {
-                    user, fdSixteenData, viewdetails: "View Details"
-                })
-            } 
-        })
-    }
-  })
 /**
  * Adds to the database the entered information for FD2
  * form and sets grant status to pending for admin approval
@@ -824,9 +826,15 @@ router.get("/my-requests", function(req, res) {
   var user = req.session.user
   if (user){
     forms = getAllForms(forms, function(forms){
-        res.render("my-requests.hbs", {
-            user, forms
-        })
+        if (forms == ""){
+            res.render("my-requests.hbs", {
+                user, noforms: "There are no matches found"
+            })
+        } else {
+            res.render("my-requests.hbs", {
+                user, forms
+            })
+        }
     })
   } else {
       res.redirect("/")

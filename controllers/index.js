@@ -45,9 +45,15 @@ router.get("/", function(req, res) {
 			})
 		else if(user.userType == "Faculty")
 			var forms = getAllForms(forms, function(forms){
-				res.render("my-requests.hbs", {
-					user, forms
-				})
+				if (forms == ""){
+					res.render("my-requests.hbs", {
+						user, noforms: "There are no matches found"
+					})
+				} else {
+					res.render("my-requests.hbs", {
+						user, forms
+					})
+				}
 			})
 	} else {
 		res.render("index.hbs")
@@ -107,9 +113,15 @@ router.post("/home", (req, res)=>{
 				})
 			else if(user.userType == "Faculty")
 				var forms = getAllForms(forms, function(forms){
-					res.render("my-requests.hbs", {
-						user, forms
-					})
+					if (forms == ""){
+						res.render("my-requests.hbs", {
+							user, noforms: "There are no matches found"
+						})
+					} else {
+						res.render("my-requests.hbs", {
+							user, forms
+						})
+					}
 				})
 		} else {	
 			res.render("index.hbs", {
@@ -138,9 +150,15 @@ router.get("/home", function(req, res){
 			})
 		else if(user.userType == "Faculty" )
 			var forms = getAllForms(forms, function(forms){
-				res.render("my-requests.hbs", {
-					user, forms
-				})
+				if (forms == ""){
+					res.render("my-requests.hbs", {
+						user, noforms: "There are no matches found"
+					})
+				} else {
+					res.render("my-requests.hbs", {
+						user, forms
+					})
+				}
 			})
 	} else {
 		res.redirect("/")
