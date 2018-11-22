@@ -19,6 +19,12 @@ router.use(urlencoder)
 const app = express()
 
 const User = require("../models/user")
+const fdOne = require("../models/fdOne")
+const fdTwo = require("../models/fdTwo")
+const fdThree = require("../models/fdThree")
+const fdFour = require("../models/fdFour")
+const fdFifteen = require("../models/fdFifteen")
+const fdSixteen = require("../models/fdSixteen")
 router.use("/faculty", require("./faculty"))
 router.use("/admin", require("./admin"))
 
@@ -70,8 +76,8 @@ router.post("/home", (req, res)=>{
 	//  	lastName: 'Dela Cruz', 
 	//  	department: "ECE", 
 	//  	userType: 'Faculty',
-	// 	employmentType: 'Full-time',
-	// 	rank: 'Asso. Prof 4',
+	// 		employmentType: 'Full-time',
+	// 		rank: 'Asso. Prof 4',
 	//  	status: "Permanent",
 	//  	dateHired: today,
 	//  }
@@ -98,8 +104,10 @@ router.post("/home", (req, res)=>{
 					user
 				})
 			else if(user.userType == "Faculty")
-				res.render("home-user.hbs", {
-					user
+				var forms = getAllForms(forms, function(forms){
+					res.render("my-requests.hbs", {
+						user, forms
+					})
 				})
 		} else {	
 			res.render("index.hbs", {
@@ -126,9 +134,11 @@ router.get("/home", function(req, res){
 			res.render("home-admin.hbs", {
 				user
 			})
-		else if(user.userType == "Faculty" || user.userType == "Library Staff")
-			res.render("home-user.hbs", {
-				user
+		else if(user.userType == "Faculty" )
+			var forms = getAllForms(forms, function(forms){
+				res.render("my-requests.hbs", {
+					user, forms
+				})
 			})
 	} else {
 		res.redirect("/")
@@ -170,3 +180,32 @@ module.exports = router
 exports.getCurrentUser = function() {
     return currentUser
 }
+
+/**
+ * Gets all forms
+ *
+ * @param {Array to store forms} forms
+ */
+function getAllForms(forms, callback){
+    
+	fdOne.getAllFDOne().then((fdOneData)=>{
+		forms = fdOneData
+		fdTwo.getAllFDTwo().then((fdTwoData)=>{
+			forms = forms.concat(fdTwoData)
+			fdThree.getAllFDThree().then((fdThreeData)=>{
+				forms = forms.concat(fdThreeData)
+				fdFour.getAllFDFour().then((fdFourData)=>{
+					forms = forms.concat(fdFourData)
+					fdFifteen.getAllFDFifteen().then((fdFifteenData)=>{
+						forms = forms.concat(fdFifteenData)
+						fdSixteen.getAllFDSixteen().then((fdSixteenData)=>{
+							forms = forms.concat(fdSixteenData)
+							callback(forms)
+						})
+					})
+				})
+			})
+		})
+	})
+  }
+  

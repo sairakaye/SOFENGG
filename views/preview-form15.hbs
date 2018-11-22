@@ -10,7 +10,13 @@
 <html>
 
 <head>
-  <title>Preview - FD15</title>
+  <title>
+    {{#if viewdetails}}
+        Form Details - FD15
+    {{else}}
+        Preview - FD15
+    {{/if}}
+  </title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../css/main.css" type="text/css" rel="stylesheet" />
@@ -88,7 +94,11 @@
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-              Preview Form
+             {{#if viewdetails}}
+                 Form Details
+                {{else}}
+                 Preview Form
+             {{/if}}
             </h1>
           </div>
           <div class="ui divider"></div>
@@ -187,13 +197,17 @@
                     <p></p>
                   </div>
                   <br>
-                  <div class="field">
+                   <div class="field">
+                  {{#if viewdetails}}
+
+                  {{else}}
                     <button class="ui submit green button" type="Submit">
                       Submit
                     </button>
-                    <a href="#" class="ui button">
-                      Back
-                    </a>
+                  {{/if}}
+                  <a href="/faculty/my-requests" class="ui button">
+                    Back
+                  </a>
                 </form>
 
                 <!-- This the modal for logout confirmation -->
@@ -217,11 +231,11 @@
 </body>
 
 <!-- Always include these two JS files when adding a new page -->
-<script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../public/semantic/semantic.js"></script>
-<script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
+<script type="text/javascript" src="/public/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/public/semantic/semantic.js"></script>
+<script type="text/javascript" src="/public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
-<script type="text/javascript" src="../public/js/form15.js"></script>
-<script type="text/javascript" src="../public/js/log-out.js"></script>
+<script type="text/javascript" src="/public/js/form15.js"></script>
+<script type="text/javascript" src="/public/js/log-out.js"></script>
 
 </html>
