@@ -79,14 +79,25 @@ November 15, 2018
           </div>
 
           <!-- These are the side menubar items. -->
-          <a href="/faculty/request-grant" class="active item">
-            Request Grant
-            <i class="chevron right icon"></i>
-          </a>
-          <a href="/faculty/my-requests" class="item">
-            My Requests
-            <i class="chevron right icon"></i>
-          </a>
+            {{#if viewdetails}}
+              <a href="/faculty/my-requests" class="active item">
+                My Requests
+                <i class="chevron right icon"></i>
+              </a>
+              <a href="/faculty/request-grant" class=" item">
+                Request Grant
+                <i class="chevron right icon"></i>
+              </a>
+            {{else}}
+              <a href="/faculty/my-requests" class="item">
+                My Requests
+                <i class="chevron right icon"></i>
+              </a>
+              <a href="/faculty/request-grant" class="active item">
+                Request Grant
+                <i class="chevron right icon"></i>
+              </a>
+            {{/if}}
         </div>
       </div>
 

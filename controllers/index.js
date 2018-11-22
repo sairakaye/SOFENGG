@@ -44,8 +44,10 @@ router.get("/", function(req, res) {
 				user
 			})
 		else if(user.userType == "Faculty")
-			res.render("home-user.hbs", {
-				user
+			var forms = getAllForms(forms, function(forms){
+				res.render("my-requests.hbs", {
+					user, forms
+				})
 			})
 	} else {
 		res.render("index.hbs")
