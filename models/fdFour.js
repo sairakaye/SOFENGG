@@ -44,24 +44,35 @@ var fdFour = mongoose.model("fdFour", fdFourSchema)
 /**
  * Creates FD4 record in FD4 Schema 
  *
- * @param {FD4 record to be created} paramFDOne
+ * @param {FD4 record to be created} paramFDFour
  */
 exports.create = function(paramFDFour){
     return new Promise(function(resolve, reject){
+        
         var f = new fdFour(paramFDFour)
+        var i
         
         fdFour.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            f.save().then((newFDFour)=>{
-                resolve(newFDFour)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdFour.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD4", ""), 10) + 1
+                    f.formId = "FD4" + i
+                    
+                    f.save().then((newFDFour)=>{    
+                        resolve(newFDFour)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })
-        
         
     })
 }

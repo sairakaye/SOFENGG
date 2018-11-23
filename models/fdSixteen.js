@@ -44,24 +44,35 @@ var fdSixteen = mongoose.model("fdSixteen", fdSixteenSchema)
 /**
  * Creates FD16 record in FD16 Schema 
  *
- * @param {FD16 record to be created} paramFDOne
+ * @param {FD16 record to be created} paramFDSixteen
  */
 exports.create = function(paramFDSixteen){
     return new Promise(function(resolve, reject){
+        
         var f = new fdSixteen(paramFDSixteen)
+        var i
         
         fdSixteen.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            f.save().then((newFDSixteen)=>{
-                resolve(newFDSixteen)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdSixteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD16", ""), 10) + 1
+                    f.formId = "FD16" + i
+                    
+                    f.save().then((newFDSixteen)=>{    
+                        resolve(newFDSixteen)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })
-        
         
     })
 }

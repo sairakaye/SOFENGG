@@ -44,30 +44,43 @@ var fdTwoSchema = mongoose.Schema({
 var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
 
 /**
- * Creates FD1 record in FD1 Schema 
+ * Creates FD2 record in FD2 Schema 
  *
- * @param {FD1 record to be created} paramFDOne
+ * @param {FD2 record to be created} paramFDTwo
  */
 exports.create = function(paramFDTwo){
     return new Promise(function(resolve, reject){
+        
         var f = new fdTwo(paramFDTwo)
+        var i
         
         fdTwo.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            f.save().then((newFDTwo)=>{
-                resolve(newFDTwo)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdTwo.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD2", ""), 10) + 1
+                    f.formId = "FD2" + i
+                    
+                    f.save().then((newFDTwo)=>{    
+                        resolve(newFDTwo)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })
+        
     })
 }
 
 /**
- * Deletes FD1 record in FD1 Schema 
+ * Deletes FD2 record in FD2 Schema 
  *
  * @param {ID of the record to be deleted} paramID
  */
@@ -84,9 +97,9 @@ exports.delete = function(paramID){
 }
 
 /**
- * Edits FD1 record in FD1 Schema 
+ * Edits FD2 record in FD2 Schema 
  *
- * @param {FD1 record to be edited} paramFDOne
+ * @param {FD2 record to be edited} paramFDOne
  */
 exports.edit = function(paramFDTwo){
     return new Promise(function(resolve, reject){
@@ -139,9 +152,9 @@ exports.rejectFDTwo = function(paramID){
 }
 
 /**
- * Gets one FD1 record in FD1 Schema 
+ * Gets one FD2 record in FD2 Schema 
  *
- * @param {FD1 record to get} paramFDOne
+ * @param {FD2 record to get} paramFDOne
  */
 exports.getFDTwo = function(paramFDTwo){
     return new Promise(function(resolve, reject){
@@ -156,7 +169,7 @@ exports.getFDTwo = function(paramFDTwo){
 }
 
 /**
- * Gets one FD1 record in FD1 Schema by _id as the parameter
+ * Gets one FD2 record in FD2 Schema by _id as the parameter
  *
  * @param {id to use} id
  */
@@ -173,7 +186,7 @@ exports.getFDTwoByID = function(id){
 }
 
 /**
- * Gets all FD1 record in FD1 Schema 
+ * Gets all FD2 record in FD2 Schema 
  */
 exports.getAllFDTwo = function(){
     return new Promise(function(resolve, reject){
@@ -187,7 +200,7 @@ exports.getAllFDTwo = function(){
 
 
 /**
- * Gets FD1 record in FD1 Schema by department
+ * Gets FD2 record in FD2 Schema by department
  *
  * @param {Filtering department} paramFDOneDepartment
  */
@@ -204,7 +217,7 @@ exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
 }
 
 /**
- * Gets FD1 record in FD1 Schema by status
+ * Gets FD2 record in FD2 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus
  */

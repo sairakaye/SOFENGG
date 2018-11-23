@@ -58,16 +58,26 @@ exports.create = function(paramFDOne){
     return new Promise(function(resolve, reject){
         
         var f = new fdOne(paramFDOne)
+        var i
         
         fdOne.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            
-            f.save().then((newFDOne)=>{    
-                resolve(newFDOne)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdOne.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD1", ""), 10) + 1
+                    f.formId = "FD1" + i
+                    
+                    f.save().then((newFDOne)=>{    
+                        resolve(newFDOne)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })

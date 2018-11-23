@@ -47,32 +47,43 @@ var fdThreeSchema = mongoose.Schema({
 var fdThree = mongoose.model("fdThree", fdThreeSchema)
 
 /**
- * Creates FD1 record in FD1 Schema 
+ * Creates FD3 record in FD3 Schema 
  *
- * @param {FD1 record to be created} paramFDOne
+ * @param {FD3 record to be created} paramFDThree
  */
 exports.create = function(paramFDThree){
     return new Promise(function(resolve, reject){
+        
         var f = new fdThree(paramFDThree)
+        var i
         
         fdThree.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            f.save().then((newFDThree)=>{
-                resolve(newFDThree)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdThree.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD3", ""), 10) + 1
+                    f.formId = "FD3" + i
+                    
+                    f.save().then((newFDThree)=>{    
+                        resolve(newFDThree)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })
-        
         
     })
 }
 
 /**
- * Deletes FD1 record in FD1 Schema 
+ * Deletes FD3 record in FD3 Schema 
  *
  * @param {ID of the record to be deleted} paramID
  */
@@ -89,9 +100,9 @@ exports.delete = function(paramID){
 }
 
 /**
- * Edits FD3 record in FD1 Schema 
+ * Edits FD3 record in FD3 Schema 
  *
- * @param {FD1 record to be edited} paramFDOne
+ * @param {FD3 record to be edited} paramFDOne
  */
 exports.edit = function(paramFDThree){
     return new Promise(function(resolve, reject){
@@ -144,9 +155,9 @@ exports.rejectFDThree = function(paramID){
 }
 
 /**
- * Gets one FD1 record in FD1 Schema 
+ * Gets one FD3 record in FD3 Schema 
  *
- * @param {FD1 record to get} paramFDOne
+ * @param {FD3 record to get} paramFDOne
  */
 exports.getFDThree = function(paramFDThree){
     return new Promise(function(resolve, reject){
@@ -161,7 +172,7 @@ exports.getFDThree = function(paramFDThree){
 }
 
 /**
- * Gets one FD1 record in FD1 Schema by _id as the parameter
+ * Gets one FD3 record in FD3 Schema by _id as the parameter
  *
  * @param {id to use} id
  */
@@ -178,7 +189,7 @@ exports.getFDThreeByID = function(id){
 }
 
 /**
- * Gets all FD1 record in FD1 Schema 
+ * Gets all FD3 record in FD3 Schema 
  */
 exports.getAllFDThree = function(){
     return new Promise(function(resolve, reject){
@@ -192,7 +203,7 @@ exports.getAllFDThree = function(){
 
 
 /**
- * Gets FD1 record in FD1 Schema by department
+ * Gets FD3 record in FD3 Schema by department
  *
  * @param {Filtering department} paramFDOneDepartment
  */
@@ -209,7 +220,7 @@ exports.getFDThreeByDepartment = function(paramFDThreeDepartment){
 }
 
 /**
- * Gets FD1 record in FD1 Schema by status
+ * Gets FD3 record in FD3 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus
  */

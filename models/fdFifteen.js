@@ -13,7 +13,7 @@ const mongoose = require("mongoose")
 const moment = require("moment")
 
 /**
- * Setting up FD4 Form Schema
+ * Setting up FD15 Form Schema
  */
 var fdFifteenSchema = mongoose.Schema({
     timestamp: { type: String, default: moment().format('LLL')+"" },
@@ -42,24 +42,35 @@ var fdFifteen = mongoose.model("fdFifteen", fdFifteenSchema)
 /**
  * Creates FD15 record in FD15 Schema 
  *
- * @param {FD15 record to be created} paramFDOne
+ * @param {FD15 record to be created} paramFDFifteen
  */
 exports.create = function(paramFDFifteen){
     return new Promise(function(resolve, reject){
+        
         var f = new fdFifteen(paramFDFifteen)
+        var i
         
         fdFifteen.countDocuments().then((count) => {
-            f.formId = f.formId + count
-            f.save().then((newFDFifteen)=>{
-                resolve(newFDFifteen)
-            }, (err)=>{
-                reject(err)
-            })
-            
+            if(count == 0){
+                f.formId = f.formId + count
+            }else{
+                fdFifteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
+                    i = parseInt(lastDocument[0].formId.replace("FD15", ""), 10) + 1
+                    f.formId = "FD15" + i
+                    
+                    f.save().then((newFDFifteen)=>{    
+                        resolve(newFDFifteen)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                    
+                }, (err)=>{
+                    reject(err)
+                })
+            }               
         }, (err)=>{
             reject(err)
         })
-        
         
     })
 }
