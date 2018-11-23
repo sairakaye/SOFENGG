@@ -167,16 +167,19 @@
                     <input type="hidden" name="rank" value="{{fdSixteenData.rank}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Status</label>
-                  <p>{{fdSixteenData.status}}</p>
-                  <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
+               <div class="two fields">
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdSixteenData.status}}</p>
+                    <input type="hidden" name="status" value="{{fdSixteenData.status}}" />
+                  </div>
+                  <div class="field">
+                    <label>Name of Organization</label>
+                    <p>{{fdSixteenData.nameOfOrganization}}</p>
+                    <input type="hidden" name="nameOfOrganization" id="nameOfOrganization" class="check" value="{{fdSixteenData.nameOfOrganization}}" />
+                  </div>
                 </div>
-                <div class="field">
-                  <label>Name of Organization</label>
-                  <p>{{fdSixteenData.nameOfOrganization}}</p>
-                  <input type="hidden" name="nameOfOrganization" id="nameOfOrganization" class="check" value="{{fdSixteenData.nameOfOrganization}}" />
-                </div>
+              <div class="two fields">
                 <div class="field">
                   <label>Type of membership</label>
                   <p>{{fdSixteenData.typeOfMembershipPlace}}</p>
@@ -187,6 +190,7 @@
                   <p>{{fdSixteenData.typeofMembershipDuration}}</p>
                   <input type="hidden" name="typeofMembershipDuration" value="{{fdSixteenData.typeofMembershipDuration}}" />
                 </div>
+              </div>
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">

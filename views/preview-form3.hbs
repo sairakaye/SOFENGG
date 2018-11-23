@@ -156,16 +156,11 @@ November 15, 2018
                     <input type="hidden" name="lastName" value="{{fdThreeData.lastName}}" />
                   </div>
                 </div>
-                <div class="three fields">
+                <div class="two fields">
                   <div class="field">
                     <label>Department</label>
                     <p>{{fdThreeData.department}}</p>
                     <input type="hidden" name="department" value="{{fdThreeData.department}}" />
-                  </div>
-                  <div class="field">
-                    <label>Date Hired</label>
-                    <p>{{fdThreeData.dateHired}}</p>
-                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
                   </div>
                   <div class="field">
                     <label>Rank</label>
@@ -173,29 +168,33 @@ November 15, 2018
                     <input type="hidden" name="rank" value="{{fdThreeData.rank}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Status</label>
-                      <p>{{fdThreeData.status}}</p>
-                      <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
-                </div>
-                <div class="field">
-                  <label>Name of Conference</label>
-                  <p>{{fdThreeData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id  = "nameOfConference" class= "check" value="{{fdThreeData.nameOfConference}}"/>
-                </div>
-                <div class="field">
-                  <label>Type of Conference</label>
-                  <div class="fields">
-                    <div class="two wide field">
-                      <p>{{fdThreeData.typeOfConference}}</p>
-                      <input type="hidden" name="typeOfConference" id="typeOfConference" value="{{fdThreeData.typeOfConference}}" />
-                    </div>
+                <div class="two fields">
+                  <div class="field">
+                      <label>Date Hired</label>
+                      <p>{{fdThreeData.dateHired}}</p>
+                      <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                        <p>{{fdThreeData.status}}</p>
+                        <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Title of paper to be presented</label>
-                  <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check" value = "{{fdThreeData.titleOfPaperToBePresented}}"/>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Name of Conference</label>
+                    <p>{{fdThreeData.nameOfConference}}</p>
+                    <input type="hidden" name="nameOfConference" id  = "nameOfConference" class= "check" value="{{fdThreeData.nameOfConference}}"/>
+                  </div>
+                  <div class="field">
+                    <label>Type of Conference</label>
+                    <div class="fields">
+                      <div class="two wide field">
+                        <p>{{fdThreeData.typeOfConference}}</p>
+                        <input type="hidden" name="typeOfConference" id="typeOfConference" value="{{fdThreeData.typeOfConference}}" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -227,12 +226,20 @@ November 15, 2018
                     </div>
                   </div>
                 </div>
+                <div class="two fields">
+                    <div class="field">
+                      <label>Title of paper to be presented</label>
+                      <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
+                      <input type="hidden" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check" value = "{{fdThreeData.titleOfPaperToBePresented}}"/>
+                    </div>
                     <div class="eight wide field">
                       <label>Date of expected return to work</label>
                       <p>{{fdThreeData.dateOfReturnToWork}}</p>
                       <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
                         value="{{fdThreeData.dateOfReturnToWork}}" />
                     </div>
+                  </div>
+                  <div class="two fields">
                   <div class="field">
                     <label>Travel and conference subsidy</label>
                     <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
@@ -245,7 +252,7 @@ November 15, 2018
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
                     </div>
-                
+                </div>
                 <div class="ui divider"></div>
                 <br>
                   {{#if viewdetails}}
