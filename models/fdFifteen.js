@@ -53,6 +53,11 @@ exports.create = function(paramFDFifteen){
         fdFifteen.countDocuments().then((count) => {
             if(count == 0){
                 f.formId = f.formId + count
+                f.save().then((newFDFifteen)=>{    
+                        resolve(newFDFifteen)
+                    }, (err)=>{
+                        reject(err)
+                    })
             }else{
                 fdFifteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
                     i = parseInt(lastDocument[0].formId.replace("FD15", ""), 10) + 1
