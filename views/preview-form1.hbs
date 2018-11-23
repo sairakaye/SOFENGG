@@ -13,6 +13,8 @@
   <title>
     {{#if viewdetails}}
     Form Details - FD1
+    {{else if adminAccess}}
+    Form Details - FD1
     {{else}}
     Preview - FD1
     {{/if}}
@@ -88,6 +90,15 @@
             Request Grant
             <i class="chevron right icon"></i>
           </a>
+          {{else if adminAccess}}
+          <a href="/home" class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            View Grants
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Requests
@@ -107,6 +118,8 @@
           <div class="row">
             <h1 class="ui huge header">
               {{#if viewdetails}}
+              Form Details
+              {{else if adminAccess}}
               Form Details
               {{else}}
               Preview Form
@@ -166,16 +179,11 @@
                     <input type="hidden" name="lastName" value="{{fdOneData.lastName}}" />
                   </div>
                 </div>
-                <div class="three fields">
+                <div class="two fields">
                   <div class="field">
                     <label>Department</label>
                     <p>{{fdOneData.department}}</p>
                     <input type="hidden" name="department" value="{{fdOneData.department}}" />
-                  </div>
-                  <div class=" field">
-                    <label>Date Hired</label>
-                    <p>{{fdOneData.dateHired}}</p>
-                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdOneData.dateHired}}" />
                   </div>
                   <div class="field">
                     <label>Rank</label>
@@ -183,26 +191,35 @@
                     <input type="hidden" name="rank" value="{{fdOneData.rank}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Status</label>
-                  <p>{{fdOneData.status}}</p>
-                  <input type="hidden" name="status" id="status" value="{{fdOneData.status}}" />
+                <div class="two fields">
+                  <div class=" field">
+                    <label>Date Hired</label>
+                    <p>{{fdOneData.dateHired}}</p>
+                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdOneData.dateHired}}" />
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdOneData.status}}</p>
+                    <input type="hidden" name="status" id="status" value="{{fdOneData.status}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <label>Average teaching performance for the last 3 academic years</label>
                   <p>{{fdOneData.aveTeachingPerformance}}</p>
                   <input type="hidden" name="aveTeachingPerformance" id="aveTeachingPerformance" class="check" value="{{fdOneData.aveTeachingPerformance}}" />
                 </div>
-                <div class="field">
-                  <label>Title of Paper or Publication</label>
-                  <p>{{fdOneData.titleOfPaperOrPublication}}</p>
-                  <input type="hidden" name="titleOfPaperOrPublication" id="titleOfPaperOrPublication" class="check"
-                    value="{{fdOneData.titleOfPaperOrPublication}}" />
-                </div>
-                <div class="field">
-                  <label>Title of the Journal where paper was published</label>
-                  <p>{{fdOneData.titleOfJournal}}</p>
-                  <input type="hidden" name="titleOfJournal" id="titleOfJournal" class="check" value="{{fdOneData.titleOfPaperOrPublication}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Title of Paper or Publication</label>
+                    <p>{{fdOneData.titleOfPaperOrPublication}}</p>
+                    <input type="hidden" name="titleOfPaperOrPublication" id="titleOfPaperOrPublication" class="check"
+                      value="{{fdOneData.titleOfPaperOrPublication}}" />
+                  </div>
+                  <div class="field">
+                    <label>Title of the Journal where paper was published</label>
+                    <p>{{fdOneData.titleOfJournal}}</p>
+                    <input type="hidden" name="titleOfJournal" id="titleOfJournal" class="check" value="{{fdOneData.titleOfPaperOrPublication}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -220,16 +237,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="field">
-                  <label>Name of Conference</label>
-                  <p>{{fdOneData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdOneData.nameOfConference}}" />
-                </div>
-                <div class="field">
-                  <label>Title of paper to be presented</label>
-                  <p>{{fdOneData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
-                    value="{{fdOneData.titleOfPaperToBePresented}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Name of Conference</label>
+                    <p>{{fdOneData.nameOfConference}}</p>
+                    <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdOneData.nameOfConference}}" />
+                  </div>
+                  <div class="field">
+                    <label>Title of paper to be presented</label>
+                    <p>{{fdOneData.titleOfPaperToBePresented}}</p>
+                    <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
+                      value="{{fdOneData.titleOfPaperToBePresented}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -281,7 +300,7 @@
                 <div class="ui divider"></div>
                 <br>
                 {{#if viewdetails}}
-
+                {{else if adminAccess}}
                 {{else}}
                 <div class="field">
                   <label>Note</label>
@@ -294,10 +313,19 @@
                     Submit
                   </button>
                   {{/if}}
+                  {{#if viewdetails}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
               </form>
+              {{else if adminAccess}}
+              <a href="/admin/view-grants" class="ui button">
+                Back
+              </a>
+              </form>
+              {{else}}
+
+              {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui modal logout">

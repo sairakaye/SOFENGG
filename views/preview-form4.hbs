@@ -13,6 +13,8 @@
   <title>
     {{#if viewdetails}}
     Form Details - FD4
+    {{else if adminAccess}}
+    Form Details - FD4
     {{else}}
     Preview - FD4
     {{/if}}
@@ -88,6 +90,15 @@
             Request Grant
             <i class="chevron right icon"></i>
           </a>
+          {{else if adminAccess}}
+          <a href="/home" class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            View Grants
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Requests
@@ -107,6 +118,8 @@
           <div class="row">
             <h1 class="ui huge header">
               {{#if viewdetails}}
+              Form Details
+              {{else if adminAccess}}
               Form Details
               {{else}}
               Preview Form
@@ -205,62 +218,82 @@
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdFourData.dateOfDeparture}}" />
                     </div>
-                    <div class="eight wide field">
-                      <label>Date of Return</label>
-                      <p>{{fdFourData.dateOfReturn}}</p>
-                      <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdFourData.dateOfReturn}}" />
+                    <div class="two fields">
+                      <div class="field">
+                        <label>Date of expected return to work</label>
+                        <p>{{fdFourData.dateOfReturnToWork}}</p>
+                        <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class="check"
+                          value="{{fdFourData.dateOfReturnToWork}}" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="field">
-                  <label>Date of expected return to work</label>
-                  <p>{{fdFourData.dateOfReturnToWork}}</p>
-                  <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class="check"
-                    value="{{fdFourData.dateOfReturnToWork}}" />
-                </div>
-                <div class="field">
-                  <label>Participant’s fee (check payable to)</label>
-                  <p>{{fdFourData.participantFee}}</p>
-                  <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
-                </div>
-                <div class="field">
-                  <div class="fields">
-                    <div class="eight wide field">
-                      <label>No. of local conferences attended this academic year to date</label>
-                      <p>{{fdFourData.noOfLocalConferencesAttendedThisYear}}</p>
-                      <input type="hidden" name="noOfLocalConferencesAttendedThisYear" id="noOfLocalConferencesAttendedThisYear"
-                        class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
-                    </div>
-                    <div class="eight wide field">
-                      <label>Date incentive was last availed of</label>
-                      <p>{{fdFourData.dateIncentiveLastAvailed}}</p>
-                      <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                        class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
-
-                    </div>
+                  <div class="field">
+                    <label>Date of expected return to work</label>
+                    <p>{{fdFourData.dateOfReturnToWork}}</p>
+                    <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class="check"
+                      value="{{fdFourData.dateOfReturnToWork}}" />
                   </div>
-                </div>
+                  <div class="field">
+                    <label>Participant’s fee (check payable to)</label>
+                    <p>{{fdFourData.participantFee}}</p>
+                    <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                  </div>
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <label>No. of local conferences attended this academic year to date</label>
+                        <p>{{fdFourData.noOfLocalConferencesAttendedThisYear}}</p>
+                        <input type="hidden" name="noOfLocalConferencesAttendedThisYear" id="noOfLocalConferencesAttendedThisYear"
+                          class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="fields">
+                        <div class="eight wide field">
+                          <label>No. of local conferences attended this academic year to date</label>
+                          <p>{{fdFourData.noOfLocalConferencesAttendedThisYear}}</p>
+                          <input type="hidden" name="noOfLocalConferencesAttendedThisYear" id="noOfLocalConferencesAttendedThisYear"
+                            class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
+                        </div>
+                        <div class="eight wide field">
+                          <label>Date incentive was last availed of</label>
+                          <p>{{fdFourData.dateIncentiveLastAvailed}}</p>
+                          <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                            class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
 
-                <div class="ui divider"></div>
-                <br>
-                {{#if viewdetails}}
+                        </div>
+                      </div>
+                    </div>
 
-                {{else}}
-                <div class="field">
-                  <label>Note</label>
-                  <p>Once you clicked submit, you may not be able to revise it.</p>
-                  <p></p>
-                </div>
-                <br>
-                <div class="field">
-                  <button class="ui submit green button" type="Submit">
-                    Submit
-                  </button>
-                  {{/if}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
+                    <div class="ui divider"></div>
+                    <br>
+                    {{#if viewdetails}}
+                    {{else if adminAccess}}
+                    {{else}}
+                    <div class="field">
+                      <label>Note</label>
+                      <p>Once you clicked submit, you may not be able to revise it.</p>
+                      <p></p>
+                    </div>
+                    <br>
+                    <div class="field">
+                      <button class="ui submit green button" type="Submit">
+                        Submit
+                      </button>
+                      {{/if}}
+                      {{#if viewdetails}}
+                      <a href="/faculty/my-requests" class="ui button">
+                        Back
+                      </a>
               </form>
+              {{else if adminAccess}}
+              <a href="/admin/view-grants" class="ui button">
+                Back
+              </a>
+              </form>
+              {{else}}
+
+              {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui modal logout">

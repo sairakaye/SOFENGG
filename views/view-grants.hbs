@@ -93,88 +93,71 @@
 
           <!-- This the filter for grant status -->
             <div class="row">
-                <div class="three wide column">
-                    <div id = "status" class="ui selection dropdown fluid">                  
-                        <i class="filter icon"></i>
-                        <input type="hidden" name="gender">
-                        <i class="dropdown icon"></i>
-                        {{#if statusFilter}}
-                          <div class="default text">{{statusFilter}}</div>
-                        {{else}}
-                          <div class="default text">Status</div>
-                        {{/if}}
-                        <div class="menu">
-                            <div class="item" data-value="Approved" onclick="document.location.href = '/admin/filterApproved'">Approved</div>
-                            <div class="item" data-value="Pending" onclick="document.location.href = '/admin/filterPending'">Pending</div>
-                            <div class="item" data-value="Rejected" onclick="document.location.href = '/admin/filterRejected'">Rejected</div>
-                        </div>
-                    </div>
+              
+               <!-- This the filter for status -->
+                <div class="ui floating dropdown labeled icon button">
+                  <i class="filter icon"></i>
+                  <span class="text">Status</span>
+                  <div class="menu">                    
+                    <div class="item"><div class="ui green empty circular label"></div>Approved</i></div> 
+                    <div class="item"><div class="ui yellow empty circular label"></div>Pending</div> 
+                    <div class="item"><div class="ui red empty circular label"></div>Rejected</div>
+                  </div>
                 </div>
-                
+
                <!-- This the filter for department -->
-                <div class="three wide column">
-                    <div id = "status" class="ui selection dropdown fluid">                  
-                        <i class="filter icon"></i>
-                        <input type="hidden" name="gender">
-                        <i class="dropdown icon"></i>
-                        {{#if departmentFilter}}
-                        <div class="default text">{{departmentFilter}}</div>
-                        {{else}}
-                        <div class="default text">Department</div>
-                        {{/if}}
-                        <div class="menu">
-                          <div class="item" data-value="CCS" onclick="document.location.href = '/admin/filterCCS'">College of Computer Studies</div>
-                          <div class="item" data-value="CED" onclick="document.location.href = '/admin/filterCED'">College of Education</div>
-                          <div class="item" data-value="CLA" onclick="document.location.href = '/admin/filterCLA'">College of Liberal Arts</div>
-                          <div class="item" data-value="COB" onclick="document.location.href = '/admin/filterCOB'">College of Business</div>
-                          <div class="item" data-value="COE" onclick="document.location.href = '/admin/filterCOE'">College of Engineering</div>
-                          <div class="item" data-value="COL" onclick="document.location.href = '/admin/filterCOL'">College of Law</div>
-                          <div class="item" data-value="COS" onclick="document.location.href = '/admin/filterCOS'">College of Science</div>
-                          <div class="item" data-value="SOE" onclick="document.location.href = '/admin/filterSOE'">School of Economics</div>
-                        </div>
-                    </div>
+                <div class="ui floating dropdown labeled search icon button">
+                  <i class="filter icon"></i>
+                  <span class="text">Department</span>
+                  <div class="menu">
+                    <div class="item">CEPD</div> <div class="item">DEAL</div> <div class="item">ELMD</div>
+                    <div class="item">PE</div> <div class="item">SED</div>
+                    
+                    <div class="item">CT</div> <div class="item">IT</div> 
+                    
+                    <div class="item">COL</div>
+                    
+                    <div class="item">BSD</div> <div class="item">COMM</div> <div class="item">FIL</div>
+                    <div class="item">HIST</div> <div class="item">IS</div> <div class="item">LIT</div>
+                    <div class="item">PHILO</div> <div class="item">POLSCI</div> <div class="item">PSYC</div>
+                    <div class="item">TRED</div> 
+                    
+                    <div class="item">BIO</div> <div class="item">CHEM</div> <div class="item">MATH</div>
+                    <div class="item">PHY</div>
+
+                    <div class="item">CHE</div> <div class="item">CE</div> <div class="item">ECE</div>
+                    <div class="item">IE</div> <div class="item">MEM</div> <div class="item">ME</div>
+
+                    <div class="item">ACCTY</div> <div class="item">CPDB</div> <div class="item">COMM LAW</div>
+                    <div class="item">DSI</div> <div class="item">FMD</div> <div class="item">MOD</div>
+                    <div class="item">MKTG ADVERT</div> <div class="item">MKTG MGT</div> 
+                    
+                    <div class="item">ECON</div>
                 </div>
-                
-              <!-- This the filter for department -->
-                <div class="three wide column">
-                    <div id = "status" class="ui selection dropdown fluid">                  
-                        <i class="filter icon"></i>
-                        <input type="hidden" name="gender">
-                        <i class="dropdown icon"></i>
-                        {{#if formFilter}}
-                        <div class="default text">{{formFilter}}</div>
-                        {{else}}
-                        <div class="default text">Forms</div>
-                        {{/if}}
-                        <div class="menu">
-                            <div class="item" data-value="FD1" onclick="document.location.href = '/admin/filterFD1'">[FD1] Incentive for Publication in Pre-Selected High Impact Journal</div>
-                            <div class="item" data-value="FD2" onclick="document.location.href = '/admin/filterFD2'">[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</div>
-                            <div class="item" data-value="FD3" onclick="document.location.href = '/admin/filterFD3'">[FD3] Support for Paper Presentations in Conferences</div>
-                            <div class="item" data-value="FD4" onclick="document.location.href = '/admin/filterFD4'">[FD4] Support for Participation in Local Conferences</div>
-                            <div class="item" data-value="FD15" onclick="document.location.href = '/admin/filterFD15'">[FD15] Incentive for Publication in Pre-Selected High Impact Journal</div>
-                            <div class="item" data-value="FD16" onclick="document.location.href = '/admin/filterFD16'">[FD16] Support for Membership in Professional Organizations</div>
-                        </div>
-                    </div>
+               </div>
+
+                <!-- This the filter for form -->
+                <div class="ui floating dropdown labeled icon button">
+                  <i class="filter icon"></i>
+                  <span class="text">Form</span>
+                  <div class="menu">                    
+                    <div class="item">[FD1] Incentive for Publication in Pre-Selected High Impact Journal</div> 
+                    <div class="item">[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</div> 
+                    <div class="item">[FD3] Support for Paper Presentations in Conferences</div>
+                    <div class="item">[FD4] Support for Participation in Local Conferences</div> 
+                    <div class="item">[FD15] Incentive for Publication in Pre-Selected High Impact Journal</div> 
+                    <div class="item">[FD16] Support for Membership in Professional Organizations</div>
+                  </div>
                 </div>
-      
-          <!-- ITERATION 2 This the filter search bar for name -->
-            <div class="three wide column">
-              <div class="ui action input fluid">
-               {{!-- <form id = "searchForm" class="ui large form" action = "/admin/searchName" method = "post">
-                <input type="text"  name = "firstNameSearch" placeholder="First Name">
-                <input type="text"  name = "lastNameSearch" placeholder="Last Name">
-                <div class="ui button submit" onclick="searchForm.submit();">Search name</div>
-                </form> --}}
-              </div>
-            </div>    
-        </div>
+            </div>
 
           <!-- This the table for the list of grants submitted -->
           <div class="row">
             <table class="ui single line selectable table tablet stackable">
               <thead>
                 <tr>
-                  <th>ID</th>    
+                  <th>ID</th>
+                  <th>Date and Time</th>
                   <th>Name</th>
                   <th>Department</th>
                   <th>Form</th>
@@ -183,7 +166,7 @@
                   <th></th>
                 </tr>
               </thead>
-                <tbody>
+             <tbody>
 
                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
@@ -205,32 +188,24 @@
                       {{else}}
                         <!-- dont show -->
                       {{/checkstatus}}
-                            <td>{{formId}}</td>
-                            <td>{{firstName}} {{lastName}} </td>
-                            <td>{{department}}</td>
-                            <td>{{grantName}}</td>
-                            <td>{{grantStatus}}</td>
-                            <td>
-                              <button class="ui button fluid">View Details</button>
-                            </td>
-                            <td>
-                              <button id="delete" class="ui negative button fluid delete" data-id="{{_id}}" data-grant="{{grantName}}">Delete</button>
-                            </td>
-                          </tr>  
-                        </div>    
+                      <td>{{formId}} </td>
+                      <td>{{timestamp}} </td>
+                      <td>{{firstName}} {{lastName}} </td>
+                      <td>{{department}}</td>                      
+                      <td>{{grantName}}</td>
+                      <td>{{grantStatus}}</td>
+                      <td>
+                        <form action="/admin/view-details" method="post" class="ui form fluid">
+                          <button type = "submit" class="ui button fluid viewdetails" >
+                            View Details <input type="hidden" name="details" value="{{_id}}" />
+                          </button>
+                        </form>
+                      </td>
+                      <td>
+                        <button id="delete" class="ui negative button fluid delete" data-id="{{_id}}" data-grant="{{grantName}}">Delete</button>
+                      </td>
+                    </tr>    
                     {{/each}}   
-
-                <!-- This the modal for grant deletion -->
-                  <div class="ui modal deletion">
-                    <div class="header">Are you sure?</div>
-                    <div class="content">
-                      <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
-                    </div>
-                    <div class="actions">
-                      <input type="submit" value="Delete" class="ui button negative delete final">
-                      <div class="ui cancel button">Not yet</div>
-                    </div>
-                  </div>
                 </tbody>  
              </table>
             </div>   
@@ -245,9 +220,20 @@
             </div>
             </div>
           {{/if}}
-          
           </div>
-         </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- This the modal for grant deletion -->
+    <div class="ui modal deletion">
+      <div class="header">Are you sure?</div>
+      <div class="content">
+        <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
+      </div>
+      <div class="actions">
+        <input type="submit" value="Delete" class="ui button negative delete final">
+        <div class="ui cancel button">Not yet</div>
       </div>
     </div>
 

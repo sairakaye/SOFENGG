@@ -13,6 +13,8 @@
   <title>
     {{#if viewdetails}}
     Form Details - FD15
+    {{else if adminAccess}}
+    Form Details - FD15
     {{else}}
     Preview - FD15
     {{/if}}
@@ -87,6 +89,15 @@
             Request Grant
             <i class="chevron right icon"></i>
           </a>
+          {{else if adminAccess}}
+          <a href="/home" class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            View Grants
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Requests
@@ -106,6 +117,8 @@
           <div class="row">
             <h1 class="ui huge header">
               {{#if viewdetails}}
+              Form Details
+              {{else if adminAccess}}
               Form Details
               {{else}}
               Preview Form
@@ -158,17 +171,19 @@
                     <p>{{fdFifteenData.firstName}}</p>
                     <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
                   </div>
-                  <div class="field">
-                    <label>Last Name</label>
-                    <p>{{fdFifteenData.lastName}}</p>
-                    <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                  <div class="two fields">
+                    <div class="field">
+                      <label>Last Name</label>
+                      <p>{{fdFifteenData.lastName}}</p>
+                      <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                    </div>
                   </div>
-                </div>
-                <div class="two fields">
-                  <div class=" field">
-                    <label>Department</label>
-                    <p>{{fdFifteenData.department}}</p>
-                    <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
+                  <div class="two fields">
+                    <div class=" field">
+                      <label>Department</label>
+                      <p>{{fdFifteenData.department}}</p>
+                      <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
+                    </div>
                   </div>
                   <div class="field">
                     <label>Rank</label>
@@ -224,7 +239,7 @@
                 <div class="ui divider"></div>
                 <br>
                 {{#if viewdetails}}
-
+                {{else if adminAccess}}
                 {{else}}
                 <div class="field">
                   <label>Note</label>
@@ -237,10 +252,19 @@
                     Submit
                   </button>
                   {{/if}}
+                  {{#if viewdetails}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
               </form>
+              {{else if adminAccess}}
+              <a href="/admin/view-grants" class="ui button">
+                Back
+              </a>
+              </form>
+              {{else}}
+
+              {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui modal logout">

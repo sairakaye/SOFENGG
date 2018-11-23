@@ -65,32 +65,32 @@ router.post("/view-details", urlencoder, function(req,res) {
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
                 var fdOneData = forms
                 res.render("preview-form1.hbs", {
-                    user, fdOneData, viewdetails: "View Details"
+                    user, fdOneData, viewdetails: "True"
                 })
             } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                 var fdTwoData = forms
                 res.render("preview-form2.hbs", {
-                    user, fdTwoData, viewdetails: "View Details"
+                    user, fdTwoData, viewdetails: "True"
                 })
             } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                 var fdThreeData = forms
                 res.render("preview-form3.hbs", {
-                    user, fdThreeData, viewdetails: "View Details"
+                    user, fdThreeData, viewdetails: "True"
                 })
             } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
                 var fdFourData = forms
                 res.render("preview-form4.hbs", {
-                    user, fdFourData, viewdetails: "View Details"
+                    user, fdFourData, viewdetails: "True"
                 })
             } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
                 var fdFifteenData = forms
                 res.render("preview-form15.hbs", {
-                    user, fdFifteenData, viewdetails: "View Details"
+                    user, fdFifteenData, viewdetails: "True"
                 })
             } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
                 var fdSixteenData = forms
                 res.render("preview-form16.hbs", {
-                    user, fdSixteenData, viewdetails: "View Details"
+                    user, fdSixteenData, viewdetails: "True"
                 })
             } 
         })
@@ -98,6 +98,7 @@ router.post("/view-details", urlencoder, function(req,res) {
         res.redirect("/")
     }
   })
+  
 /**
  * Leads to the page of FD1 form.
  *

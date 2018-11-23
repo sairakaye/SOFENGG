@@ -13,6 +13,8 @@ November 15, 2018
   <title>
     {{#if viewdetails}}
     Form Details - FD3
+    {{else if adminAccess}}
+    Form Details - FD3
     {{else}}
     Preview - FD3
     {{/if}}
@@ -88,6 +90,15 @@ November 15, 2018
             Request Grant
             <i class="chevron right icon"></i>
           </a>
+          {{else if adminAccess}}
+          <a href="/home" class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            View Grants
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Requests
@@ -108,6 +119,8 @@ November 15, 2018
             <h1 class="ui huge header">
               {{#if viewdetails}}
               Form Details
+              {{else if adminAccess}}
+              Form Details
               {{else}}
               Preview Form
               {{/if}}
@@ -125,14 +138,14 @@ November 15, 2018
                 <th>Remarks</th>
               </tr>
             </thead>
-            <tbody>           
+            <tbody>
               {{#each remarks}}
               <div data-id="{{_id}}">
-              <tr>
-                <td>Put the Date Here</td>
-                <td>Hello Status</td>
-                <td>Weeee</td>
-              </tr>
+                <tr>
+                  <td>Put the Date Here</td>
+                  <td>Hello Status</td>
+                  <td>Weeee</td>
+                </tr>
               </div>
               {{/each}}
             </tbody>
@@ -166,16 +179,11 @@ November 15, 2018
                     <input type="hidden" name="lastName" value="{{fdThreeData.lastName}}" />
                   </div>
                 </div>
-                <div class="three fields">
+                <div class="two fields">
                   <div class="field">
                     <label>Department</label>
                     <p>{{fdThreeData.department}}</p>
                     <input type="hidden" name="department" value="{{fdThreeData.department}}" />
-                  </div>
-                  <div class="field">
-                    <label>Date Hired</label>
-                    <p>{{fdThreeData.dateHired}}</p>
-                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
                   </div>
                   <div class="field">
                     <label>Rank</label>
@@ -183,30 +191,33 @@ November 15, 2018
                     <input type="hidden" name="rank" value="{{fdThreeData.rank}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Status</label>
-                  <p>{{fdThreeData.status}}</p>
-                  <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
-                </div>
-                <div class="field">
-                  <label>Name of Conference</label>
-                  <p>{{fdThreeData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdThreeData.nameOfConference}}" />
-                </div>
-                <div class="field">
-                  <label>Type of Conference</label>
-                  <div class="fields">
-                    <div class="two wide field">
-                      <p>{{fdThreeData.typeOfConference}}</p>
-                      <input type="hidden" name="typeOfConference" id="typeOfConference" value="{{fdThreeData.typeOfConference}}" />
-                    </div>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Date Hired</label>
+                    <p>{{fdThreeData.dateHired}}</p>
+                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdThreeData.status}}</p>
+                    <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
                   </div>
                 </div>
-                <div class="field">
-                  <label>Title of paper to be presented</label>
-                  <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
-                    value="{{fdThreeData.titleOfPaperToBePresented}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Name of Conference</label>
+                    <p>{{fdThreeData.nameOfConference}}</p>
+                    <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdThreeData.nameOfConference}}" />
+                  </div>
+                  <div class="field">
+                    <label>Type of Conference</label>
+                    <div class="fields">
+                      <div class="two wide field">
+                        <p>{{fdThreeData.typeOfConference}}</p>
+                        <input type="hidden" name="typeOfConference" id="typeOfConference" value="{{fdThreeData.typeOfConference}}" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -238,30 +249,45 @@ November 15, 2018
                     </div>
                   </div>
                 </div>
-                <div class="eight wide field">
-                  <label>Date of expected return to work</label>
-                  <p>{{fdThreeData.dateOfReturnToWork}}</p>
-                  <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
-                    value="{{fdThreeData.dateOfReturnToWork}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Title of paper to be presented</label>
+                    <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
+                    <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
+                      value="{{fdThreeData.titleOfPaperToBePresented}}" />
+                  </div>
+                  <div class="eight wide field">
+                    <label>Date of expected return to work</label>
+                    <p>{{fdThreeData.dateOfReturnToWork}}</p>
+                    <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
+                      value="{{fdThreeData.dateOfReturnToWork}}" />
+                  </div>
                 </div>
-                <div class="field">
-                  <label>Travel and conference subsidy</label>
-                  <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
-                  <input type="hidden" name="travelAndConferenceSubsidy" id="travelAndConferenceSubsidy" class="check"
-                    value="{{fdThreeData.travelAndConferenceSubsidy}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Travel and conference subsidy</label>
+                    <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
+                    <input type="hidden" name="travelAndConferenceSubsidy" id="travelAndConferenceSubsidy" class="check"
+                      value="{{fdThreeData.travelAndConferenceSubsidy}}" />
+                  </div>
+                  <div class="eight wide field">
+                    <label>Date incentive was last availed of</label>
+                    <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
+                    <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                      class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
+                  </div>
                 </div>
-                <div class="eight wide field">
-                  <label>Date incentive was last availed of</label>
-                  <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
-                  <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                    class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
-                </div>
-
                 <div class="ui divider"></div>
                 <br>
                 {{#if viewdetails}}
-
+                {{else if adminAccess}}
                 {{else}}
+                <div class="field">
+                  <label>Note</label>
+                  <p>Once you clicked submit, you may not be able to revise it.</p>
+                  <p></p>
+                </div>
+                <br>
                 <div class="field">
                   <label>Note</label>
                   <p>Once you clicked submit, you may not be able to revise it.</p>
@@ -273,10 +299,19 @@ November 15, 2018
                     Submit
                   </button>
                   {{/if}}
+                  {{#if viewdetails}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
               </form>
+              {{else if adminAccess}}
+              <a href="/admin/view-grants" class="ui button">
+                Back
+              </a>
+              </form>
+              {{else}}
+
+              {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui modal logout">

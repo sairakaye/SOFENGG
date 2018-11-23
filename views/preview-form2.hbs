@@ -13,6 +13,8 @@
   <title>
     {{#if viewdetails}}
     Form Details - FD2
+    {{else if adminAccess}}
+    Form Details - FD2
     {{else}}
     Preview - FD2
     {{/if}}
@@ -87,6 +89,15 @@
             Request Grant
             <i class="chevron right icon"></i>
           </a>
+          {{else if adminAccess}}
+          <a href="/home" class="item">
+            Overview
+            <i class="chevron right icon"></i>
+          </a>
+          <a class="active item">
+            View Grants
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Requests
@@ -106,6 +117,8 @@
           <div class="row">
             <h1 class="ui huge header">
               {{#if viewdetails}}
+              Form Details
+              {{else if adminAccess}}
               Form Details
               {{else}}
               Preview Form
@@ -165,7 +178,7 @@
                     <input type="hidden" name="lastName" value="{{fdTwoData.lastName}}" />
                   </div>
                 </div>
-                <div class="three fields">
+                <div class="two fields">
                   <div class="field">
                     <label>Department</label>
                     <p>{{fdTwoData.department}}</p>
@@ -176,6 +189,13 @@
                     <p>{{fdTwoData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdTwoData.dateHired}}" />
                   </div>
+                </div>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdTwoData.status}}</p>
+                    <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
+                  </div>
                   <div class=" field">
                     <label>Rank</label>
                     <p>{{fdTwoData.rank}}</p>
@@ -183,25 +203,22 @@
                   </div>
                 </div>
                 <div class="field">
-                  <label>Status</label>
-                  <p>{{fdTwoData.status}}</p>
-                  <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
-                </div>
-                <div class="field">
                   <label>Average teaching performance for the last 3 academic years</label>
                   <p>{{fdTwoData.aveTeachingPerformance}}</p>
                   <input type="hidden" name="aveTeachingPerformance" id="aveTeachingPerformance" class="check" value="{{fdTwoData.aveTeachingPerformance}}" />
                 </div>
-                <div class="field">
-                  <label>Name of Conference</label>
-                  <p>{{fdTwoData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdTwoData.nameOfConference}}" />
-                </div>
-                <div class="field">
-                  <label>Title of paper to be presented</label>
-                  <p>{{fdTwoData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
-                    value="{{fdTwoData.titleOfPaperToBePresented}}" />
+                <div class="two fields">
+                  <div class="field">
+                    <label>Name of Conference</label>
+                    <p>{{fdTwoData.nameOfConference}}</p>
+                    <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdTwoData.nameOfConference}}" />
+                  </div>
+                  <div class="field">
+                    <label>Title of paper to be presented</label>
+                    <p>{{fdTwoData.titleOfPaperToBePresented}}</p>
+                    <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
+                      value="{{fdTwoData.titleOfPaperToBePresented}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -254,7 +271,7 @@
                 <div class="ui divider"></div>
                 <br>
                 {{#if viewdetails}}
-
+                {{else if adminAccess}}
                 {{else}}
                 <div class="field">
                   <label>Note</label>
@@ -267,10 +284,19 @@
                     Submit
                   </button>
                   {{/if}}
+                  {{#if viewdetails}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
               </form>
+              {{else if adminAccess}}
+              <a href="/admin/view-grants" class="ui button">
+                Back
+              </a>
+              </form>
+              {{else}}
+
+              {{/if}}
 
               <div class="ui modal logout">
                 <div class="header">Are you sure?</div>

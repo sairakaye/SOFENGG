@@ -83,16 +83,15 @@
           </div>
         </div>
 
-        <!-- This is where you will put the content of the page. -->
-        <div class="column" id="content">
-          <div class="ui grid">
-            <div class="row">
-              <div class="ui action input">
-                <!-- ITERATION 2 This is for the searching of my grants request -->    
-                {{!-- <input type="text" placeholder="Search...">
-                <div class="ui button">Search</div> --}}
-              </div>
+       <!-- This is where you will put the content of the page. -->
+       <div class="column" id="content">
+         <div class="ui grid">
+           <div class="row">
+             <h1 class="ui huge header">
+                My Requests
+             </h1>
             </div>
+            <div class="ui divider"></div>
 
           <!-- This the table for the list of grants submitted by the user-->
             <div class="row">
@@ -100,7 +99,7 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Timestamp</th>
+                    <th>Date and Time</th>
                     <th>Form</th>
                     <th>Status</th>
                     <th></th>
@@ -138,7 +137,7 @@
                         <button type = "submit" class="ui button fluid viewdetails" >
                           View Details <input type="hidden" name="details" value="{{_id}}" />
                         </button>
-                     </form>
+                      </form>
                     </td>
                     <td>
                       <div class="ui fluid dropdown icon labeled button">
@@ -162,16 +161,17 @@
                 </tbody>
               </table>
             </div>
-                <!-- Show message if no forms are returned -->
-                {{#if noforms}}
-                <div class = "row">
-                  <div class="ui one column stackable center aligned page grid">
-                    <div class="column sixteen wide">
-                      <div class="ui tiny yellow message">{{noforms}}</div>
-                    </div>
-                  </div>
-                  </div>
-                {{/if}}
+            
+            <!-- Show message if no forms are returned -->
+            {{#if noforms}}
+            <div class = "row">
+              <div class="ui one column stackable center aligned page grid">
+                <div class="column sixteen wide">
+                  <div class="ui tiny yellow message">{{noforms}}</div>
+                </div>
+              </div>
+              </div>
+            {{/if}}
           </div>
         </div>
       </div>
