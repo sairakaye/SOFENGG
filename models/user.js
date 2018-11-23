@@ -58,6 +58,8 @@ var userSchema = mongoose.Schema({
 
     status : String, // Probationary or Permanent
 
+    aveTeachingPerformance : Number,
+
     employmentType : String, // Part-time or Full-time
 
     rank : String, 

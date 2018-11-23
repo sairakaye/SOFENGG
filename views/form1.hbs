@@ -165,10 +165,9 @@
                     {{/facultystatus}}
                   </div>
                 </div>
-                <div class="field">
+                <div class="field disabled">
                   <label>Average teaching performance for the last 3 academic years</label>
-                  <input type="number"onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46"
-                         min = "0" step=".01"  name="aveTeachingPerformance" id = "aveTeachingPerformance" class = " check" />
+                  <input type="number"name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}"/>
                 </div>
                 <div class="field">
                   <label>Title of Paper or Publication</label>

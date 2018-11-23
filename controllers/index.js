@@ -84,9 +84,10 @@ router.post("/home", (req, res)=>{
 	//  	lastName: 'Dela Cruz', 
 	//  	department: "ECE", 
 	//  	userType: 'Faculty',
-	// 		employmentType: 'Full-time',
-	// 		rank: 'Asso. Prof 4',
+	// 	employmentType: 'Full-time',
+	// 	rank: 'Asso. Prof 4',
 	//  	status: "Permanent",
+	// 	aveTeachingPerformance : 3.8,
 	//  	dateHired: today,
 	//  }
 	//  User.create(user).then((user)=>{
