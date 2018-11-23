@@ -55,6 +55,58 @@ router.get("/view-grants", function(req, res){
     }
 })
 
+
+/**
+ * Views details based on form id
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/view-details", urlencoder, function(req,res) {
+    console.log("POST /view-details")
+     
+    var user = req.session.user
+    var id = req.body.details
+    
+    if (user != null) {
+        var forms = getFormById(id, function(forms){
+            if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+                var fdOneData = forms
+                res.render("preview-form1.hbs", {
+                    user, fdOneData, adminAccess : "True"
+                })
+            } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+                var fdTwoData = forms
+                res.render("preview-form2.hbs", {
+                    user, fdTwoData, adminAccess : "True"
+                })
+            } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
+                var fdThreeData = forms
+                res.render("preview-form3.hbs", {
+                    user, fdThreeData, adminAccess : "True"
+                })
+            } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
+                var fdFourData = forms
+                res.render("preview-form4.hbs", {
+                    user, fdFourData, adminAccess : "True"
+                })
+            } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
+                var fdFifteenData = forms
+                res.render("preview-form15.hbs", {
+                    user, fdFifteenData, adminAccess : "True"
+                })
+            } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
+                var fdSixteenData = forms
+                res.render("preview-form16.hbs", {
+                    user, fdSixteenData, adminAccess : "True"
+                })
+            } 
+        })
+    } else {
+        res.redirect("/")
+    }
+  })
+
 /**
  * Filters all Approved Forms
  *
@@ -996,3 +1048,42 @@ hbs.registerHelper('checkstatus', function(p1, p2, options) {
     }
   })
   
+/**
+ * Gets a form (By ID)
+ *
+ * @param {Filter} id
+ * @param {Callback function} callback
+ */
+function getFormById(id, callback){
+    
+    fdOne.getFDOneByID(id).then((fdOneData)=>{
+        forms = fdOneData
+        if (forms != null)
+            callback(forms)
+        fdTwo.getFDTwoByID(id).then((fdTwoData)=>{
+            forms = fdTwoData
+            if (forms != null)
+                callback(forms)
+            fdThree.getFDThreeByID(id).then((fdThreeData)=>{
+                forms = fdThreeData
+                if (forms != null)
+                    callback(forms)
+                fdFour.getFDFourByID(id).then((fdFourData)=>{
+                    forms = fdFourData
+                    if (forms != null)
+                        callback(forms)
+                    fdFifteen.getFDFifteenByID(id).then((fdFifteenData)=>{
+                        forms = fdFifteenData
+                        if (forms != null)
+                            callback(forms)
+                        fdSixteen.getFDSixteenByID(id).then((fdSixteenData)=>{
+                            forms = fdSixteenData
+                            if (forms != null)
+                                callback(forms)
+                        })
+                    }) 
+                })
+            })
+        })
+    })
+} 

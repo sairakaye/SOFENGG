@@ -6,20 +6,6 @@
  */
 $('.ui.dropdown').dropdown({forceSelection: false});
 
-// $('.ui.embed.pdf').embed();
-
-// $(".button.viewdetails").click(function () { 
-//     var id = $(this).attr("data-id")
-
-//     $.ajax({ 
-//         method : "get",
-//         url : "saveform",
-//         data : {
-//             id
-//         }
-//     })
-// })
-
 $(".item.saveform").click(function () { 
     var id = $(this).attr("data-id")
 

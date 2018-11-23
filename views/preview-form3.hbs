@@ -13,6 +13,8 @@ November 15, 2018
   <title>
     {{#if viewdetails}}
         Form Details - FD3
+    {{else if adminAccess}}
+        Form Details - FD3
     {{else}}
         Preview - FD3
     {{/if}}
@@ -88,6 +90,15 @@ November 15, 2018
                 Request Grant
                 <i class="chevron right icon"></i>
               </a>
+            {{else if adminAccess}}
+              <a href = "/home" class="item">
+                Overview
+                <i class="chevron right icon"></i>
+              </a>
+              <a class="active item">
+                View Grants
+                <i class="chevron right icon"></i>
+              </a>
             {{else}}
               <a href="/faculty/my-requests" class="item">
                 My Requests
@@ -107,9 +118,11 @@ November 15, 2018
           <div class="row">
             <h1 class="ui huge header">
              {{#if viewdetails}}
-                 Form Details
-                {{else}}
-                 Preview Form
+                Form Details
+             {{else if adminAccess}}
+                Form Details
+             {{else}}
+                Preview Form
              {{/if}}
             </h1>
           </div>
@@ -236,7 +249,7 @@ November 15, 2018
                 <div class="ui divider"></div>
                 <br>
                   {{#if viewdetails}}
-
+                  {{else if adminAccess}}
                   {{else}}
                   <div class="field">
                     <label>Note</label>
@@ -249,10 +262,19 @@ November 15, 2018
                       Submit
                     </button>
                   {{/if}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
-              </form>
+                  {{#if viewdetails}}
+                    <a href="/faculty/my-requests" class="ui button">
+                      Back
+                    </a>
+                 </form>
+                  {{else if adminAccess}}
+                    <a href="/admin/view-grants" class="ui button">
+                      Back
+                    </a>
+                 </form>
+                  {{else}}
+
+                  {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui modal logout">

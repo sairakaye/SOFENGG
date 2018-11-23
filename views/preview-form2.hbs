@@ -13,6 +13,8 @@
   <title>
     {{#if viewdetails}}
         Form Details - FD2
+    {{else if adminAccess}}
+        Form Details - FD2
     {{else}}
         Preview - FD2
     {{/if}}
@@ -87,6 +89,15 @@
                 Request Grant
                 <i class="chevron right icon"></i>
               </a>
+            {{else if adminAccess}}
+              <a href = "/home" class="item">
+                Overview
+                <i class="chevron right icon"></i>
+              </a>
+              <a class="active item">
+                View Grants
+                <i class="chevron right icon"></i>
+              </a>
             {{else}}
               <a href="/faculty/my-requests" class="item">
                 My Requests
@@ -107,8 +118,10 @@
             <h1 class="ui huge header">
              {{#if viewdetails}}
                  Form Details
-                {{else}}
-                 Preview Form
+             {{else if adminAccess}}
+                Form Details
+             {{else}}
+                Preview Form
              {{/if}}
             </h1>
           </div>
@@ -231,7 +244,7 @@
               <div class="ui divider"></div>
                <br>
                   {{#if viewdetails}}
-
+                  {{else if adminAccess}}
                   {{else}}
                   <div class="field">
                     <label>Note</label>
@@ -244,10 +257,19 @@
                       Submit
                     </button>
                   {{/if}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
-              </form>
+                  {{#if viewdetails}}
+                    <a href="/faculty/my-requests" class="ui button">
+                      Back
+                    </a>
+                 </form>
+                  {{else if adminAccess}}
+                    <a href="/admin/view-grants" class="ui button">
+                      Back
+                    </a>
+                 </form>
+                  {{else}}
+
+                  {{/if}}
 
                <div class="ui modal logout">
                 <div class="header">Are you sure?</div>

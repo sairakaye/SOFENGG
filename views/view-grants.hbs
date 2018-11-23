@@ -174,7 +174,8 @@
             <table class="ui single line selectable table tablet stackable">
               <thead>
                 <tr>
-                  <th>ID</th>    
+                  <th>ID</th>
+                  <th>Timestamp</th>
                   <th>Name</th>
                   <th>Department</th>
                   <th>Form</th>
@@ -183,7 +184,7 @@
                   <th></th>
                 </tr>
               </thead>
-                <tbody>
+             <tbody>
 
                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
                   {{#each forms}}
@@ -205,32 +206,24 @@
                       {{else}}
                         <!-- dont show -->
                       {{/checkstatus}}
-                            <td>{{formId}}</td>
-                            <td>{{firstName}} {{lastName}} </td>
-                            <td>{{department}}</td>
-                            <td>{{grantName}}</td>
-                            <td>{{grantStatus}}</td>
+                      <td>{{formId}} </td>
+                      <td>{{timestamp}} </td>
+                      <td>{{firstName}} {{lastName}} </td>
+                      <td>{{department}}</td>                      
+                      <td>{{grantName}}</td>
+                      <td>{{grantStatus}}</td>
                             <td>
-                              <button class="ui button fluid">View Details</button>
+                               <form action="/admin/view-details" method="post" class="ui form fluid">
+                                  <button type = "submit" class="ui button fluid viewdetails" >
+                                    View Details <input type="hidden" name="details" value="{{_id}}" />
+                                  </button>
+                              </form>
                             </td>
                             <td>
                               <button id="delete" class="ui negative button fluid delete" data-id="{{_id}}" data-grant="{{grantName}}">Delete</button>
                             </td>
-                          </tr>  
-                        </div>    
+                          </tr>    
                     {{/each}}   
-
-                <!-- This the modal for grant deletion -->
-                  <div class="ui modal deletion">
-                    <div class="header">Are you sure?</div>
-                    <div class="content">
-                      <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
-                    </div>
-                    <div class="actions">
-                      <input type="submit" value="Delete" class="ui button negative delete final">
-                      <div class="ui cancel button">Not yet</div>
-                    </div>
-                  </div>
                 </tbody>  
              </table>
             </div>   
@@ -245,9 +238,20 @@
             </div>
             </div>
           {{/if}}
-          
           </div>
-         </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- This the modal for grant deletion -->
+    <div class="ui modal deletion">
+      <div class="header">Are you sure?</div>
+      <div class="content">
+        <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
+      </div>
+      <div class="actions">
+        <input type="submit" value="Delete" class="ui button negative delete final">
+        <div class="ui cancel button">Not yet</div>
       </div>
     </div>
 
