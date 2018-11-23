@@ -12,9 +12,9 @@
 <head>
   <title>
     {{#if viewdetails}}
-        Form Details - FD15
+    Form Details - FD15
     {{else}}
-        Preview - FD15
+    Preview - FD15
     {{/if}}
   </title>
   <!-- Always include these two css files when creating a new html file. -->
@@ -78,25 +78,25 @@
             </div>
           </div>
           <!-- These are the side menubar items. -->
-            {{#if viewdetails}}
-              <a href="/faculty/my-requests" class="active item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class=" item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{else}}
-              <a href="/faculty/my-requests" class="item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class="active item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{/if}}
+          {{#if viewdetails}}
+          <a href="/faculty/my-requests" class="active item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class=" item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{else}}
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{/if}}
         </div>
       </div>
 
@@ -105,131 +105,152 @@
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-             {{#if viewdetails}}
-                 Form Details
-                {{else}}
-                 Preview Form
-             {{/if}}
+              {{#if viewdetails}}
+              Form Details
+              {{else}}
+              Preview Form
+              {{/if}}
             </h1>
           </div>
           <div class="ui divider"></div>
           <br>
-
+          {{#if viewdetails}}
+          <!-- This is where the remarks or details from the Administrator -->
+          <table class="ui single line selectable table tablet stackable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each remarks}}
+              <div data-id="{{_id}}">
+                <tr>
+                  <td>Put the Date Here</td>
+                  <td>Hello Status</td>
+                  <td>Weeee</td>
+                </tr>
+              </div>
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
               <div class="ui attached message">
                 <div class="one column center aligned row">
                   <div class="column">
-                    <h2>   [FD15] Support for Local Trainings, Seminars and Workshops</h2>
+                    <h2> [FD15] Support for Local Trainings, Seminars and Workshops</h2>
                   </div>
                   <div class="column">
                     <h3>1st Term, AY 2018-2019</h3>
                   </div>
                 </div>
               </div>
-                <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
-                  autocomplete="off">
-                  <div class="two fields">
-                    <div class="field">
-                      <label>First Name</label>
-                      <p>{{fdFifteenData.firstName}}</p>
-                      <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
-                    </div>
-                    <div class="field">
-                      <label>Last Name</label>
-                      <p>{{fdFifteenData.lastName}}</p>
-                      <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
-                    </div>
-                  </div>
-                  <div class="two fields">
-                    <div class=" field">
-                      <label>Department</label>
-                      <p>{{fdFifteenData.department}}</p>
-                      <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
-                    </div>
-                    <div class="field">
-                      <label>Rank</label>
-                      <p>{{fdFifteenData.rank}}</p>
-                      <input type="hidden" name="rank" value="{{fdFifteenData.rank}}" />
-                    </div>
+              <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
+                autocomplete="off">
+                <div class="two fields">
+                  <div class="field">
+                    <label>First Name</label>
+                    <p>{{fdFifteenData.firstName}}</p>
+                    <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
                   </div>
                   <div class="field">
-                    <label>Host Institution/Organization</label>
-                    <p>{{fdFifteenData.hostInstitution}}</p>
-                    <input type="hidden" name="hostInstitution" id="hostInstitution" class="check" value="{{fdFifteenData.hostInstitution}}" />
+                    <label>Last Name</label>
+                    <p>{{fdFifteenData.lastName}}</p>
+                    <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                  </div>
+                </div>
+                <div class="two fields">
+                  <div class=" field">
+                    <label>Department</label>
+                    <p>{{fdFifteenData.department}}</p>
+                    <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
                   </div>
                   <div class="field">
-                    <label>Title of Seminar</label>
-                    <p>{{fdFifteenData.titleOfSeminar}}</p>
-                    <input type="hidden" name="titleOfSeminar" id="titleOfSeminar" class="check" value="{{fdFifteenData.titleOfSeminar}}" />
+                    <label>Rank</label>
+                    <p>{{fdFifteenData.rank}}</p>
+                    <input type="hidden" name="rank" value="{{fdFifteenData.rank}}" />
                   </div>
-                  <div class="field">
-                    <label>Place</label>
-                    <p>{{fdFifteenData.place}}</p>
-                    <input type="hidden" name="place" id="place" class="check" value="{{fdFifteenData.place}}" />
-                  </div>
-                  <div class="field">
-                    <div class="fields">
-                      <div class="eight wide field">
-                        <label>Duration Start</label>
-                        <p>{{fdFifteenData.startTime}}</p>
-                        <input type="hidden" name="startTime" placeholder="Date" id="startTime" class="check" value="{{fdFifteenData.startTime}}" />
-                      </div>
-                      <div class="eight wide field">
-                        <label>Duration End</label>
-                        <p>{{fdFifteenData.endTime}}</p>
-                        <input type="hidden" name="endTime" placeholder="Date" id="endTime" class="check" value="{{fdFifteenData.endTime}}" />
-                      </div>
+                </div>
+                <div class="field">
+                  <label>Host Institution/Organization</label>
+                  <p>{{fdFifteenData.hostInstitution}}</p>
+                  <input type="hidden" name="hostInstitution" id="hostInstitution" class="check" value="{{fdFifteenData.hostInstitution}}" />
+                </div>
+                <div class="field">
+                  <label>Title of Seminar</label>
+                  <p>{{fdFifteenData.titleOfSeminar}}</p>
+                  <input type="hidden" name="titleOfSeminar" id="titleOfSeminar" class="check" value="{{fdFifteenData.titleOfSeminar}}" />
+                </div>
+                <div class="field">
+                  <label>Place</label>
+                  <p>{{fdFifteenData.place}}</p>
+                  <input type="hidden" name="place" id="place" class="check" value="{{fdFifteenData.place}}" />
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Duration Start</label>
+                      <p>{{fdFifteenData.startTime}}</p>
+                      <input type="hidden" name="startTime" placeholder="Date" id="startTime" class="check" value="{{fdFifteenData.startTime}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Duration End</label>
+                      <p>{{fdFifteenData.endTime}}</p>
+                      <input type="hidden" name="endTime" placeholder="Date" id="endTime" class="check" value="{{fdFifteenData.endTime}}" />
                     </div>
                   </div>
-                  <div class="field">
-                    <div class="fields">
-                      <div class="eight wide field">
-                        <label>Date incentive was last availed of</label>
-                        <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
-                        <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                          class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
-                      </div>
-                      <div class="eight wide field">
-                        <label>Participant’s Fee (check payable to)</label>
-                        <p>{{fdFifteenData.participantFee}}</p>
-                        <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFifteenData.participantFee}}" />
-                      </div>
+                </div>
+                <div class="field">
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date incentive was last availed of</label>
+                      <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
+                      <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                        class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
+                    </div>
+                    <div class="eight wide field">
+                      <label>Participant’s Fee (check payable to)</label>
+                      <p>{{fdFifteenData.participantFee}}</p>
+                      <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFifteenData.participantFee}}" />
                     </div>
                   </div>
+                </div>
 
-                  <div class="ui divider"></div>
-                  <br>
-                  {{#if viewdetails}}
+                <div class="ui divider"></div>
+                <br>
+                {{#if viewdetails}}
 
-                  {{else}}
-                  <div class="field">
-                    <label>Note</label>
-                    <p>Once you clicked submit, you may not be able to revise it.</p>
-                    <p></p>
-                  </div>
-                  <br>
-                   <div class="field">
-                    <button class="ui submit green button" type="Submit">
-                      Submit
-                    </button>
+                {{else}}
+                <div class="field">
+                  <label>Note</label>
+                  <p>Once you clicked submit, you may not be able to revise it.</p>
+                  <p></p>
+                </div>
+                <br>
+                <div class="field">
+                  <button class="ui submit green button" type="Submit">
+                    Submit
+                  </button>
                   {{/if}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
-                </form>
+              </form>
 
-                <!-- This the modal for logout confirmation -->
-                <div class="ui modal logout">
-                  <div class="header">Are you sure?</div>
-                  <div class="content">
-                    <p>Do you really want to log out?</p>
-                  </div>
-                  <div class="actions">
-                    <input type="submit" value="Log out" class="ui button positive logout">
-                    <div class="ui cancel button">Not yet</div>
-                  </div>
+              <!-- This the modal for logout confirmation -->
+              <div class="ui modal logout">
+                <div class="header">Are you sure?</div>
+                <div class="content">
+                  <p>Do you really want to log out?</p>
+                </div>
+                <div class="actions">
+                  <input type="submit" value="Log out" class="ui button positive logout">
+                  <div class="ui cancel button">Not yet</div>
                 </div>
               </div>
             </div>
@@ -237,6 +258,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 

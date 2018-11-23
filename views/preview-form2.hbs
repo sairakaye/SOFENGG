@@ -12,9 +12,9 @@
 <head>
   <title>
     {{#if viewdetails}}
-        Form Details - FD2
+    Form Details - FD2
     {{else}}
-        Preview - FD2
+    Preview - FD2
     {{/if}}
   </title>
   <!-- Always include these two css files when creating a new html file. -->
@@ -78,25 +78,25 @@
           </div>
 
           <!-- These are the side menubar items. -->
-            {{#if viewdetails}}
-              <a href="/faculty/my-requests" class="active item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class=" item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{else}}
-              <a href="/faculty/my-requests" class="item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class="active item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{/if}}
+          {{#if viewdetails}}
+          <a href="/faculty/my-requests" class="active item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class=" item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{else}}
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{/if}}
         </div>
       </div>
 
@@ -105,16 +105,38 @@
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-             {{#if viewdetails}}
-                 Form Details
-                {{else}}
-                 Preview Form
-             {{/if}}
+              {{#if viewdetails}}
+              Form Details
+              {{else}}
+              Preview Form
+              {{/if}}
             </h1>
           </div>
           <div class="ui divider"></div>
           <br>
-
+          {{#if viewdetails}}
+          <!-- This is where the remarks or details from the Administrator -->
+          <table class="ui single line selectable table tablet stackable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each remarks}}
+              <div data-id="{{_id}}">
+                <tr>
+                  <td>Put the Date Here</td>
+                  <td>Hello Status</td>
+                  <td>Weeee</td>
+                </tr>
+              </div>
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
@@ -128,7 +150,8 @@
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd2" method="post" class="ui form attached fluid segment" id="request-form" autocomplete="off">
+              <form action="/faculty/submit-fd2" method="post" class="ui form attached fluid segment" id="request-form"
+                autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
                 <div class="two fields">
                   <div class="field">
@@ -161,8 +184,8 @@
                 </div>
                 <div class="field">
                   <label>Status</label>
-                      <p>{{fdTwoData.status}}</p>
-                      <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
+                  <p>{{fdTwoData.status}}</p>
+                  <input type="hidden" name="status" id="status" value="{{fdTwoData.status}}" />
                 </div>
                 <div class="field">
                   <label>Average teaching performance for the last 3 academic years</label>
@@ -227,29 +250,29 @@
                   </div>
                 </div>
 
-                
-              <div class="ui divider"></div>
-               <br>
-                  {{#if viewdetails}}
 
-                  {{else}}
-                  <div class="field">
-                    <label>Note</label>
-                    <p>Once you clicked submit, you may not be able to revise it.</p>
-                    <p></p>
-                  </div>
-                  <br>
-                  <div class="field">
-                    <button class="ui submit green button" type="Submit">
-                      Submit
-                    </button>
+                <div class="ui divider"></div>
+                <br>
+                {{#if viewdetails}}
+
+                {{else}}
+                <div class="field">
+                  <label>Note</label>
+                  <p>Once you clicked submit, you may not be able to revise it.</p>
+                  <p></p>
+                </div>
+                <br>
+                <div class="field">
+                  <button class="ui submit green button" type="Submit">
+                    Submit
+                  </button>
                   {{/if}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
                   </a>
               </form>
 
-               <div class="ui modal logout">
+              <div class="ui modal logout">
                 <div class="header">Are you sure?</div>
                 <div class="content">
                   <p>Do you really want to log out?</p>
@@ -274,4 +297,5 @@
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/preview.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
+
 </html>

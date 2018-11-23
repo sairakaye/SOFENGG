@@ -12,9 +12,9 @@ November 15, 2018
 <head>
   <title>
     {{#if viewdetails}}
-        Form Details - FD3
+    Form Details - FD3
     {{else}}
-        Preview - FD3
+    Preview - FD3
     {{/if}}
   </title>
   <!-- Always include these two css files when creating a new html file. -->
@@ -79,25 +79,25 @@ November 15, 2018
           </div>
 
           <!-- These are the side menubar items. -->
-            {{#if viewdetails}}
-              <a href="/faculty/my-requests" class="active item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class=" item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{else}}
-              <a href="/faculty/my-requests" class="item">
-                My Requests
-                <i class="chevron right icon"></i>
-              </a>
-              <a href="/faculty/request-grant" class="active item">
-                Request Grant
-                <i class="chevron right icon"></i>
-              </a>
-            {{/if}}
+          {{#if viewdetails}}
+          <a href="/faculty/my-requests" class="active item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class=" item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{else}}
+          <a href="/faculty/my-requests" class="item">
+            My Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/faculty/request-grant" class="active item">
+            Request Grant
+            <i class="chevron right icon"></i>
+          </a>
+          {{/if}}
         </div>
       </div>
 
@@ -106,15 +106,38 @@ November 15, 2018
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-             {{#if viewdetails}}
-                 Form Details
-                {{else}}
-                 Preview Form
-             {{/if}}
+              {{#if viewdetails}}
+              Form Details
+              {{else}}
+              Preview Form
+              {{/if}}
             </h1>
           </div>
           <div class="ui divider"></div>
           <br>
+          {{#if viewdetails}}
+          <!-- This is where the remarks or details from the Administrator -->
+          <table class="ui single line selectable table tablet stackable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>           
+              {{#each remarks}}
+              <div data-id="{{_id}}">
+              <tr>
+                <td>Put the Date Here</td>
+                <td>Hello Status</td>
+                <td>Weeee</td>
+              </tr>
+              </div>
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
 
           <!-- This is where the fields for the forms. -->
           <div class="row">
@@ -162,13 +185,13 @@ November 15, 2018
                 </div>
                 <div class="field">
                   <label>Status</label>
-                      <p>{{fdThreeData.status}}</p>
-                      <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
+                  <p>{{fdThreeData.status}}</p>
+                  <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
                 </div>
                 <div class="field">
                   <label>Name of Conference</label>
                   <p>{{fdThreeData.nameOfConference}}</p>
-                  <input type="hidden" name="nameOfConference" id  = "nameOfConference" class= "check" value="{{fdThreeData.nameOfConference}}"/>
+                  <input type="hidden" name="nameOfConference" id="nameOfConference" class="check" value="{{fdThreeData.nameOfConference}}" />
                 </div>
                 <div class="field">
                   <label>Type of Conference</label>
@@ -182,7 +205,8 @@ November 15, 2018
                 <div class="field">
                   <label>Title of paper to be presented</label>
                   <p>{{fdThreeData.titleOfPaperToBePresented}}</p>
-                  <input type="hidden" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check" value = "{{fdThreeData.titleOfPaperToBePresented}}"/>
+                  <input type="hidden" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class="check"
+                    value="{{fdThreeData.titleOfPaperToBePresented}}" />
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -214,40 +238,40 @@ November 15, 2018
                     </div>
                   </div>
                 </div>
-                    <div class="eight wide field">
-                      <label>Date of expected return to work</label>
-                      <p>{{fdThreeData.dateOfReturnToWork}}</p>
-                      <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
-                        value="{{fdThreeData.dateOfReturnToWork}}" />
-                    </div>
-                  <div class="field">
-                    <label>Travel and conference subsidy</label>
-                    <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
-                    <input type="hidden" name="travelAndConferenceSubsidy" id = "travelAndConferenceSubsidy" class = "check"  
-                        value="{{fdThreeData.travelAndConferenceSubsidy}}" />
-                  </div>
-                    <div class="eight wide field">
-                      <label>Date incentive was last availed of</label>
-                      <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
-                      <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                        class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
-                    </div>
-                
+                <div class="eight wide field">
+                  <label>Date of expected return to work</label>
+                  <p>{{fdThreeData.dateOfReturnToWork}}</p>
+                  <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
+                    value="{{fdThreeData.dateOfReturnToWork}}" />
+                </div>
+                <div class="field">
+                  <label>Travel and conference subsidy</label>
+                  <p>{{fdThreeData.travelAndConferenceSubsidy}}</p>
+                  <input type="hidden" name="travelAndConferenceSubsidy" id="travelAndConferenceSubsidy" class="check"
+                    value="{{fdThreeData.travelAndConferenceSubsidy}}" />
+                </div>
+                <div class="eight wide field">
+                  <label>Date incentive was last availed of</label>
+                  <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
+                  <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                    class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
+                </div>
+
                 <div class="ui divider"></div>
                 <br>
-                  {{#if viewdetails}}
+                {{#if viewdetails}}
 
-                  {{else}}
-                  <div class="field">
-                    <label>Note</label>
-                    <p>Once you clicked submit, you may not be able to revise it.</p>
-                    <p></p>
-                  </div>
-                  <br>
+                {{else}}
                 <div class="field">
-                    <button class="ui submit green button" type="Submit">
-                      Submit
-                    </button>
+                  <label>Note</label>
+                  <p>Once you clicked submit, you may not be able to revise it.</p>
+                  <p></p>
+                </div>
+                <br>
+                <div class="field">
+                  <button class="ui submit green button" type="Submit">
+                    Submit
+                  </button>
                   {{/if}}
                   <a href="/faculty/my-requests" class="ui button">
                     Back
@@ -280,4 +304,5 @@ November 15, 2018
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/preview.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
+
 </html>
