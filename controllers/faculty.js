@@ -797,7 +797,7 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
 
   fdSixteen.create(fdSixteenData).then((newFdSixteenData)=> {
       
-      User.addFDOneInUser(newFdSixteenData).then((updatedUser)=>{
+      User.addFDSixteenInUser(newFdSixteenData).then((updatedUser)=>{
           var user = req.session.user
           if (user){
             res.render("success.hbs", {
