@@ -165,18 +165,17 @@
               </div>
               <form action="/faculty/submit-fd15" method="post" class="ui form attached fluid segment" id="request-form"
                 autocomplete="off">
-                <div class="two fields">
-                  <div class="field">
-                    <label>First Name</label>
-                    <p>{{fdFifteenData.firstName}}</p>
-                    <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
-                  </div>
                   <div class="two fields">
                     <div class="field">
-                      <label>Last Name</label>
-                      <p>{{fdFifteenData.lastName}}</p>
-                      <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                      <label>First Name</label>
+                      <p>{{fdFifteenData.firstName}}</p>
+                      <input type="hidden" name="firstName" value="{{fdFifteenData.firstName}}" />
                     </div>
+                      <div class="field">
+                        <label>Last Name</label>
+                        <p>{{fdFifteenData.lastName}}</p>
+                        <input type="hidden" name="lastName" value="{{fdFifteenData.lastName}}" />
+                      </div>
                   </div>
                   <div class="two fields">
                     <div class=" field">
@@ -184,7 +183,6 @@
                       <p>{{fdFifteenData.department}}</p>
                       <input type="hidden" name="department" value="{{fdFifteenData.department}}" />
                     </div>
-                  </div>
                   <div class="field">
                     <label>Rank</label>
                     <p>{{fdFifteenData.rank}}</p>
@@ -196,15 +194,17 @@
                   <p>{{fdFifteenData.hostInstitution}}</p>
                   <input type="hidden" name="hostInstitution" id="hostInstitution" class="check" value="{{fdFifteenData.hostInstitution}}" />
                 </div>
-                <div class="field">
-                  <label>Title of Seminar</label>
-                  <p>{{fdFifteenData.titleOfSeminar}}</p>
-                  <input type="hidden" name="titleOfSeminar" id="titleOfSeminar" class="check" value="{{fdFifteenData.titleOfSeminar}}" />
-                </div>
-                <div class="field">
-                  <label>Place</label>
-                  <p>{{fdFifteenData.place}}</p>
-                  <input type="hidden" name="place" id="place" class="check" value="{{fdFifteenData.place}}" />
+                <div class = "fields two">
+                  <div class="field">
+                    <label>Title of Seminar</label>
+                    <p>{{fdFifteenData.titleOfSeminar}}</p>
+                    <input type="hidden" name="titleOfSeminar" id="titleOfSeminar" class="check" value="{{fdFifteenData.titleOfSeminar}}" />
+                  </div>
+                  <div class="field">
+                    <label>Place</label>
+                    <p>{{fdFifteenData.place}}</p>
+                    <input type="hidden" name="place" id="place" class="check" value="{{fdFifteenData.place}}" />
+                  </div>
                 </div>
                 <div class="field">
                   <div class="fields">
