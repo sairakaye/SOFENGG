@@ -67,11 +67,11 @@ $(".item.saveform").click(function () {
                     doc.text(165,778, moment(form.dateIncentiveLastAvailed).format('LL') + "")    
                     
                     if (form.status == "Permanent"){
-                        doc.text(388,119, "/") 
-                        doc.text(388,607, "/") 
+                        doc.rect(385, 112, 8, 6, 'F')
+                        doc.rect(386, 602, 8, 6, 'F')
                     } else {
-                        doc.text(466,119, "/")
-                        doc.text(466,607, "/")
+                        doc.rect(464,113, 8, 6, 'F')
+                        doc.rect(464,602, 8, 6, 'F')
                     }
                     
                     doc.save('[F1] FacultyDevelopmentGrant.pdf')
@@ -112,11 +112,11 @@ $(".item.saveform").click(function () {
                     doc.text(164,747, moment(form.dateIncentiveLastAvailed).format('LL'))
                     
                     if (form.status == "Permanent"){
-                        doc.text(388,155, "/") 
-                        doc.text(388,642, "/") 
+                        doc.rect(386,148, 8, 6, 'F') 
+                        doc.rect(386,634, 8, 6, 'F') 
                     } else {
-                        doc.text(466,155, "/")
-                        doc.text(466,642, "/")
+                        doc.rect(465,148, 8, 6, 'F') 
+                        doc.rect(465,634, 8, 6, 'F') 
                     }
                     
                     doc.save('[F2] FacultyDevelopmentGrant.pdf')
@@ -155,21 +155,21 @@ $(".item.saveform").click(function () {
                     doc.text(180,744, moment(form.dateIncentiveLastAvailed).format('LL'))
 
                     if (form.status == "Full-time"){
-                        doc.text(265,148, "/") 
-                        doc.text(260,633, "/") 
+                        doc.rect(262,142, 8, 6, 'F') 
+                        doc.rect(258,628, 8, 6, 'F') 
                     } else {
-                        doc.text(330,148, "/")
-                        doc.text(326,633, "/")
+                        doc.rect(328,142, 8, 6, 'F') 
+                        doc.rect(324,627,  8, 6, 'F') 
                         doc.text(486,146, form.noOfUnitsTaught+"")
                         doc.text(484,630, form.noOfUnitsTaught+"")
                     } 
 
                     if (form.typeOfConference == "Local"){
-                        doc.text(460,167, "/") 
-                        doc.text(458,652, "/") 
-                    } else {
-                        doc.text(507,167, "/")
-                        doc.text(505,652, "/")
+                        doc.rect(458,160, 8, 6, 'F') 
+                        doc.rect(456,646, 8, 6, 'F') 
+                    } else {                        
+                        doc.rect(505,160, 8, 6, 'F') 
+                        doc.rect(503,646, 8, 6, 'F') 
                     } 
 
                     doc.save('[F3] FacultyDevelopmentGrant.pdf')
@@ -266,25 +266,25 @@ $(".item.saveform").click(function () {
                     doc.text(386,705, form.checkPayableTo) 
 
                     if (form.typeOfMembershipPlace == "Local"){
-                        doc.text(152,185, "/") 
-                        doc.text(168,658, "/") 
+                        doc.rect(150,179, 8, 6, 'F') 
+                        doc.rect(165,652, 8, 6, 'F') 
                     } else {
-                        doc.text(237,185, "/")
-                        doc.text(252,659, "/")
+                        doc.rect(234,179, 8, 6, 'F') 
+                        doc.rect(248,652, 8, 6, 'F') 
                     } 
                     if (form.typeofMembershipDuration == "Annual"){
-                        doc.text(424,185, "/") 
-                        doc.text(439,659, "/") 
+                        doc.rect(422,179,8, 6, 'F') 
+                        doc.rect(437,652, 8, 6, 'F') 
                     } else {
-                        doc.text(490,185, "/")
-                        doc.text(504,658, "/")
+                        doc.rect(488,179, 8, 6, 'F') 
+                        doc.rect(502,652, 8, 6, 'F') 
                     }
                     if (form.status == "Permanent"){
-                        doc.text(72,152, "/") 
-                        doc.text(87,625, "/") 
+                        doc.rect(70,145, 8, 6, 'F') 
+                        doc.rect(85,618, 8, 6, 'F') 
                     } else {
-                        doc.text(150,151, "/")
-                        doc.text(165,624, "/")
+                        doc.rect(149,145, 8, 6, 'F') 
+                        doc.rect(164,618, 8, 6, 'F') 
                     }
                     doc.save('[F16] FacultyDevelopmentGrant.pdf')
                 }
@@ -354,11 +354,11 @@ $(".item.printform").click(function () {
                     doc.text(165,778, moment(form.dateIncentiveLastAvailed).format('LL') + "")    
                     
                     if (form.status == "Permanent"){
-                        doc.text(388,119, "/") 
-                        doc.text(388,607, "/") 
+                        doc.rect(385, 112, 8, 6, 'F')
+                        doc.rect(386, 602, 8, 6, 'F')
                     } else {
-                        doc.text(466,119, "/")
-                        doc.text(466,607, "/")
+                        doc.rect(464,113, 8, 6, 'F')
+                        doc.rect(464,602, 8, 6, 'F')
                     }
                 } else if (form.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                     doc.addImage(form2image, 'JPEG', 0, 0, 612, 1008)
@@ -396,11 +396,11 @@ $(".item.printform").click(function () {
                     doc.text(164,747, moment(form.dateIncentiveLastAvailed).format('LL'))
                     
                     if (form.status == "Permanent"){
-                        doc.text(388,155, "/") 
-                        doc.text(388,642, "/") 
+                        doc.rect(386,148, 8, 6, 'F') 
+                        doc.rect(386,634, 8, 6, 'F') 
                     } else {
-                        doc.text(466,155, "/")
-                        doc.text(466,642, "/")
+                        doc.rect(465,148, 8, 6, 'F') 
+                        doc.rect(465,634, 8, 6, 'F') 
                     }
                 } else if (form.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                     doc.addImage(form3image, 'JPEG', 0, 0, 612, 1008)
@@ -437,21 +437,21 @@ $(".item.printform").click(function () {
                     doc.text(180,744, moment(form.dateIncentiveLastAvailed).format('LL'))
 
                     if (form.status == "Full-time"){
-                        doc.text(265,148, "/") 
-                        doc.text(260,633, "/") 
+                        doc.rect(262,142, 8, 6, 'F') 
+                        doc.rect(258,628, 8, 6, 'F') 
                     } else {
-                        doc.text(330,148, "/")
-                        doc.text(326,633, "/")
+                        doc.rect(328,142, 8, 6, 'F') 
+                        doc.rect(324,627,  8, 6, 'F') 
                         doc.text(486,146, form.noOfUnitsTaught+"")
                         doc.text(484,630, form.noOfUnitsTaught+"")
                     } 
 
                     if (form.typeOfConference == "Local"){
-                        doc.text(460,167, "/") 
-                        doc.text(458,652, "/") 
-                    } else {
-                        doc.text(507,167, "/")
-                        doc.text(505,652, "/")
+                        doc.rect(458,160, 8, 6, 'F') 
+                        doc.rect(456,646, 8, 6, 'F') 
+                    } else {                        
+                        doc.rect(505,160, 8, 6, 'F') 
+                        doc.rect(503,646, 8, 6, 'F') 
                     } 
                 } else if (form.grantName == "[FD4] Support for Participation in Local Conferences"){
                     doc.addImage(form4image, 'JPEG', 0, 0, 612, 1008)
@@ -544,25 +544,25 @@ $(".item.printform").click(function () {
                     doc.text(386,705, form.checkPayableTo) 
 
                     if (form.typeOfMembershipPlace == "Local"){
-                        doc.text(152,185, "/") 
-                        doc.text(168,658, "/") 
+                        doc.rect(150,179, 8, 6, 'F') 
+                        doc.rect(165,652, 8, 6, 'F') 
                     } else {
-                        doc.text(237,185, "/")
-                        doc.text(252,659, "/")
+                        doc.rect(234,179, 8, 6, 'F') 
+                        doc.rect(248,652, 8, 6, 'F') 
                     } 
                     if (form.typeofMembershipDuration == "Annual"){
-                        doc.text(424,185, "/") 
-                        doc.text(439,659, "/") 
+                        doc.rect(422,179,8, 6, 'F') 
+                        doc.rect(437,652, 8, 6, 'F') 
                     } else {
-                        doc.text(490,185, "/")
-                        doc.text(504,658, "/")
+                        doc.rect(488,179, 8, 6, 'F') 
+                        doc.rect(502,652, 8, 6, 'F') 
                     }
                     if (form.status == "Permanent"){
-                        doc.text(72,152, "/") 
-                        doc.text(87,625, "/") 
+                        doc.rect(70,145, 8, 6, 'F') 
+                        doc.rect(85,618, 8, 6, 'F') 
                     } else {
-                        doc.text(150,151, "/")
-                        doc.text(165,624, "/")
+                        doc.rect(149,145, 8, 6, 'F') 
+                        doc.rect(164,618, 8, 6, 'F') 
                     }
                 }
                 doc.autoPrint()
