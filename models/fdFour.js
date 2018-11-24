@@ -16,7 +16,7 @@ const moment = require("moment")
  * Setting up FD4 Form Schema
  */
 var fdFourSchema = mongoose.Schema({
-    timestamp: { type: String, default: moment().format('LLL')+"" },
+    timestamp:  String, 
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -29,7 +29,8 @@ var fdFourSchema = mongoose.Schema({
     department : String,
     rank : String,
     nameOfConference : String, 
-    dateOfConference : Date,
+    dateOfStartConference : Date,
+    dateOfEndConference : Date,
     dateOfDeparture : Date,
     placeAndVenue : String,
     dateOfReturn : Date,
@@ -54,6 +55,7 @@ exports.create = function(paramFDFour){
         
         fdFour.countDocuments().then((count) => {
             if(count == 0){
+                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDFour)=>{    
                         resolve(newFDFour)

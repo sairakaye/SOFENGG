@@ -141,7 +141,8 @@ router.post("/preview-fd1", urlencoder, function(req,res) {
     var datePaperAccepted = req.body.datePaperAccepted
     var nameOfConference = req.body.nameOfConference
     var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-    var dateOfConference = req.body.dateOfConference
+    var dateOfStartConference = req.body.dateOfStartConference    
+    var dateOfEndConference = req.body.dateOfEndConference
     var placeAndVenue = req.body.placeAndVenue
     var dateOfDeparture = req.body.dateOfDeparture
     var dateOfReturn = req.body.dateOfReturn
@@ -155,7 +156,7 @@ router.post("/preview-fd1", urlencoder, function(req,res) {
       firstName, lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
       datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
-      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
       dateIncentiveLastAvailed, grantStatus
     }
 
@@ -187,7 +188,8 @@ router.post("/preview-fd2", urlencoder, function(req,res) {
     var aveTeachingPerformance = req.body.aveTeachingPerformance
     var nameOfConference = req.body.nameOfConference
     var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-    var dateOfConference = req.body.dateOfConference
+    var dateOfStartConference = req.body.dateOfStartConference    
+    var dateOfEndConference = req.body.dateOfEndConference
     var placeAndVenue = req.body.placeAndVenue
     var dateOfDeparture = req.body.dateOfDeparture
     var dateOfReturn = req.body.dateOfReturn
@@ -200,7 +202,7 @@ router.post("/preview-fd2", urlencoder, function(req,res) {
       ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
       firstName, lastName, department, dateHired, rank, status,
       aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
-      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
       dateIncentiveLastAvailed, grantStatus
     }
     
@@ -236,7 +238,8 @@ router.post("/preview-fd3", urlencoder, function(req,res) {
     var typeOfConference = req.body.typeOfConference
     var nameOfConference = req.body.nameOfConference
     var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-    var dateOfConference = req.body.dateOfConference
+    var dateOfStartConference = req.body.dateOfStartConference    
+    var dateOfEndConference = req.body.dateOfEndConference
     var placeAndVenue = req.body.placeAndVenue
     var dateOfDeparture = req.body.dateOfDeparture
     var dateOfReturn = req.body.dateOfReturn
@@ -251,7 +254,7 @@ router.post("/preview-fd3", urlencoder, function(req,res) {
       firstName, lastName, department, dateHired, rank, status,
       aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
       datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
-      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
+      dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
       travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
     }
     
@@ -278,7 +281,8 @@ router.post("/preview-fd4", urlencoder, function(req,res) {
     var department = req.body.department
     var rank = req.body.rank
     var nameOfConference = req.body.nameOfConference
-    var dateOfConference = req.body.dateOfConference
+    var dateOfStartConference = req.body.dateOfStartConference    
+    var dateOfEndConference = req.body.dateOfEndConference
     var placeAndVenue = req.body.placeAndVenue
     var dateOfDeparture = req.body.dateOfDeparture
     var dateOfReturn = req.body.dateOfReturn
@@ -292,7 +296,7 @@ router.post("/preview-fd4", urlencoder, function(req,res) {
       grantName: "[FD4] Support for Participation in Local Conferences",
       ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
       firstName, lastName, department, rank, nameOfConference,
-      dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+      dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
       dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear, 
       grantStatus
     }
@@ -405,7 +409,8 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   var datePaperAccepted = req.body.datePaperAccepted
   var nameOfConference = req.body.nameOfConference
   var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-  var dateOfConference = req.body.dateOfConference
+  var dateOfStartConference = req.body.dateOfStartConference    
+  var dateOfEndConference = req.body.dateOfEndConference
   var placeAndVenue = req.body.placeAndVenue
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
@@ -419,7 +424,7 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
-    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
 
@@ -481,7 +486,8 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
   var aveTeachingPerformance = req.body.aveTeachingPerformance
   var nameOfConference = req.body.nameOfConference
   var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-  var dateOfConference = req.body.dateOfConference
+  var dateOfStartConference = req.body.dateOfStartConference    
+  var dateOfEndConference = req.body.dateOfEndConference
   var placeAndVenue = req.body.placeAndVenue
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
@@ -495,7 +501,7 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
-    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
 
@@ -562,7 +568,8 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
   var typeOfConference = req.body.typeOfConference
   var nameOfConference = req.body.nameOfConference
   var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
-  var dateOfConference = req.body.dateOfConference
+  var dateOfStartConference = req.body.dateOfStartConference    
+  var dateOfEndConference = req.body.dateOfEndConference
   var placeAndVenue = req.body.placeAndVenue
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
@@ -577,7 +584,7 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
-    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork, 
     travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
   }
 
@@ -635,7 +642,8 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
   var department = req.body.department
   var rank = req.body.rank
   var nameOfConference = req.body.nameOfConference
-  var dateOfConference = req.body.dateOfConference
+  var dateOfStartConference = req.body.dateOfStartConference    
+  var dateOfEndConference = req.body.dateOfEndConference
   var placeAndVenue = req.body.placeAndVenue
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
@@ -649,7 +657,7 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
     formId : "FD4", grantName: "[FD4] Support for Participation in Local Conferences",
     ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
-    dateOfConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear, 
     grantStatus
   }

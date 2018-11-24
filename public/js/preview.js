@@ -67,48 +67,67 @@
    maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
  
  });
- 
  /**
-  * Initializes the Date of Conference field.
-  * @param {Object} settings - customizing the settings of
-  * the calendar
-  */
- $('#conference-date').calendar({
-   type: 'date',
-   minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
-   onChange: function (date) {
-     var yearCon = date.getFullYear();
-     var monthCon = date.getMonth();
-     var dayCon = date.getDate();
- 
-     $('#departure-date').calendar({
-       type: 'date',
-       maxDate: new Date(yearCon, monthCon, dayCon),
-       minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-       onChange: function (date) {
-         var year = date.getFullYear();
-         var month = date.getMonth();
-         var day = date.getDate();
- 
-         $('#return-date').calendar({
-           type: 'date',
-           minDate: new Date(yearCon, monthCon, dayCon),
-           onChange: function (date) {
-             var year = date.getFullYear();
-             var month = date.getMonth();
-             var day = date.getDate();
-     
-             $('#expected-date').calendar({
-               type: 'date',
-               minDate: new Date(year, month, day)
-             });
-           }
-         });
-       }
-     });
-   }
- });
- 
+ * Initializes the Date of Conference start field
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#conference-startdate').calendar({
+  type: 'date',
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  onChange: function (date) {
+    var yearCon = date.getFullYear();
+    var monthCon = date.getMonth();
+    var dayCon = date.getDate();
+
+    $('#conference-enddate').calendar({
+      type: 'date',
+      minDate: new Date(yearCon, monthCon, dayCon),
+      onChange: function (date) {
+        var yearEnd = date.getFullYear();
+        var monthEnd = date.getMonth();
+        var dayEnd = date.getDate();
+
+        $('#departure-date').calendar({
+          type: 'date',
+          minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+          maxDate: new Date(yearCon, monthCon, dayCon),
+          onChange: function (date) {
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var day = date.getDate();
+
+            $('#return-date').calendar({
+              type: 'date',
+              minDate: new Date(yearCon, monthCon, dayCon),
+              onChange: function (date) {
+                var yearRet = date.getFullYear();
+                var monthRet = date.getMonth();
+                var dayRet = date.getDate();
+        
+                $('#expected-date').calendar({
+                  type: 'date',
+                  minDate: new Date(yearRet, monthRet, dayRet)
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+});
+
+/**
+ * Initializes the Date of Conference end field
+ * @param {Object} settings - customizing the settings of
+ * the calendar
+ */
+$('#conference-enddate').calendar({
+  type: 'date',
+  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+});
+
  /**
   * Initializes the Date of Departure field.
   * @param {Object} settings - customizing the settings of

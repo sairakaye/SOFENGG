@@ -16,7 +16,7 @@ const moment = require("moment")
  * Setting up FD15 Form Schema
  */
 var fdFifteenSchema = mongoose.Schema({
-    timestamp: { type: String, default: moment().format('LLL')+"" },
+    timestamp: String,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -52,6 +52,7 @@ exports.create = function(paramFDFifteen){
         
         fdFifteen.countDocuments().then((count) => {
             if(count == 0){
+                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDFifteen)=>{    
                         resolve(newFDFifteen)

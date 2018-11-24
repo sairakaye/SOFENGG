@@ -16,7 +16,7 @@ const moment = require("moment")
  * Setting up FD2 Form Schema
  */
 var fdTwoSchema = mongoose.Schema({
-    timestamp: { type: String, default: moment().format('LLL')+"" },
+    timestamp: String,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -33,7 +33,8 @@ var fdTwoSchema = mongoose.Schema({
     aveTeachingPerformance : Number,
     nameOfConference : String, 
     titleOfPaperToBePresented : String,
-    dateOfConference : Date,
+    dateOfStartConference : Date,
+    dateOfEndConference : Date,
     dateOfDeparture : Date,
     placeAndVenue : String,
     dateOfReturn : Date,
@@ -56,6 +57,7 @@ exports.create = function(paramFDTwo){
         
         fdTwo.countDocuments().then((count) => {
             if(count == 0){
+                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDTwo)=>{    
                         resolve(newFDTwo)

@@ -16,7 +16,7 @@ const moment = require("moment")
  * Setting up FD3 Form Schema
  */
 var fdThreeSchema = mongoose.Schema({
-    timestamp: { type: String, default: moment().format('LLL')+"" },
+    timestamp: String,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -35,7 +35,8 @@ var fdThreeSchema = mongoose.Schema({
     nameOfConference : String,
     typeOfConference : String,
     titleOfPaperToBePresented : String,
-    dateOfConference : Date,
+    dateOfStartConference : Date,
+    dateOfEndConference : Date,
     dateOfDeparture : Date,
     placeAndVenue : String,
     dateOfReturn : Date,
@@ -59,6 +60,7 @@ exports.create = function(paramFDThree){
         
         fdThree.countDocuments().then((count) => {
             if(count == 0){
+                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDThree)=>{    
                         resolve(newFDThree)
