@@ -131,7 +131,7 @@ exports.approveFDFour = function(paramID){
         fdFour.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approve"}
+            "$set" : {"grantStatus" : "Approved"}
         }).then((updatedFDFour)=>{
             resolve(updatedFDFour)
         }, (err)=>{
@@ -150,7 +150,7 @@ exports.rejectFDFour = function(paramID){
         fdFour.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Reject"}
+            "$set" : {"grantStatus" : "Rejected"}
         }).then((updatedFDFour)=>{
             resolve(updatedFDFour)
         }, (err)=>{

@@ -147,7 +147,7 @@ exports.rejectFDFifteen = function(paramID){
         fdFifteen.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Reject"}
+            "$set" : {"grantStatus" : "Rejected"}
         }).then((updatedFDFifteen)=>{
             resolve(updatedFDFifteen)
         }, (err)=>{
