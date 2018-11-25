@@ -127,32 +127,61 @@
             </h1>
           </div>
           <div class="ui divider"></div>
-          <br>
-
           {{#if adminAccess}}
+          <div id="prompt"></div>
           <div class="row">
-            <form class="ui form">
-              <label>Status</label>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="gender">
-                <i class="dropdown icon"></i>
-                <div class="default text">Select status...</div>
-                <div class="menu">
-                  <div class="item" data-value="approved">Approved</div>
-                  <div class="item" data-value="rejected">Rejected</div>
+            <form class="ui form" id="remarks-form">
+              <div class="row">
+                <div class="field">
+                  <b>Status</b>
+                  <div class="ui selection dropdown">
+                    <input type="hidden" name="status" id="status">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select status...</div>
+                    <div class="menu">
+                      <div class="item" data-value="approved">Approved</div>
+                      <div class="item" data-value="rejected">Rejected</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="field">
-                <label>Remark</label>
-                <textarea name="remark" placeholder="Put your remark for the status here..."></textarea>
+              <br>
+              <div class="row">
+                <b>Remark</b>
+                <textarea name="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
               </div>
-              <button class="ui button" type="submit">Submit</button>
+              <br>
+              <button class="ui button green" type="submit" id="submit-button"
+                data-grant="{{grant}}" data-id="{{formID}}">Submit</button>
             </form>
           </div>
           {{/if}}
 
           {{#if viewdetails}}
           <!-- This is where the remarks or details from the Administrator -->
+          <table class="ui single line selectable table tablet stackable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each remarks}}
+              <div data-id="{{_id}}">
+                <tr>
+                  <td>{{date}}</td>
+                  <td>{{status}}</td>
+                  <td>{{remark}}</td>
+                </tr>
+              </div>
+              {{/each}}
+            </tbody>
+          </table>
+          {{else if adminAccess}}
+          <div class="ui divider"></div>
+          <!-- This is for the Administrator -->
           <table class="ui single line selectable table tablet stackable">
             <thead>
               <tr>

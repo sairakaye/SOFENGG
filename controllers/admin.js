@@ -76,7 +76,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdOneData).then((foundRemarks)=> {
                     res.render("preview-form1.hbs", {
-                        user, fdOneData, adminAccess : "True", remarks: foundRemarks
+                        user, fdOneData, adminAccess : "True", remarks: foundRemarks, 
+                        formID : fdOneData._id, grant: fdOneData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -86,7 +87,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdTwoData).then((foundRemarks)=> {
                     res.render("preview-form2.hbs", {
-                        user, fdTwoData, adminAccess : "True", remarks : foundRemarks
+                        user, fdTwoData, adminAccess : "True", remarks : foundRemarks, 
+                        formID : fdTwoData._id, grant: fdTwoData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -96,7 +98,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdThreeData).then((foundRemarks)=> {
                     res.render("preview-form3.hbs", {
-                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks, 
+                        formID : fdThreeData._id, grant: fdThreeData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -106,7 +109,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdFourData).then((foundRemarks)=> {
                     res.render("preview-form4.hbs", {
-                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                        user, fdFourData, adminAccess : "True", remarks : foundRemarks, 
+                        formID : fdFourData._id, grant : fdFourData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -116,7 +120,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdFifteenData).then((foundRemarks)=> {
                     res.render("preview-form15.hbs", {
-                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                        user, fdFifteenData, adminAccess : "True", remarks : foundRemarks, 
+                        formID : fdFifteenData._id, grant : fdFifteenData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -126,7 +131,8 @@ router.post("/view-details", urlencoder, function(req,res) {
 
                 Remark.getRemarksFromForm(fdSixteenData).then((foundRemarks)=> {
                     res.render("preview-form16.hbs", {
-                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                        user, fdSixteenData, adminAccess : "True", remarks : foundRemarks, 
+                        formID : fdSixteenData._id, grant : fdSixteenData.grantName
                     })
                 }, (err)=> {
                     res.send(err)
@@ -138,12 +144,105 @@ router.post("/view-details", urlencoder, function(req,res) {
     }
   })
 
-/*
-router.create("/add-remark", function(req, res) {
-    console.log("ADD /add-remark")
+router.post("/change-status", urlencoder, function(req, res) {
+    console.log("POST /change-status")
+
+    var status = req.body.status
+    var id = req.body.formID
+    var grant = req.body.grant
+    // add more for remarks here
+
+    if (status == "approved") {
+        if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+            fdOne.approveFDOne(id).then((foundFDOne)=>{
+                User.approveFDOneInUser(foundFDOne).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            })
+        }
+        else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+            fdTwo.approveFDTwo(id).then((foundFDTwo)=>{
+                User.approveFDTwoInUser(foundFDTwo).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            })  
+        }
+        else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
+            fdThree.approveFDThree(id).then((foundFDThree)=>{
+                User.approveFDThreeInUser(foundFDThree).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD4] Support for Participation in Local Conferences"){
+            fdFour.approveFDFour(id).then((foundFDFour)=>{
+                User.approveFDFourInUser(foundFDFour).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
+            fdFifteen.approveFDFifteen(id).then((foundFDFifteen)=>{
+                User.approveFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD16] Support for Membership in Professional Organizations"){
+            fdSixteen.approveFDSixteen(id).then((foundFDSixteen)=>{
+                User.approveFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+
+    } else if (status == "rejected") {
+        if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+            fdOne.rejectFDOne(id).then((foundFDOne)=>{
+                User.rejectFDOneInUser(foundFDOne).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            })
+        }
+        else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+            fdTwo.rejectFDTwo(id).then((foundFDTwo)=>{
+                User.rejectFDTwoInUser(foundFDTwo).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            })  
+        }
+        else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
+            fdThree.rejectFDThree(id).then((foundFDThree)=>{
+                User.rejectFDThreeInUser(foundFDThree).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD4] Support for Participation in Local Conferences"){
+            fdFour.rejectFDFour(id).then((foundFDFour)=>{
+                User.rejectFDFourInUser(foundFDFour).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
+            fdFifteen.rejectFDFifteen(id).then((foundFDFifteen)=>{
+                User.rejectFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }
+        else if(grant == "[FD16] Support for Membership in Professional Organizations"){
+            fdSixteen.rejectFDSixteen(id).then((foundFDSixteen)=>{
+                User.rejectFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
+                    res.send(updatedUser)
+                })
+            }) 
+        }        
+    }
 
 })
-*/
+
 
 /**
  * Filters all Approved Forms
