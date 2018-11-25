@@ -18,8 +18,10 @@ const urlencoder = bodyparser.urlencoded({
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
+const nodemailer = require('nodemailer')
 
 const User = require("../models/user")
+const Mailer = require("../models/mailer")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -27,6 +29,7 @@ const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const controllerUser = require("./index")
+
 var forms
 
 /**
@@ -429,23 +432,58 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   }
 
   fdOne.create(fdOneData).then((newFdOneData)=> {
-      
-      User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
-        var user = req.session.user
-        if (user) {
-          res.render("success.hbs", {
-              user, formName : "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
-          })
-        } else {
-            res.redirect("/")
-        }
-      }, (err)=>{
-          res.send(err)
-      })
-      
-  }, (err)=> {
-      res.send(err)
-  })
+        
+        User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
+            var user = req.session.user
+            if (user) {
+                Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdOneData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdOneData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
+                
+            } else {
+                res.redirect("/")
+            }
+        }, (err)=>{
+            res.send(err)
+        })
+        
+    }, (err)=> {
+        res.send(err)
+    })
 })
 
 /**
@@ -494,7 +532,6 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
-  var id = "FD2"
   
   var fdTwoData = {
     formId : "FD2", grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
@@ -510,9 +547,44 @@ router.post("/submit-fd2", urlencoder, function(req,res) {
       User.addFDTwoInUser(newFdTwoData).then((updatedUser)=>{
           var user = req.session.user     
         if (user) {
-          res.render("success.hbs", {
-              user, formName : "Incentive for Publication in Pre-Selected High Impact Conferences"
-          })
+            
+            Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdTwoData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdTwoData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
         } else {
             res.redirect("/")
         }
@@ -593,9 +665,45 @@ router.post("/submit-fd3", urlencoder, function(req,res) {
       User.addFDThreeInUser(newFdThreeData).then((updatedUser)=>{
         var user = req.session.user 
         if (user) {
-          res.render("success.hbs", {
-              user, formName : "[FD3] Support for Paper Presentations in Conferences"
-          })
+            
+            Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdThreeData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdThreeData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD3] Support for Paper Presentations in Conferences"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
+    
         } else {
             res.redirect("/")
         }
@@ -667,9 +775,43 @@ router.post("/submit-fd4", urlencoder, function(req,res) {
       User.addFDFourInUser(newFdFourData).then((updatedUser)=>{
         var user = req.session.user
         if (user) {
-          res.render("success.hbs", {
-              user, formName : "[FD4] Support for Participation in Local Conferences"
-          })
+            Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdFourData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdFourData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD4] Support for Participation in Local Conferences"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
         } else {
             res.redirect("/")
         }
@@ -737,9 +879,44 @@ router.post("/submit-fd15", urlencoder, function(req,res) {
       User.addFDFifteenInUser(newFdFifteenData).then((updatedUser)=>{
         var user = req.session.user
         if (user) {
-          res.render("success.hbs", {
-              user, formName : "[FD15] Support for Local Trainings, Seminars and Workshops"
-          })
+            
+            Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdFifteenData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD15] Support for Local Trainings, Seminars and Workshops"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
         } else {
             res.redirect("/")
         }
@@ -808,9 +985,43 @@ router.post("/submit-fd16", urlencoder, function(req,res) {
       User.addFDSixteenInUser(newFdSixteenData).then((updatedUser)=>{
           var user = req.session.user
           if (user){
-            res.render("success.hbs", {
-                user, formName : "[FD16] Support for Membership in Professional Organizations"
-            })
+              Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer)=>{
+                    
+                    User.getUserByType("Administrator").then((adminUser)=>{
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: adminUser.emailAddress,
+                            subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]" ,
+                            text: user.firstName+" "+user.lastName+" has requested for "+newFdSixteenData.grantName
+                        }
+                        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.render("success.hbs", {
+                            user, formName : "[FD16] Support for Membership in Professional Organizations"
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    }) 
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
           } else {
               res.redirect("/")
           }

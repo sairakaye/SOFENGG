@@ -19,6 +19,7 @@ router.use(urlencoder)
 const app = express()
 
 const User = require("../models/user")
+const Mailer = require("../models/mailer")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -98,6 +99,17 @@ router.post("/home", (req, res)=>{
 	//  		console.log("ERROR")
 	//  		console.log(error)
 	//  })
+/*  FOR ADDING MAILER TO DB */
+//	  var mailer = {
+//	  	emailAddress: "ovca.dlsu@gmail.com",
+//	  	password : "DLSU1234!"
+//	  }
+//	  Mailer.create(mailer).then((newMailer)=>{
+//	  	 console.log(user)
+//    
+//	  }, (error)=>{
+//	  		console.log(error)
+//	  })
  
 	let user = {
 		username : idnumber,
