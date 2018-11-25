@@ -11,6 +11,8 @@
  */
 const mongoose = require("mongoose");
 const moment = require("moment")
+const remark = require("../models/remark")
+const remarkSchema = mongoose.model('remark').schema
 
 /**
  * Setting up FD4 Form Schema
@@ -37,7 +39,8 @@ var fdFourSchema = mongoose.Schema({
     dateOfReturnToWork : Date,
     participantFee : String, 
     noOfLocalConferencesAttendedThisYear : Number,
-    dateIncentiveLastAvailed : Date
+    dateIncentiveLastAvailed : Date,
+    remarks : [remarkSchema]
 })
 
 var fdFour = mongoose.model("fdFour", fdFourSchema)
@@ -232,6 +235,63 @@ exports.getFDFourByStatus = function(paramFDFourStatus){
             grantStatus : paramFDFourStatus
         }).then((statusFDFour)=>{
             resolve(statusFDFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets remarks from FD4 form.
+ *
+ * @param {Form} paramFDFour
+ */
+exports.getRemarksFromFDFourForm = function(paramFDFour){
+    return new Promise(function(resolve, reject){
+        fdFour.findOne({
+            _id : paramFDFour._id
+        }).then((fdFourFound)=>{
+            if(fdFourFound !=null)
+                resolve(fdFourFound.remarks)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Adds remark in FD4 form.
+ *
+ * @param {Form} paramRemark
+ */
+exports.addRemarkInFDFour = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdFour.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $push : {remarks : paramRemark}
+        }).then((updatedFdFour)=>{
+            resolve(updatedFdFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes remark in FD4 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.deleteRemarkInFDFour = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdFour.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $pull : {remark : {_id : paramRemark._id}}
+        }).then((foundRemark)=>{
+            resolve(foundRemark)
         }, (err)=>{
             reject(err)
         })

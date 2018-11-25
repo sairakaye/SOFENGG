@@ -11,8 +11,8 @@
  */
 const mongoose = require("mongoose")
 const moment = require("moment")
-
-
+const remark = require("../models/remark")
+const remarkSchema = mongoose.model('remark').schema
 /**
  * Setting up FD1 Form Schema
  */
@@ -44,7 +44,8 @@ var fdOneSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    dateIncentiveLastAvailed : Date
+    dateIncentiveLastAvailed : Date,
+    remarks : [remarkSchema]
 })
 
 var fdOne = mongoose.model("fdOne", fdOneSchema)
@@ -246,4 +247,59 @@ exports.getFDOneByStatus = function(paramFDOneStatus){
     })
 }
 
+/**
+ * Get remarks from FD1 form.
+ *
+ * @param {Form} paramFDOne
+ */
+exports.getRemarksFromFDOneForm = function(paramFDOne){
+    return new Promise(function(resolve, reject){
+        fdOne.findOne({
+            _id : paramFDOne._id
+        }).then((fdOneFound)=>{
+            if(fdOneFound !=null)
+                resolve(fdOneFound.remarks)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
 
+/**
+ * Adds remark in FD1 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.addRemarkInFDOne = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdOne.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $push : {remarks : paramRemark}
+        }).then((updatedFdOne)=>{
+            resolve(updatedFdOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes remark in FD1 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.deleteRemarkInFDOne = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdOne.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $pull : {remark : {_id : paramRemark._id}}
+        }).then((foundRemark)=>{
+            resolve(foundRemark)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}

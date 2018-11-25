@@ -11,6 +11,7 @@
  * Module dependencies.
  */
 const mongoose = require("mongoose")
+const moment = require("moment")
 
 /**
  * Setting up Remark Schema
@@ -34,7 +35,6 @@ var remarkSchema = mongoose.Schema({
 
 var Remark = mongoose.model("remark", remarkSchema)
 
-
 /**
  * Creates remark in Remark schema.
  *
@@ -45,14 +45,6 @@ exports.create = function(remark) {
     var r = new Remark(remark)
     
     r.date = new Date();
-
-    Remark.count({}, function(err, count) {
-      if (err) {
-        console.log("Error");
-      } else {
-        r.remarkId = count + 1;
-      }
-    });
     
     r.save().then((newRemark)=>{
       resolve(newRemark)
@@ -63,10 +55,10 @@ exports.create = function(remark) {
 }
 
 /**
- * Gets a remark record in Remark Schema 
+ * Gets a remark in Remark Schema 
  *
- * @param {remark record to get by formId} formId
- * @param {remark record to get by remarkId} remarkId
+ * @param {Id} formId
+ * @param {Id} remarkId
  */
 exports.getRemark = function(paramFormId, paramRemarkId){
   return new Promise(function(resolve, reject) {
@@ -82,14 +74,14 @@ exports.getRemark = function(paramFormId, paramRemarkId){
 }
 
 /**
- * Gets remarks record in a form from the Remark Schema
+ * Gets remarks of a form from the Remark Schema
  *
- * @param {filter id} paramFormId
+ * @param {Form} paramForm
  */
-exports.getRemarksFromForm = function(paramFormId){
+exports.getRemarksFromForm = function(paramForm){
   return new Promise(function(resolve, reject){
-      User.find({
-          formId : paramFormId
+      Remark.find({
+          formId : paramForm._id
       }).then((remarksForm)=>{
           resolve(remarksForm)
       }, (err)=>{
@@ -101,7 +93,7 @@ exports.getRemarksFromForm = function(paramFormId){
 /**
  * Gets all remarks in Remark schema 
  */
-exports.getAllRemark = function(){
+exports.getAllRemarks = function() {
   return new Promise(function(resolve, reject){
       Remark.find().then((remarks)=>{
           resolve(remarks)
@@ -111,4 +103,18 @@ exports.getAllRemark = function(){
   })
 }
 
-/** Will add more functionalities here **/
+/**
+ * Gets the count of remarks in Remark schema 
+ * @param {Id} paramFormId
+ */
+exports.getCountFormRemarks = function(paramFormId) {
+    return new Promise(function(resolve, reject){
+        Remark.countDocuments({
+            formId : paramFormId
+        }).then((countRemarks)=>{
+            resolve(countRemarks)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}

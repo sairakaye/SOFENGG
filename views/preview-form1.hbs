@@ -128,6 +128,29 @@
           </div>
           <div class="ui divider"></div>
           <br>
+
+          {{#if adminAccess}}
+          <div class="row">
+            <form class="ui form">
+              <label>Status</label>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="gender">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select status...</div>
+                <div class="menu">
+                  <div class="item" data-value="approved">Approved</div>
+                  <div class="item" data-value="rejected">Rejected</div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Remark</label>
+                <textarea name="remark" placeholder="Put your remark for the status here..."></textarea>
+              </div>
+              <button class="ui button" type="submit">Submit</button>
+            </form>
+          </div>
+          {{/if}}
+
           {{#if viewdetails}}
           <!-- This is where the remarks or details from the Administrator -->
           <table class="ui single line selectable table tablet stackable">
@@ -142,9 +165,9 @@
               {{#each remarks}}
               <div data-id="{{_id}}">
                 <tr>
-                  <td>{{remarks.date}}</td>
-                  <td>{{remarks.status}}</td>
-                  <td>{{remarks.remark}}</td>
+                  <td>{{date}}</td>
+                  <td>{{status}}</td>
+                  <td>{{remark}}</td>
                 </tr>
               </div>
               {{/each}}
@@ -255,8 +278,8 @@
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
                       <p>{{fdOneData.dateOfStartConference}}</p>
-                      <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference" class="check"
-                        value="{{fdOneData.dateOfStartConference}}" />
+                      <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
+                        class="check" value="{{fdOneData.dateOfStartConference}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
@@ -306,7 +329,9 @@
                 <div class="ui divider"></div>
                 <br>
                 {{#if viewdetails}}
+
                 {{else if adminAccess}}
+
                 {{else}}
                 <div class="field">
                   <label>Note</label>
@@ -357,7 +382,13 @@
 <script type="text/javascript" src="../public/semantic/semantic.js"></script>
 <script type="text/javascript" src="../public/semantic-ui-calendar/dist/calendar.min.js"></script>
 <!-- You can insert more JS files below -->
+{{#if adminAccess}}
+<script type="text/javascript" src="../public/js/admin-view.js"></script>
+{{else if viewdetails}}
+
+{{else}}
 <script type="text/javascript" src="../public/js/preview.js"></script>
+{{/if}}
 <script type="text/javascript" src="../public/js/log-out.js"></script>
 
 </html>

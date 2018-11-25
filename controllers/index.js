@@ -25,6 +25,7 @@ const fdThree = require("../models/fdThree")
 const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
+const Remark = require("../models/remark")
 router.use("/faculty", require("./faculty"))
 router.use("/admin", require("./admin"))
 

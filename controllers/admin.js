@@ -26,6 +26,7 @@ const fdThree = require("../models/fdThree")
 const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
+const Remark = require("../models/remark")
 var forms
 
 /**
@@ -72,33 +73,63 @@ router.post("/view-details", urlencoder, function(req,res) {
         var forms = getFormById(id, function(forms){
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
                 var fdOneData = forms
-                res.render("preview-form1.hbs", {
-                    user, fdOneData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdOneData).then((foundRemarks)=> {
+                    res.render("preview-form1.hbs", {
+                        user, fdOneData, adminAccess : "True", remarks: foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                 var fdTwoData = forms
-                res.render("preview-form2.hbs", {
-                    user, fdTwoData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdTwoData).then((foundRemarks)=> {
+                    res.render("preview-form2.hbs", {
+                        user, fdTwoData, adminAccess : "True", remarks : foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                 var fdThreeData = forms
-                res.render("preview-form3.hbs", {
-                    user, fdThreeData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdThreeData).then((foundRemarks)=> {
+                    res.render("preview-form3.hbs", {
+                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
                 var fdFourData = forms
-                res.render("preview-form4.hbs", {
-                    user, fdFourData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdFourData).then((foundRemarks)=> {
+                    res.render("preview-form4.hbs", {
+                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
                 var fdFifteenData = forms
-                res.render("preview-form15.hbs", {
-                    user, fdFifteenData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdFifteenData).then((foundRemarks)=> {
+                    res.render("preview-form15.hbs", {
+                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
                 var fdSixteenData = forms
-                res.render("preview-form16.hbs", {
-                    user, fdSixteenData, adminAccess : "True"
+
+                Remark.getRemarksFromForm(fdSixteenData).then((foundRemarks)=> {
+                    res.render("preview-form16.hbs", {
+                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks
+                    })
+                }, (err)=> {
+                    res.send(err)
                 })
             } 
         })
@@ -106,6 +137,13 @@ router.post("/view-details", urlencoder, function(req,res) {
         res.redirect("/")
     }
   })
+
+/*
+router.create("/add-remark", function(req, res) {
+    console.log("ADD /add-remark")
+
+})
+*/
 
 /**
  * Filters all Approved Forms

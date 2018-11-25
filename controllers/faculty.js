@@ -15,6 +15,7 @@ const hbs = require("hbs")
 const urlencoder = bodyparser.urlencoded({
   extended : true
 })
+const moment = require("moment")
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
@@ -26,6 +27,7 @@ const fdThree = require("../models/fdThree")
 const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
+const Remark = require("../models/remark")
 const controllerUser = require("./index")
 var forms
 
@@ -64,33 +66,34 @@ router.post("/view-details", urlencoder, function(req,res) {
         var forms = getFormById(id, function(forms){
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
                 var fdOneData = forms
-                res.render("preview-form1.hbs", {
-                    user, fdOneData, viewdetails: "True"
+
+               res.render("preview-form1.hbs", {
+                    user, fdOneData, viewdetails: "True", remarks : fdOneData.remarks
                 })
             } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                 var fdTwoData = forms
                 res.render("preview-form2.hbs", {
-                    user, fdTwoData, viewdetails: "True"
+                    user, fdTwoData, viewdetails: "True", remarks : fdTwoData.remarks
                 })
             } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                 var fdThreeData = forms
                 res.render("preview-form3.hbs", {
-                    user, fdThreeData, viewdetails: "True"
+                    user, fdThreeData, viewdetails: "True", remarks : fdThreeData.remarks
                 })
             } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
                 var fdFourData = forms
                 res.render("preview-form4.hbs", {
-                    user, fdFourData, viewdetails: "True"
+                    user, fdFourData, viewdetails: "True", remarks : fdFourData.remarks
                 })
             } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
                 var fdFifteenData = forms
                 res.render("preview-form15.hbs", {
-                    user, fdFifteenData, viewdetails: "True"
+                    user, fdFifteenData, viewdetails: "True", remarks : fdFifteenData.remarks
                 })
             } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
                 var fdSixteenData = forms
                 res.render("preview-form16.hbs", {
-                    user, fdSixteenData, viewdetails: "True"
+                    user, fdSixteenData, viewdetails: "True", remarks : fdSixteenData.remarks
                 })
             } 
         })
@@ -429,8 +432,22 @@ router.post("/submit-fd1", urlencoder, function(req,res) {
   }
 
   fdOne.create(fdOneData).then((newFdOneData)=> {
-      
       User.addFDOneInUser(newFdOneData).then((updatedUser)=>{
+        var remark = {
+            remarkId : 1, formId : newFdOneData._id, date : new Date(), 
+            status : "Waiting for Documents", remark : "Do not forget to complete the form and pass it to Ms. Grace."
+        }
+  
+        Remark.create(remark).then((addedRemark)=> {
+          fdOne.addRemarkInFDOne(addedRemark).then((updatedFdOne)=> {
+              console.log("FD One Added!")
+            }, (err)=> {
+                res.send(err)
+            })
+        }, (err)=> {
+            res.send(err)
+        })
+
         var user = req.session.user
         if (user) {
           res.render("success.hbs", {

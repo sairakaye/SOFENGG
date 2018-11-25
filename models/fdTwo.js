@@ -11,6 +11,8 @@
  */
 const mongoose = require("mongoose");
 const moment = require("moment")
+const remark = require("../models/remark")
+const remarkSchema = mongoose.model('remark').schema
 
 /**
  * Setting up FD2 Form Schema
@@ -39,7 +41,8 @@ var fdTwoSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
-    dateIncentiveLastAvailed : Date
+    dateIncentiveLastAvailed : Date,
+    remarks : [remarkSchema]
 })
 
 var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
@@ -106,7 +109,7 @@ exports.delete = function(paramID){
 /**
  * Edits FD2 record in FD2 Schema 
  *
- * @param {FD2 record to be edited} paramFDOne
+ * @param {FD2 record to be edited} paramFDTwo
  */
 exports.edit = function(paramFDTwo){
     return new Promise(function(resolve, reject){
@@ -161,7 +164,7 @@ exports.rejectFDTwo = function(paramID){
 /**
  * Gets one FD2 record in FD2 Schema 
  *
- * @param {FD2 record to get} paramFDOne
+ * @param {FD2 record to get} paramFDTwo
  */
 exports.getFDTwo = function(paramFDTwo){
     return new Promise(function(resolve, reject){
@@ -209,7 +212,7 @@ exports.getAllFDTwo = function(){
 /**
  * Gets FD2 record in FD2 Schema by department
  *
- * @param {Filtering department} paramFDOneDepartment
+ * @param {Filtering department} paramFDTwoDepartment
  */
 exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
     return new Promise(function(resolve, reject){
@@ -226,7 +229,7 @@ exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
 /**
  * Gets FD2 record in FD2 Schema by status
  *
- * @param {Filtering status} paramFDOnestatus
+ * @param {Filtering status} paramFDTwostatus
  */
 exports.getFDTwoByStatus = function(paramFDTwoStatus){
     return new Promise(function(resolve, reject){
@@ -234,6 +237,63 @@ exports.getFDTwoByStatus = function(paramFDTwoStatus){
             grantStatus : paramFDTwoStatus
         }).then((statusFDTwo)=>{
             resolve(statusFDTwo)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Get remarks from FD2.
+ *
+ * @param {Form} paramFDTwo
+ */
+exports.getRemarksFromFDTwoForm = function(paramFDTwo){
+    return new Promise(function(resolve, reject){
+        fdTwo.findOne({
+            _id : paramFDTwo._id
+        }).then((fdTwoFound)=>{
+            if(fdTwoFound !=null)
+                resolve(fdTwoFound.remarks)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Adds remark in FD2 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.addRemarkInFDTwo = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdTwo.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $push : {remarks : paramRemark}
+        }).then((updatedFdTwo)=>{
+            resolve(updatedFdTwo)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes remark in FD2 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.deleteRemarkInFDTwo = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdTwo.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $pull : {remark : {_id : paramRemark._id}}
+        }).then((foundRemark)=>{
+            resolve(foundRemark)
         }, (err)=>{
             reject(err)
         })

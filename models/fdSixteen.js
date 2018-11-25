@@ -11,6 +11,8 @@
  */
 const mongoose = require("mongoose")
 const moment = require("moment")
+const remark = require("../models/remark")
+const remarkSchema = mongoose.model('remark').schema
 
 /**
  * Setting up FD4 Form Schema
@@ -37,6 +39,7 @@ var fdSixteenSchema = mongoose.Schema({
     membershipFee : Number,
     checkPayableTo : String,
     participantFee : Number, //MONEY
+    //remarks : [remarkSchema]
 })
 
 var fdSixteen = mongoose.model("fdSixteen", fdSixteenSchema)
@@ -231,6 +234,63 @@ exports.getFDSixteenByStatus = function(paramFDSixteenStatus){
             grantStatus : paramFDSixteenStatus
         }).then((statusFDSixteen)=>{
             resolve(statusFDSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Get remarks from FD16 form.
+ *
+ * @param {Form} paramFDSixteen
+ */
+exports.getRemarksFromFDSixteenForm = function(paramFDSixteen){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOne({
+            _id : paramFDSixteen._id
+        }).then((fdSixteenFound)=>{
+            if(fdSixteenFound !=null)
+                resolve(fdSixteenFound.remarks)
+            resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Adds remark in FD16 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.addRemarkInFDSixteen = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $push : {remarks : paramRemark}
+        }).then((updatedFdSixteen)=>{
+            resolve(updatedFdSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Deletes remark in FD16 form.
+ *
+ * @param {Remark} paramRemark
+ */
+exports.deleteRemarkInFDSixteen = function(paramRemark){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOneAndUpdate({
+            _id : paramRemark.formId
+        }, {
+            $pull : {remark : {_id : paramRemark._id}}
+        }).then((foundRemark)=>{
+            resolve(foundRemark)
         }, (err)=>{
             reject(err)
         })
