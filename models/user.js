@@ -54,6 +54,8 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
+    emailAddress : String,
+    
 	userType: String, //Administrator or Faculty
 
     status : String, // Probationary or Permanent
@@ -127,6 +129,23 @@ exports.getUser = function(paramUsername){
     return new Promise(function(resolve, reject){
         User.findOne({
             username : paramUsername
+        }).then((userFound)=>{
+            resolve(userFound)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Gets one user record in User Schema 
+ *
+ * @param {user record to get by type} paramType
+ */
+exports.getUserByType = function(paramType){
+    return new Promise(function(resolve, reject){
+        User.findOne({
+            userType : paramType
         }).then((userFound)=>{
             resolve(userFound)
         }, (err)=>{
