@@ -562,7 +562,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
   fdTwo.create(fdTwoData).then((newFdTwoData) => {
     User.addFDTwoInUser(newFdTwoData).then((updatedUser) => {
       var remark = {
-        remarkId: 1, formId: newFdOneData._id, date: new Date(),
+        remarkId: 1, formId: newFdTwoData._id, date: new Date(),
         status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
@@ -695,7 +695,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
 
     User.addFDThreeInUser(newFdThreeData).then((updatedUser) => {
       var remark = {
-        remarkId: 1, formId: newFdOneData._id, date: new Date(),
+        remarkId: 1, formId: newFdThreeData._id, date: new Date(),
         status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
@@ -820,7 +820,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
 
     User.addFDFourInUser(newFdFourData).then((updatedUser) => {
       var remark = {
-        remarkId: 1, formId: newFdOneData._id, date: new Date(),
+        remarkId: 1, formId: newFdFourData._id, date: new Date(),
         status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
@@ -939,7 +939,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
 
     User.addFDFifteenInUser(newFdFifteenData).then((updatedUser) => {
       var remark = {
-        remarkId: 1, formId: newFdOneData._id, date: new Date(),
+        remarkId: 1, formId: newFdFifteenData._id, date: new Date(),
         status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
@@ -1060,7 +1060,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
 
     User.addFDSixteenInUser(newFdSixteenData).then((updatedUser) => {
       var remark = {
-        remarkId: 1, formId: newFdOneData._id, date: new Date(),
+        remarkId: 1, formId: newFdSixteenData._id, date: new Date(),
         status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
