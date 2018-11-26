@@ -12,8 +12,8 @@
 <head>
   <title>My Requests</title>
   <!-- Always include these two css files when creating a new html file. -->
-  <link href="../semantic/semantic.css" type="text/css" rel="stylesheet" />
-  <link href="../css/main.css" type="text/css" rel="stylesheet" />
+    <link href="../public/css/main.css" type="text/css" rel="stylesheet"/>
+    <link href="../public/semantic/semantic.min.css" type="text/css" rel="stylesheet"/>
   <!-- You can insert more CSS files below-->
   <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href=".../favicon/favicon-32x32.png">
@@ -21,6 +21,7 @@
   <link rel="manifest" href="..favicon/site.webmanifest">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
+  <link href="../public/css/dataTables.semanticui.min.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -93,75 +94,75 @@
             </div>
             <div class="ui divider"></div>
 
-          <!-- This the table for the list of grants submitted by the user-->
-            <div class="row">
-              <table class="ui single line selectable table tablet stackable"> 
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Date and Time</th>
-                    <th>Form</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
+              <div class = "row inline grid">
+                 <!-- This the table for the list of grants submitted -->
+                  <div class="row">
+                    <table id="example"  class="ui table responsive" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Date and Time</th>
+                            <th>Form</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                            {{#each forms}}
+                              {{#checkstatus 'Approved' grantStatus}}
+                              <tr class="positive listmember">
+                              {{else}}
+                              {{/checkstatus}}
 
-                  <!-- Each handlebar linked to the 'checkstatus' helper will format each grant based on status -->
-                  {{#each forms}}
-                  {{#showonlybyuser firstName lastName}}
-                  {{#checkstatus 'Approved' grantStatus}}
-                  <tr class="positive">
-                    {{else}}
-                    <!-- dont show -->
-                    {{/checkstatus}}
+                              {{#checkstatus 'Rejected' grantStatus}}
+                              <tr class="negative listmember">
+                              {{else}}
+                              {{/checkstatus}}
 
-                    {{#checkstatus 'Rejected' grantStatus}}
-                  <tr class="negative">
-                    {{else}}
-                    <!-- dont show -->
-                    {{/checkstatus}}
+                              {{#checkstatus 'Pending' grantStatus}}
+                              <tr class = "listmember">
+                              {{else}}
+                              {{/checkstatus}}
+                              <td>{{formId}} </td>
+                              <td>{{timestamp}} </td>
+                              <td>{{grantName}}</td>
+                              <td>{{grantStatus}}</td>
+                              <td> 
+                                <div class = "ui grid inline">
+                                  <div class = "eight wide column fluid">
+                                     <form action="/faculty/view-details" method="post" class="ui form fluid">
+                                      <button type = "submit" class="ui button fluid viewdetails" >
+                                        View Details <input type="hidden" name="details" value="{{_id}}" />
+                                      </button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </td>
+                              <td> 
+                                <div class = "ui grid inline">
+                                  <div class = "five wide column fluid">
+                                    <div class="ui fluid dropdown icon labeled button two wide">
+                                        Export
+                                        <i class="arrow alternate circle down icon"></i>
+                                        <div class="menu">
+                                          <div class="header">
+                                            Choose how to export
+                                          </div>
+                                          <div class="divider"></div>
+                                          <div class="item ui fluid saveform" data-id="{{_id}}"> Save </div>
+                                          <div class="item ui fluid printform" data-id="{{_id}}"> Print </div>
+                                        </div>
+                                      </div>
+                                   </div>
+                                </div>
+                              </td>
+                            </tr>
+                        {{/each}}   
+                      </tbody>
+                  </table>
+              </div>
 
-                    {{#checkstatus 'Pending' grantStatus}}
-                  <tr>
-                    {{else}}
-                    <!-- dont show -->
-                    {{/checkstatus}}
-                    <td>{{formId}} </td>
-                    <td>{{timestamp}} </td>
-                    <td>{{grantName}}</td>
-                    <td>{{grantStatus}}</td>
-                    <td>
-                      <form action="/faculty/view-details" method="post" class="ui form fluid">
-                        <button type = "submit" class="ui button fluid viewdetails" >
-                          View Details <input type="hidden" name="details" value="{{_id}}" />
-                        </button>
-                      </form>
-                    </td>
-                    <td>
-                      <div class="ui fluid dropdown icon labeled button">
-                        Export
-                        <i class="arrow alternate circle down icon"></i>
-                        <div class="menu">
-                          <div class="header">
-                            Choose how to export
-                          </div>
-                          <div class="divider"></div>
-                          <div class="item ui fluid saveform" data-id="{{_id}}"> Save </div>
-                          <div class="item ui fluid printform" data-id="{{_id}}"> Print </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  {{else}}
-                  <!--  do not show -->
-                  {{/showonlybyuser}}
-                  {{/each}}
-                </tbody>
-              </table>
-            </div>
-            
             <!-- Show message if no forms are returned -->
             {{#if noforms}}
             <div class = "row">
@@ -192,11 +193,13 @@
 
 <!-- Always include these two JS files when adding a new page -->
 <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../semantic/semantic.js"></script>
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../jspdf.min.js"></script>
 <script type="text/javascript" src="../moment.min.js"></script>
 <script type="text/javascript" src="../public/js/my-requests.js"></script>
 <script type="text/javascript" src="../public/js/base64files.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
+<script type="text/javascript" src="../public/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../public/dataTables.semanticui.min.js"></script>
+<script type="text/javascript" src="../public/semantic/semantic.min.js"></script>
 </html>

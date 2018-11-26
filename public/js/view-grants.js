@@ -9,9 +9,6 @@ $(document).ready(function() {
     $('#example').DataTable();
 } );
 
-
-$('.ui.dropdown').dropdown({forceSelection: false});
-
 $("button.delete").click(function () {
     var $tr = $(this).closest('tr'); 
     var id = $(this).attr("data-id")

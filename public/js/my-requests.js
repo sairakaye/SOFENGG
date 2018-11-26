@@ -4,7 +4,11 @@
  * @ver 1.2
  * @author Candace Mercado
  */
-$('.ui.dropdown').dropdown({forceSelection: false});
+
+$(document).ready(function() {
+    $('#example').DataTable();
+    $('.ui.dropdown').dropdown({forceSelection: false});
+} );
 
 $(".item.saveform").click(function () { 
     var id = $(this).attr("data-id")
