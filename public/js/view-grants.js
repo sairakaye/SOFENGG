@@ -1,9 +1,14 @@
 /**
  * This is the JS file of the view grants page.
- * October 20, 2018
- * @ver 1.0
+ * November 26, 2018
+ * @ver 1.2
  * @author Candace Mercado
  */
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
 
 $('.ui.dropdown').dropdown({forceSelection: false});
 
