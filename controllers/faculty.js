@@ -44,6 +44,9 @@ router.get("/request-grant", function (req, res) {
   console.log("GET /request-grant")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("request-grant.hbs", {
       user
@@ -63,6 +66,9 @@ router.post("/view-details", urlencoder, function (req, res) {
   console.log("POST /view-details")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   var id = req.body.details
 
   if (user != null) {
@@ -115,6 +121,9 @@ router.get("/fd-1", function (req, res) {
   console.log("GET /fd-1")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("form1", {
       user
@@ -167,6 +176,8 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
 
   if (user != null) {
     res.render("preview-form1.hbs", {
@@ -213,6 +224,9 @@ router.post("/preview-fd2", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user != null) {
     res.render("preview-form2.hbs", {
       user, fdTwoData
@@ -265,6 +279,9 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user != null) {
     res.render("preview-form3.hbs", {
       user, fdThreeData
@@ -308,6 +325,9 @@ router.post("/preview-fd4", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user != null) {
     res.render("preview-form4.hbs", {
       user, fdFourData
@@ -347,6 +367,9 @@ router.post("/preview-fd15", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user != null) {
     res.render("preview-form15.hbs", {
       user, fdFifteenData
@@ -380,6 +403,9 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
   }
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user != null) {
     res.render("preview-form16.hbs", {
       user, fdSixteenData
@@ -452,6 +478,9 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
@@ -513,6 +542,9 @@ router.get("/fd-2", function (req, res) {
   console.log("GET /fd-2")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("form2", {
       user
@@ -577,6 +609,9 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
 
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
@@ -638,6 +673,9 @@ router.get("/fd-3", function (req, res) {
   console.log("GET /fd-3")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("form3", {
       user
@@ -710,6 +748,9 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
 
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
@@ -772,6 +813,9 @@ router.get("/fd-4", function (req, res) {
   console.log("GET /fd-4")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("form4", {
       user
@@ -835,6 +879,9 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
@@ -895,6 +942,9 @@ router.get("/fd-15", function (req, res) {
   console.log("GET /fd-15")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     res.render("form15", {
       user
@@ -954,6 +1004,9 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
 
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
@@ -1015,6 +1068,9 @@ router.get("/fd-16", function (req, res) {
   console.log("GET /fd-16")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+   res.redirect("/")
+
   if (user) {
     res.render("form16", {
       user
@@ -1075,6 +1131,9 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
       })
 
       var user = req.session.user
+      if (user.userType != 'Faculty')
+        res.redirect("/")
+
       if (user) {
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
@@ -1135,11 +1194,14 @@ router.get("/my-requests", function (req, res) {
   console.log("GET /my-requests")
 
   var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
   if (user) {
     forms = getAllForms(forms, function (forms) {
       if (forms == "") {
         res.render("my-requests.hbs", {
-          user, noforms: "There are no matches found"
+          user
         })
       } else {
         res.render("my-requests.hbs", {

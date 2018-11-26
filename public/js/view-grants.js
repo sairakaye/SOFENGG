@@ -1,11 +1,41 @@
 /**
  * This is the JS file of the view grants page.
- * October 20, 2018
- * @ver 1.0
+ * November 26, 2018
+ * @ver 1.2
  * @author Candace Mercado
  */
 
-$('.ui.dropdown').dropdown({forceSelection: false});
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 
+        {
+            extend: 'copy',
+            text: 'Copy Table',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+        },   
+        {
+            extend: 'excel',
+            text: 'Export Table to Excel',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+        },  
+        {
+            extend: 'pdf',
+            text: 'Export Table to PDF',
+            exportOptions: {
+                columns: 'th:not(:last-child)'
+            }
+        },
+        ]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( $('div.eight.column:eq(0)', table.table().container()) );
+} );
 
 $("button.delete").click(function () {
     var $tr = $(this).closest('tr'); 
