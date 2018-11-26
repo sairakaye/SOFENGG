@@ -1139,7 +1139,7 @@ router.get("/my-requests", function (req, res) {
     forms = getAllForms(forms, function (forms) {
       if (forms == "") {
         res.render("my-requests.hbs", {
-          user, noforms: "There are no matches found"
+          user
         })
       } else {
         res.render("my-requests.hbs", {

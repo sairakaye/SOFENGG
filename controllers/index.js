@@ -49,7 +49,7 @@ router.get("/", function(req, res) {
 			var forms = getAllForms(forms, function(forms){
 				if (forms == ""){
 					res.render("my-requests.hbs", {
-						user, noforms: "There are no matches found"
+						user
 					})
 				} else {
 					res.render("my-requests.hbs", {
@@ -129,7 +129,7 @@ router.post("/home", (req, res)=>{
 				var forms = getAllForms(forms, function(forms){
 					if (forms == ""){
 						res.render("my-requests.hbs", {
-							user, noforms: "There are no matches found"
+							user
 						})
 					} else {
 						res.render("my-requests.hbs", {
@@ -166,7 +166,7 @@ router.get("/home", function(req, res){
 			var forms = getAllForms(forms, function(forms){
 				if (forms == ""){
 					res.render("my-requests.hbs", {
-						user, noforms: "There are no matches found"
+						user
 					})
 				} else {
 					res.render("my-requests.hbs", {
