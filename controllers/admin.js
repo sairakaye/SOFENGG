@@ -39,6 +39,9 @@ router.get("/view-grants", function(req, res){
     console.log("GET /view-grants")
     
     var user = req.session.user
+    if (user.userType != 'Administrator')
+        res.redirect("/")
+    
     if(user){
         forms = getAllForms(function(forms){
             if (forms == ""){
@@ -56,7 +59,6 @@ router.get("/view-grants", function(req, res){
     }
 })
 
-
 /**
  * Views details based on form id
  *
@@ -67,6 +69,9 @@ router.post("/view-details", urlencoder, function(req,res) {
     console.log("POST /view-details")
      
     var user = req.session.user
+    if (user.userType != 'Administrator')
+        res.redirect("/")
+
     var id = req.body.details
     
     if (user != null) {
@@ -242,95 +247,6 @@ router.post("/change-status", urlencoder, function(req, res) {
     }
 
 })
-
-// Deprecated Method
-///**
-// * Searches the users by name
-// *
-// * @param {Request} req
-// * @param {Response} res
-// */
-//router.post("/searchName", function(req, res){
-//    console.log("POST /searchName")
-//    
-//    var firstName =req.body.firstNameSearch
-//    var lastName = req.body.lastNameSearch
-//    
-//    firstName = firstName.toLowerCase().split(' ');
-//    for (var i = 0; i < firstName.length; i++) {
-//        firstName[i] = firstName[i].charAt(0).toUpperCase() + firstName[i].slice(1); 
-//    }
-//    firstName =  firstName.join(' ');
-//    
-//    lastName = lastName.toLowerCase().split(' ');
-//    for (var i = 0; i < lastName.length; i++) {
-//        lastName[i] = lastName[i].charAt(0).toUpperCase() + lastName[i].slice(1); 
-//    }
-//    lastName =  lastName.join(' ');
-//
-//    var user = req.session.user
-//    
-//    if(firstName != "" && lastName != ""){ 
-//        var forms = filterAllFormsByFullName(firstName, lastName, function(forms){
-//            if(forms != null && user){
-//                res.render("view-grants.hbs", {
-//                    user, forms
-//                })
-//            }else if (forms == null) {
-//                fdOne.getAllFDOne().then((fdOneData)=>{
-//                    forms = fdOneData
-//                    res.render("view-grants.hbs", {
-//                        user, forms,
-//                        error : "Name not found"
-//                    })
-//                })
-//            } else {
-//                res.redirect("/")
-//            }
-//        })
-//        
-//    } else if(firstName != ""){ 
-//        var forms = filterAllFormsByFirstName(firstName, function(forms){
-//            if(forms != null && user){
-//                res.render("view-grants.hbs", {
-//                    user, forms
-//                })
-//            }else if (forms == null){
-//                fdOne.getAllFDOne().then((fdOneData)=>{
-//                    forms = fdOneData
-//                    res.render("view-grants.hbs", {
-//                        user, forms,
-//                        error : "Name not found"
-//                    })
-//                })
-//            } else {
-//                res.redirect("/")
-//            }
-//        })
-//        
-//    } else if(lastName != ""){
-//        var forms = filterAllFormsByLastName(lastName, function(forms){
-//            if(forms != null && user){
-//                res.render("view-grants.hbs", {
-//                    user, forms
-//                })
-//            }else if (forms == null) {
-//                fdOne.getAllFDOne().then((fdOneData)=>{
-//                    forms = fdOneData
-//                    res.render("view-grants.hbs", {
-//                        user, forms,
-//                        error : "Name not found"
-//                    })
-//                })
-//            } else {
-//                res.redirect("/")
-//            }
-//        })
-//        
-//    }
-//    
-//    
-//})
 
 /**
  * Deletes a grant request form

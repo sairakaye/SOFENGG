@@ -47,15 +47,7 @@ router.get("/", function(req, res) {
 			})
 		else if(user.userType == "Faculty")
 			var forms = getAllForms(forms, function(forms){
-				if (forms == ""){
-					res.render("my-requests.hbs", {
-						user
-					})
-				} else {
-					res.render("my-requests.hbs", {
-						user, forms
-					})
-				}
+				res.redirect("/faculty/my-requests")
 			})
 	} else {
 		res.render("index.hbs")
@@ -127,15 +119,7 @@ router.post("/home", (req, res)=>{
 				})
 			else if(user.userType == "Faculty")
 				var forms = getAllForms(forms, function(forms){
-					if (forms == ""){
-						res.render("my-requests.hbs", {
-							user
-						})
-					} else {
-						res.render("my-requests.hbs", {
-							user, forms
-						})
-					}
+					res.redirect("/faculty/my-requests")
 				})
 		} else {	
 			res.render("index.hbs", {
@@ -162,17 +146,9 @@ router.get("/home", function(req, res){
 			res.render("home-admin.hbs", {
 				user
 			})
-		else if(user.userType == "Faculty" )
+		else if(user.userType == "Faculty")
 			var forms = getAllForms(forms, function(forms){
-				if (forms == ""){
-					res.render("my-requests.hbs", {
-						user
-					})
-				} else {
-					res.render("my-requests.hbs", {
-						user, forms
-					})
-				}
+				res.redirect("/faculty/my-requests")
 			})
 	} else {
 		res.redirect("/")
