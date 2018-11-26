@@ -18,7 +18,7 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD2 Form Schema
  */
 var fdTwoSchema = mongoose.Schema({
-    timestamp: String,
+    timestamp: Date,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -60,7 +60,6 @@ exports.create = function(paramFDTwo){
         
         fdTwo.countDocuments().then((count) => {
             if(count == 0){
-                //f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDTwo)=>{    
                         resolve(newFDTwo)
@@ -128,12 +127,12 @@ exports.edit = function(paramFDTwo){
  *
  * @param {FD2 record to be approved} paramID
  */
-exports.approveFDTwo = function(paramID){
+exports.changeStatusFDTwo = function(paramID, status){
     return new Promise(function(resolve, reject){
         fdTwo.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approved"}
+            "$set" : {"grantStatus" : status}
         }).then((updatedFDTwo)=>{
             resolve(updatedFDTwo)
         }, (err)=>{
@@ -291,7 +290,7 @@ exports.deleteRemarkInFDTwo = function(paramRemark){
         fdTwo.findOneAndUpdate({
             _id : paramRemark.formId
         }, {
-            $pull : {remark : {_id : paramRemark._id}}
+            $pull : {remarks : {_id : paramRemark._id}}
         }).then((foundRemark)=>{
             resolve(foundRemark)
         }, (err)=>{

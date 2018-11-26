@@ -10,14 +10,13 @@
  * Module dependencies.
  */
 const mongoose = require("mongoose")
-const moment = require("moment")
 const remark = require("../models/remark")
 const remarkSchema = mongoose.model('remark').schema
 /**
  * Setting up FD1 Form Schema
  */
 var fdOneSchema = mongoose.Schema({
-    timestamp: String,
+    timestamp: Date,
     formId : String,
     grantName: String,
     ownerIdNumber : String,
@@ -64,7 +63,6 @@ exports.create = function(paramFDOne){
         
         fdOne.countDocuments().then((count) => {
             if(count == 0){
-                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDOne)=>{    
                         resolve(newFDOne)
@@ -132,12 +130,12 @@ exports.edit = function(paramFDOne){
  *
  * @param {FD1 record to be approved} paramID
  */
-exports.approveFDOne = function(paramID){
+exports.changeStatusFDOne = function(paramID, status){
     return new Promise(function(resolve, reject){
         fdOne.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approved"}
+            "$set" : {"grantStatus" : status}
         }).then((updatedFDOne)=>{
             resolve(updatedFDOne)
         }, (err)=>{
@@ -286,7 +284,7 @@ exports.addRemarkInFDOne = function(paramRemark){
 }
 
 /**
- * Deletes remark in FD1 form.
+ * Deletes remark in FD1 form through remark.
  *
  * @param {Remark} paramRemark
  */
@@ -295,7 +293,7 @@ exports.deleteRemarkInFDOne = function(paramRemark){
         fdOne.findOneAndUpdate({
             _id : paramRemark.formId
         }, {
-            $pull : {remark : {_id : paramRemark._id}}
+            $pull : {remarks : {_id : paramRemark._id}}
         }).then((foundRemark)=>{
             resolve(foundRemark)
         }, (err)=>{

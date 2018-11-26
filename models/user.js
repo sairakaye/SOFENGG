@@ -341,15 +341,15 @@ exports.editFDOneInUser = function(paramFDOne){
 /**
  * Approves FDOne record in User Schema 
  *
- * @param {FDOne record to be approved} paramFDOne
+ * @param {FDOne record to change the status} paramFDOne
  */
-exports.approveFDOneInUser = function(paramFDOne){
+exports.changeStatusFDOneInUser = function(paramFDOne, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDOne.username,
             "fdOneForms._id" : paramFDOne._id
         }, {
-            $set : { "fdOneForms.$.grantStatus" : "Approve"}
+            $set : { "fdOneForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -358,25 +358,6 @@ exports.approveFDOneInUser = function(paramFDOne){
     })
 }
 
-/**
- * Reject FDOne record in User Schema 
- *
- * @param {FDOne record to be rejected} paramFDOne
- */
-exports.rejectFDOneInUser = function(paramFDOne){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDOne.username,
-            "fdOneForms._id" : paramFDOne._id
-        }, {
-            $set : { "fdOneForms.$.grantStatus" : "Reject"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
 
 /**
  * Gets FDTwo records in user Schema
@@ -394,7 +375,6 @@ exports.getFDTwoFormsByUser = function(paramUsername){
         })
     })
 }
-
 
 /**
  * Gets FDTwo records in user Schema by Name
@@ -516,15 +496,15 @@ exports.editFDTwoInUser = function(paramFDTwo){
 /**
  * Approves FDTwo record in User Schema 
  *
- * @param {FDTwo record to be approved} paramFDTwo
+ * @param {FDTwo record to change the status} paramFDTwo
  */
-exports.approveFDTwoInUser = function(paramFDTwo){
+exports.changeStatusFDTwoInUser = function(paramFDTwo, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDTwo.username,
             "FDTwoForms._id" : paramFDTwo._id
         }, {
-            $set : { "FDTwoForms.$.grantStatus" : "Approve"}
+            $set : { "FDTwoForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -532,33 +512,6 @@ exports.approveFDTwoInUser = function(paramFDTwo){
         })
     })
 }
-
-/**
- * Reject FDTwo record in User Schema 
- *
- * @param {FDTwo record to be rejected} paramFDTwo
- */
-exports.rejectFDTwoInUser = function(paramFDTwo){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDTwo.username,
-            "FDTwoForms._id" : paramFDTwo._id
-        }, {
-            $set : { "FDTwoForms.$.grantStatus" : "Reject"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-
-
-
-
-
-
 
 
 /* FD 3EE */
@@ -700,15 +653,15 @@ exports.editFDThreeInUser = function(paramFDThree){
 /**
  * Approves FDThree record in User Schema 
  *
- * @param {FDThree record to be approved} paramFDThree
+ * @param {FDThree record to change the status} paramFDThree
  */
-exports.approveFDThreeInUser = function(paramFDThree){
+exports.changeStatusFDThreeInUser = function(paramFDThree, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDThree.username,
             "FDThreeForms._id" : paramFDThree._id
         }, {
-            $set : { "FDThreeForms.$.grantStatus" : "Approve"}
+            $set : { "FDThreeForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -716,32 +669,6 @@ exports.approveFDThreeInUser = function(paramFDThree){
         })
     })
 }
-
-/**
- * Reject FDThree record in User Schema 
- *
- * @param {FDThree record to be rejected} paramFDThree
- */
-exports.rejectFDThreeInUser = function(paramFDThree){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDThree.username,
-            "FDThreeForms._id" : paramFDThree._id
-        }, {
-            $set : { "FDThreeForms.$.grantStatus" : "Reject"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-
-
-
-
-
 
 
 /* FD Four */
@@ -883,15 +810,15 @@ exports.editFDFourInUser = function(paramFDFour){
 /**
  * Approves FDFour record in User Schema 
  *
- * @param {FDFour record to be approved} paramFDFour
+ * @param {FDFour record to change the status} paramFDFour
  */
-exports.approveFDFourInUser = function(paramFDFour){
+exports.changeStatusFDFourInUser = function(paramFDFour, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDFour.username,
             "FDFourForms._id" : paramFDFour._id
         }, {
-            $set : { "FDFourForms.$.grantStatus" : "Approve"}
+            $set : { "FDFourForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -899,30 +826,6 @@ exports.approveFDFourInUser = function(paramFDFour){
         })
     })
 }
-
-/**
- * Reject FDFour record in User Schema 
- *
- * @param {FDFour record to be rejected} paramFDFour
- */
-exports.rejectFDFourInUser = function(paramFDFour){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDFour.username,
-            "FDFourForms._id" : paramFDFour._id
-        }, {
-            $set : { "FDFourForms.$.grantStatus" : "Reject"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-
-
-
 
 /* FD Fifteen */
 /**
@@ -1063,15 +966,15 @@ exports.editFDFifteenInUser = function(paramFDFifteen){
 /**
  * Approves FDFifteen record in User Schema 
  *
- * @param {FDFifteen record to be approved} paramFDFifteen
+ * @param {FDFifteen record to change the status} paramFDFifteen
  */
-exports.approveFDFifteenInUser = function(paramFDFifteen){
+exports.changeStatusFDFifteenInUser = function(paramFDFifteen, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDFifteen.username,
             "FDFifteenForms._id" : paramFDFifteen._id
         }, {
-            $set : { "FDFifteenForms.$.grantStatus" : "Approve"}
+            $set : { "FDFifteenForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -1079,29 +982,6 @@ exports.approveFDFifteenInUser = function(paramFDFifteen){
         })
     })
 }
-
-/**
- * Reject FDFifteen record in User Schema 
- *
- * @param {FDFifteen record to be rejected} paramFDFifteen
- */
-exports.rejectFDFifteenInUser = function(paramFDFifteen){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDFifteen.username,
-            "FDFifteenForms._id" : paramFDFifteen._id
-        }, {
-            $set : { "FDFifteenForms.$.grantStatus" : "Reject"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-
-
 
 
 /* FD Sixteen */
@@ -1243,35 +1123,15 @@ exports.editFDSixteenInUser = function(paramFDSixteen){
 /**
  * Approves FDSixteen record in User Schema 
  *
- * @param {FDSixteen record to be approved} paramFDSixteen
+ * @param {FDSixteen record to change the status} paramFDSixteen
  */
-exports.approveFDSixteenInUser = function(paramFDSixteen){
+exports.changeStatusFDSixteenInUser = function(paramFDSixteen, status){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             username : paramFDSixteen.username,
             "FDSixteenForms._id" : paramFDSixteen._id
         }, {
-            $set : { "FDSixteenForms.$.grantStatus" : "Approve"}
-        }).then((updatedUser)=>{
-            resolve(updatedUser)
-        }, (err)=>{
-            reject(err)
-        })
-    })
-}
-
-/**
- * Reject FDSixteen record in User Schema 
- *
- * @param {FDSixteen record to be rejected} paramFDSixteen
- */
-exports.rejectFDSixteenInUser = function(paramFDSixteen){
-    return new Promise(function(resolve, reject){
-        User.findOneAndUpdate({
-            username : paramFDSixteen.username,
-            "FDSixteenForms._id" : paramFDSixteen._id
-        }, {
-            $set : { "FDSixteenForms.$.grantStatus" : "Reject"}
+            $set : { "FDSixteenForms.$.grantStatus" : status}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{

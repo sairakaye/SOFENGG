@@ -18,7 +18,7 @@ $("button.delete").click(function () {
     $(".negative.delete.final").click(function(){
         $.ajax({ 
             method : "delete",
-            url : "deleteform",
+            url : "delete-form",
             data : {
                 id,
                 grant

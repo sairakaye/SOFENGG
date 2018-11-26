@@ -18,7 +18,7 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD3 Form Schema
  */
 var fdThreeSchema = mongoose.Schema({
-    timestamp: String,
+    timestamp: Date,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -64,7 +64,6 @@ exports.create = function(paramFDThree){
         
         fdThree.countDocuments().then((count) => {
             if(count == 0){
-                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDThree)=>{    
                         resolve(newFDThree)
@@ -132,12 +131,12 @@ exports.edit = function(paramFDThree){
  *
  * @param {FD3 record to be approved} paramID
  */
-exports.approveFDThree = function(paramID){
+exports.changeStatusFDThree = function(paramID, status){
     return new Promise(function(resolve, reject){
         fdThree.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approved"}
+            "$set" : {"grantStatus" : status}
         }).then((updatedFDThree)=>{
             resolve(updatedFDThree)
         }, (err)=>{
@@ -295,7 +294,7 @@ exports.deleteRemarkInFDThree = function(paramRemark){
         fdThree.findOneAndUpdate({
             _id : paramRemark.formId
         }, {
-            $pull : {remark : {_id : paramRemark._id}}
+            $pull : {remarks : {_id : paramRemark._id}}
         }).then((foundRemark)=>{
             resolve(foundRemark)
         }, (err)=>{

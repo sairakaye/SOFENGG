@@ -1247,6 +1247,26 @@ hbs.registerHelper('employment', function (status, options) {
 })
 
 /**
+ * For formating of date with the time.
+ * 
+ * @param {Date} date  
+ */
+hbs.registerHelper('formatDateTime', function (date) {
+  var momentDate = moment(date);
+  return momentDate.format("MMMM D, YYYY h:mm A");
+})
+
+/**
+* For formating of date.
+* 
+* @param {Date} date  
+*/
+hbs.registerHelper('formatDate', function (date) {
+  var momentDate = moment(date);
+  return momentDate.format("MMMM D, YYYY");
+})
+
+/**
  * Gets all forms
  *
  * @param {Array to store forms} forms

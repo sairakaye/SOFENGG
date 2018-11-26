@@ -44,6 +44,7 @@ exports.create = function(remark) {
   return new Promise(function(resolve, reject) {
     var r = new Remark(remark)
     
+    r.remarkId = 1;
     r.date = new Date();
     
     r.save().then((newRemark)=>{
@@ -52,6 +53,18 @@ exports.create = function(remark) {
       reject(err)
     })
   })
+}
+
+exports.delete = function(paramRemarkID){
+    return new Promise(function(resolve, reject){
+        Remark.deleteOne({
+            _id : paramRemarkID
+        }).then((deletedRemark)=>{
+            resolve(deletedRemark)
+        }, (err)=>{
+            reject(err)
+        })
+    })
 }
 
 /**
@@ -64,7 +77,7 @@ exports.getRemark = function(paramFormId, paramRemarkId){
   return new Promise(function(resolve, reject) {
       Remark.findOne({
           formId : paramFormId,
-          remarkId : paramRemarkId
+          _id : paramRemarkId
       }).then((remarkFound)=>{
           resolve(remarkFound)
       }, (err)=>{

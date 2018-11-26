@@ -18,7 +18,7 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD4 Form Schema
  */
 var fdFourSchema = mongoose.Schema({
-    timestamp:  String, 
+    timestamp:  Date, 
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -58,7 +58,6 @@ exports.create = function(paramFDFour){
         
         fdFour.countDocuments().then((count) => {
             if(count == 0){
-                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDFour)=>{    
                         resolve(newFDFour)
@@ -126,12 +125,12 @@ exports.edit = function(paramFDFour){
  *
  * @param {FD4 record to be approved} paramID
  */
-exports.approveFDFour = function(paramID){
+exports.changeStatusFDFour = function(paramID, status){
     return new Promise(function(resolve, reject){
         fdFour.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approved"}
+            "$set" : {"grantStatus" : status}
         }).then((updatedFDFour)=>{
             resolve(updatedFDFour)
         }, (err)=>{
@@ -289,7 +288,7 @@ exports.deleteRemarkInFDFour = function(paramRemark){
         fdFour.findOneAndUpdate({
             _id : paramRemark.formId
         }, {
-            $pull : {remark : {_id : paramRemark._id}}
+            $pull : {remarks : {_id : paramRemark._id}}
         }).then((foundRemark)=>{
             resolve(foundRemark)
         }, (err)=>{

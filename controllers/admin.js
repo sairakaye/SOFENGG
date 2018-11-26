@@ -12,13 +12,14 @@
 const express = require("express")
 const bodyparser = require("body-parser")
 const hbs = require("hbs")
+const moment = require("moment")
 const urlencoder = bodyparser.urlencoded({
-  extended : true
+    extended: true
 })
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
-   
+
 const User = require("../models/user")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
@@ -35,13 +36,13 @@ var forms
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/view-grants", function(req, res){
+router.get("/view-grants", function (req, res) {
     console.log("GET /view-grants")
-    
+
     var user = req.session.user
-    if(user){
-        forms = getAllForms(function(forms){
-            if (forms == ""){
+    if (user) {
+        forms = getAllForms(function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, noforms: "There are no matches found"
                 })
@@ -63,184 +64,260 @@ router.get("/view-grants", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.post("/view-details", urlencoder, function(req,res) {
+router.post("/view-details", urlencoder, function (req, res) {
     console.log("POST /view-details")
-     
+
     var user = req.session.user
     var id = req.body.details
-    
+
     if (user != null) {
-        var forms = getFormById(id, function(forms){
-            if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
+        var forms = getFormById(id, function (forms) {
+            if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
                 var fdOneData = forms
 
-                Remark.getRemarksFromForm(fdOneData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdOneData).then((foundRemarks) => {
                     res.render("preview-form1.hbs", {
-                        user, fdOneData, adminAccess : "True", remarks: foundRemarks, 
-                        formID : fdOneData._id, grant: fdOneData.grantName
+                        user, fdOneData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdOneData._id, grant: fdOneData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
+            } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
                 var fdTwoData = forms
 
-                Remark.getRemarksFromForm(fdTwoData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdTwoData).then((foundRemarks) => {
                     res.render("preview-form2.hbs", {
-                        user, fdTwoData, adminAccess : "True", remarks : foundRemarks, 
-                        formID : fdTwoData._id, grant: fdTwoData.grantName
+                        user, fdTwoData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdTwoData._id, grant: fdTwoData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } else if (forms.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
+            } else if (forms.grantName == "[FD3] Support for Paper Presentations in Conferences") {
                 var fdThreeData = forms
 
-                Remark.getRemarksFromForm(fdThreeData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdThreeData).then((foundRemarks) => {
                     res.render("preview-form3.hbs", {
-                        user, fdThreeData, adminAccess : "True", remarks : foundRemarks, 
-                        formID : fdThreeData._id, grant: fdThreeData.grantName
+                        user, fdThreeData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdThreeData._id, grant: fdThreeData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences"){
+            } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences") {
                 var fdFourData = forms
 
-                Remark.getRemarksFromForm(fdFourData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdFourData).then((foundRemarks) => {
                     res.render("preview-form4.hbs", {
-                        user, fdFourData, adminAccess : "True", remarks : foundRemarks, 
-                        formID : fdFourData._id, grant : fdFourData.grantName
+                        user, fdFourData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdFourData._id, grant: fdFourData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
+            } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops") {
                 var fdFifteenData = forms
 
-                Remark.getRemarksFromForm(fdFifteenData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdFifteenData).then((foundRemarks) => {
                     res.render("preview-form15.hbs", {
-                        user, fdFifteenData, adminAccess : "True", remarks : foundRemarks, 
-                        formID : fdFifteenData._id, grant : fdFifteenData.grantName
+                        user, fdFifteenData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdFifteenData._id, grant: fdFifteenData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations"){
+            } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations") {
                 var fdSixteenData = forms
 
-                Remark.getRemarksFromForm(fdSixteenData).then((foundRemarks)=> {
+                Remark.getRemarksFromForm(fdSixteenData).then((foundRemarks) => {
                     res.render("preview-form16.hbs", {
-                        user, fdSixteenData, adminAccess : "True", remarks : foundRemarks, 
-                        formID : fdSixteenData._id, grant : fdSixteenData.grantName
+                        user, fdSixteenData, adminAccess: "True", remarks: foundRemarks,
+                        formID: fdSixteenData._id, grant: fdSixteenData.grantName
                     })
-                }, (err)=> {
+                }, (err) => {
                     res.send(err)
                 })
-            } 
+            }
         })
     } else {
         res.redirect("/")
     }
-  })
+})
 
-router.post("/change-status", urlencoder, function(req, res) {
+/**
+ * Change status of the form
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/change-status", urlencoder, function (req, res) {
     console.log("POST /change-status")
 
     var status = req.body.status
     var id = req.body.formID
     var grant = req.body.grant
-    // add more for remarks here
+    var remark = req.body.remark
 
-    if (status == "approved") {
-        if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-            fdOne.approveFDOne(id).then((foundFDOne)=>{
-                User.approveFDOneInUser(foundFDOne).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            })
-        }
-        else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-            fdTwo.approveFDTwo(id).then((foundFDTwo)=>{
-                User.approveFDTwoInUser(foundFDTwo).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            })  
-        }
-        else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
-            fdThree.approveFDThree(id).then((foundFDThree)=>{
-                User.approveFDThreeInUser(foundFDThree).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD4] Support for Participation in Local Conferences"){
-            fdFour.approveFDFour(id).then((foundFDFour)=>{
-                User.approveFDFourInUser(foundFDFour).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
-            fdFifteen.approveFDFifteen(id).then((foundFDFifteen)=>{
-                User.approveFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD16] Support for Membership in Professional Organizations"){
-            fdSixteen.approveFDSixteen(id).then((foundFDSixteen)=>{
-                User.approveFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
+    var statusMessage = ""
 
-    } else if (status == "rejected") {
-        if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-            fdOne.rejectFDOne(id).then((foundFDOne)=>{
-                User.rejectFDOneInUser(foundFDOne).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            })
-        }
-        else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-            fdTwo.rejectFDTwo(id).then((foundFDTwo)=>{
-                User.rejectFDTwoInUser(foundFDTwo).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            })  
-        }
-        else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
-            fdThree.rejectFDThree(id).then((foundFDThree)=>{
-                User.rejectFDThreeInUser(foundFDThree).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD4] Support for Participation in Local Conferences"){
-            fdFour.rejectFDFour(id).then((foundFDFour)=>{
-                User.rejectFDFourInUser(foundFDFour).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
-            fdFifteen.rejectFDFifteen(id).then((foundFDFifteen)=>{
-                User.rejectFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }
-        else if(grant == "[FD16] Support for Membership in Professional Organizations"){
-            fdSixteen.rejectFDSixteen(id).then((foundFDSixteen)=>{
-                User.rejectFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
-                    res.send(updatedUser)
-                })
-            }) 
-        }        
+    if (status == "Approved" || status == "Rejected" || status == "Pending")
+        statusMessage = "Changed to " + status
+
+    var remarkObj = {
+        formId: id, status: statusMessage, remark
     }
 
+    if (status == "Approved" || status == "Rejected" || status == "Pending") {
+        if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+            fdOne.getFDOneByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdOne.changeStatusFDOne(id, status).then((foundFDOne) => {
+                        User.changeStatusFDOneInUser(foundFDOne, status).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdOne.addRemarkInFDOne(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+        }
+        else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+            fdTwo.getFDTwoByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdTwo.changeStatusFDTwo(id, status).then((foundFDTwo) => {
+                        User.changeStatusFDTwoInUser(foundFDTwo, status).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdTwo.addRemarkInFDTwo(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+        }
+        else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+            fdThree.getFDThreeByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdThree.changeStatusFDThree(id, status).then((foundFDThree) => {
+                        User.changeStatusFDThreeInUser(foundFDThree, status).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdThree.addRemarkInFDThree(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+
+
+        }
+        else if (grant == "[FD4] Support for Participation in Local Conferences") {
+            fdFour.getFDFourByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdFour.changeStatusFDFour(id, status).then((foundFDFour) => {
+                        User.changeStatusFDFourInUser(foundFDFour, status).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdFour.addRemarkInFDFour(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+        }
+        else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+            fdFifteen.getFDFifteenByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdFifteen.changeStatusFDFifteen(id, status).then((foundFDFifteen) => {
+                        User.changeStatusFDFifteenInUser(foundFDFifteen, status).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdFifteen.addRemarkInFDFifteen(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+        }
+        else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+            fdSixteen.getFDOneByID(id).then((foundForm) => {
+                if (foundForm.status !== status) {
+                    fdSixteen.changeStatusFDSixteen(id).then((foundFDSixteen) => {
+                        User.changeStatusFDSixteenInUser(foundFDSixteen).then(() => {
+                            Remark.create(remarkObj).then((newRemark) => {
+                                fdSixteen.addRemarkInFDSixteen(newRemark).then(() => {
+                                    res.send(newRemark)
+                                })
+                            })
+                        })
+                    })
+                } else {
+                    res.send(foundForm)
+                }
+            })
+
+        }
+    } else if (remarkObj !== null) {
+        if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdOne.addRemarkInFDOne(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+        else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdTwo.addRemarkInFDTwo(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+        else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdThree.addRemarkInFDThree(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+        else if (grant == "[FD4] Support for Participation in Local Conferences") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdFour.addRemarkInFDFour(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+        else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdFifteen.addRemarkInFDFifteen(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+        else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+            Remark.create(remarkObj).then((newRemark) => {
+                fdSixteen.addRemarkInFDSixteen(newRemark).then(() => {
+                    res.send(newRemark)
+                })
+            })
+        }
+    }
 })
 
 
@@ -250,14 +327,14 @@ router.post("/change-status", urlencoder, function(req, res) {
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterApproved", function(req, res){
+router.get("/filterApproved", function (req, res) {
     console.log("GET /filterApproved")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var statusFilter = 'Approved'
-        var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByStatus(statusFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, statusFilter, noforms: "There are no matches found"
                 })
@@ -278,14 +355,14 @@ router.get("/filterApproved", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterPending", function(req, res){
+router.get("/filterPending", function (req, res) {
     console.log("GET /filterPending")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var statusFilter = 'Pending'
-        var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByStatus(statusFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, statusFilter, noforms: "There are no matches found"
                 })
@@ -306,14 +383,14 @@ router.get("/filterPending", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterRejected", function(req, res){
+router.get("/filterRejected", function (req, res) {
     console.log("GET /filterRejected")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var statusFilter = 'Rejected'
-        var forms = filterAllFormsByStatus(statusFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByStatus(statusFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, statusFilter, noforms: "There are no matches found"
                 })
@@ -334,14 +411,14 @@ router.get("/filterRejected", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCED", function(req, res){
-  console.log("GET /filterCED")
+router.get("/filterCED", function (req, res) {
+    console.log("GET /filterCED")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var departmentFilter = 'College of Education'
-        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, departmentFilter, noforms: "There are no matches found"
                 })
@@ -362,14 +439,14 @@ router.get("/filterCED", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCCS", function(req, res){
-  console.log("GET /filterCCS")
+router.get("/filterCCS", function (req, res) {
+    console.log("GET /filterCCS")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var departmentFilter = 'College of Computer Studies'
-        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, departmentFilter, noforms: "There are no matches found"
                 })
@@ -390,14 +467,14 @@ router.get("/filterCCS", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCOL", function(req, res){
+router.get("/filterCOL", function (req, res) {
     console.log("GET /filterCOL")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var departmentFilter = 'College of Law'
-        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, departmentFilter, noforms: "There are no matches found"
                 })
@@ -418,26 +495,26 @@ router.get("/filterCOL", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCLA", function(req, res){
-  console.log("GET /filterCLA")
+router.get("/filterCLA", function (req, res) {
+    console.log("GET /filterCLA")
 
-  var user = req.session.user
-  if(user){
-      var departmentFilter = 'College of Liberal Arts'
-      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, departmentFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
-        }
-      })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var departmentFilter = 'College of Liberal Arts'
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -446,14 +523,14 @@ router.get("/filterCLA", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCOS", function(req, res){
-  console.log("GET /filterCOS")
+router.get("/filterCOS", function (req, res) {
+    console.log("GET /filterCOS")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var departmentFilter = 'College of Science'
-        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, departmentFilter, noforms: "There are no matches found"
                 })
@@ -474,26 +551,26 @@ router.get("/filterCOS", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCOE", function(req, res){
-  console.log("GET /filterCOE")
+router.get("/filterCOE", function (req, res) {
+    console.log("GET /filterCOE")
 
-  var user = req.session.user
-  if(user){
-      var departmentFilter = 'College of Engineering'
-      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, departmentFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, departmentFilter
-            })
-        }
-      })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var departmentFilter = 'College of Engineering'
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -502,26 +579,26 @@ router.get("/filterCOE", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterCOB", function(req, res){
-  console.log("GET /filterCOB")
+router.get("/filterCOB", function (req, res) {
+    console.log("GET /filterCOB")
 
-  var user = req.session.user
-  if(user){
-      var departmentFilter = 'College of Business'
-      var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, departmentFilter, noforms: "There are no matches found"
-            })
-        } else {
-          res.render("view-grants.hbs", {
-              user, forms, departmentFilter
-          })
-        }
-      })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var departmentFilter = 'College of Business'
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, departmentFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, departmentFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -530,14 +607,14 @@ router.get("/filterCOB", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterSOE", function(req, res){
-   console.log("GET /filterSOE")
+router.get("/filterSOE", function (req, res) {
+    console.log("GET /filterSOE")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var departmentFilter = 'School of Economics'
-        var forms = filterAllFormsByDepartment(departmentFilter, function(forms){
-            if (forms == ""){
+        var forms = filterAllFormsByDepartment(departmentFilter, function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, departmentFilter, noforms: "There are no matches found"
                 })
@@ -558,14 +635,14 @@ router.get("/filterSOE", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD1", function(req, res){
+router.get("/filterFD1", function (req, res) {
     console.log("GET /filterFD1")
 
     var user = req.session.user
-    if(user){
+    if (user) {
         var formFilter = 'FD1'
-        fdOne.getAllFDOne().then((forms)=>{
-            if (forms == ""){
+        fdOne.getAllFDOne().then((forms) => {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user, formFilter, noforms: "There are no matches found"
                 })
@@ -586,26 +663,26 @@ router.get("/filterFD1", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD2", function(req, res){
-  console.log("GET /filterFD2")
+router.get("/filterFD2", function (req, res) {
+    console.log("GET /filterFD2")
 
-  var user = req.session.user
-  if(user){
-      var formFilter = 'FD2'
-      fdTwo.getAllFDTwo().then((forms)=>{
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, formFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
-        }
-    })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var formFilter = 'FD2'
+        fdTwo.getAllFDTwo().then((forms) => {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -614,26 +691,26 @@ router.get("/filterFD2", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD3", function(req, res){
-  console.log("GET /filterFD3")
+router.get("/filterFD3", function (req, res) {
+    console.log("GET /filterFD3")
 
-  var user = req.session.user
-  if(user){
-      var formFilter = 'FD3'
-      fdThree.getAllFDThree().then((forms)=>{
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, formFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
-        }
-    })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var formFilter = 'FD3'
+        fdThree.getAllFDThree().then((forms) => {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -642,26 +719,26 @@ router.get("/filterFD3", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD4", function(req, res){
-  console.log("GET /filterFD4")
+router.get("/filterFD4", function (req, res) {
+    console.log("GET /filterFD4")
 
-  var user = req.session.user
-  if(user){
-      var formFilter = 'FD4'
-      fdFour.getAllFDFour().then((forms)=>{
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, formFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
-        }
-    })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var formFilter = 'FD4'
+        fdFour.getAllFDFour().then((forms) => {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -670,26 +747,26 @@ router.get("/filterFD4", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD15", function(req, res){
-  console.log("GET /filterFD15")
+router.get("/filterFD15", function (req, res) {
+    console.log("GET /filterFD15")
 
-  var user = req.session.user
-  if(user){
-      var formFilter = 'FD15'
-      fdFifteen.getAllFDFifteen().then((forms)=>{
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, formFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
-        }
-    })
-  } else {
-    res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var formFilter = 'FD15'
+        fdFifteen.getAllFDFifteen().then((forms) => {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -698,26 +775,26 @@ router.get("/filterFD15", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/filterFD16", function(req, res){
-  console.log("GET /filterFD16")
+router.get("/filterFD16", function (req, res) {
+    console.log("GET /filterFD16")
 
-  var user = req.session.user
-  if(user){
-      var formFilter = 'FD16'
-      fdSixteen.getAllFDSixteen().then((forms)=>{
-        if (forms == ""){
-            res.render("view-grants.hbs", {
-                user, formFilter, noforms: "There are no matches found"
-            })
-        } else {
-            res.render("view-grants.hbs", {
-                user, forms, formFilter
-            })
-        }
-    })
-  } else {
-      res.redirect("/")
-  }
+    var user = req.session.user
+    if (user) {
+        var formFilter = 'FD16'
+        fdSixteen.getAllFDSixteen().then((forms) => {
+            if (forms == "") {
+                res.render("view-grants.hbs", {
+                    user, formFilter, noforms: "There are no matches found"
+                })
+            } else {
+                res.render("view-grants.hbs", {
+                    user, forms, formFilter
+                })
+            }
+        })
+    } else {
+        res.redirect("/")
+    }
 })
 
 
@@ -816,67 +893,148 @@ router.get("/filterFD16", function(req, res){
  * @param {Request} req
  * @param {Response} res
  */
-router.delete("/deleteform", urlencoder, (req, res) => {
-    console.log("POST /deleteform " + req.body.id)
-    
+router.delete("/delete-remark", urlencoder, (req, res) => {
+    console.log("POST /delete-remark " + req.body.id)
+
+    var grant = req.body.grant
+    var formID = req.body.formID
+    var remarkID = req.body.id
+
+    if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdOne.deleteRemarkInFDOne(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+    else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdTwo.deleteRemarkInFDTwo(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+    else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdThree.deleteRemarkInFDThree(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+    else if (grant == "[FD4] Support for Participation in Local Conferences") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdFour.deleteRemarkInFDFour(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdFifteen.deleteRemarkInFDFifteen(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+    else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
+            fdSixteen.deleteRemarkInFDSixteen(foundRemark).then((deletedRemark)=> {
+                Remark.delete(remarkID).then((deletedResult)=> {
+                    res.send(deletedResult)
+                })
+            }, (err)=> {
+                res.send(err)
+            })
+        })
+    }
+})
+
+/**
+ * Deletes a grant request form
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.delete("/delete-form", urlencoder, (req, res) => {
+    console.log("POST /delete-form " + req.body.id)
+
     var grant = req.body.grant
     var id = req.body.id
-    
-    if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdOne.getFDOneByID(id).then((foundFDOne)=>{
-            User.deleteFDOneInUser(foundFDOne).then((updatedUser)=>{
-                fdOne.delete(req.body.id).then((result) => {	
+
+    if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdOne.getFDOneByID(id).then((foundFDOne) => {
+            User.deleteFDOneInUser(foundFDOne).then((updatedUser) => {
+                fdOne.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
         })
     }
-    else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-        fdTwo.getFDTwoByID(id).then((foundFDTwo)=>{
-            User.deleteFDTwoInUser(foundFDTwo).then((updatedUser)=>{
-                fdTwo.delete(req.body.id).then((result) => {	
+    else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+        fdTwo.getFDTwoByID(id).then((foundFDTwo) => {
+            User.deleteFDTwoInUser(foundFDTwo).then((updatedUser) => {
+                fdTwo.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
-        })  
+        })
     }
-    else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
-        fdThree.getFDThreeByID(id).then((foundFDThree)=>{
-            User.deleteFDThreeInUser(foundFDThree).then((updatedUser)=>{
-                fdThree.delete(req.body.id).then((result) => {	
+    else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+        fdThree.getFDThreeByID(id).then((foundFDThree) => {
+            User.deleteFDThreeInUser(foundFDThree).then((updatedUser) => {
+                fdThree.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
-        }) 
+        })
     }
-    else if(grant == "[FD4] Support for Participation in Local Conferences"){
-        fdFour.getFDFourByID(id).then((foundFDFour)=>{
-            User.deleteFDFourInUser(foundFDFour).then((updatedUser)=>{
-                fdFour.delete(req.body.id).then((result) => {	
+    else if (grant == "[FD4] Support for Participation in Local Conferences") {
+        fdFour.getFDFourByID(id).then((foundFDFour) => {
+            User.deleteFDFourInUser(foundFDFour).then((updatedUser) => {
+                fdFour.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
-        }) 
+        })
     }
-    else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdFifteen.getFDFifteenByID(id).then((foundFDFifteen)=>{
-            User.deleteFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
-                fdFifteen.delete(req.body.id).then((result) => {	
+    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdFifteen.getFDFifteenByID(id).then((foundFDFifteen) => {
+            User.deleteFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
+                fdFifteen.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
-        }) 
+        })
     }
-    else if(grant == "[FD16] Support for Membership in Professional Organizations"){
-        fdSixteen.getFDSixteenByID(id).then((foundFDSixteen)=>{
-            User.deleteFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
-                fdSixteen.delete(req.body.id).then((result) => {	
+    else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+        fdSixteen.getFDSixteenByID(id).then((foundFDSixteen) => {
+            User.deleteFDSixteenInUser(foundFDSixteen).then((updatedUser) => {
+                fdSixteen.delete(req.body.id).then((result) => {
                     res.send(result)
                 })
             })
-        }) 
+        })
     }
-    
+
 })
 
 /**
@@ -887,53 +1045,53 @@ router.delete("/deleteform", urlencoder, (req, res) => {
  */
 router.post("/approveform", urlencoder, (req, res) => {
     console.log("POST /approveform " + req.body.id)
-    
+
     var grant = req.body.grant
     var id = req.body.id
-    
-    if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdOne.approveFDOne(id).then((foundFDOne)=>{
-            User.approveFDOneInUser(foundFDOne).then((updatedUser)=>{
+
+    if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdOne.approveFDOne(id).then((foundFDOne) => {
+            User.approveFDOneInUser(foundFDOne).then((updatedUser) => {
                 res.send(updatedUser)
             })
         })
     }
-    else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-        fdTwo.approveFDTwo(id).then((foundFDTwo)=>{
-            User.approveFDTwoInUser(foundFDTwo).then((updatedUser)=>{
+    else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+        fdTwo.approveFDTwo(id).then((foundFDTwo) => {
+            User.approveFDTwoInUser(foundFDTwo).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        })  
+        })
     }
-    else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
-        fdThree.approveFDThree(id).then((foundFDThree)=>{
-            User.approveFDThreeInUser(foundFDThree).then((updatedUser)=>{
+    else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+        fdThree.approveFDThree(id).then((foundFDThree) => {
+            User.approveFDThreeInUser(foundFDThree).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD4] Support for Participation in Local Conferences"){
-        fdFour.approveFDFour(id).then((foundFDFour)=>{
-            User.approveFDFourInUser(foundFDFour).then((updatedUser)=>{
+    else if (grant == "[FD4] Support for Participation in Local Conferences") {
+        fdFour.approveFDFour(id).then((foundFDFour) => {
+            User.approveFDFourInUser(foundFDFour).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdFifteen.approveFDFifteen(id).then((foundFDFifteen)=>{
-            User.approveFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
+    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdFifteen.approveFDFifteen(id).then((foundFDFifteen) => {
+            User.approveFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD16] Support for Membership in Professional Organizations"){
-        fdSixteen.approveFDSixteen(id).then((foundFDSixteen)=>{
-            User.approveFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
+    else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+        fdSixteen.approveFDSixteen(id).then((foundFDSixteen) => {
+            User.approveFDSixteenInUser(foundFDSixteen).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    
+
 })
 
 /**
@@ -944,53 +1102,53 @@ router.post("/approveform", urlencoder, (req, res) => {
  */
 router.post("/rejectform", urlencoder, (req, res) => {
     console.log("POST /rejectform " + req.body.id)
-    
+
     var grant = req.body.grant
     var id = req.body.id
-    
-    if(grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdOne.rejectFDOne(id).then((foundFDOne)=>{
-            User.rejectFDOneInUser(foundFDOne).then((updatedUser)=>{
+
+    if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdOne.rejectFDOne(id).then((foundFDOne) => {
+            User.rejectFDOneInUser(foundFDOne).then((updatedUser) => {
                 res.send(updatedUser)
             })
         })
     }
-    else if(grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
-        fdTwo.rejectFDTwo(id).then((foundFDTwo)=>{
-            User.rejectFDTwoInUser(foundFDTwo).then((updatedUser)=>{
+    else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
+        fdTwo.rejectFDTwo(id).then((foundFDTwo) => {
+            User.rejectFDTwoInUser(foundFDTwo).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        })  
+        })
     }
-    else if(grant == "[FD3] Support for Paper Presentations in Conferences"){
-        fdThree.rejectFDThree(id).then((foundFDThree)=>{
-            User.rejectFDThreeInUser(foundFDThree).then((updatedUser)=>{
+    else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
+        fdThree.rejectFDThree(id).then((foundFDThree) => {
+            User.rejectFDThreeInUser(foundFDThree).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD4] Support for Participation in Local Conferences"){
-        fdFour.rejectFDFour(id).then((foundFDFour)=>{
-            User.rejectFDFourInUser(foundFDFour).then((updatedUser)=>{
+    else if (grant == "[FD4] Support for Participation in Local Conferences") {
+        fdFour.rejectFDFour(id).then((foundFDFour) => {
+            User.rejectFDFourInUser(foundFDFour).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal"){
-        fdFifteen.rejectFDFifteen(id).then((foundFDFifteen)=>{
-            User.rejectFDFifteenInUser(foundFDFifteen).then((updatedUser)=>{
+    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        fdFifteen.rejectFDFifteen(id).then((foundFDFifteen) => {
+            User.rejectFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    else if(grant == "[FD16] Support for Membership in Professional Organizations"){
-        fdSixteen.rejectFDSixteen(id).then((foundFDSixteen)=>{
-            User.rejectFDSixteenInUser(foundFDSixteen).then((updatedUser)=>{
+    else if (grant == "[FD16] Support for Membership in Professional Organizations") {
+        fdSixteen.rejectFDSixteen(id).then((foundFDSixteen) => {
+            User.rejectFDSixteenInUser(foundFDSixteen).then((updatedUser) => {
                 res.send(updatedUser)
             })
-        }) 
+        })
     }
-    
+
 })
 
 
@@ -1002,19 +1160,19 @@ module.exports = router
  *
  * @param {Callback function} callback
  */
-function getAllForms(callback){
-    
-    fdOne.getAllFDOne().then((fdOneData)=>{
+function getAllForms(callback) {
+
+    fdOne.getAllFDOne().then((fdOneData) => {
         forms = fdOneData
-        fdTwo.getAllFDTwo().then((fdTwoData)=>{
+        fdTwo.getAllFDTwo().then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            fdThree.getAllFDThree().then((fdThreeData)=>{
+            fdThree.getAllFDThree().then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                fdFour.getAllFDFour().then((fdFourData)=>{
+                fdFour.getAllFDFour().then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    fdFifteen.getAllFDFifteen().then((fdFifteenData)=>{
+                    fdFifteen.getAllFDFifteen().then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        fdSixteen.getAllFDSixteen().then((fdSixteenData)=>{
+                        fdSixteen.getAllFDSixteen().then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
@@ -1031,28 +1189,28 @@ function getAllForms(callback){
  * @param {Filter} status
  * @param {Callback function} callback
  */
-function filterAllFormsByStatus(status, callback){
-    
-    fdOne.getFDOneByStatus(status).then((fdOneData)=>{
+function filterAllFormsByStatus(status, callback) {
+
+    fdOne.getFDOneByStatus(status).then((fdOneData) => {
         forms = fdOneData
-        fdTwo.getFDTwoByStatus(status).then((fdTwoData)=>{
+        fdTwo.getFDTwoByStatus(status).then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            fdThree.getFDThreeByStatus(status).then((fdThreeData)=>{
+            fdThree.getFDThreeByStatus(status).then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                fdFour.getFDFourByStatus(status).then((fdFourData)=>{
+                fdFour.getFDFourByStatus(status).then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    fdFifteen.getFDFifteenByStatus(status).then((fdFifteenData)=>{
+                    fdFifteen.getFDFifteenByStatus(status).then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        fdSixteen.getFDSixteenByStatus(status).then((fdSixteenData)=>{
+                        fdSixteen.getFDSixteenByStatus(status).then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })
     })
-} 
+}
 
 /**
  * Gets all forms by Department
@@ -1060,28 +1218,28 @@ function filterAllFormsByStatus(status, callback){
  * @param {Filter} department
  * @param {Callback function} callback
  */
-function filterAllFormsByDepartment(department, callback){
-    
-    fdOne.getFDOneByDepartment(department).then((fdOneData)=>{
+function filterAllFormsByDepartment(department, callback) {
+
+    fdOne.getFDOneByDepartment(department).then((fdOneData) => {
         forms = fdOneData
-        fdTwo.getFDTwoByDepartment(department).then((fdTwoData)=>{
+        fdTwo.getFDTwoByDepartment(department).then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            fdThree.getFDThreeByDepartment(department).then((fdThreeData)=>{
+            fdThree.getFDThreeByDepartment(department).then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                fdFour.getFDFourByDepartment(department).then((fdFourData)=>{
+                fdFour.getFDFourByDepartment(department).then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    fdFifteen.getFDFifteenByDepartment(department).then((fdFifteenData)=>{
+                    fdFifteen.getFDFifteenByDepartment(department).then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        fdSixteen.getFDSixteenByDepartment(department).then((fdSixteenData)=>{
+                        fdSixteen.getFDSixteenByDepartment(department).then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })
     })
-} 
+}
 
 /**
  * Gets all forms by First Name
@@ -1089,28 +1247,28 @@ function filterAllFormsByDepartment(department, callback){
  * @param {Filter} firstName
  * @param {Callback function} callback
  */
-function filterAllFormsByFirstName(firstName, callback){
-    
-    User.getFDOneFormsByFirstName(firstName).then((fdOneData)=>{
+function filterAllFormsByFirstName(firstName, callback) {
+
+    User.getFDOneFormsByFirstName(firstName).then((fdOneData) => {
         forms = fdOneData
-        User.getFDTwoFormsByFirstName(firstName).then((fdTwoData)=>{
+        User.getFDTwoFormsByFirstName(firstName).then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            User.getFDThreeFormsByFirstName(firstName).then((fdThreeData)=>{
+            User.getFDThreeFormsByFirstName(firstName).then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                User.getFDFourFormsByFirstName(firstName).then((fdFourData)=>{
+                User.getFDFourFormsByFirstName(firstName).then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    User.getFDFifteenFormsByFirstName(firstName).then((fdFifteenData)=>{
+                    User.getFDFifteenFormsByFirstName(firstName).then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        User.getFDSixteenFormsByFirstName(firstName).then((fdSixteenData)=>{
+                        User.getFDSixteenFormsByFirstName(firstName).then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })
     })
-} 
+}
 
 /**
  * Gets all forms by Last Name
@@ -1118,28 +1276,28 @@ function filterAllFormsByFirstName(firstName, callback){
  * @param {Filter} lastName
  * @param {Callback function} callback
  */
-function filterAllFormsByLastName(lastName, callback){
-    
-    User.getFDOneFormsByLastName(lastName).then((fdOneData)=>{
+function filterAllFormsByLastName(lastName, callback) {
+
+    User.getFDOneFormsByLastName(lastName).then((fdOneData) => {
         forms = fdOneData
-        User.getFDTwoFormsByLastName(lastName).then((fdTwoData)=>{
+        User.getFDTwoFormsByLastName(lastName).then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            User.getFDThreeFormsByLastName(lastName).then((fdThreeData)=>{
+            User.getFDThreeFormsByLastName(lastName).then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                User.getFDFourFormsByLastName(lastName).then((fdFourData)=>{
+                User.getFDFourFormsByLastName(lastName).then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    User.getFDFifteenFormsByLastName(lastName).then((fdFifteenData)=>{
+                    User.getFDFifteenFormsByLastName(lastName).then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        User.getFDSixteenFormsByLastName(lastName).then((fdSixteenData)=>{
+                        User.getFDSixteenFormsByLastName(lastName).then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })
     })
-} 
+}
 
 /**
  * Gets all forms by Full Name
@@ -1147,28 +1305,28 @@ function filterAllFormsByLastName(lastName, callback){
  * @param {Filter} fullName
  * @param {Callback function} callback
  */
-function filterAllFormsByFullName(firstName, lastName, callback){
-    
-    User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData)=>{
+function filterAllFormsByFullName(firstName, lastName, callback) {
+
+    User.getFDOneFormsByFullName(firstName, lastName).then((fdOneData) => {
         forms = fdOneData
-        User.getFDTwoFormsByFullName(firstName, lastName).then((fdTwoData)=>{
+        User.getFDTwoFormsByFullName(firstName, lastName).then((fdTwoData) => {
             forms = forms.concat(fdTwoData)
-            User.getFDThreeFormsByFullName(firstName, lastName).then((fdThreeData)=>{
+            User.getFDThreeFormsByFullName(firstName, lastName).then((fdThreeData) => {
                 forms = forms.concat(fdThreeData)
-                User.getFDFourFormsByFullName(firstName, lastName).then((fdFourData)=>{
+                User.getFDFourFormsByFullName(firstName, lastName).then((fdFourData) => {
                     forms = forms.concat(fdFourData)
-                    User.getFDFifteenFormsByFullName(firstName, lastName).then((fdFifteenData)=>{
+                    User.getFDFifteenFormsByFullName(firstName, lastName).then((fdFifteenData) => {
                         forms = forms.concat(fdFifteenData)
-                        User.getFDSixteenFormsByFullName(firstName, lastName).then((fdSixteenData)=>{
+                        User.getFDSixteenFormsByFullName(firstName, lastName).then((fdSixteenData) => {
                             forms = forms.concat(fdSixteenData)
                             callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })
     })
-} 
+}
 
 /**
  * Compares two values from the .hbs files for ease of
@@ -1177,48 +1335,68 @@ function filterAllFormsByFullName(firstName, lastName, callback){
  * @param {options} options.fn
  * @param {options} options.inverse
  */
-hbs.registerHelper('checkstatus', function(p1, p2, options) { 
-    if(p1 == p2) {
-      return options.fn(this);
+hbs.registerHelper('checkstatus', function (p1, p2, options) {
+    if (p1 == p2) {
+        return options.fn(this);
     } else {
-      return options.inverse(this);
+        return options.inverse(this);
     }
-  })
-  
+})
+
+/**
+ * For formating of date with the time.
+ * 
+ * @param {Date} date  
+ */
+hbs.registerHelper('formatDateTime', function (date) {
+    var momentDate = moment(date);
+    return momentDate.format("MMMM D, YYYY h:mm A");
+})
+
+/**
+ * For formating of date.
+ * 
+ * @param {Date} date  
+ */
+hbs.registerHelper('formatDate', function (date) {
+    var momentDate = moment(date);
+    return momentDate.format("MMMM D, YYYY");
+})
+
 /**
  * Gets a form (By ID)
  *
  * @param {Filter} id
  * @param {Callback function} callback
  */
-function getFormById(id, callback){
-    
-    fdOne.getFDOneByID(id).then((fdOneData)=>{
+function getFormById(id, callback) {
+
+    fdOne.getFDOneByID(id).then((fdOneData) => {
         forms = fdOneData
         if (forms != null)
             callback(forms)
-        fdTwo.getFDTwoByID(id).then((fdTwoData)=>{
+        fdTwo.getFDTwoByID(id).then((fdTwoData) => {
             forms = fdTwoData
             if (forms != null)
                 callback(forms)
-            fdThree.getFDThreeByID(id).then((fdThreeData)=>{
+            fdThree.getFDThreeByID(id).then((fdThreeData) => {
                 forms = fdThreeData
                 if (forms != null)
                     callback(forms)
-                fdFour.getFDFourByID(id).then((fdFourData)=>{
+                fdFour.getFDFourByID(id).then((fdFourData) => {
                     forms = fdFourData
                     if (forms != null)
                         callback(forms)
-                    fdFifteen.getFDFifteenByID(id).then((fdFifteenData)=>{
+                    fdFifteen.getFDFifteenByID(id).then((fdFifteenData) => {
                         forms = fdFifteenData
                         if (forms != null)
                             callback(forms)
-                        fdSixteen.getFDSixteenByID(id).then((fdSixteenData)=>{
+                        fdSixteen.getFDSixteenByID(id).then((fdSixteenData) => {
                             forms = fdSixteenData
                             if (forms != null)
                                 callback(forms)
                         })
-                    }) 
+                    })
                 })
             })
         })

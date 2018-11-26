@@ -18,7 +18,7 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD15 Form Schema
  */
 var fdFifteenSchema = mongoose.Schema({
-    timestamp: String,
+    timestamp: Date,
     formId : String,
     grantName : String,
     ownerIdNumber : String,
@@ -55,7 +55,6 @@ exports.create = function(paramFDFifteen){
         
         fdFifteen.countDocuments().then((count) => {
             if(count == 0){
-                f.timestamp = moment().format('LLL')+"" 
                 f.formId = f.formId + count
                 f.save().then((newFDFifteen)=>{    
                         resolve(newFDFifteen)
@@ -123,12 +122,12 @@ exports.edit = function(paramFDFifteen){
  *
  * @param {FD15 record to be approved} paramID
  */
-exports.approveFDFifteen = function(paramID){
+exports.changeStatusFDFifteen = function(paramID, status){
     return new Promise(function(resolve, reject){
         fdFifteen.findOneAndUpdate({
             _id : paramID
         }, {
-            "$set" : {"grantStatus" : "Approve"}
+            "$set" : {"grantStatus" : status}
         }).then((updatedFDFifteen)=>{
             resolve(updatedFDFifteen)
         }, (err)=>{
@@ -286,7 +285,7 @@ exports.deleteRemarkInFDFifteen = function(paramRemark){
         fdFifteen.findOneAndUpdate({
             _id : paramRemark.formId
         }, {
-            $pull : {remark : {_id : paramRemark._id}}
+            $pull : {remarks : {_id : paramRemark._id}}
         }).then((foundRemark)=>{
             resolve(foundRemark)
         }, (err)=>{
