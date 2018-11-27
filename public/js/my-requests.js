@@ -8,7 +8,10 @@
 $(document).ready(function() {
     $('#example').DataTable({
         order: [[ 1, "desc" ]],
-        lengthChange: true
+        lengthChange: true,
+        aoColumns: [
+            null, null, null, null, { "bSearchable": false }, { "bSearchable": false },
+        ]
     });
     
     $('.ui.dropdown').dropdown({forceSelection: false});

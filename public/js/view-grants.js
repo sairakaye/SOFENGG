@@ -9,6 +9,9 @@ $(document).ready(function() {
     var table = $('#example').DataTable( { 
         order: [[ 1, "desc" ]],
         lengthChange: false,
+        aoColumns: [
+            null, null, null, null, null, null, { "bSearchable": false },
+        ],
         buttons: [  
         {
             extend: 'excel',
