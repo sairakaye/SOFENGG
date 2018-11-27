@@ -242,7 +242,7 @@
                 <div class="two fields">
                   <div class=" field">
                     <label>Date Hired</label>
-                    <p>{{fdOneData.dateHired}}</p>
+                    <p>{{formatDate fdOneData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdOneData.dateHired}}" />
                   </div>
                   <div class="field">
@@ -273,13 +273,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date paper was submitted for publication</label>
-                      <p>{{fdOneData.datePaperSubmitted}}</p>
+                      <p>{{formatDate fdOneData.datePaperSubmitted}}</p>
                       <input type="hidden" name="datePaperSubmitted" placeholder="Date" id="datePaperSubmitted" class="check"
                         value="{{fdOneData.datePaperSubmitted}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date paper was accepted for publication</label>
-                      <p>{{fdOneData.datePaperAccepted}}</p>
+                      <p>{{formatDate fdOneData.datePaperAccepted}}</p>
                       <input type="hidden" name="datePaperAccepted" placeholder="Date" id="datePaperAccepted" class="check"
                         value="{{fdOneData.datePaperAccepted}}" />
                     </div>
@@ -302,13 +302,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
-                      <p>{{fdOneData.dateOfStartConference}}</p>
+                      <p>{{formatDate fdOneData.dateOfStartConference}}</p>
                       <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
                         class="check" value="{{fdOneData.dateOfStartConference}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
-                      <p>{{fdOneData.dateOfEndConference}}</p>
+                      <p>{{formatDate fdOneData.dateOfEndConference}}</p>
                       <input type="hidden" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference" class="check"
                         value="{{fdOneData.dateOfEndConference}}" />
                     </div>
@@ -323,13 +323,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
-                      <p>{{fdOneData.dateOfDeparture}}</p>
+                      <p>{{formatDate fdOneData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdOneData.dateOfDeparture}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
-                      <p>{{fdOneData.dateOfReturn}}</p>
+                      <p>{{formatDate fdOneData.dateOfReturn}}</p>
                       <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdOneData.dateOfReturn}}" />
                     </div>
                   </div>
@@ -338,13 +338,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of expected return to work</label>
-                      <p>{{fdOneData.dateOfReturnToWork}}</p>
+                      <p>{{formatDate fdOneData.dateOfReturnToWork}}</p>
                       <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
                         value="{{fdOneData.dateOfReturnToWork}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
-                      <p>{{fdOneData.dateIncentiveLastAvailed}}</p>
+                      <p>{{formatDate fdOneData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdOneData.dateIncentiveLastAvailed}}" />
                     </div>

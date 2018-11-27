@@ -242,7 +242,7 @@ November 15, 2018
                 <div class="two fields">
                   <div class="field">
                     <label>Date Hired</label>
-                    <p>{{fdThreeData.dateHired}}</p>
+                    <p>{{formatDate fdThreeData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
                   </div>
                   <div class="field">
@@ -271,13 +271,13 @@ November 15, 2018
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
-                      <p>{{fdThreeData.dateOfStartConference}}</p>
+                      <p>{{formatDate fdThreeData.dateOfStartConference}}</p>
                       <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
                         class="check" value="{{fdThreeData.dateOfStartConference}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
-                      <p>{{fdThreeData.dateOfEndConference}}</p>
+                      <p>{{formatDate fdThreeData.dateOfEndConference}}</p>
                       <input type="hidden" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference" class="check"
                         value="{{fdThreeData.dateOfEndConference}}" />
                     </div>
@@ -292,13 +292,13 @@ November 15, 2018
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
-                      <p>{{fdThreeData.dateOfDeparture}}</p>
+                      <p>{{formatDate fdThreeData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdThreeData.dateOfDeparture}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
-                      <p>{{fdThreeData.dateOfReturn}}</p>
+                      <p>{{formatDate fdThreeData.dateOfReturn}}</p>
                       <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdThreeData.dateOfReturn}}" />
                     </div>
                   </div>
@@ -312,7 +312,7 @@ November 15, 2018
                   </div>
                   <div class="eight wide field">
                     <label>Date of expected return to work</label>
-                    <p>{{fdThreeData.dateOfReturnToWork}}</p>
+                    <p>{{formatDate fdThreeData.dateOfReturnToWork}}</p>
                     <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
                       value="{{fdThreeData.dateOfReturnToWork}}" />
                   </div>
@@ -326,7 +326,7 @@ November 15, 2018
                   </div>
                   <div class="eight wide field">
                     <label>Date incentive was last availed of</label>
-                    <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
+                    <p>{{formatDate fdThreeData.dateIncentiveLastAvailed}}</p>
                     <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                       class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
                   </div>

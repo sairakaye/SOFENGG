@@ -248,13 +248,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
-                      <p>{{fdFourData.dateOfStartConference}}</p>
+                      <p>{{formatDate fdFourData.dateOfStartConference}}</p>
                       <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference" class="check"
                         value="{{fdFourData.dateOfStartConference}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
-                      <p>{{fdFourData.dateOfEndConference}}</p>
+                      <p>{{formatDate fdFourData.dateOfEndConference}}</p>
                       <input type="hidden" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference" class="check"
                         value="{{fdFourData.dateOfEndConference}}" />
                     </div>
@@ -269,13 +269,13 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
-                      <p>{{fdFourData.dateOfDeparture}}</p>
+                      <p>{{formatDate fdFourData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdFourData.dateOfDeparture}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
-                      <p>{{fdFourData.dateOfReturn}}</p>
+                      <p>{{formatDate fdFourData.dateOfReturn}}</p>
                       <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdFourData.dateOfReturn}}" />
                     </div>
                   </div>
@@ -295,7 +295,7 @@
                     </div>
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
-                      <p>{{fdFourData.dateIncentiveLastAvailed}}</p>
+                      <p>{{formatDate fdFourData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
                     </div>

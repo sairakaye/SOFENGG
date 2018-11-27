@@ -53,7 +53,8 @@ var fdFour = mongoose.model("fdFour", fdFourSchema)
 exports.create = function(paramFDFour){
     return new Promise(function(resolve, reject){
         
-        var f = new fdFour(paramFDFour)
+        var f = new fdFour(paramFDFour)        
+        f.timestamp = new Date()
         var i
         
         fdFour.countDocuments().then((count) => {
