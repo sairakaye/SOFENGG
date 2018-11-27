@@ -48,7 +48,6 @@ $("button#reset-button").on("click", function() {
   $("#remark").val("")
 })
 
-
 $("#remarks-form").submit(function (e) {
   e.preventDefault();
 
