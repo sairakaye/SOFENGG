@@ -235,8 +235,14 @@
                   </div>
                   <div class="field">
                     <label>Date Hired</label>
+                    {{#if viewdetails}}
                     <p>{{formatDate fdTwoData.dateHired}}</p>
+                    {{else if adminAccess}}
+                    <p>{{formatDate fdTwoData.dateHired}}</p>
+                    {{else}}
+                    <p>{{fdTwoData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdTwoData.dateHired}}" />
+                    {{/if}}
                   </div>
                 </div>
                 <div class="two fields">
@@ -273,15 +279,27 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateOfStartConference}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateOfStartConference}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateOfStartConference}}</p>
                       <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
                         class="check" value="{{fdTwoData.dateOfStartConference}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateOfEndConference}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateOfEndConference}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateOfEndConference}}</p>
                       <input type="hidden" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference" class="check"
                         value="{{fdTwoData.dateOfEndConference}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -294,14 +312,26 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateOfDeparture}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateOfDeparture}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdTwoData.dateOfDeparture}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateOfReturn}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateOfReturn}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateOfReturn}}</p>
                       <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdTwoData.dateOfReturn}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -309,19 +339,30 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of expected return to work</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateOfReturnToWork}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateOfReturnToWork}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateOfReturnToWork}}</p>
                       <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
                         value="{{fdTwoData.dateOfReturnToWork}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdTwoData.dateIncentiveLastAvailed}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdTwoData.dateIncentiveLastAvailed}}</p>
+                      {{else}}
+                      <p>{{fdTwoData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdTwoData.dateIncentiveLastAvailed}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
-
 
                 <div class="ui divider"></div>
                 <br>
@@ -352,7 +393,7 @@
               {{else}}
 
               {{/if}}
-              
+
               <!-- This the modal for logout confirmation -->
               <div class="ui mini modal logout">
                 <div class="header">Are you sure?</div>

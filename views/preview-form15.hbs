@@ -259,13 +259,25 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Duration Start</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdFifteenData.startTime}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdFifteenData.startTime}}</p>
+                      {{else}}
+                      <p>{{fdFifteenData.startTime}}</p>
                       <input type="hidden" name="startTime" placeholder="Date" id="startTime" class="check" value="{{fdFifteenData.startTime}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Duration End</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdFifteenData.endTime}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdFifteenData.endTime}}</p>
+                      {{else}}
+                      <p>{{fdFifteenData.endTime}}</p>
                       <input type="hidden" name="endTime" placeholder="Date" id="endTime" class="check" value="{{fdFifteenData.endTime}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -273,9 +285,15 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
+                      {{else}}
+                      <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Participant’s Fee (check payable to)</label>

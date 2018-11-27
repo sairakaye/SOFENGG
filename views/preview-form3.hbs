@@ -242,8 +242,14 @@ November 15, 2018
                 <div class="two fields">
                   <div class="field">
                     <label>Date Hired</label>
+                    {{#if viewdetails}}
                     <p>{{formatDate fdThreeData.dateHired}}</p>
+                    {{else if adminAccess}}
+                    <p>{{formatDate fdThreeData.dateHired}}</p>
+                    {{else}}
+                    <p>{{fdThreeData.dateHired}}</p>
                     <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
+                    {{/if}}
                   </div>
                   <div class="field">
                     <label>Status</label>
@@ -271,15 +277,27 @@ November 15, 2018
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Conference (Start)</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdThreeData.dateOfStartConference}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdThreeData.dateOfStartConference}}</p>
+                      {{else}}
+                      <p>{{fdThreeData.dateOfStartConference}}</p>
                       <input type="hidden" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
                         class="check" value="{{fdThreeData.dateOfStartConference}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Date of Conference (End)</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdThreeData.dateOfEndConference}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdThreeData.dateOfEndConference}}</p>
+                      {{else}}
+                      <p>{{fdThreeData.dateOfEndConference}}</p>
                       <input type="hidden" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference" class="check"
                         value="{{fdThreeData.dateOfEndConference}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -292,14 +310,26 @@ November 15, 2018
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date of Departure</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdThreeData.dateOfDeparture}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdThreeData.dateOfDeparture}}</p>
+                      {{else}}
+                      <p>{{fdThreeData.dateOfDeparture}}</p>
                       <input type="hidden" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
                         value="{{fdThreeData.dateOfDeparture}}" />
+                      {{/if}}
                     </div>
                     <div class="eight wide field">
                       <label>Date of Return</label>
+                      {{#if viewdetails}}
                       <p>{{formatDate fdThreeData.dateOfReturn}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdThreeData.dateOfReturn}}</p>
+                      {{else}}
+                      <p>{{fdThreeData.dateOfReturn}}</p>
                       <input type="hidden" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class="check" value="{{fdThreeData.dateOfReturn}}" />
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -312,9 +342,15 @@ November 15, 2018
                   </div>
                   <div class="eight wide field">
                     <label>Date of expected return to work</label>
+                    {{#if viewdetails}}
                     <p>{{formatDate fdThreeData.dateOfReturnToWork}}</p>
+                    {{else if adminAccess}}
+                    <p>{{formatDate fdThreeData.dateOfReturnToWork}}</p>
+                    {{else}}
+                    <p>{{fdThreeData.dateOfReturnToWork}}</p>
                     <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
                       value="{{fdThreeData.dateOfReturnToWork}}" />
+                    {{/if}}
                   </div>
                 </div>
                 <div class="two fields">
@@ -326,9 +362,15 @@ November 15, 2018
                   </div>
                   <div class="eight wide field">
                     <label>Date incentive was last availed of</label>
+                    {{#if viewdetails}}
                     <p>{{formatDate fdThreeData.dateIncentiveLastAvailed}}</p>
+                    {{else if adminAccess}}
+                    <p>{{formatDate fdThreeData.dateIncentiveLastAvailed}}</p>
+                    {{else}}
+                    <p>{{fdThreeData.dateIncentiveLastAvailed}}</p>
                     <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                       class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
+                    {{/if}}
                   </div>
                 </div>
                 <div class="ui divider"></div>
