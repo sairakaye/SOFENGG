@@ -116,7 +116,8 @@ $("#remarks-form").submit(function (e) {
         status,
         formID,
         grant,
-        remark
+        remark,
+        currentStatus
       },
       success: function (result) {
         var promptDiv = document.getElementById("prompt")

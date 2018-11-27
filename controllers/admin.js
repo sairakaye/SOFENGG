@@ -159,6 +159,7 @@ router.post("/view-details", urlencoder, function (req, res) {
 router.post("/change-status", urlencoder, function (req, res) {
     console.log("POST /change-status")
 
+    var currentStatus = req.body.currentStatus
     var status = req.body.status
     var id = req.body.formID
     var grant = req.body.grant
@@ -168,6 +169,8 @@ router.post("/change-status", urlencoder, function (req, res) {
 
     if (status == "Approved" || status == "Rejected" || status == "Pending")
         statusMessage = "Changed to " + status
+    else
+        statusMessage = currentStatus
 
     var remarkObj = {
         formId: id, status: statusMessage, remark
