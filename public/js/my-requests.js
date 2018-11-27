@@ -6,7 +6,14 @@
  */
 
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        language: {
+            searchPlaceholder: "TO BE ADDED"
+        },
+        order: [[ 1, "desc" ]],
+        lengthChange: false,
+        info: false
+    });
     $('.ui.dropdown').dropdown({forceSelection: false});
 } );
 
