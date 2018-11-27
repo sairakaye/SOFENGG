@@ -19,8 +19,10 @@ const urlencoder = bodyparser.urlencoded({
 const router = express.Router()
 router.use(urlencoder)
 const app = express()
+const nodemailer = require('nodemailer')
 
 const User = require("../models/user")
+const Mailer = require("../models/mailer")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -178,10 +180,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdOne.getFDOneByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdOne.changeStatusFDOne(id, status).then((foundFDOne) => {
-                        User.changeStatusFDOneInUser(foundFDOne, status).then(() => {
+                        User.changeStatusFDOneInUser(foundFDOne).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdOne.addRemarkInFDOne(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDOne.formId +" of "+foundFDOne.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -195,10 +226,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdTwo.getFDTwoByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdTwo.changeStatusFDTwo(id, status).then((foundFDTwo) => {
-                        User.changeStatusFDTwoInUser(foundFDTwo, status).then(() => {
+                        User.changeStatusFDTwoInUser(foundFDTwo, status).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdTwo.addRemarkInFDTwo(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDTwo.formId +" of "+foundFDTwo.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -212,10 +272,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdThree.getFDThreeByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdThree.changeStatusFDThree(id, status).then((foundFDThree) => {
-                        User.changeStatusFDThreeInUser(foundFDThree, status).then(() => {
+                        User.changeStatusFDThreeInUser(foundFDThree, status).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdThree.addRemarkInFDThree(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDThree.formId +" of "+foundFDThree.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -231,10 +320,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdFour.getFDFourByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdFour.changeStatusFDFour(id, status).then((foundFDFour) => {
-                        User.changeStatusFDFourInUser(foundFDFour, status).then(() => {
+                        User.changeStatusFDFourInUser(foundFDFour, status).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdFour.addRemarkInFDFour(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDFour.formId +" of "+foundFDFour.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -248,10 +366,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdFifteen.getFDFifteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdFifteen.changeStatusFDFifteen(id, status).then((foundFDFifteen) => {
-                        User.changeStatusFDFifteenInUser(foundFDFifteen, status).then(() => {
+                        User.changeStatusFDFifteenInUser(foundFDFifteen, status).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdFifteen.addRemarkInFDFifteen(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDFifteen.formId +" of "+foundFDFifteen.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -265,10 +412,39 @@ router.post("/change-status", urlencoder, function (req, res) {
             fdSixteen.getFDSixteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdSixteen.changeStatusFDSixteen(id, status).then((foundFDSixteen) => {
-                        User.changeStatusFDSixteenInUser(foundFDSixteen).then(() => {
+                        User.changeStatusFDSixteenInUser(foundFDSixteen).then((updatedUser) => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdSixteen.addRemarkInFDSixteen(newRemark).then(() => {
-                                    res.send(newRemark)
+                                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                                        
+                                        var transporter = nodemailer.createTransport({
+                                            service: 'gmail',
+                                            auth: {
+                                                user: newMailer.emailAddress,
+                                                pass: newMailer.password
+                                            }
+                                        })
+                                        
+                                        var mailOptions = {
+                                            from: newMailer.emailAddress,
+                                            to: updatedUser.emailAddress,
+                                            subject: "[OVCA]",
+                                            text: foundFDSixteen.formId +" of "+foundFDSixteen.grantName+ " has been " + status + "! " +
+                                            newRemark.remark
+                                        }
+                                        
+                                        transporter.sendMail(mailOptions, function (error, info) {
+                                            if (error) {
+                                                console.log(error);
+                                            } else {
+                                                console.log('Email sent: ' + info.response);
+                                            }
+                                        })
+                                        
+                                        res.send(newRemark)
+                                    }, (err) => {
+                                        res.send(err)
+                                    })
                                 })
                             })
                         })
@@ -483,14 +659,42 @@ router.delete("/delete-form", urlencoder, (req, res) => {
  */
 router.post("/approveform", urlencoder, (req, res) => {
     console.log("POST /approveform " + req.body.id)
-
+    
     var grant = req.body.grant
     var id = req.body.id
-
+    
     if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         fdOne.approveFDOne(id).then((foundFDOne) => {
-            User.approveFDOneInUser(foundFDOne).then((updatedUser) => {
-                res.send(updatedUser)
+            User.changeStatusFDOneInUser(foundFDOne, "Approve").then((updatedUser) => {
+                Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                    
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: newMailer.emailAddress,
+                            pass: newMailer.password
+                        }
+                    })
+                    
+                    var mailOptions = {
+                        from: newMailer.emailAddress,
+                        to: updatedUser.emailAddress,
+                        subject: "[OVCA]",
+                        text: foundFDOne.formId +" of "+foundFDOne.grantName+ " has been approved!"
+                    }
+                    
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                    })
+                    
+                    res.send(updatedUser)
+                }, (err) => {
+                    res.send(err)
+                })
             })
         })
     }
