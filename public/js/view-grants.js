@@ -7,12 +7,8 @@
 
 $(document).ready(function() {
     var table = $('#example').DataTable( { 
-        language: {
-            searchPlaceholder: "TO BE ADDED"
-        },
         order: [[ 1, "desc" ]],
         lengthChange: false,
-        info: false,
         buttons: [  
         {
             extend: 'excel',
@@ -27,12 +23,12 @@ $(document).ready(function() {
             exportOptions: {
                 columns: 'th:not(:last-child)'
             }
-        },
-        ]
-    } );
+        }]
+    });
  
-    table.buttons().container()
-        .appendTo( $('div.eight.column:eq(0)', table.table().container()) );
+    table.buttons().container().appendTo( 
+        $('div.eight.column:eq(0)', table.table().container()) 
+    );
 } );
 
 $("button.delete").click(function () {
