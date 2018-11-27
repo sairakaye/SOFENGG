@@ -7,15 +7,12 @@
 
 $(document).ready(function() {
     $('#example').DataTable({
-        language: {
-            searchPlaceholder: "TO BE ADDED"
-        },
         order: [[ 1, "desc" ]],
-        lengthChange: false,
-        info: false
+        lengthChange: true
     });
+    
     $('.ui.dropdown').dropdown({forceSelection: false});
-} );
+});
 
 $(".item.saveform").click(function () { 
     var id = $(this).attr("data-id")
