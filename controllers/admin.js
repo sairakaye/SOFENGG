@@ -264,7 +264,7 @@ router.post("/change-status", urlencoder, function (req, res) {
         else if (grant == "[FD16] Support for Membership in Professional Organizations") {
             fdSixteen.getFDSixteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
-                    fdSixteen.changeStatusFDSixteen(id).then((foundFDSixteen) => {
+                    fdSixteen.changeStatusFDSixteen(id, status).then((foundFDSixteen) => {
                         User.changeStatusFDSixteenInUser(foundFDSixteen).then(() => {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdSixteen.addRemarkInFDSixteen(newRemark).then(() => {
