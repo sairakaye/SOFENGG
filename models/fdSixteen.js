@@ -39,7 +39,7 @@ var fdSixteenSchema = mongoose.Schema({
     membershipFee : Number,
     checkPayableTo : String,
     participantFee : Number, //MONEY
-    //remarks : [remarkSchema]
+    remarks : [remarkSchema]
 })
 
 var fdSixteen = mongoose.model("fdSixteen", fdSixteenSchema)
