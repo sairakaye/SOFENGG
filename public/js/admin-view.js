@@ -48,6 +48,34 @@ $("#remarks-form").submit(function (e) {
   var status = $("#status").val()
   var remark = $("#remark").val()
 
+  if (remark == "" && status == "") {
+    var promptDiv = document.getElementById("prompt")
+    $(promptDiv).empty()
+    var messageDiv = document.createElement("div")
+
+    $(messageDiv).addClass("ui negative message transition")
+
+    var icon = document.createElement("i")
+    $(icon).addClass("close icon")
+
+    var headerDiv = document.createElement("div")
+    $(headerDiv).addClass("header")
+    $(headerDiv).append("Enter a remark or status first!")
+
+    var paragraph = document.createElement("p")
+    $(paragraph).append("Enter a remark or status first before you submit!")
+
+
+    $(messageDiv).append(icon)
+    $(messageDiv).append(headerDiv)
+    $(messageDiv).append(paragraph)
+    $(promptDiv).append(messageDiv)
+
+    $('.message .close').on('click', function () {
+      $(this).closest('.message')
+        .transition('fade')
+    })
+  } else {
 
   $.ajax({
     method: "post",
@@ -71,11 +99,16 @@ $("#remarks-form").submit(function (e) {
 
       var headerDiv = document.createElement("div")
       $(headerDiv).addClass("header")
-      $(headerDiv).append("Successfully change the status!")
+      $(headerDiv).append("Remark added!")
 
       var paragraph = document.createElement("p")
-      $(paragraph).append("You successfully changed the status! :D")
-
+      if (status != "" && remark == "") {
+        $(paragraph).append("You successfully changed the status of " + grant + " to " + status + ".")
+      } else if (status == "" && remark != "") {
+        $(paragraph).append("You successfully added the remark in " + grant + ".")
+      } else if (status != "" || remark != "") {
+        $(paragraph).append("You successfully changed the status of " + grant + " to " + status + " and added the remark.")
+      }
 
       $(messageDiv).append(icon)
       $(messageDiv).append(headerDiv)
@@ -145,4 +178,5 @@ $("#remarks-form").submit(function (e) {
       alert("Something went wrong! " + err)
     }
   })
+}
 })

@@ -262,7 +262,7 @@ router.post("/change-status", urlencoder, function (req, res) {
             })
         }
         else if (grant == "[FD16] Support for Membership in Professional Organizations") {
-            fdSixteen.getFDOneByID(id).then((foundForm) => {
+            fdSixteen.getFDSixteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdSixteen.changeStatusFDSixteen(id).then((foundFDSixteen) => {
                         User.changeStatusFDSixteenInUser(foundFDSixteen).then(() => {
