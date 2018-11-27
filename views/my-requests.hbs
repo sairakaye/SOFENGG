@@ -107,7 +107,7 @@
                       </thead>
                       <tbody>
                             {{#each forms}}
-                             {{#showonlybyuser firstName lastName}}
+                             {{#showonlybyuser _id}}
                               {{#checkstatus 'Approved' grantStatus}}
                               <tr class="positive listmember">
                               {{else}}
