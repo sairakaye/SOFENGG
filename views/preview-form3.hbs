@@ -160,7 +160,7 @@ November 15, 2018
 
           {{#if viewdetails}}
           <!-- This is where the remarks or details from the Administrator -->
-          <table class="ui padded selectable table tablet stackable" id="remarks">
+          <table class="ui padded selectable table tablet stackable celled " id="remarks">
             <thead id="remarks-head">
               <tr id="remarks-row">
                 <th class="four wide">Date</th>
@@ -180,7 +180,7 @@ November 15, 2018
           </table>
           {{else if adminAccess}}
           <!-- This is for the Administrator -->
-          <table class="ui padded selectable table tablet stackable" id="remarks">
+          <table class="ui padded selectable table tablet stackable celled " id="remarks">
             <thead id="remarks-head">
               <tr id="remarks-row">
                 <th class="four wide">Date</th>
@@ -397,7 +397,7 @@ November 15, 2018
                   </a>
               </form>
               {{else if adminAccess}}
-              <a href="/admin/view-grants" class="ui button">
+              <a href="/admin/fd-3" class="ui button">
                 Back
               </a>
               </form>

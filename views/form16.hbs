@@ -101,52 +101,52 @@
             <div class="one column">
               <form action="/faculty/preview-fd16" method="post" class="ui form" id="request-form"
                 autocomplete="off">
-                <div class="two fields disabled">
+                <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" value="{{user.firstName}}" />
+                    <input type="text" disabled name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" value="{{user.lastName}}" />
+                    <input type="text" disabled name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
-                <div class="fields disabled">
-                  <div class="seven wide field">
+                <div class="two fields">
+                  <div class="field">
                     <label>Department</label>
-                    <input type="text" name="department" value="{{user.department}}" />
+                    <input type="text" disabled name="department" value="{{user.department}}" />
                   </div>
-                  <div class="nine wide field">
+                  <div class="field">
                     <label>Rank</label>
-                    <input type="text" name="rank" value="{{user.rank}}"/>
+                    <input type="text" disabled name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
-                <div class="field disabled">
+                <div class="field">
                   <label>Status</label>
                   <div class="fields">
                     {{#facultystatus user.status}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" value="Permanent" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Probationary"/>
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" checked="checked" value="Probationary"/>
                         <label>Probationary</label>
                       </div>
                     </div>
                     {{else}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Permanent"/>
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" checked="checked" value="Permanent"/>
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" value="Probationary" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" value="Probationary" />
                         <label>Probationary</label>
                       </div>
                     </div>                    
@@ -256,7 +256,15 @@
                     <div class="five wide field">
                       <i class="right triangle icon"></i>
                       Copy of the organization’s annual conference and meeting program
-                      showing the paper presentations of the faculty; <b>or</b>
+                      showing the paper presentations of the faculty.
+                    </div>
+                  </div>
+                </div>
+                 <div class="field">
+                  <div class="fields">
+                    <div class="five wide field"></div>
+                     <div class = "one wide field"> 
+                      <b>or</b>
                     </div>
                   </div>
                 </div>
@@ -264,7 +272,6 @@
                   <div class="fields">
                     <div class="five wide field"></div>
                     <div class="five wide field">
-                      <i class="right triangle icon"></i>
                       Certification from the professional organization’s secretariat that the faculty member
                       has presented at least five (5) papers (cumulative) in the
                       organization’s annual conference and meetings.

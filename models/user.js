@@ -343,13 +343,13 @@ exports.editFDOneInUser = function(paramFDOne){
  *
  * @param {FDOne record to change the status} paramFDOne
  */
-exports.changeStatusFDOneInUser = function(paramFDOne, status){
+exports.changeStatusFDOneInUser = function(paramFDOne){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDOne.username,
-            "fdOneForms._id" : paramFDOne._id
+            username : paramFDOne.ownerIdNumber,
+            'fdOneForms._id' : paramFDOne._id
         }, {
-            $set : { "fdOneForms.$.grantStatus" : status}
+            $set : { 'fdOneForms.$.grantStatus' : paramFDOne.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -498,13 +498,13 @@ exports.editFDTwoInUser = function(paramFDTwo){
  *
  * @param {FDTwo record to change the status} paramFDTwo
  */
-exports.changeStatusFDTwoInUser = function(paramFDTwo, status){
+exports.changeStatusFDTwoInUser = function(paramFDTwo){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDTwo.username,
-            "FDTwoForms._id" : paramFDTwo._id
+            username : paramFDTwo.ownerIdNumber,
+            "fdTwoForms._id" : paramFDTwo._id
         }, {
-            $set : { "FDTwoForms.$.grantStatus" : status}
+            $set : { "fdTwoForms.$.grantStatus" : paramFDTwo.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -655,13 +655,13 @@ exports.editFDThreeInUser = function(paramFDThree){
  *
  * @param {FDThree record to change the status} paramFDThree
  */
-exports.changeStatusFDThreeInUser = function(paramFDThree, status){
+exports.changeStatusFDThreeInUser = function(paramFDThree){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDThree.username,
-            "FDThreeForms._id" : paramFDThree._id
+            username : paramFDThree.ownerIdNumber,
+            "fdThreeForms._id" : paramFDThree._id
         }, {
-            $set : { "FDThreeForms.$.grantStatus" : status}
+            $set : { "fdThreeForms.$.grantStatus" : paramFDThree.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -812,13 +812,13 @@ exports.editFDFourInUser = function(paramFDFour){
  *
  * @param {FDFour record to change the status} paramFDFour
  */
-exports.changeStatusFDFourInUser = function(paramFDFour, status){
+exports.changeStatusFDFourInUser = function(paramFDFour){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDFour.username,
-            "FDFourForms._id" : paramFDFour._id
+            username : paramFDFour.ownerIdNumber,
+            "fdFourForms._id" : paramFDFour._id
         }, {
-            $set : { "FDFourForms.$.grantStatus" : status}
+            $set : { "fdFourForms.$.grantStatus" : paramFDFour.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -968,13 +968,13 @@ exports.editFDFifteenInUser = function(paramFDFifteen){
  *
  * @param {FDFifteen record to change the status} paramFDFifteen
  */
-exports.changeStatusFDFifteenInUser = function(paramFDFifteen, status){
+exports.changeStatusFDFifteenInUser = function(paramFDFifteen){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDFifteen.username,
-            "FDFifteenForms._id" : paramFDFifteen._id
+            username : paramFDFifteen.ownerIdNumber,
+            "fdFifteenForms._id" : paramFDFifteen._id
         }, {
-            $set : { "FDFifteenForms.$.grantStatus" : status}
+            $set : { "fdFifteenForms.$.grantStatus" : paramFDFifteen.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
@@ -1125,13 +1125,13 @@ exports.editFDSixteenInUser = function(paramFDSixteen){
  *
  * @param {FDSixteen record to change the status} paramFDSixteen
  */
-exports.changeStatusFDSixteenInUser = function(paramFDSixteen, status){
+exports.changeStatusFDSixteenInUser = function(paramFDSixteen){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
-            username : paramFDSixteen.username,
-            "FDSixteenForms._id" : paramFDSixteen._id
+            username : paramFDSixteen.ownerIdNumber,
+            "fdSixteenForms._id" : paramFDSixteen._id
         }, {
-            $set : { "FDSixteenForms.$.grantStatus" : status}
+            $set : { "fdSixteenForms.$.grantStatus" : paramFDSixteen.grantStatus}
         }).then((updatedUser)=>{
             resolve(updatedUser)
         }, (err)=>{
