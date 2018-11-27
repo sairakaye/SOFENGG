@@ -101,70 +101,70 @@
             <div class="one column">
               <form action="/faculty/preview-fd1" method="post" class="ui form" id="request-form" autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
-                <div class="two fields disabled">
+                <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" value="{{user.firstName}}" />
+                    <input type="text" disabled name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" value="{{user.lastName}}"/>
+                    <input type="text" disabled name="lastName" value="{{user.lastName}}"/>
                   </div>
                 </div>
-                <div class="fields disabled">
+                <div class="fields">
                   <div class="seven wide field">
                     <label>Department</label>
-                    <input type="text" name="department" value="{{user.department}}"/>
+                    <input type="text" disabled name="department" value="{{user.department}}"/>
                   </div>
                   <div class="four wide field">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
+                        <input type="text" disabled name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
                       </div>
                     </div>
                   </div>
                   <div class="five wide field">
                     <label>Rank</label>
-                    <input type="text" name="rank" value="{{user.rank}}" />
+                    <input type="text" disabled name="rank" value="{{user.rank}}" />
                   </div>
                 </div>
-                <div class="field disabled">
+                <div class="field">
                   <label>Status</label>
                   <div class="fields">
                     {{#facultystatus user.status}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" value="Permanent" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Probationary" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" checked="checked" value="Probationary" />
                         <label>Probationary</label>
                       </div>
                     </div>
                     {{else}}
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" checked="checked" value="Permanent" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" checked="checked" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
-                      <div class="ui radio checkbox disabled">
-                        <input type="radio" name="status" value="Probationary" />
+                      <div class="ui radio checkbox">
+                        <input type="radio" disabled name="status" value="Probationary" />
                         <label>Probationary</label>
                       </div>
                     </div>                    
                     {{/facultystatus}}
                   </div>
                 </div>
-                <div class="field disabled">
+                <div class="field">
                   <label>Average teaching performance for the last 3 academic years</label>
-                  <input type="number"name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}"/>
+                  <input type="number" disabled name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}"/>
                 </div>
                 <div class="field">
                   <label>Title of Paper or Publication</label>
