@@ -59,7 +59,8 @@ var fdThree = mongoose.model("fdThree", fdThreeSchema)
 exports.create = function(paramFDThree){
     return new Promise(function(resolve, reject){
         
-        var f = new fdThree(paramFDThree)
+        var f = new fdThree(paramFDThree)        
+        f.timestamp = new Date()
         var i
         
         fdThree.countDocuments().then((count) => {

@@ -259,12 +259,12 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Duration Start</label>
-                      <p>{{fdFifteenData.startTime}}</p>
+                      <p>{{formatDate fdFifteenData.startTime}}</p>
                       <input type="hidden" name="startTime" placeholder="Date" id="startTime" class="check" value="{{fdFifteenData.startTime}}" />
                     </div>
                     <div class="eight wide field">
                       <label>Duration End</label>
-                      <p>{{fdFifteenData.endTime}}</p>
+                      <p>{{formatDate fdFifteenData.endTime}}</p>
                       <input type="hidden" name="endTime" placeholder="Date" id="endTime" class="check" value="{{fdFifteenData.endTime}}" />
                     </div>
                   </div>
@@ -273,7 +273,7 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
-                      <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
+                      <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
                       <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
                         class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
                     </div>

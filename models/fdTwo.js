@@ -56,6 +56,7 @@ exports.create = function(paramFDTwo){
     return new Promise(function(resolve, reject){
         
         var f = new fdTwo(paramFDTwo)
+        f.timestamp = new Date()
         var i
         
         fdTwo.countDocuments().then((count) => {
