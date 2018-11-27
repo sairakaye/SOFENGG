@@ -194,7 +194,7 @@ November 15, 2018
                 <td>{{formatDateTime date}}</td>
                 <td>{{status}}</td>
                 <td>{{remark}}</td>
-                <td><button class="ui button red" data-id="{{_id}}" id="delete-button">Delete Remark</button></td>
+                <td><button class="ui button red" data-id="{{_id}}" id="delete-button">Delete</button></td>
               </tr>
               {{/each}}
             </tbody>
@@ -400,8 +400,21 @@ November 15, 2018
                 Back
               </a>
               </form>
+              <!-- This the modal for the remark deletion -->
+              <div class="ui mini modal deletion">
+                <div class="header">Are you sure?</div>
+                <div class="content">
+                  <p>Once you click the "Delete" button, the remark will be permanently deleted.</p>
+                </div>
+                <div class="actions">
+                  <input type="submit" value="Delete" id="confirm-delete" class="ui button negative delete final">
+                  <div class="ui cancel button">Not yet</div>
+                </div>
+              </div>
               {{else}}
-
+                  <a href="/faculty/my-requests" class="ui button">
+                    Back
+                  </a>
               {{/if}}
 
               <!-- This the modal for logout confirmation -->
