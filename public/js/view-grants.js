@@ -6,16 +6,14 @@
  */
 
 $(document).ready(function() {
-    var table = $('#example').DataTable( {
+    var table = $('#example').DataTable( { 
+        language: {
+            searchPlaceholder: "TO BE ADDED"
+        },
+        order: [[ 1, "desc" ]],
         lengthChange: false,
-        buttons: [ 
-        {
-            extend: 'copy',
-            text: 'Copy Table',
-            exportOptions: {
-                columns: 'th:not(:last-child)'
-            }
-        },   
+        info: false,
+        buttons: [  
         {
             extend: 'excel',
             text: 'Export Table to Excel',
