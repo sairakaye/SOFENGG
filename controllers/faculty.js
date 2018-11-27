@@ -1259,48 +1259,19 @@ module.exports = router
  * @param {options} options.fn
  * @param {options} options.inverse
  */
-hbs.registerHelper('showonlybyuser', function (id, options) {
+hbs.registerHelper('showonlybyuser', function (fname, lname, options) {
 
   var user = controllerUser.getCurrentUser()
-  var formOnes = user.fdOneForms
-  var formTwos = user.fdTwoForms
-  var formThrees = user.fdThreeForms
-  var formFours = user.fdFourForms
-  var formFifteens = user.fdFifteenForms
-  var formSixteens = user.fdSixteenForms
+  var firstName = user.firstName
+  var lastName = user.lastName
 
   if (user != undefined || user != null) {
-    for (var i = 0; i < formOnes.length; i++) {
-      if (id.toString() == formOnes[i]._id.toString()){
+    if (firstName + "" == fname + "") {
+      if (lastName + "" == lname + "")
         return options.fn(this);
-      }
+    } else {
+      return options.inverse(this);
     }
-    for (var i = 0; i < formTwos.length; i++) {
-      if (id.toString()  == formTwos[i]._id.toString() ){
-        return options.fn(this);
-      }
-    }
-    for (var i = 0; i < formThrees.length; i++) {
-      if (id.toString()  == formThrees[i]._id.toString() ){
-        return options.fn(this);
-      }
-    }
-    for (var i = 0; i < formFours.length; i++) {
-      if (id.toString()  == formFours[i]._id.toString() ){
-        return options.fn(this);
-      }
-    }
-    for (var i = 0; i < formFifteens.length; i++) {
-      if (id.toString()  == formFifteens[i]._id.toString() ){
-        return options.fn(this);
-      }
-    }
-    for (var i = 0; i < formSixteens.length; i++) {
-      if (id.toString()  == formSixteens[i]._id.toString() ){
-        return options.fn(this);
-      }
-    }
-    return options.inverse(this);
   }
 })
 
