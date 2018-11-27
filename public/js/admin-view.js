@@ -167,7 +167,7 @@ $("#remarks-form").submit(function (e) {
           $(deleteButton).addClass("ui button red")
           $(deleteButton).attr("data-id", result._id)
           $(deleteButton).attr("id", "new-delete-button")
-          $(deleteButton).append("Delete Remark")
+          $(deleteButton).append("Delete")
 
           $(document).on('click', "#new-delete-button", function () {
             var $tr = $(this).closest('tr')
