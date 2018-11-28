@@ -101,7 +101,7 @@
             <div class="one column">
               <form action="/faculty/preview-fd1" method="post" class="ui form" id="request-form" autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
                     <input type="text" readonly name="firstName" value="{{user.firstName}}" />
@@ -111,12 +111,12 @@
                     <input type="text" readonly name="lastName" value="{{user.lastName}}"/>
                   </div>
                 </div>
-                <div class="fields">
+                <div class="fields disabled">
                   <div class="seven wide field">
                     <label>Department</label>
                     <input type="text" readonly name="department" value="{{user.department}}"/>
                   </div>
-                  <div class="four wide field">
+                  <div class="four wide field disabled">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
                       <div class="ui disabled input left icon">
@@ -125,14 +125,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="five wide field">
+                  <div class="five wide field disabled">
                     <label>Rank</label>
                     <input type="text" readonly name="rank" value="{{user.rank}}" />
                   </div>
                 </div>
-                <div class="field">
+                <div class="field disabled">
                   <label>Status</label>
-                  <div class="fields">
+                  <div class="fields disabled">
                     {{#facultystatus user.status}}
                     <div class="two wide field">
                       <div class="ui radio checkbox">

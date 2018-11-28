@@ -99,7 +99,7 @@
           <div class="row">
             <div class="one column">
               <form action="/faculty/preview-fd2" method="post" class="ui form" id="request-form" autocomplete="off">
-                <div class="two fields">
+                <div class="two fields disabled">
                   <div class="field">
                     <label>First Name</label>
                     <input type="text" readonly name="firstName" value="{{user.firstName}}" />
@@ -109,7 +109,7 @@
                     <input type="text" readonly name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
-                <div class="fields">
+                <div class="fields disabled">
                   <div class="seven wide field">
                     <label>Department</label>
                     <input type="text" readonly name="department" value="{{user.department}}" />
@@ -128,7 +128,7 @@
                     <input type="text" readonly name="rank" value="{{user.rank}}" />
                   </div>
                 </div>
-                <div class="field">
+                <div class="field disabled">
                   <label>Status</label>
                   <div class="fields">
                     {{#facultystatus user.status}}
@@ -160,7 +160,7 @@
                     {{/facultystatus}}
                   </div>
                 </div>
-               <div class="field">
+               <div class="field disabled">
                   <label>Average teaching performance for the last 3 academic years</label>
                   <input type="number" readonly name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}"/>
                 </div>
