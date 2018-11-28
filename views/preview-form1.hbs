@@ -426,7 +426,9 @@
                   </button>
                   {{/if}}
                   {{#if viewdetails}}
-                  <input type="submit" formaction="/faculty/my-requests"  class="ui button" value="Back">
+                  <a href="/faculty/my-requests" class="ui button">
+                    Back
+                  </a>
               </form>
               {{else if adminAccess}}
               <a href="/admin/view-grants" class="ui button">
