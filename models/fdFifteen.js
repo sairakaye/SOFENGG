@@ -64,8 +64,8 @@ exports.create = function(paramFDFifteen){
                     })
             }else{
                 fdFifteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
-                    i = parseInt(lastDocument[0].formId.replace("FD15", ""), 10) + 1
-                    f.formId = "FD15" + i
+                    i = parseInt(lastDocument[0].formId.replace("FD15-", ""), 10) + 1
+                    f.formId = "FD15-" + i
                     
                     f.save().then((newFDFifteen)=>{    
                         resolve(newFDFifteen)

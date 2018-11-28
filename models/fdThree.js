@@ -73,8 +73,8 @@ exports.create = function(paramFDThree){
                     })
             }else{
                 fdThree.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
-                    i = parseInt(lastDocument[0].formId.replace("FD3", ""), 10) + 1
-                    f.formId = "FD3" + i
+                    i = parseInt(lastDocument[0].formId.replace("FD3-", ""), 10) + 1
+                    f.formId = "FD3-" + i
                     
                     f.save().then((newFDThree)=>{    
                         resolve(newFDThree)

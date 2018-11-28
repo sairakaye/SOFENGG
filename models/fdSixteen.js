@@ -66,8 +66,8 @@ exports.create = function(paramFDSixteen){
                     })
             }else{
                 fdSixteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
-                    i = parseInt(lastDocument[0].formId.replace("FD16", ""), 10) + 1
-                    f.formId = "FD16" + i
+                    i = parseInt(lastDocument[0].formId.replace("FD16-", ""), 10) + 1
+                    f.formId = "FD16-" + i
                     
                     f.save().then((newFDSixteen)=>{    
                         resolve(newFDSixteen)
