@@ -101,30 +101,30 @@
                 <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" disabled name="firstName" value="{{user.firstName}}" />
+                    <input type="text" readonly name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" disabled name="lastName" value="{{user.lastName}}" />
+                    <input type="text" readonly name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields">
                   <div class="seven wide field">
                     <label>Department</label>
-                    <input type="text" disabled name="department" value="{{user.department}}" />
+                    <input type="text" readonly name="department" value="{{user.department}}" />
                   </div>
                   <div class="four wide field">
                     <label>Date Hired</label>
                     <div class="ui calendar" id="date-hired">
-                      <div class="ui input left icon">
+                      <div class="ui disabled input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" disabled name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
+                        <input type="text"  name="dateHired" placeholder="Date" value="{{user.dateHired}}" />
                       </div>
                     </div>
                   </div>
                   <div class="five wide field">
                     <label>Rank</label>
-                    <input type="text" disabled name="rank" value="{{user.rank}}"/>
+                    <input type="text" readonly name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
                 {{#employment user.employmentType}}
@@ -133,13 +133,13 @@
                   <div class="fields">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" checked="checked" value="Part-time" />
+                        <input type="radio" readonly name="status" checked="checked" value="Part-time" />
                         <label>Part-time</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" value="Full-time" />
+                        <input type="radio" readonly name="status" value="Full-time" />
                         <label>Full-time</label>
                       </div>
                     </div>
@@ -154,16 +154,16 @@
                 {{else}}
                 <div class="field">
                   <label>Status</label>
-                  <div class="fields disabled">
+                  <div class="fields readonly">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" value="Part-time" />
+                        <input type="radio" readonly name="status" value="Part-time" />
                         <label>Part-time</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled  name="status" checked="checked" value="Full-time" />
+                        <input type="radio" readonly  name="status" checked="checked" value="Full-time" />
                         <label>Full-time</label>
                       </div>
                     </div>

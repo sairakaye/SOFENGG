@@ -104,21 +104,21 @@
                 <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
-                    <input type="text" disabled name="firstName" value="{{user.firstName}}" />
+                    <input type="text" readonly name="firstName" value="{{user.firstName}}" />
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" disabled name="lastName" value="{{user.lastName}}" />
+                    <input type="text" readonly name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="two fields">
                   <div class="field">
                     <label>Department</label>
-                    <input type="text" disabled name="department" value="{{user.department}}" />
+                    <input type="text" readonly name="department" value="{{user.department}}" />
                   </div>
                   <div class="field">
                     <label>Rank</label>
-                    <input type="text" disabled name="rank" value="{{user.rank}}"/>
+                    <input type="text" readonly name="rank" value="{{user.rank}}"/>
                   </div>
                 </div>
                 <div class="field">
@@ -127,26 +127,26 @@
                     {{#facultystatus user.status}}
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" value="Permanent" />
+                        <input type="radio" readonly name="status" value="Permanent" />
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" checked="checked" value="Probationary"/>
+                        <input type="radio" readonly name="status" checked="checked" value="Probationary"/>
                         <label>Probationary</label>
                       </div>
                     </div>
                     {{else}}
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" checked="checked" value="Permanent"/>
+                        <input type="radio" readonly name="status" checked="checked" value="Permanent"/>
                         <label>Permanent</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" disabled name="status" value="Probationary" />
+                        <input type="radio" readonly name="status" value="Probationary" />
                         <label>Probationary</label>
                       </div>
                     </div>                    
