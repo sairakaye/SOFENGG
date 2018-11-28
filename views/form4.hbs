@@ -123,7 +123,8 @@
                 </div>
                 <div class="field">
                   <label>Name of Conference</label>
-                  <input type="text" name="nameOfConference" id = "nameOfConference" class = "check"/>
+                  <input type="text" name="nameOfConference" id = "nameOfConference" class = "check"
+                         value="{{fdFourData.nameOfConference}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -132,7 +133,8 @@
                       <div class="ui calendar" id="conference-startdate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfStartConference" placeholder="Date" id  = "dateOfStartConference" class=" check"/>
+                          <input type="text" name="dateOfStartConference" placeholder="Date" id  = "dateOfStartConference" class=" check"
+                                 value="{{fdFourData.dateOfStartConference}}"/>
                         </div>
                       </div>
                     </div>
@@ -141,7 +143,8 @@
                       <div class="ui calendar" id="conference-enddate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfEndConference" placeholder="Date" id  = "dateOfEndConference" class=" check"/>
+                          <input type="text" name="dateOfEndConference" placeholder="Date" id  = "dateOfEndConference" class=" check"
+                                 value="{{fdFourData.dateOfEndConference}}"/>
                         </div>
                       </div>
                     </div>
@@ -149,7 +152,8 @@
                 </div>
                 <div class="field">
                   <label>Place and Venue</label>
-                  <input type="text" name="placeAndVenue" id  = "placeAndVenue" class=" check" />
+                  <input type="text" name="placeAndVenue" id  = "placeAndVenue" class=" check" 
+                         value="{{fdFourData.placeAndVenue}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -158,7 +162,8 @@
                       <div class="ui calendar" id="departure-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfDeparture" placeholder="Date" id = "dateOfDeparture" class = "check"/>
+                          <input type="text" name="dateOfDeparture" placeholder="Date" id = "dateOfDeparture" class = "check"
+                                 value="{{fdFourData.dateOfDeparture}}"/>
                         </div>
                       </div>
                     </div>
@@ -167,7 +172,8 @@
                       <div class="ui calendar" id="return-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfReturn" placeholder="Date" id = "dateOfReturn" class = "check"/>
+                          <input type="text" name="dateOfReturn" placeholder="Date" id = "dateOfReturn" class = "check"
+                                 value="{{fdFourData.dateOfReturn}}"/>
                         </div>
                       </div>
                     </div>
@@ -179,28 +185,32 @@
                     <div class="ui input left icon">
                       <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" name="dateOfReturnToWork" placeholder="Date" id = "dateOfReturnToWork" class = "check"/>
+                        <input type="text" name="dateOfReturnToWork" placeholder="Date" id = "dateOfReturnToWork" class = "check"
+                               value="{{fdFourData.dateOfReturnToWork}}"/>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="field">
                   <label>Participant’s fee (check payable to)</label>
-                  <input type="text" name="participantFee" id  = "participantFee" class = "check"/>
+                  <input type="text" name="participantFee" id  = "participantFee" class = "check"
+                         value="{{fdFourData.participantFee}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
                       <label>No. of local conferences attended this academic year to date</label>
                       <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                         min = "0" name="noOfLocalConferencesAttendedThisYear" id = "noOfLocalConferencesAttendedThisYear" class = "check"  />
+                         min = "0" name="noOfLocalConferencesAttendedThisYear" id = "noOfLocalConferencesAttendedThisYear" class = "check"  
+                             value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}"/>
                     </div> 
                     <div class="eight wide field">
                       <label>Date incentive was last availed of</label>
                       <div class="ui calendar" id="incentive-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id = "dateIncentiveLastAvailed" class = "check">
+                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id = "dateIncentiveLastAvailed" class = "check"
+                                 alue="{{fdFourData.dateIncentiveLastAvailed}}">
                         </div>
                       </div>
                     </div>

@@ -157,7 +157,7 @@
                   <div class="fields readonly">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" readonly name="status" value="Part-time" />
+                        <input type="radio" readonly name="status" value="Part-time"/>
                         <label>Part-time</label>
                       </div>
                     </div>
@@ -172,7 +172,8 @@
               {{/employment}}
                 <div class="field">
                   <label>Name of Conference</label>
-                  <input type="text" name="nameOfConference" id  = "nameOfConference" class= "check" />
+                  <input type="text" name="nameOfConference" id  = "nameOfConference" class= "check" 
+                         value="{{fdThreeData.nameOfConference}}"/>
                 </div>
                 <div class="field">
                   <label>Type of Conference</label>
@@ -193,7 +194,8 @@
                 </div>
                 <div class="field">
                   <label>Title of paper to be presented</label>
-                  <input type="text" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check"/>
+                  <input type="text" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check"
+                         value="{{fdThreeData.titleOfPaperToBePresented}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -202,7 +204,8 @@
                       <div class="ui calendar" id="conference-startdate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfStartConference" placeholder="Date" id  = "dateOfStartConference" class=" check"/>
+                          <input type="text" name="dateOfStartConference" placeholder="Date" id  = "dateOfStartConference" class=" check"
+                                 value="{{fdThreeData.dateOfStartConference}}"/>
                         </div>
                       </div>
                     </div>
@@ -211,7 +214,8 @@
                       <div class="ui calendar" id="conference-enddate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfEndConference" placeholder="Date" id  = "dateOfEndConference" class=" check"/>
+                          <input type="text" name="dateOfEndConference" placeholder="Date" id  = "dateOfEndConference" class=" check"
+                                 value="{{fdThreeData.dateOfEndConference}}"/>
                         </div>
                       </div>
                     </div>
@@ -219,7 +223,8 @@
                 </div>
                 <div class="field">
                   <label>Place and Venue</label>
-                  <input type="text" name="placeAndVenue" id  = "placeAndVenue" class=" check" />
+                  <input type="text" name="placeAndVenue" id  = "placeAndVenue" class=" check" 
+                         value="{{fdThreeData.placeAndVenue}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -228,7 +233,8 @@
                       <div class="ui calendar" id="departure-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfDeparture" placeholder="Date" id ="dateOfDeparture" class = "check"/>
+                          <input type="text" name="dateOfDeparture" placeholder="Date" id ="dateOfDeparture" class = "check"
+                                 value="{{fdThreeData.dateOfDeparture}}"/>
                         </div>
                       </div>
                     </div>
@@ -237,7 +243,8 @@
                       <div class="ui calendar" id="return-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfReturn" placeholder="Date" id = "dateOfReturn" class = "check"/>
+                          <input type="text" name="dateOfReturn" placeholder="Date" id = "dateOfReturn" class = "check"
+                                 value="{{fdThreeData.dateOfReturn}}"/>
                         </div>
                       </div>
                     </div>
@@ -248,20 +255,23 @@
                   <div class="ui calendar" id="expected-date">
                     <div class="ui input left icon">
                       <i class="calendar icon"></i>
-                      <input type="text" name="dateOfReturnToWork" placeholder="Date"  id = "dateOfReturnToWork" class = "check"/>
+                      <input type="text" name="dateOfReturnToWork" placeholder="Date"  id = "dateOfReturnToWork" class = "check"
+                             value="{{fdThreeData.dateOfReturnToWork}}"/>
                     </div>
                   </div>
                 </div>
                 <div class="field">
                   <label>Travel and conference subsidy (pls. specify)</label>
-                  <input type="text" name="travelAndConferenceSubsidy" id = "travelAndConferenceSubsidy" class = "check" />
+                  <input type="text" name="travelAndConferenceSubsidy" id = "travelAndConferenceSubsidy" class = "check" 
+                         value="{{fdThreeData.travelAndConferenceSubsidy}}"/>
                 </div>
                 <div class="field">
                   <label>Date incentive was last availed of</label>
                   <div class="ui calendar" id="incentive-date">
                     <div class="ui input left icon">
                       <i class="calendar icon"></i>
-                      <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id = "dateIncentiveLastAvailed" class = "check"/>
+                      <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id = "dateIncentiveLastAvailed" class = "check"
+                             value="{{fdThreeData.dateIncentiveLastAvailed}}"/>
                     </div>
                   </div>
                 </div>

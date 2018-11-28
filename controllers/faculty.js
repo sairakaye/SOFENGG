@@ -117,7 +117,7 @@ router.post("/view-details", urlencoder, function (req, res) {
  * @param {Request} req
  * @param {Response} res
  */
-router.get("/fd-1", function (req, res) {
+router.get("/fd-1", urlencoder, function (req, res) {
   console.log("GET /fd-1")
 
   var user = req.session.user
@@ -127,6 +127,60 @@ router.get("/fd-1", function (req, res) {
   if (user) {
     res.render("form1", {
       user
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
+ * Leads to the page of FD1 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-1", urlencoder, function (req, res) {
+  console.log("POST /fd-1")
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var dateHired = req.body.dateHired
+  var status = req.body.status
+  var aveTeachingPerformance = req.body.aveTeachingPerformance
+  var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
+  var titleOfJournal = req.body.titleOfJournal
+  var datePaperSubmitted = req.body.datePaperSubmitted
+  var datePaperAccepted = req.body.datePaperAccepted
+  var nameOfConference = req.body.nameOfConference
+  var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+  var dateOfStartConference = req.body.dateOfStartConference
+  var dateOfEndConference = req.body.dateOfEndConference
+  var placeAndVenue = req.body.placeAndVenue
+  var dateOfDeparture = req.body.dateOfDeparture
+  var dateOfReturn = req.body.dateOfReturn
+  var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var grantStatus = "Pending"
+
+  var fdOneData = {
+    grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, dateHired, rank, status,
+    aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
+    datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateIncentiveLastAvailed, grantStatus
+  }
+  
+//  console.log(fdOneData)
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
+  if (user) {
+    res.render("form1", {
+      user, fdOneData
     })
   } else {
     res.redirect("/")
@@ -555,6 +609,55 @@ router.get("/fd-2", function (req, res) {
 })
 
 /**
+ * Leads to the page of FD2 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-2", urlencoder, function (req, res) {
+  console.log("POST /fd-2")
+
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var dateHired = req.body.dateHired
+  var rank = req.body.rank
+  var status = req.body.status
+  var aveTeachingPerformance = req.body.aveTeachingPerformance
+  var nameOfConference = req.body.nameOfConference
+  var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+  var dateOfStartConference = req.body.dateOfStartConference
+  var dateOfEndConference = req.body.dateOfEndConference
+  var placeAndVenue = req.body.placeAndVenue
+  var dateOfDeparture = req.body.dateOfDeparture
+  var dateOfReturn = req.body.dateOfReturn
+  var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var grantStatus = "Pending"
+
+  var fdTwoData = {
+    grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, dateHired, rank, status,
+    aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateIncentiveLastAvailed, grantStatus
+  }
+    
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
+  if (user) {
+    res.render("form2", {
+      user, fdTwoData
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
  * Adds to the database the entered information for the FD2
  * form and sets grant status to pending for admin approval
  *
@@ -679,6 +782,62 @@ router.get("/fd-3", function (req, res) {
   if (user) {
     res.render("form3", {
       user
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
+ * Leads to the page of FD3 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-3", urlencoder, function (req, res) {
+  console.log("POST /fd-3")
+    
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var dateHired = req.body.dateHired
+  var status = req.body.status
+  var aveTeachingPerformance = req.body.aveTeachingPerformance
+  var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
+  var titleOfJournal = req.body.titleOfJournal
+  var datePaperSubmitted = req.body.datePaperSubmitted
+  var datePaperAccepted = req.body.datePaperAccepted
+  var typeOfConference = req.body.typeOfConference
+  var nameOfConference = req.body.nameOfConference
+  var titleOfPaperToBePresented = req.body.titleOfPaperToBePresented
+  var dateOfStartConference = req.body.dateOfStartConference
+  var dateOfEndConference = req.body.dateOfEndConference
+  var placeAndVenue = req.body.placeAndVenue
+  var dateOfDeparture = req.body.dateOfDeparture
+  var dateOfReturn = req.body.dateOfReturn
+  var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
+  var grantStatus = "Pending"
+
+  var fdThreeData = {
+    grantName: "[FD3] Support for Paper Presentations in Conferences",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, dateHired, rank, status,
+    aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
+    datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
+  }
+
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
+  if (user) {
+    res.render("form3", {
+      user, fdThreeData
     })
   } else {
     res.redirect("/")
@@ -826,6 +985,52 @@ router.get("/fd-4", function (req, res) {
 })
 
 /**
+ * Leads to the page of FD4 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-4", urlencoder,  function (req, res) {
+  console.log("POST /fd-4")
+
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var nameOfConference = req.body.nameOfConference
+  var dateOfStartConference = req.body.dateOfStartConference
+  var dateOfEndConference = req.body.dateOfEndConference
+  var placeAndVenue = req.body.placeAndVenue
+  var dateOfDeparture = req.body.dateOfDeparture
+  var dateOfReturn = req.body.dateOfReturn
+  var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var participantFee = req.body.participantFee
+  var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var grantStatus = "Pending"
+
+  var fdFourData = {
+    grantName: "[FD4] Support for Participation in Local Conferences",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, nameOfConference,
+    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
+    grantStatus
+  }
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
+  if (user) {
+    res.render("form4", {
+      user, fdFourData
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
  * Adds to the database the entered information for FD4
  * form and sets grant status to pending for admin approval
  *
@@ -955,6 +1160,48 @@ router.get("/fd-15", function (req, res) {
 })
 
 /**
+ * Leads to the page of FD15 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-15", urlencoder, function (req, res) {
+  console.log("POST /fd-15")
+
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var hostInstitution = req.body.hostInstitution
+  var titleOfSeminar = req.body.titleOfSeminar
+  var place = req.body.place
+  var startTime = req.body.startTime
+  var endTime = req.body.endTime
+  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var participantFee = req.body.participantFee
+  var grantStatus = "Pending"
+
+  var fdFifteenData = {
+    grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, hostInstitution,
+    titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
+    participantFee, grantStatus
+  }
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+    res.redirect("/")
+
+  if (user) {
+    res.render("form15", {
+      user, fdFifteenData
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
  * Adds to the database the entered information for FD15
  * form and sets grant status to pending for admin approval
  *
@@ -1074,6 +1321,49 @@ router.get("/fd-16", function (req, res) {
   if (user) {
     res.render("form16", {
       user
+    })
+  } else {
+    res.redirect("/")
+  }
+})
+
+/**
+ * Leads to the page of FD16 form.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/fd-16", urlencoder, function (req, res) {
+  console.log("POST /fd-16")
+
+  var firstName = req.body.firstName
+  var lastName = req.body.lastName
+  var department = req.body.department
+  var rank = req.body.rank
+  var status = req.body.status
+  var nameOfOrganization = req.body.nameOfOrganization
+  var typeOfMembershipPlace = req.body.typeOfMembershipPlace
+  var typeofMembershipDuration = req.body.typeofMembershipDuration
+  var membershipDate = req.body.membershipDate
+  var coverage = req.body.coverage
+  var membershipFee = req.body.membershipFee
+  var checkPayableTo = req.body.checkPayableTo
+  var grantStatus = "Pending"
+
+  var fdSixteenData = {
+    grantName: "[FD16] Support for Membership in Professional Organizations",
+    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    firstName, lastName, department, rank, status, nameOfOrganization,
+    typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
+    coverage, membershipFee, checkPayableTo, grantStatus
+  }    
+  var user = req.session.user
+  if (user.userType != 'Faculty')
+   res.redirect("/")
+
+  if (user) {
+    res.render("form16", {
+      user, fdSixteenData
     })
   } else {
     res.redirect("/")

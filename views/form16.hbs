@@ -155,7 +155,8 @@
                 </div>
                 <div class="field">
                   <label>Name of Organization</label>
-                  <input type="text" name="nameOfOrganization" id = "nameOfOrganization" class = "check"/>
+                  <input type="text" name="nameOfOrganization" id = "nameOfOrganization" class = "check"
+                         value="{{fdSixteenData.nameOfOrganization}}"/>
                 </div>
                 <div class="field">
                   <label>Type of membership</label>
@@ -198,13 +199,15 @@
                       <div class="ui calendar" id="membership-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="membershipDate" placeholder="Date" id = "membershipDate" class = "check"/>
+                          <input type="text" name="membershipDate" placeholder="Date" id = "membershipDate" class = "check"
+                                 value="{{fdSixteenData.membershipDate}}"/>
                         </div>
                       </div>
                     </div>
                     <div class="eight wide field">
                       <label>Coverage</label>
-                      <input type="text" name="coverage" id = "coverage" class = "check"/>
+                      <input type="text" name="coverage" id = "coverage" class = "check"
+                             value="{{fdSixteenData.coverage}}"/>
                     </div>
                   </div>
                 </div>
@@ -213,11 +216,13 @@
                     <div class="eight wide field">
                       <label>Membership Fee</label>
                       <input type="number"onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                         min = "0" name="membershipFee" id = "membershipFee" class = "check" />
+                         min = "0" name="membershipFee" id = "membershipFee" class = "check" 
+                             value="{{fdSixteenData.membershipFee}}"/>
                     </div>
                     <div class="eight wide field">
                       <label>(check payable to)</label>
-                      <input type="text" name="checkPayableTo" id = "checkPayableTo" class = "check"/>
+                      <input type="text" name="checkPayableTo" id = "checkPayableTo" class = "check"
+                             value="{{fdSixteenData.checkPayableTo}}"/>
                     </div>
                   </div>
                 </div>

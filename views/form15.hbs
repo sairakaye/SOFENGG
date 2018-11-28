@@ -122,15 +122,18 @@
                 </div>
                 <div class="field">
                   <label>Host Institution/Organization</label>
-                  <input type="text" name="hostInstitution" id = "hostInstitution" class = "check"/>
+                  <input type="text" name="hostInstitution" id = "hostInstitution" class = "check"
+                         value="{{fdFifteenData.hostInstitution}}"/>
                 </div>
                 <div class="field">
                   <label>Title of Seminar</label>
-                  <input type="text" name="titleOfSeminar" id = "titleOfSeminar" class = "check"/>
+                  <input type="text" name="titleOfSeminar" id = "titleOfSeminar" class = "check"
+                         value="{{fdFifteenData.titleOfSeminar}}"/>
                 </div>
                 <div class="field">
                   <label>Place</label>
-                  <input type="text" name="place" id = "place" class = "check"/>
+                  <input type="text" name="place" id = "place" class = "check"
+                         value="{{fdFifteenData.place}}"/>
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -139,7 +142,8 @@
                       <div class="ui calendar" id="duration-start">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="startTime" placeholder="Date" id = "startTime" class = "check" />
+                          <input type="text" name="startTime" placeholder="Date" id = "startTime" class = "check" 
+                                 value="{{fdFifteenData.startTime}}"/>
                         </div>
                       </div>
                     </div>
@@ -148,7 +152,8 @@
                       <div class="ui calendar" id="duration-end">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="endTime" placeholder="Date" id = "endTime" class = "check"/>
+                          <input type="text" name="endTime" placeholder="Date" id = "endTime" class = "check"
+                                 value="{{fdFifteenData.endTime}}"/>
                         </div>
                       </div>
                     </div>
@@ -161,13 +166,15 @@
                       <div class="ui calendar" id="incentive-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date"  id = "dateIncentiveLastAvailed" class = "check"/>
+                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date"  id = "dateIncentiveLastAvailed" class = "check"
+                                 value="{{fdFifteenData.dateIncentiveLastAvailed}}"/>
                         </div>
                       </div>
                     </div>
                     <div class="eight wide field">
                       <label>Participant’s Fee (check payable to)</label>
-                      <input type="text" name="participantFee" id = "participantFee" class = "check">
+                      <input type="text" name="participantFee" id = "participantFee" class = "check"
+                             value="{{fdFifteenData.participantFee}}">
                     </div>
                   </div>
                 </div>

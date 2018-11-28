@@ -274,7 +274,7 @@
                   <div class="field">
                     <label>Title of the Journal where paper was published</label>
                     <p>{{fdOneData.titleOfJournal}}</p>
-                    <input type="hidden" name="titleOfJournal" id="titleOfJournal" class="check" value="{{fdOneData.titleOfPaperOrPublication}}" />
+                    <input type="hidden" name="titleOfJournal" id="titleOfJournal" class="check" value="{{fdOneData.titleOfJournal}}" />
                   </div>
                 </div>
                 <div class="field">
@@ -426,9 +426,7 @@
                   </button>
                   {{/if}}
                   {{#if viewdetails}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
+                  <input type="submit" formaction="/faculty/my-requests"  class="ui button" value="Back">
               </form>
               {{else if adminAccess}}
               <a href="/admin/view-grants" class="ui button">
@@ -447,9 +445,7 @@
                 </div>
               </div>
               {{else}}
-                  <a href="/faculty/fd-1" class="ui button">
-                    Back
-                  </a>
+                  <input type="submit" formaction="/faculty/fd-1" class="ui button" value="Back">
               {{/if}}
 
               <!-- This the modal for logout confirmation -->
