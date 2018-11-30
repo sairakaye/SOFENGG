@@ -85,8 +85,7 @@ $(".item.saveform").click(function () {
                         doc.rect(464,602, 8, 6, 'F')
                     }
                     
-                    doc.save('[F1] FacultyDevelopmentGrant.pdf')
-                    
+                    doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"){
                     doc.addImage(form2image, 'JPEG', 0, 0, 612, 1008)
                     doc.text(244,118, form.term + "")
@@ -130,7 +129,7 @@ $(".item.saveform").click(function () {
                         doc.rect(465,634, 8, 6, 'F') 
                     }
                     
-                    doc.save('[F2] FacultyDevelopmentGrant.pdf')
+                    doc.save(form.formId + '.pdf');
                 } else if (form.grantName ==  "[FD3] Support for Paper Presentations in Conferences"){
                     doc.addImage(form3image, 'JPEG', 0, 0, 612, 1008)
 
@@ -183,7 +182,7 @@ $(".item.saveform").click(function () {
                         doc.rect(503,646, 8, 6, 'F') 
                     } 
 
-                    doc.save('[F3] FacultyDevelopmentGrant.pdf')
+                    doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD4] Support for Participation in Local Conferences"){
                     doc.addImage(form4image, 'JPEG', 0, 0, 612, 1008)
 
@@ -218,7 +217,7 @@ $(".item.saveform").click(function () {
                     doc.text(466, 230, moment(form.dateIncentiveLastAvailed).format('LL'))
                     doc.text(466, 680, moment(form.dateIncentiveLastAvailed).format('LL'))
 
-                    doc.save('[F4] FacultyDevelopmentGrant.pdf')
+                    doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
                     doc.addImage(form15image, 'JPEG', 0, 0, 612, 1008)
 
@@ -249,7 +248,7 @@ $(".item.saveform").click(function () {
                     doc.text(190,235, form.participantFee)
                     doc.text(190,688, form.participantFee)
                     
-                    doc.save('[F15] FacultyDevelopmentGrant.pdf')
+                    doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD16] Support for Membership in Professional Organizations"){
                     doc.addImage(form16image, 'JPEG', 0, 0, 612, 1008)
 
@@ -297,7 +296,7 @@ $(".item.saveform").click(function () {
                         doc.rect(149,145, 8, 6, 'F') 
                         doc.rect(164,618, 8, 6, 'F') 
                     }
-                    doc.save('[F16] FacultyDevelopmentGrant.pdf')
+                    doc.save(form.formId + '.pdf');
                 }
             } 
         }
