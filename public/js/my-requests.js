@@ -1,5 +1,5 @@
 /**
- * This is the JS file of the my requests page.
+ * This is the JS file of the my grant requests page.
  * November 19, 2018
  * @ver 1.2
  * @author Candace Mercado
@@ -7,8 +7,10 @@
 
 $(document).ready(function() {
     $('#example').DataTable({
+        language: { "searchPlaceholder": "Keywords"},
+        columnDefs: [{"targets": 4, "orderable": false}, {"targets": 5, "orderable": false}],   
         order: [[ 1, "desc" ]],
-        lengthChange: true,
+        lengthChange: false,
         aoColumns: [
             null, null, null, null, { "bSearchable": false }, { "bSearchable": false },
         ]

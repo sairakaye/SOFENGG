@@ -6,14 +6,32 @@
  */
 
 $(document).ready(function() {
-    var table = $('#example').DataTable( { 
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+    $('#example thead tr:eq(1) th').each( function (i) {
+        if (i!== 6){
+            var title = $(this).text();
+            $(this).html( '<div class="ui input fluid"><input style=" height: 20px; padding: 5px; " type="text" placeholder='+title+'></div>' );
+         
+            $( 'input', this ).on( 'keyup change', function () {
+                if ( table.column(i).search() !== this.value ) {
+                    table
+                        .column(i)
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        }
+    } );
+ 
+    var table = $('#example').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true,
+        language: { "searchPlaceholder": "Keywords"},
+        columnDefs: [{  "targets": 6, "orderable": false }],   
         order: [[ 1, "desc" ]],
         lengthChange: false,
-        aoColumns: [
-            null, null, null, null, null, null, { "bSearchable": false },
-        ],
-        buttons: [  
-        {
+        aoColumns: [ null, null, null, null, null, null, { "bSearchable": false }],
+        buttons: [{
             extend: 'excel',
             text: 'Export Table to Excel',
             exportOptions: {
@@ -26,7 +44,7 @@ $(document).ready(function() {
             exportOptions: {
                 columns: 'th:not(:last-child)'
             }
-        }]
+        }],
     });
  
     table.buttons().container().appendTo( 
