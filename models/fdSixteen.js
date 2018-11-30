@@ -224,6 +224,23 @@ exports.getFDSixteenByDepartment = function(paramFDSixteenDepartment){
 }
 
 /**
+ * Gets FD16 record in FD16 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDSixteenLoginId
+ */
+exports.getFDSixteenByLoginId = function(paramFDSixteenLoginId){
+    return new Promise(function(resolve, reject){
+        fdSixteen.find({
+            ownerIdNumber : paramFDSixteenLoginId
+        }).then((loginIdFDSixteen)=>{
+            resolve(loginIdFDSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets FD16 record in FD16 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus

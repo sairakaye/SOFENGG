@@ -222,6 +222,24 @@ exports.getFDFifteenByDepartment = function(paramFDFifteenDepartment){
 }
 
 /**
+ * Gets FD15 record in FD15 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDFifteenLoginId
+ */
+exports.getFDFifteenByLoginId = function(paramFDFifteenLoginId){
+    return new Promise(function(resolve, reject){
+        fdFifteen.find({
+            ownerIdNumber : paramFDFifteenLoginId
+        }).then((loginIdFDFifteen)=>{
+            resolve(loginIdFDFifteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+/**
  * Gets FD15 record in FD15 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus

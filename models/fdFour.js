@@ -224,6 +224,24 @@ exports.getFDFourByDepartment = function(paramFDFourDepartment){
     })
 }
 
+
+/**
+ * Gets FD4 record in FD4 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDFourLoginId
+ */
+exports.getFDFourByLoginId = function(paramFDFourLoginId){
+    return new Promise(function(resolve, reject){
+        fdFour.find({
+            ownerIdNumber : paramFDFourLoginId
+        }).then((loginIdFDFour)=>{
+            resolve(loginIdFDFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
 /**
  * Gets FD4 record in FD4 Schema by status
  *

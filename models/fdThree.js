@@ -231,6 +231,23 @@ exports.getFDThreeByDepartment = function(paramFDThreeDepartment){
 }
 
 /**
+ * Gets FD3 record in FD3 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDThreeLoginId
+ */
+exports.getFDThreeByLoginId = function(paramFDThreeLoginId){
+    return new Promise(function(resolve, reject){
+        fdThree.find({
+            ownerIdNumber : paramFDThreeLoginId
+        }).then((loginIdFDThree)=>{
+            resolve(loginIdFDThree)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets FD3 record in FD3 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus

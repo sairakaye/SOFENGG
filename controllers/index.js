@@ -225,7 +225,6 @@ router.post("/home", (req, res)=>{
   
   User.authenticate(user).then((user)=>{
       if(user){
-          currentUser = user
           req.session.user = user
           if(user.userType == "Administrator"){
               Overview.getAllOverview().then((totalArray)=>{
@@ -298,7 +297,6 @@ router.get("/logout", function(req, res){
 				console.log(err)
 			} 
 		})
-		currentUser = null
 	}
 		
 	res.render("index.hbs", {
@@ -307,16 +305,6 @@ router.get("/logout", function(req, res){
 })
 
 module.exports = router
-
-/**
- * Returns the current user object, this is to 
- * make user details reflect in handlebars
- *
- * @return {Object} currentUser
- */
-exports.getCurrentUser = function() {
-    return currentUser
-}
 
 /**
  * Gets all forms

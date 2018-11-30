@@ -230,6 +230,23 @@ exports.getFDOneByDepartment = function(paramFDOneDepartment){
 }
 
 /**
+ * Gets FD1 record in FD1 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDOneLoginId
+ */
+exports.getFDOneByLoginId = function(paramFDOneLoginId){
+    return new Promise(function(resolve, reject){
+        fdOne.find({
+            ownerIdNumber : paramFDOneLoginId
+        }).then((loginIdFDOne)=>{
+            resolve(loginIdFDOne)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets FD1 record in FD1 Schema by status
  *
  * @param {Filtering status} paramFDOnestatus

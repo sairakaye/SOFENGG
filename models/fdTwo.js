@@ -227,6 +227,23 @@ exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
 }
 
 /**
+ * Gets FD2 record in FD2 Schema by user loginID
+ *
+ * @param {Filtering Login ID} paramFDTwoLoginId
+ */
+exports.getFDTwoByLoginId = function(paramFDTwoLoginId){
+    return new Promise(function(resolve, reject){
+        fdTwo.find({
+            ownerIdNumber : paramFDTwoLoginId
+        }).then((loginIdFDTwo)=>{
+            resolve(loginIdFDTwo)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
  * Gets FD2 record in FD2 Schema by status
  *
  * @param {Filtering status} paramFDTwostatus

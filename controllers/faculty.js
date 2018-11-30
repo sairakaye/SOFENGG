@@ -142,6 +142,9 @@ router.get("/fd-1", urlencoder, function (req, res) {
  */
 router.post("/fd-1", urlencoder, function (req, res) {
   console.log("POST /fd-1")
+  
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -166,7 +169,7 @@ router.post("/fd-1", urlencoder, function (req, res) {
 
   var fdOneData = {
     grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
@@ -175,7 +178,6 @@ router.post("/fd-1", urlencoder, function (req, res) {
   }
   
 //  console.log(fdOneData)
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -198,6 +200,8 @@ router.post("/fd-1", urlencoder, function (req, res) {
 router.post("/preview-fd1", urlencoder, function (req, res) {
   console.log("POST /preview-fd1")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -222,7 +226,7 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
 
   var fdOneData = {
     grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st Term", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st Term", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
@@ -230,7 +234,6 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
     dateIncentiveLastAvailed, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -250,6 +253,8 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
  */
 router.post("/preview-fd2", urlencoder, function (req, res) {
   console.log("POST /preview-fd2")
+
+  var user = req.session.user
 
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -271,14 +276,13 @@ router.post("/preview-fd2", urlencoder, function (req, res) {
 
   var fdTwoData = {
     grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -298,6 +302,8 @@ router.post("/preview-fd2", urlencoder, function (req, res) {
 */
 router.post("/preview-fd3", urlencoder, function (req, res) {
   console.log("POST /preview-fd3")
+
+  var user = req.session.user
 
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -325,7 +331,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
 
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
@@ -333,7 +339,6 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
     travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -354,6 +359,8 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
 router.post("/preview-fd4", urlencoder, function (req, res) {
   console.log("POST /preview-fd4")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -372,14 +379,13 @@ router.post("/preview-fd4", urlencoder, function (req, res) {
 
   var fdFourData = {
     grantName: "[FD4] Support for Participation in Local Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -400,6 +406,8 @@ router.post("/preview-fd4", urlencoder, function (req, res) {
 router.post("/preview-fd15", urlencoder, function (req, res) {
   console.log("POST /preview-fd15")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -415,13 +423,12 @@ router.post("/preview-fd15", urlencoder, function (req, res) {
 
   var fdFifteenData = {
     grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
     participantFee, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -434,6 +441,8 @@ router.post("/preview-fd15", urlencoder, function (req, res) {
 
 router.post("/preview-fd16", urlencoder, function (req, res) {
   console.log("POST /preview-fd16")
+
+  var user = req.session.user
 
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -451,13 +460,12 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
 
   var fdSixteenData = {
     grantName: "[FD16] Support for Membership in Professional Organizations",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
     coverage, membershipFee, checkPayableTo, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -483,6 +491,8 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
 router.post("/submit-fd1", urlencoder, function (req, res) {
   console.log("POST /submit-fd1")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -507,7 +517,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
 
   var fdOneData = {
     formId: "FD1-", grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
@@ -532,7 +542,6 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
         res.send(err)
       })
 
-      var user = req.session.user
       if (user.userType != 'Faculty')
         res.redirect("/")
 
@@ -618,6 +627,8 @@ router.get("/fd-2", function (req, res) {
 router.post("/fd-2", urlencoder, function (req, res) {
   console.log("POST /fd-2")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -638,14 +649,13 @@ router.post("/fd-2", urlencoder, function (req, res) {
 
   var fdTwoData = {
     grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
     
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -668,6 +678,8 @@ router.post("/fd-2", urlencoder, function (req, res) {
 router.post("/submit-fd2", urlencoder, function (req, res) {
   console.log("POST /submit-fd2")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -688,7 +700,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
 
   var fdTwoData = {
     formId: "FD2-", grantName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -712,7 +724,6 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
         res.send(err)
       })
 
-      var user = req.session.user
       if (user.userType != 'Faculty')
         res.redirect("/")
 
@@ -798,6 +809,8 @@ router.get("/fd-3", function (req, res) {
 router.post("/fd-3", urlencoder, function (req, res) {
   console.log("POST /fd-3")
     
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -824,7 +837,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
 
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
@@ -832,7 +845,6 @@ router.post("/fd-3", urlencoder, function (req, res) {
     travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
   }
 
-  var user = req.session.user
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -854,6 +866,8 @@ router.post("/fd-3", urlencoder, function (req, res) {
  */
 router.post("/submit-fd3", urlencoder, function (req, res) {
   console.log("POST /submit-fd3")
+
+  var user = req.session.user
 
   var firstName = req.body.firstName
   var lastName = req.body.lastName
@@ -881,7 +895,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
 
   var fdThreeData = {
     formId: "FD3-", grantName: "[FD3] Support for Paper Presentations in Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
@@ -907,7 +921,6 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
         res.send(err)
       })
 
-      var user = req.session.user
       if (user.userType != 'Faculty')
         res.redirect("/")
 
@@ -994,6 +1007,8 @@ router.get("/fd-4", function (req, res) {
 router.post("/fd-4", urlencoder,  function (req, res) {
   console.log("POST /fd-4")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -1012,13 +1027,13 @@ router.post("/fd-4", urlencoder,  function (req, res) {
 
   var fdFourData = {
     grantName: "[FD4] Support for Participation in Local Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
-  var user = req.session.user
+
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -1041,6 +1056,8 @@ router.post("/fd-4", urlencoder,  function (req, res) {
 router.post("/submit-fd4", urlencoder, function (req, res) {
     console.log("POST /submit-fd4")
     
+    var user = req.session.user
+
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var department = req.body.department
@@ -1059,7 +1076,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
     
     var fdFourData = {
         formId: "FD4-", grantName: "[FD4] Support for Participation in Local Conferences",
-        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
         firstName, lastName, department, rank, nameOfConference,
         dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
         dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
@@ -1085,7 +1102,6 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
                 res.send(err)
             })
             
-            var user = req.session.user
             var cost = parseFloat(newFdFourData.participantFee)
             if (user.userType != 'Faculty')
                 res.redirect("/")
@@ -1176,6 +1192,8 @@ router.get("/fd-15", function (req, res) {
 router.post("/fd-15", urlencoder, function (req, res) {
   console.log("POST /fd-15")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -1191,12 +1209,12 @@ router.post("/fd-15", urlencoder, function (req, res) {
 
   var fdFifteenData = {
     grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
     participantFee, grantStatus
   }
-  var user = req.session.user
+
   if (user.userType != 'Faculty')
     res.redirect("/")
 
@@ -1219,6 +1237,8 @@ router.post("/fd-15", urlencoder, function (req, res) {
 router.post("/submit-fd15", urlencoder, function (req, res) {
     console.log("POST /submit-fd15")
     
+    var user = req.session.user
+
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var department = req.body.department
@@ -1234,7 +1254,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
     
     var fdFifteenData = {
         formId: "FD15-", grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
-        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
         firstName, lastName, department, rank, hostInstitution,
         titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
         participantFee, grantStatus
@@ -1258,7 +1278,6 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
                 res.send(err)
             })
             
-            var user = req.session.user
             var cost = parseFloat(newFdFifteenData.participantFee)
             if (user.userType != 'Faculty')
                 res.redirect("/")
@@ -1348,6 +1367,8 @@ router.get("/fd-16", function (req, res) {
 router.post("/fd-16", urlencoder, function (req, res) {
   console.log("POST /fd-16")
 
+  var user = req.session.user
+
   var firstName = req.body.firstName
   var lastName = req.body.lastName
   var department = req.body.department
@@ -1364,12 +1385,12 @@ router.post("/fd-16", urlencoder, function (req, res) {
 
   var fdSixteenData = {
     grantName: "[FD16] Support for Membership in Professional Organizations",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+    ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
     coverage, membershipFee, checkPayableTo, grantStatus
   }    
-  var user = req.session.user
+
   if (user.userType != 'Faculty')
    res.redirect("/")
 
@@ -1392,6 +1413,8 @@ router.post("/fd-16", urlencoder, function (req, res) {
 router.post("/submit-fd16", urlencoder, function (req, res) {
     console.log("POST /submit-fd16")
     
+    var user = req.session.user
+
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var department = req.body.department
@@ -1408,7 +1431,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
     
     var fdSixteenData = {
         formId: "FD16-", grantName: "[FD16] Support for Membership in Professional Organizations",
-        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
         firstName, lastName, department, rank, status, nameOfOrganization,
         typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
         coverage, membershipFee, checkPayableTo, grantStatus
@@ -1432,7 +1455,6 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                 res.send(err)
             })
             
-            var user = req.session.user
             var cost = parseFloat(newFdSixteenData.membershipFee)
             if (user.userType != 'Faculty')
                 res.redirect("/")
@@ -1506,7 +1528,7 @@ router.get("/my-requests", function (req, res) {
     res.redirect("/")
 
   if (user) {
-    forms = getAllForms(forms, function (forms) {
+    forms = getAllForms(forms, user.username, function (forms) {
       if (forms == "") {
         res.render("my-requests.hbs", {
           user
@@ -1556,32 +1578,7 @@ router.get("/printform", urlencoder, (req, res) => {
   })
 })
 
-
 module.exports = router
-
-/**
- * Compares form's name from the .hbs files with
- * the current logged in user's name to filter in the  
- * view grants of the admin user
- *
- * @param {options} options.fn
- * @param {options} options.inverse
- */
-hbs.registerHelper('showonlybyuser', function (fname, lname, options) {
-
-  var user = controllerUser.getCurrentUser()
-  var firstName = user.firstName
-  var lastName = user.lastName
-
-  if (user != undefined || user != null) {
-    if (firstName + "" == fname + "") {
-      if (lastName + "" == lname + "")
-        return options.fn(this);
-    } else {
-      return options.inverse(this);
-    }
-  }
-})
 
 /**
  * Compares the faculty status from the .hbs files that
@@ -1654,6 +1651,34 @@ function getAllForms(forms, callback) {
           fdFifteen.getAllFDFifteen().then((fdFifteenData) => {
             forms = forms.concat(fdFifteenData)
             fdSixteen.getAllFDSixteen().then((fdSixteenData) => {
+              forms = forms.concat(fdSixteenData)
+              callback(forms)
+            })
+          })
+        })
+      })
+    })
+  })
+}
+
+/**
+ * Gets all forms by Login ID
+ *
+ * @param {Array to store forms} forms
+ */
+function getAllForms(forms, id, callback) {
+
+  fdOne.getFDOneByLoginId(id).then((fdOneData) => {
+    forms = fdOneData
+    fdTwo.getFDTwoByLoginId(id).then((fdTwoData) => {
+      forms = forms.concat(fdTwoData)
+      fdThree.getFDThreeByLoginId(id).then((fdThreeData) => {
+        forms = forms.concat(fdThreeData)
+        fdFour.getFDFourByLoginId(id).then((fdFourData) => {
+          forms = forms.concat(fdFourData)
+          fdFifteen.getFDFifteenByLoginId(id).then((fdFifteenData) => {
+            forms = forms.concat(fdFifteenData)
+            fdSixteen.getFDSixteenByLoginId(id).then((fdSixteenData) => {
               forms = forms.concat(fdSixteenData)
               callback(forms)
             })
