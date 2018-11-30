@@ -90,66 +90,22 @@
           <div class="ui divider"></div>
             <table class="ui celled table selectable table tablet responsive" style="width:100%">
                 <thead>
-                    <tr><th>Forms</th>
-                        <th>CCS</th>
-                        <th>CED</th>
-                        <th>CLA</th>
-                        <th>COB</th>
-                        <th>COE</th>
-                        <th>COL</th>
-                        <th>COS</th>
-                        <th>SOE</th>
+                    <tr><th>College</th>
+                        <th>FDFour</th>
+                        <th>FDFifteen</th>
+                        <th>FDSixteen</th>
                         <th>Total</th>
                     </tr></thead>
                 <tbody>
+                    {{#each totalArray}}
                     <tr>
-                        <td data-label="Forms">FD3</td>
-                        <td data-label="CCS">0</td>
-                        <td data-label="CED">0</td>
-                        <td data-label="CLA">0</td>
-                        <td data-label="COB">0</td>
-                        <td data-label="COE">0</td>
-                        <td data-label="COL">0</td>
-                        <td data-label="COS">0</td>
-                        <td data-label="SOE">0</td>
-                        <td data-label="Total">0</td>
+                        <td data-label="College">{{collegeName}}</td>
+                        <td data-label="FDFour">{{fdFourTotal}}</td>
+                        <td data-label="FDFifteen">{{fdFifteenTotal}}</td>
+                        <td data-label="FDSixteen">{{fdSixteenTotal}}</td>
+                        <td data-label="Total">{{Total}}</td>
                     </tr>
-                    <tr>
-                        <td data-label="Forms">FD4</td>
-                        <td data-label="CCS">0</td>
-                        <td data-label="CED">0</td>
-                        <td data-label="CLA">0</td>
-                        <td data-label="COB">0</td>
-                        <td data-label="COE">0</td>
-                        <td data-label="COL">0</td>
-                        <td data-label="COS">0</td>
-                        <td data-label="SOE">0</td>
-                        <td data-label="Total">0</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Forms">FD15</td>
-                        <td data-label="CCS">0</td>
-                        <td data-label="CED">0</td>
-                        <td data-label="CLA">0</td>
-                        <td data-label="COB">0</td>
-                        <td data-label="COE">0</td>
-                        <td data-label="COL">0</td>
-                        <td data-label="COS">0</td>
-                        <td data-label="SOE">0</td>
-                        <td data-label="Total">0</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Forms">Total</td>
-                        <td data-label="CCS">0</td>
-                        <td data-label="CED">0</td>
-                        <td data-label="CLA">0</td>
-                        <td data-label="COB">0</td>
-                        <td data-label="COE">0</td>
-                        <td data-label="COL">0</td>
-                        <td data-label="COS">0</td>
-                        <td data-label="SOE">0</td>
-                        <td data-label="Total">0</td>
-                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>

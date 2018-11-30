@@ -54,6 +54,8 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
+    college : String,
+    
     emailAddress : String,
     
 	userType: String, //Administrator or Faculty

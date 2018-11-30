@@ -20,6 +20,7 @@ const app = express()
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
+const Overview = require("../models/overview")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -68,30 +69,32 @@ router.post("/home", (req, res)=>{
   var password = req.body.password
 
 /*  FOR ADDING USERS TO DB */
-	// var today = new Date();
-	// today.setHours(0, 0, 0, 0);
-
-	//  var user = {
-	//  	username: idnumber,
-	//  	password, 
-	//  	firstName: 'Juana', 
-	//  	lastName: 'Dela Cruz', 
-	//  	department: "ECE", 
-	//  	userType: 'Faculty',
-	// 	employmentType: 'Full-time',
-	// 	rank: 'Asso. Prof 4',
-	//  	status: "Permanent",
-	// 	aveTeachingPerformance : 3.8,
-	//  	dateHired: today,
-	//  }
-	//  User.create(user).then((user)=>{
-	//  	 console.log("User Registration Successful")
-	//  	 console.log(user)
-    
-	//  }, (error)=>{
-	//  		console.log("ERROR")
-	//  		console.log(error)
-	//  })
+//	 var today = new Date();
+//	 today.setHours(0, 0, 0, 0);
+//
+//	  var user = {
+//	  	username: idnumber,
+//	  	password, 
+//	  	firstName: 'Juana', 
+//	  	lastName: 'Dela Cruz', 
+//	  	department: "ECE", 
+//        college : "CCS",
+//        emailAddress : "christian_dequito@dlsu.edu.ph",
+//	  	userType: 'Faculty',
+//	 	employmentType: 'Full-time',
+//	 	rank: 'Asso. Prof 4',
+//	  	status: "Permanent",
+//	 	aveTeachingPerformance : 3.8,
+//	  	dateHired: today,
+//	  }
+//	  User.create(user).then((user)=>{
+//	  	 console.log("User Registration Successful")
+//	  	 console.log(user)
+//    
+//	  }, (error)=>{
+//	  		console.log("ERROR")
+//	  		console.log(error)
+//	  })
 /*  FOR ADDING MAILER TO DB */
 //	  var mailer = {
 //	  	emailAddress: "ovca.dlsu@gmail.com",
@@ -103,31 +106,149 @@ router.post("/home", (req, res)=>{
 //	  }, (error)=>{
 //	  		console.log(error)
 //	  })
+/*  FOR ADDING Overviews TO DB */
+//	  var CCS = {
+//	  	collegeName: "CCS",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var CED = {
+//	  	collegeName: "CED",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var CLA = {
+//	  	collegeName: "CLA",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var COB = {
+//	  	collegeName: "COB",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var COE = {
+//	  	collegeName: "COE",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var COL = {
+//	  	collegeName: "COL",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var COS = {
+//	  	collegeName: "COS",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var SOE = {
+//	  	collegeName: "SOE",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      var Total = {
+//	  	collegeName: "Total",
+//        fdFourTotal : 0,
+//        fdFifteenTotal : 0,
+//        fdSixteenTotal : 0,
+//        Total : 0
+//	  }
+//      
+//      Overview.create(CCS).then((newOverview)=>{
+//          console.log(newOverview)
+//          Overview.create(CED).then((newOverview)=>{
+//              console.log(newOverview)
+//              Overview.create(CLA).then((newOverview)=>{
+//                  console.log(newOverview)
+//                  Overview.create(COB).then((newOverview)=>{
+//                      console.log(newOverview)
+//                      Overview.create(COE).then((newOverview)=>{
+//                          console.log(newOverview)
+//                          Overview.create(COL).then((newOverview)=>{
+//                              console.log(newOverview)
+//                              Overview.create(COS).then((newOverview)=>{
+//                                  console.log(newOverview)
+//                                  Overview.create(SOE).then((newOverview)=>{
+//                                      console.log(newOverview)
+//                                      Overview.create(Total).then((newOverview)=>{
+//                                          console.log(newOverview)
+//                                          
+//                                      }, (error)=>{
+//                                          console.log(error)
+//                                      })
+//                                  }, (error)=>{
+//                                      console.log(error)
+//                                  })
+//                              }, (error)=>{
+//                                  console.log(error)
+//                              })
+//                          }, (error)=>{
+//                              console.log(error)
+//                          })
+//                      }, (error)=>{
+//                          console.log(error)
+//                      })
+//                  }, (error)=>{
+//                      console.log(error)
+//                  })
+//              }, (error)=>{
+//                  console.log(error)
+//              })
+//          }, (error)=>{
+//              console.log(error)
+//          })
+//      }, (error)=>{
+//          console.log(error)
+//      })  
  
-	let user = {
-		username : idnumber,
-		password 
-	}
-
-	User.authenticate(user).then((user)=>{
-		if(user){
-			currentUser = user
-			req.session.user = user
-			if(user.userType == "Administrator")
-				res.render("home-admin.hbs", {
-					user
-				})
-			else if(user.userType == "Faculty")
-				var forms = getAllForms(forms, function(forms){
-					res.redirect("/faculty/my-requests")
-				})
-		} else {	
-			res.render("index.hbs", {
-				again: idnumber,
-				error: "Incorrect Log in details. Try again."
-			})	
-		}
-	})
+  let user = {
+      username : idnumber,
+      password 
+  }
+  
+  User.authenticate(user).then((user)=>{
+      if(user){
+          currentUser = user
+          req.session.user = user
+          if(user.userType == "Administrator"){
+              Overview.getAllOverview().then((totalArray)=>{
+                  res.render("home-admin.hbs", {
+                      user, totalArray
+                  })
+              }, (err)=>{
+                  res.send(err)
+              })
+          }
+          else if(user.userType == "Faculty"){
+              var forms = getAllForms(forms, function(forms){
+                  res.redirect("/faculty/my-requests")
+              })
+              }
+          
+      } else {	
+          res.render("index.hbs", {
+              again: idnumber,
+              error: "Incorrect Log in details. Try again."
+          })	
+      }
+  })
 })
 
 /**
@@ -138,21 +259,27 @@ router.post("/home", (req, res)=>{
  * @param {Response} res
  */
 router.get("/home", function(req, res){
-	console.log("GET /home")
-
-	user = req.session.user
-	if (user){
-		if(user.userType == "Administrator")
-			res.render("home-admin.hbs", {
-				user
-			})
-		else if(user.userType == "Faculty")
-			var forms = getAllForms(forms, function(forms){
-				res.redirect("/faculty/my-requests")
-			})
-	} else {
-		res.redirect("/")
-	}
+    console.log("GET /home")
+    
+    user = req.session.user
+    if (user){
+        if(user.userType == "Administrator")
+            Overview.getAllOverview().then((totalArray)=>{
+                console.log(totalArray)
+                res.render("home-admin.hbs", {
+                    user, totalArray
+                })
+            }, (err)=>{
+                res.send(err)
+            })
+        
+        else if(user.userType == "Faculty")
+            var forms = getAllForms(forms, function(forms){
+                res.redirect("/faculty/my-requests")
+            })
+            } else {
+                res.redirect("/")
+            }
 })
 
 /**

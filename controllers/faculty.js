@@ -23,6 +23,7 @@ const nodemailer = require('nodemailer')
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
+const Overview = require("../models/overview")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -1038,103 +1039,110 @@ router.post("/fd-4", urlencoder,  function (req, res) {
  * @param {Response} res
  */
 router.post("/submit-fd4", urlencoder, function (req, res) {
-  console.log("POST /submit-fd4")
-
-  var firstName = req.body.firstName
-  var lastName = req.body.lastName
-  var department = req.body.department
-  var rank = req.body.rank
-  var nameOfConference = req.body.nameOfConference
-  var dateOfStartConference = req.body.dateOfStartConference
-  var dateOfEndConference = req.body.dateOfEndConference
-  var placeAndVenue = req.body.placeAndVenue
-  var dateOfDeparture = req.body.dateOfDeparture
-  var dateOfReturn = req.body.dateOfReturn
-  var dateOfReturnToWork = req.body.dateOfReturnToWork
-  var participantFee = req.body.participantFee
-  var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
-  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
-  var grantStatus = "Pending"
-
-  var fdFourData = {
-    formId: "FD4-", grantName: "[FD4] Support for Participation in Local Conferences",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, rank, nameOfConference,
-    dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
-    grantStatus
-  }
-
-  fdFour.create(fdFourData).then((newFdFourData) => {
-
-    User.addFDFourInUser(newFdFourData).then((updatedUser) => {
-      var remark = {
-        remarkId: 1, formId: newFdFourData._id, date: new Date(),
-        status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
-      }
-
-      Remark.create(remark).then((addedRemark) => {
-        fdFour.addRemarkInFDFour(addedRemark).then((updatedFdFour) => {
-          console.log("Remark in FD4 added!")
-        }, (err) => {
-          res.send(err)
-        })
-      }, (err) => {
-        res.send(err)
-      })
-
-      var user = req.session.user
-      if (user.userType != 'Faculty')
-        res.redirect("/")
-
-      if (user) {
-        Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-
-          User.getUserByType("Administrator").then((adminUser) => {
-            var transporter = nodemailer.createTransport({
-              service: 'gmail',
-              auth: {
-                user: newMailer.emailAddress,
-                pass: newMailer.password
-              }
-            })
-
-            var mailOptions = {
-              from: newMailer.emailAddress,
-              to: adminUser.emailAddress,
-              subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
-              text: user.firstName + " " + user.lastName + " has requested for " + newFdFourData.grantName
+    console.log("POST /submit-fd4")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var nameOfConference = req.body.nameOfConference
+    var dateOfStartConference = req.body.dateOfStartConference
+    var dateOfEndConference = req.body.dateOfEndConference
+    var placeAndVenue = req.body.placeAndVenue
+    var dateOfDeparture = req.body.dateOfDeparture
+    var dateOfReturn = req.body.dateOfReturn
+    var dateOfReturnToWork = req.body.dateOfReturnToWork
+    var participantFee = req.body.participantFee
+    var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var grantStatus = "Pending"
+    
+    var fdFourData = {
+        formId: "FD4-", grantName: "[FD4] Support for Participation in Local Conferences",
+        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        firstName, lastName, department, rank, nameOfConference,
+        dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
+        dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
+        grantStatus
+    }
+    
+    fdFour.create(fdFourData).then((newFdFourData) => {
+        
+        User.addFDFourInUser(newFdFourData).then((updatedUser) => {
+            var remark = {
+                remarkId: 1, formId: newFdFourData._id, date: new Date(),
+                status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
             }
-
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-              }
+            
+            Remark.create(remark).then((addedRemark) => {
+                fdFour.addRemarkInFDFour(addedRemark).then((updatedFdFour) => {
+                    console.log("Remark in FD4 added!")
+                    
+                }, (err) => {
+                    res.send(err)
+                })
+            }, (err) => {
+                res.send(err)
             })
-
-            res.render("success.hbs", {
-              user, formName: "[FD4] Support for Participation in Local Conferences"
-            })
-
-          }, (err) => {
-            res.send(err)
-          })
-
+            
+            var user = req.session.user
+            var cost = parseFloat(newFdFourData.participantFee)
+            if (user.userType != 'Faculty')
+                res.redirect("/")
+            
+            if (user) {
+                Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                    
+                    User.getUserByType("Administrator").then((adminUser) => {
+                        Overview.addFDFourTotal(updatedUser.college, cost).then((updatedOverview)=>{
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: newMailer.emailAddress,
+                                    pass: newMailer.password
+                                }
+                            })
+                            
+                            var mailOptions = {
+                                from: newMailer.emailAddress,
+                                to: adminUser.emailAddress,
+                                subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
+                                text: user.firstName + " " + user.lastName + " has requested for " + newFdFourData.grantName
+                            }
+                            
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('Email sent: ' + info.response);
+                                }
+                            })
+                            
+                            res.render("success.hbs", {
+                                user, formName: "[FD4] Support for Participation in Local Conferences"
+                            })
+                        }, (err)=>{
+                            res.send(err)
+                        })
+                        
+                        
+                    }, (err) => {
+                        res.send(err)
+                    })
+                    
+                }, (err) => {
+                    res.send(err)
+                })
+            } else {
+                res.redirect("/")
+            }
         }, (err) => {
-          res.send(err)
+            res.send(err)
         })
-      } else {
-        res.redirect("/")
-      }
+        
     }, (err) => {
-      res.send(err)
+        res.send(err)
     })
-
-  }, (err) => {
-    res.send(err)
-  })
 })
 
 /**
@@ -1209,100 +1217,104 @@ router.post("/fd-15", urlencoder, function (req, res) {
  * @param {Response} res
  */
 router.post("/submit-fd15", urlencoder, function (req, res) {
-  console.log("POST /submit-fd15")
-
-  var firstName = req.body.firstName
-  var lastName = req.body.lastName
-  var department = req.body.department
-  var rank = req.body.rank
-  var hostInstitution = req.body.hostInstitution
-  var titleOfSeminar = req.body.titleOfSeminar
-  var place = req.body.place
-  var startTime = req.body.startTime
-  var endTime = req.body.endTime
-  var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
-  var participantFee = req.body.participantFee
-  var grantStatus = "Pending"
-
-  var fdFifteenData = {
-    formId: "FD15-", grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, rank, hostInstitution,
-    titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    participantFee, grantStatus
-  }
-
-  fdFifteen.create(fdFifteenData).then((newFdFifteenData) => {
-
-    User.addFDFifteenInUser(newFdFifteenData).then((updatedUser) => {
-      var remark = {
-        remarkId: 1, formId: newFdFifteenData._id, date: new Date(),
-        status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
-      }
-
-      Remark.create(remark).then((addedRemark) => {
-        fdFifteen.addRemarkInFDFifteen(addedRemark).then((updatedFdFifteen) => {
-          console.log("Remark in FD15 added!")
-        }, (err) => {
-          res.send(err)
-        })
-      }, (err) => {
-        res.send(err)
-      })
-
-      var user = req.session.user
-      if (user.userType != 'Faculty')
-        res.redirect("/")
-
-      if (user) {
-
-        Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-
-          User.getUserByType("Administrator").then((adminUser) => {
-            var transporter = nodemailer.createTransport({
-              service: 'gmail',
-              auth: {
-                user: newMailer.emailAddress,
-                pass: newMailer.password
-              }
-            })
-
-            var mailOptions = {
-              from: newMailer.emailAddress,
-              to: adminUser.emailAddress,
-              subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
-              text: user.firstName + " " + user.lastName + " has requested for " + newFdFifteenData.grantName
+    console.log("POST /submit-fd15")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var hostInstitution = req.body.hostInstitution
+    var titleOfSeminar = req.body.titleOfSeminar
+    var place = req.body.place
+    var startTime = req.body.startTime
+    var endTime = req.body.endTime
+    var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+    var participantFee = req.body.participantFee
+    var grantStatus = "Pending"
+    
+    var fdFifteenData = {
+        formId: "FD15-", grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
+        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        firstName, lastName, department, rank, hostInstitution,
+        titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
+        participantFee, grantStatus
+    }
+    
+    fdFifteen.create(fdFifteenData).then((newFdFifteenData) => {
+        
+        User.addFDFifteenInUser(newFdFifteenData).then((updatedUser) => {
+            var remark = {
+                remarkId: 1, formId: newFdFifteenData._id, date: new Date(),
+                status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
             }
-
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-              }
+            
+            Remark.create(remark).then((addedRemark) => {
+                fdFifteen.addRemarkInFDFifteen(addedRemark).then((updatedFdFifteen) => {
+                    console.log("Remark in FD15 added!")
+                }, (err) => {
+                    res.send(err)
+                })
+            }, (err) => {
+                res.send(err)
             })
-
-            res.render("success.hbs", {
-              user, formName: "[FD15] Support for Local Trainings, Seminars and Workshops"
-            })
-
-          }, (err) => {
-            res.send(err)
-          })
-
+            
+            var user = req.session.user
+            var cost = parseFloat(newFdFifteenData.participantFee)
+            if (user.userType != 'Faculty')
+                res.redirect("/")
+            
+            if (user) {
+                
+                Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                    
+                    User.getUserByType("Administrator").then((adminUser) => {
+                        Overview.addFDFifteenTotal(updatedUser.college, cost).then((updatedOverview)=>{
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: newMailer.emailAddress,
+                                    pass: newMailer.password
+                                }
+                            })
+                            
+                            var mailOptions = {
+                                from: newMailer.emailAddress,
+                                to: adminUser.emailAddress,
+                                subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
+                                text: user.firstName + " " + user.lastName + " has requested for " + newFdFifteenData.grantName
+                            }
+                            
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('Email sent: ' + info.response);
+                                }
+                            })
+                            
+                            res.render("success.hbs", {
+                                user, formName: "[FD15] Support for Local Trainings, Seminars and Workshops"
+                            })
+                        }, (err)=>{
+                            res.send(err)
+                        })
+                    }, (err) => {
+                        res.send(err)
+                    })
+                    
+                }, (err) => {
+                    res.send(err)
+                })
+            } else {
+                res.redirect("/")
+            }
         }, (err) => {
-          res.send(err)
+            res.send(err)
         })
-      } else {
-        res.redirect("/")
-      }
+        
     }, (err) => {
-      res.send(err)
+        res.send(err)
     })
-
-  }, (err) => {
-    res.send(err)
-  })
 })
 
 /**
@@ -1378,100 +1390,106 @@ router.post("/fd-16", urlencoder, function (req, res) {
  * @param {Response} res
  */
 router.post("/submit-fd16", urlencoder, function (req, res) {
-  console.log("POST /submit-fd16")
-
-  var firstName = req.body.firstName
-  var lastName = req.body.lastName
-  var department = req.body.department
-  var rank = req.body.rank
-  var status = req.body.status
-  var nameOfOrganization = req.body.nameOfOrganization
-  var typeOfMembershipPlace = req.body.typeOfMembershipPlace
-  var typeofMembershipDuration = req.body.typeofMembershipDuration
-  var membershipDate = req.body.membershipDate
-  var coverage = req.body.coverage
-  var membershipFee = req.body.membershipFee
-  var checkPayableTo = req.body.checkPayableTo
-  var grantStatus = "Pending"
-
-  var fdSixteenData = {
-    formId: "FD16-", grantName: "[FD16] Support for Membership in Professional Organizations",
-    ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, rank, status, nameOfOrganization,
-    typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, membershipFee, checkPayableTo, grantStatus
-  }
-
-  fdSixteen.create(fdSixteenData).then((newFdSixteenData) => {
-
-    User.addFDSixteenInUser(newFdSixteenData).then((updatedUser) => {
-      var remark = {
-        remarkId: 1, formId: newFdSixteenData._id, date: new Date(),
-        status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
-      }
-
-      Remark.create(remark).then((addedRemark) => {
-        fdSixteen.addRemarkInFDSixteen(addedRemark).then((updatedFdSixteen) => {
-          console.log("Remark in FD16 added!")
-        }, (err) => {
-          res.send(err)
-        })
-      }, (err) => {
-        res.send(err)
-      })
-
-      var user = req.session.user
-      if (user.userType != 'Faculty')
-        res.redirect("/")
-
-      if (user) {
-        Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-
-          User.getUserByType("Administrator").then((adminUser) => {
-            var transporter = nodemailer.createTransport({
-              service: 'gmail',
-              auth: {
-                user: newMailer.emailAddress,
-                pass: newMailer.password
-              }
-            })
-
-            var mailOptions = {
-              from: newMailer.emailAddress,
-              to: adminUser.emailAddress,
-              subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
-              text: user.firstName + " " + user.lastName + " has requested for " + newFdSixteenData.grantName
+    console.log("POST /submit-fd16")
+    
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var department = req.body.department
+    var rank = req.body.rank
+    var status = req.body.status
+    var nameOfOrganization = req.body.nameOfOrganization
+    var typeOfMembershipPlace = req.body.typeOfMembershipPlace
+    var typeofMembershipDuration = req.body.typeofMembershipDuration
+    var membershipDate = req.body.membershipDate
+    var coverage = req.body.coverage
+    var membershipFee = req.body.membershipFee
+    var checkPayableTo = req.body.checkPayableTo
+    var grantStatus = "Pending"
+    
+    var fdSixteenData = {
+        formId: "FD16-", grantName: "[FD16] Support for Membership in Professional Organizations",
+        ownerIdNumber: controllerUser.getCurrentUser().username, term: "1st", startAY: 2018, endAY: 2019,
+        firstName, lastName, department, rank, status, nameOfOrganization,
+        typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
+        coverage, membershipFee, checkPayableTo, grantStatus
+    }
+    
+    fdSixteen.create(fdSixteenData).then((newFdSixteenData) => {
+        
+        User.addFDSixteenInUser(newFdSixteenData).then((updatedUser) => {
+            var remark = {
+                remarkId: 1, formId: newFdSixteenData._id, date: new Date(),
+                status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
             }
-
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-              }
+            
+            Remark.create(remark).then((addedRemark) => {
+                fdSixteen.addRemarkInFDSixteen(addedRemark).then((updatedFdSixteen) => {
+                    console.log("Remark in FD16 added!")
+                }, (err) => {
+                    res.send(err)
+                })
+            }, (err) => {
+                res.send(err)
             })
-
-            res.render("success.hbs", {
-              user, formName: "[FD16] Support for Membership in Professional Organizations"
-            })
-
-          }, (err) => {
-            res.send(err)
-          })
-
+            
+            var user = req.session.user
+            var cost = parseFloat(newFdSixteenData.membershipFee)
+            if (user.userType != 'Faculty')
+                res.redirect("/")
+            
+            if (user) {
+                Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                    
+                    User.getUserByType("Administrator").then((adminUser) => {
+                        Overview.addFDSixteenTotal(updatedUser.college, cost).then((updatedOverview)=>{
+                            var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: newMailer.emailAddress,
+                                    pass: newMailer.password
+                                }
+                            })
+                            
+                            var mailOptions = {
+                                from: newMailer.emailAddress,
+                                to: adminUser.emailAddress,
+                                subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
+                                text: user.firstName + " " + user.lastName + " has requested for " + newFdSixteenData.grantName
+                            }
+                            
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('Email sent: ' + info.response);
+                                }
+                            })
+                            
+                            res.render("success.hbs", {
+                                user, formName: "[FD16] Support for Membership in Professional Organizations"
+                            })
+                        }, (err)=>{
+                            res.send(err)
+                        })
+                        
+                        
+                    }, (err) => {
+                        res.send(err)
+                    })
+                    
+                }, (err) => {
+                    res.send(err)
+                })
+            } else {
+                res.redirect("/")
+            }
         }, (err) => {
-          res.send(err)
+            res.send(err)
         })
-      } else {
-        res.redirect("/")
-      }
+        
     }, (err) => {
-      res.send(err)
+        res.send(err)
     })
-
-  }, (err) => {
-    res.send(err)
-  })
 })
 
 /**
