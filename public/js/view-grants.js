@@ -1,9 +1,10 @@
 /**
  * This is the JS file of the view grants page.
- * November 26, 2018
- * @ver 1.2
+ * December 1, 2018
+ * @ver 1.3
  * @author Candace Mercado
  */
+
 
 $(document).ready(function() {
     $('#example thead tr').clone(true).appendTo( '#example thead' );
@@ -57,10 +58,38 @@ $("button.delete").click(function () {
     var id = $(this).attr("data-id")
     var grant = $(this).attr("data-grant")
 
-    $('.ui.modal.deletion')
-    .modal('show');
+    $.ajax({
+        method : "get",
+        url : "saveform",
+        data : {
+            id
+        },
+        success : function(form){
+            if (form){
+                var formIdDiv = document.getElementsByClassName("extra formid")
+                var nameDiv = document.getElementsByClassName("extra name")
+                var departmentDiv = document.getElementsByClassName("extra department")
+                var timestampDiv = document.getElementsByClassName("extra datetime")
+                var grantDiv = document.getElementsByClassName("extra grant")
 
-    $(".negative.delete.final").click(function(){
+                $(formIdDiv).empty()
+                $(nameDiv).empty()
+                $(departmentDiv).empty()
+                $(timestampDiv).empty()
+                $(grantDiv).empty()
+                
+                $(formIdDiv).append("<b>Form ID: </b>"+form.formId)
+                $(nameDiv).append("<b>Name: </b>"+form.firstName + " " + form.lastName)
+                $(departmentDiv).append("<b>Department: </b>"+form.department) 
+                $(timestampDiv).append("<b>Submitted on: </b>"+ moment(form.timestamp).format("MMMM D, YYYY h:mm A"))
+                $(grantDiv).append("<b>Grant Requested: </b>"+form.grantName)
+
+                $('.ui.modal.deletion').modal('show');
+            } 
+        }
+    })
+    
+    $(".ui.button.negative.delete.final").on("click", function(){
         $.ajax({ 
             method : "delete",
             url : "delete-form",
@@ -70,12 +99,16 @@ $("button.delete").click(function () {
             },
             success : function(result){
                 if (result.n === 1){
-                    $tr.remove();    
+                    $tr.remove(); 
                 } else{
                     alert("Something went wrong")
                 }
             }
         })
+    })
+
+    $(".cancel.delete.final").on("click",function(){
+        $('.ui.modal.deletion').modal('hide');
     })
   })
   

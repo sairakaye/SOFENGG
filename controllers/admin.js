@@ -633,7 +633,7 @@ router.delete("/delete-form", urlencoder, (req, res) => {
             })
         })
     }
-    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+    else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
         fdFifteen.getFDFifteenByID(id).then((foundFDFifteen) => {
             User.deleteFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
                 fdFifteen.delete(req.body.id).then((result) => {
@@ -902,3 +902,20 @@ function getFormById(id, callback) {
         })
     })
 } 
+
+/**
+ * Gets the form with the id being requested, this is 
+ * used in exporting the form as pdf file.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/saveform", urlencoder, (req, res) => {
+    console.log("GET /saveform ")
+  
+    var id = req.query.id
+  
+    var forms = getFormById(id, function (forms) {
+      res.send(forms)
+    })
+  })

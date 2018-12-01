@@ -89,7 +89,7 @@
             <h1 class="ui huge header">
               Grant Requests
             </h1>
-          </div>
+           </div>
           <div class="ui divider"></div>
 
           <div class="row inline grid">
@@ -153,11 +153,33 @@
     </div>
 
     <!-- This the modal for grant deletion -->
-    <div class="ui mini modal deletion">
+    {{!-- <div class="ui mini modal deletion">
       <div class="header">Are you sure?</div>
       <div class="content">
         <p>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
       </div>
+      <div class="actions">
+        <input type="submit" value="Delete" class="ui button negative delete final">
+        <div class="ui cancel button">Not yet</div>
+      </div>
+    </div> --}}
+
+      <div class="ui small modal deletion">
+      <div class="header">Are you sure you want to delete this?</div>
+      <div class="content">
+        <div class="item">
+        <div class="content">
+          <div class="meta">
+            <div class="extra formid"></div>
+            <div class="extra name"></div>
+            <div class="extra department"></div>
+            <div class="extra datetime"></div>
+            <div class="extra grant"></div>
+          </div>
+           <p style = "color: crimson;"><br>Once you click the "Delete" button, the grant request will be permanently deleted.</p>
+        </div>
+       </div>
+     </div>
       <div class="actions">
         <input type="submit" value="Delete" class="ui button negative delete final">
         <div class="ui cancel button">Not yet</div>
@@ -193,5 +215,6 @@
 <script type="text/javascript" src="../public/buttons.html5.min.js"></script>
 <script type="text/javascript" src="../public/buttons.print.min.js"></script>
 <script type="text/javascript" src="../public/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="../public/moment.min.js"></script>
 
 </html>
