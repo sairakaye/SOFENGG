@@ -316,11 +316,35 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="field">
-                  <label>Participant’s fee (check payable to)</label>
-                  <p>{{fdFourData.participantFee}}</p>
-                  <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Date of expected return to work</label>
+                      {{#if viewdetails}}
+                      <p>{{formatDate fdFourData.dateOfReturnToWork}}</p>
+                      {{else if adminAccess}}
+                      <p>{{formatDate fdFourData.dateOfReturnToWork}}</p>
+                      {{else}}
+                      <p>{{fdFourData.dateOfReturnToWork}}</p>
+                      <input type="hidden" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
+                        value="{{fdFourData.dateOfReturnToWork}}" />
+                      {{/if}}
+                    </div>
+                    <div class="eight wide field">
+                      <label>Participant’s fee (check payable to)</label>
+                      {{#if viewdetails}}
+                      <p>{{fdFourData.participantFee}}</p>
+                      {{else if adminAccess}}
+                      <p>{{fdFourData.participantFee}}</p>
+                      {{else}}
+                      <p>{{fdFourData.participantFee}}</p>
+                      <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                      {{/if}}
+                    </div>
+                  </div>
                 </div>
+
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">
