@@ -206,6 +206,16 @@
             <div class="one column">
               <div class="ui attached message">
                 <div class="one column center aligned row">
+                      {{#if viewdetails}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdFifteenData.formId}}
+                      </div>
+                      {{else if adminAccess}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdFifteenData.formId}}
+                      </div>
+                      {{else}}
+                      {{/if}}
                   <div class="column">
                     <h2> [FD15] Support for Local Trainings, Seminars and Workshops</h2>
                   </div>

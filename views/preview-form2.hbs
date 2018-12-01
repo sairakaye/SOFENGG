@@ -206,6 +206,16 @@
             <div class="one column">
               <div class="ui attached message">
                 <div class="one column center aligned row">
+                      {{#if viewdetails}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdTwoData.formId}}
+                      </div>
+                      {{else if adminAccess}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdTwoData.formId}}
+                      </div>
+                      {{else}}
+                      {{/if}}
                   <div class="column">
                     <h2>[FD2] Incentive for Publication in Pre-Selected High Impact Conferences</h2>
                   </div>

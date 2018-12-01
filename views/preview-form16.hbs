@@ -206,7 +206,17 @@
           <div class="row">
             <div class="one column">
               <div class="ui attached message">
-                <div class="one column center aligned row">
+                <div class="two column center aligned row">
+                      {{#if viewdetails}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdSixteenData.formId}}
+                      </div>
+                      {{else if adminAccess}}
+                      <div class="ui compact right floated segment">
+                        <b> Form ID: </b> {{fdSixteenData.formId}}
+                      </div>
+                      {{else}}
+                      {{/if}}
                   <div class="column">
                     <h2>[FD16] Support for Membership in Professional Organizations</h2>
                   </div>
