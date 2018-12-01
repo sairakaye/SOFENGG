@@ -100,9 +100,10 @@ $("button.delete").click(function () {
             success : function(result){
                 if (result.n === 1){
                     $tr.remove(); 
-                } else{
-                    alert("Something went wrong")
-                }
+                    $('.ui.modal.deletion').modal('hide');
+                    $('.ui.page.dimmer.deletiondone').dimmer('show');
+                    setTimeout(function() {   $('.ui.page.dimmer.deletiondone').dimmer('hide'); }, 2000);
+                } 
             }
         })
     })
