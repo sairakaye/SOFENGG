@@ -300,6 +300,9 @@ $(".item.saveform").click(function () {
                     }
                     doc.save(form.formId + '.pdf');
                 }
+                
+                $('.ui.page.dimmer.savingdone').dimmer('show');
+                setTimeout(function() {   $('.ui.page.dimmer.savingdone').dimmer('hide'); }, 2000);
             } 
         }
     })

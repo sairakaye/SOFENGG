@@ -32,12 +32,14 @@ $(document).ready(function() {
         order: [[ 1, "desc" ]],
         lengthChange: false,
         aoColumns: [ null, null, null, null, null, null, { "bSearchable": false }],
-        buttons: [{
+        buttons: [{           
             extend: 'excel',
+            messageTop: 'Submitted to the Office of the Vice Chancellor for Academics as of ' + moment().format("MMMM D, YYYY h:mm A"),
             text: 'Export Table to Excel',
             exportOptions: {
                 columns: 'th:not(:last-child)'
-            }
+            },
+
         },  
         {
             extend: 'pdf',
@@ -51,6 +53,26 @@ $(document).ready(function() {
     table.buttons().container().appendTo( 
         $('div.eight.column:eq(0)', table.table().container()) 
     );
+
+    $(".buttons-excel").on('click',function(){
+        var exportDiv = document.getElementById("done table export")
+        $(exportDiv).empty()
+        $(exportDiv).append("<i class='check icon'></i>")
+        $(exportDiv).append("Table exported to Excel")
+
+        $('.ui.page.dimmer.exportdone').dimmer('show')
+        setTimeout(function() {  $('.ui.page.dimmer.exportdone').dimmer('hide'); }, 1000)
+    });
+    
+    $(".buttons-pdf").on('click',function(){
+        var exportDiv = document.getElementById("done table export")
+        $(exportDiv).empty()
+        $(exportDiv).append("<i class='check icon'></i>")
+        $(exportDiv).append("Table exported to PDF")
+
+        $('.ui.page.dimmer.exportdone').dimmer('show')
+        setTimeout(function() {  $('.ui.page.dimmer.exportdone').dimmer('hide'); }, 1000)
+    });
 } );
 
 $("button.delete").click(function () {
