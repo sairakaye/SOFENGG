@@ -25,9 +25,16 @@ $(document).ready(function() {
     } );
  
     var table = $('#example').DataTable( {
+        pageLength: 10,
         orderCellsTop: true,
         fixedHeader: true,
-        language: { "searchPlaceholder": "Keywords"},
+        language: { 
+            "searchPlaceholder": "Keywords", 
+            "zeroRecords": "No grant requests found", 
+            "info": "Showing _START_ to _END_ of _TOTAL_ grant requests",
+            "infoEmpty": "No matches found",
+            "infoFiltered": "(filtered from _MAX_  grant requests)"
+        },
         columnDefs: [{  "targets": 6, "orderable": false }],   
         order: [[ 1, "desc" ]],
         lengthChange: false,
@@ -45,11 +52,25 @@ $(document).ready(function() {
             extend: 'pdf',
             text: 'Export Table to PDF',
             exportOptions: {
-                columns: 'th:not(:last-child)'
-            }
-        }],
+                columns: ':visible',
+                columns: 'th:not(:last-child)',
+                order: 'applied',
+            },
+            customize: function (doc) {		
+                doc.content[1].layout = {
+                    hLineWidth: function(i, node) {
+                        return (i === 0 || i === node.table.body.length) ? 1 : 1;},
+                    vLineWidth: function(i, node) {
+                        return (i === 0 || i === node.table.widths.length) ? 1 : 1;},
+                    hLineColor: function(i, node) {
+                        return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';},
+                    vLineColor: function(i, node) {
+                        return (i === 0 || i === node.table.widths.length) ? 'black' : 'gray';}
+                };
+             }, 
+        }]
     });
- 
+
     table.buttons().container().appendTo( 
         $('div.eight.column:eq(0)', table.table().container()) 
     );

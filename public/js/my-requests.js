@@ -7,7 +7,14 @@
 
 $(document).ready(function() {
     $('#example').DataTable({
-        language: { "searchPlaceholder": "Keywords"},
+        pageLength: 10,
+        language: { 
+            "searchPlaceholder": "Keywords", 
+            "zeroRecords": "No grant requests found", 
+            "info": "Showing _START_ to _END_ of _TOTAL_ grant requests",
+            "infoEmpty": "No matches found",
+            "infoFiltered": "(filtered from _MAX_  grant requests)"
+        },
         columnDefs: [{"targets": 4, "orderable": false}, {"targets": 5, "orderable": false}],   
         order: [[ 1, "desc" ]],
         lengthChange: false,

@@ -124,3 +124,9 @@ body {
     font-size: 60%;
   }
 }
+
+.ui.inverted.huge.borderless.menu .item:hover{
+  background: #1B1C1D;
+  color: white;
+  text-shadow: #016980 0px 2px;
+}
