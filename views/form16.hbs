@@ -158,6 +158,26 @@
                   <input type="text" name="nameOfOrganization" id = "nameOfOrganization" class = "check"
                          value="{{fdSixteenData.nameOfOrganization}}"/>
                 </div>
+
+               {{#membershiptype fdSixteenData.typeOfMembershipPlace }}
+                <div class="field">
+                  <label>Type of membership</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeOfMembershipPlace" value="Local" />
+                        <label>Local</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeOfMembershipPlace" value="International" checked="checked"/>
+                        <label>International</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{else}}
                 <div class="field">
                   <label>Type of membership</label>
                   <div class="fields">
@@ -169,12 +189,32 @@
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="typeOfMembershipPlace" value="International"/>
+                        <input type="radio" name="typeOfMembershipPlace" value="International" />
                         <label>International</label>
                       </div>
                     </div>
                   </div>
                 </div>
+              {{/membershiptype}}
+               {{#membershiptype2 fdSixteenData.typeofMembershipDuration }}
+                <div class="field">
+                  <label>Type of membership</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeofMembershipDuration" value="Annual" />
+                        <label>Annual</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeofMembershipDuration" value="Lifetime" checked="checked" />
+                        <label>Lifetime</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{else}}
                 <div class="field">
                   <label>Type of membership</label>
                   <div class="fields">
@@ -192,6 +232,7 @@
                     </div>
                   </div>
                 </div>
+              {{/membershiptype2}}
                 <div class="field">
                   <div class="fields">
                     <div class="eight wide field">

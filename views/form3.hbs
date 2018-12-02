@@ -145,12 +145,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="four wide field">
-                  <label>If Part-Time, No. of units taught since hired</label>
-                  <input type="number" name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" 
-                  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                         min = "0"/>
-                </div>
                 {{else}}
                 <div class="field disabled">
                   <label>Status</label>
@@ -170,28 +164,54 @@
                   </div>
                 </div>
               {{/employment}}
-                <div class="field">
-                  <label>Name of Conference</label>
-                  <input type="text" name="nameOfConference" id  = "nameOfConference" class= "check" 
-                         value="{{fdThreeData.nameOfConference}}"/>
-                </div>
+              <div class="field">
+                <label>Name of Conference</label>
+                <input type="text" name="nameOfConference" id  = "nameOfConference" class= "check" 
+                      value="{{fdThreeData.nameOfConference}}"/>
+              </div>
+              {{#conferencetype fdThreeData.typeOfConference }}
                 <div class="field">
                   <label>Type of Conference</label>
                   <div class="fields">
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="typeOfConference" value="Local" checked="checked"/>
+                        <input type="radio" name="typeOfConference" value="Local"/>
                         <label>Local</label>
                       </div>
                     </div>
                     <div class="two wide field">
                       <div class="ui radio checkbox">
-                        <input type="radio" name="typeOfConference" value="International"/>
+                        <input type="radio" name="typeOfConference" value="International"  checked="checked"/>
                         <label>International</label>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="four wide field">
+                  <label>If Part-Time, No. of units taught since hired</label>
+                  <input type="number" name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" 
+                  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                         min = "0"/>
+                </div>
+                {{else}}
+                <div class="field">
+                  <label>Type of Conference</label>
+                  <div class="fields">
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeOfConference" value="Local"  checked="checked"/>
+                        <label>Local</label>
+                      </div>
+                    </div>
+                    <div class="two wide field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="typeOfConference" value="International" />
+                        <label>International</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/conferencetype}}
                 <div class="field">
                   <label>Title of paper to be presented</label>
                   <input type="text" name="titleOfPaperToBePresented" id ="titleOfPaperToBePresented" class = "check"

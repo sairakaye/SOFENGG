@@ -1614,6 +1614,54 @@ hbs.registerHelper('employment', function (status, options) {
 })
 
 /**
+ * Compares the conference type from the 
+ * .hbs files that is retrieved from the database.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('conferencetype', function (type, options) {
+  if (type == "International") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+})
+
+/**
+ * Compares the membership type from the 
+ * .hbs files that is retrieved from the database.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('membershiptype', function (type, options) {
+  if (type == "International") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+})
+
+/**
+ * Compares the membership type (second) from the 
+ * .hbs files that is retrieved from the database.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+hbs.registerHelper('membershiptype2', function (type, options) {
+  if (type == "Lifetime") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+})
+
+/**
  * For formating of date with the time.
  * 
  * @param {Date} date  
