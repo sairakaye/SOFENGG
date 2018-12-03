@@ -72,7 +72,7 @@ $('#conference-startdate').calendar({
         $('#departure-date').calendar({
           type: 'date',
           minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-          maxDate: new Date(yearCon, monthCon, dayCon),
+          maxDate: new Date(yearEnd, monthEnd, dayEnd),
           onChange: function (date) {
             var year = date.getFullYear();
             var month = date.getMonth();
@@ -80,7 +80,7 @@ $('#conference-startdate').calendar({
 
             $('#return-date').calendar({
               type: 'date',
-              minDate: new Date(yearCon, monthCon, dayCon),
+              minDate: new Date(year, month, day),
               onChange: function (date) {
                 var yearRet = date.getFullYear();
                 var monthRet = date.getMonth();
