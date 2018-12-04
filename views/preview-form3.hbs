@@ -152,7 +152,7 @@ November 15, 2018
                 <textarea name="remark" id="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
               </div>
               <br>
-              <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}">Submit</button>
+              <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}" style = "background-color:#016938">Submit</button>
               <button class="ui button" id="reset-button" type="button">Reset</button>
             </form>
           </div>
@@ -402,9 +402,12 @@ November 15, 2018
                   </button>
                   {{/if}}
                   {{#if viewdetails}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
+                  <div class="extra">
+                    <a class="ui button" href="/faculty/my-requests" >
+                      <i class="left chevron icon"></i>
+                      Back
+                    </a>
+                  </div>
               </form>
               {{else if adminAccess}}
               <a href="/admin/view-grants" class="ui button">
@@ -433,7 +436,7 @@ November 15, 2018
                   <p>Do you really want to log out?</p>
                 </div>
                 <div class="actions">
-                  <input type="submit" value="Log out" class="ui button positive logout">
+                  <input type="submit" value="Log out" class="ui button positive logout" style = "background-color:#016938">
                   <div class="ui cancel button">Not yet</div>
                 </div>
               </div>

@@ -26,14 +26,19 @@ body {
 }
   
 #sidebar .ui.menu > a.item.active {
-  background-color: gray;
+  background-color: #016938;
+  color: white;
+  border: none !important;
+}
+#sidebar .ui.menu > a.item.active:hover {
+  background-color: #016938;
   color: white;
   border: none !important;
 }
   
 #sidebar .ui.menu > a.item:hover {
-  background-color:gray;
-  color: white;
+  background-color:lightgray;
+  color: black;
 }
 
 #sidebar .ui.menu > input.item {
@@ -129,4 +134,16 @@ body {
   background: #1B1C1D;
   color: white;
   text-shadow: #016980 0px 2px;
+}
+
+.field.additional.requirements{
+  font-size: 13px;
+}
+
+label.additional.requirements.title{
+  font-size: 14px;
+}
+
+div.ui.submit.green.button{
+  background-color: #016938;
 }
