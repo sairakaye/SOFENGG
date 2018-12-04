@@ -365,7 +365,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                 }
             })
         }
-        else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
             fdFifteen.getFDFifteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdFifteen.changeStatusFDFifteen(id, status).then((foundFDFifteen) => {
