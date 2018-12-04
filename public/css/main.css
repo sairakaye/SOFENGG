@@ -132,8 +132,8 @@ body {
 
 .ui.inverted.huge.borderless.menu .item:hover{
   background: #1B1C1D;
-  color: white;
-  text-shadow: #016980 0px 2px;
+  color: #B2B5B2;
+  /*text-shadow: #016980 0px 2px;*/
 }
 
 .field.additional.requirements{
