@@ -365,7 +365,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                 }
             })
         }
-        else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+        else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
             fdFifteen.getFDFifteenByID(id).then((foundForm) => {
                 if (foundForm.status !== status) {
                     fdFifteen.changeStatusFDFifteen(id, status).then((foundFDFifteen) => {
@@ -561,7 +561,7 @@ router.delete("/delete-remark", urlencoder, (req, res) => {
             })
         })
     }
-    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+    else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
         Remark.getRemark(formID, remarkID).then((foundRemark)=> {
             fdFifteen.deleteRemarkInFDFifteen(foundRemark).then((deletedRemark)=> {
                 Remark.delete(remarkID).then((deletedResult)=> {

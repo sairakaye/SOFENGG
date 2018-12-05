@@ -152,7 +152,7 @@
                 <textarea name="remark" id="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
               </div>
               <br>
-              <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}">Submit</button>
+              <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}" style = "background-color:#016938">Submit</button>
               <button class="ui button" id="reset-button" type="button">Reset</button>
             </form>
           </div>
@@ -434,17 +434,27 @@
                   <button class="ui submit green button" type="Submit">
                     Submit
                   </button>
-                  {{/if}}
-                  {{#if viewdetails}}
-                  <a href="/faculty/my-requests" class="ui button">
-                    Back
-                  </a>
-              </form>
-              {{else if adminAccess}}
-              <a href="/admin/view-grants" class="ui button">
-                Back
-              </a>
-              </form>
+                {{/if}}
+                {{#if viewdetails}}
+                  <div class="extra">
+                    <a class="ui button" href="/faculty/my-requests" >
+                      <i class="left chevron icon"></i>
+                      Back
+                    </a>
+                  </div>
+                </form>
+                {{else if adminAccess}}
+                  <div class="extra">
+                    <a class="ui button" href="/admin/view-grants" >
+                      <i class="left chevron icon"></i>
+                      Back
+                    </a>
+                  </div>
+                </form>
+              {{else}}
+                  <input type="submit" formaction="/faculty/fd-1" class="ui button" value="Back">
+              {{/if}}
+
               <!-- This the modal for the remark deletion -->
               <div class="ui mini modal deletion">
                 <div class="header">Are you sure?</div>
@@ -456,9 +466,6 @@
                   <div class="ui cancel button">Not yet</div>
                 </div>
               </div>
-              {{else}}
-                  <input type="submit" formaction="/faculty/fd-1" class="ui button" value="Back">
-              {{/if}}
 
               <!-- This the modal for logout confirmation -->
               <div class="ui mini modal logout">
@@ -467,7 +474,7 @@
                   <p>Do you really want to log out?</p>
                 </div>
                 <div class="actions">
-                  <input type="submit" value="Log out" class="ui button positive logout">
+                  <input type="submit" value="Log out" class="ui button positive logout" style = "background-color:#016938">
                   <div class="ui cancel button">Not yet</div>
                 </div>
               </div>
