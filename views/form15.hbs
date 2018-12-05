@@ -173,7 +173,7 @@
                     </div>
                     <div class="eight wide field">
                       <label>Participant’s Fee (check payable to)</label>
-                      <input type="text" name="participantFee" id = "participantFee" class = "check"
+                      <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" name="participantFee" id = "participantFee" class = "check"
                              value="{{fdFifteenData.participantFee}}">
                     </div>
                   </div>
