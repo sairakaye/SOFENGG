@@ -196,13 +196,42 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDOne.formId +" of "+foundFDOne.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId +" "+
+                                                foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDOne.formId +" "+foundFDOne.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDOne.formId +" "+foundFDOne.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
+                                        
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
@@ -242,12 +271,40 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDTwo.formId +" of "+foundFDTwo.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDTwo.formId +" "+
+                                                foundFDTwo.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDTwo.formId +" "+foundFDTwo.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDTwo.formId +" "+foundFDTwo.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
@@ -288,12 +345,40 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDThree.formId +" of "+foundFDThree.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDThree.formId +" "+
+                                                foundFDThree.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDThree.formId +" "+foundFDThree.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDThree.formId +" "+foundFDThree.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
@@ -336,12 +421,40 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDFour.formId +" of "+foundFDFour.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDFour.formId +" "+
+                                                foundFDFour.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFour.formId +" "+foundFDFour.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDFour.formId +" "+foundFDFour.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
@@ -382,12 +495,40 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDFifteen.formId +" of "+foundFDFifteen.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDFifteen.formId +" "+
+                                                foundFDFifteen.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFifteen.formId +" "+foundFDFifteen.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId +" "+foundFDFifteen.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
@@ -428,12 +569,40 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                         })
                                         
-                                        var mailOptions = {
-                                            from: newMailer.emailAddress,
-                                            to: updatedUser.emailAddress,
-                                            subject: "[OVCA]",
-                                            text: foundFDSixteen.formId +" of "+foundFDSixteen.grantName+ " has been " + status + "! " +
-                                            newRemark.remark
+                                        if(status == "Approved"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDSixteen.formId +" "+
+                                                foundFDSixteen.grantName + " has been approved and forwarded to the accounting office.\n\n"+
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                        }else if(status == "Rejected"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDSixteen.formId +" "+foundFDSixteen.grantName + 
+                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
+                                        }else if(status == "Pending"){
+                                            var mailOptions = {
+                                                from: newMailer.emailAddress,
+                                                to: updatedUser.emailAddress,
+                                                subject: "[OVCA]",
+                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId +" "+foundFDSixteen.grantName + 
+                                                " has been pended for the following reasons:\n\n"+
+                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                            }
+                                            
                                         }
                                         
                                         transporter.sendMail(mailOptions, function (error, info) {
