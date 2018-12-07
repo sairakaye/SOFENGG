@@ -58,61 +58,11 @@ $("#remarks-form").submit(function (e) {
 
   var status = $("#status-dropdown").val()
   var remark = $("#remark").val()
-
+  
   if (remark == "" && status == "") {
-    var promptDiv = document.getElementById("prompt")
-    $(promptDiv).empty()
-    var messageDiv = document.createElement("div")
-
-    $(messageDiv).addClass("ui negative message transition")
-
-    var icon = document.createElement("i")
-    $(icon).addClass("close icon")
-
-    var headerDiv = document.createElement("div")
-    $(headerDiv).addClass("header")
-    $(headerDiv).append("Enter a remark or status first!")
-
-    var paragraph = document.createElement("p")
-    $(paragraph).append("Enter a remark or status first before you submit!")
-
-
-    $(messageDiv).append(icon)
-    $(messageDiv).append(headerDiv)
-    $(messageDiv).append(paragraph)
-    $(promptDiv).append(messageDiv)
-
-    $('.message .close').on('click', function () {
-      $(this).closest('.message')
-        .transition('fade')
-    })
+    toastr.info("Enter a remark or status first before you submit!", "Enter a remark or status first!").css("width", "50%")
   } else if (status === currentStatus) {
-    var promptDiv = document.getElementById("prompt")
-    $(promptDiv).empty()
-    var messageDiv = document.createElement("div")
-
-    $(messageDiv).addClass("ui yellow message transition")
-
-    var icon = document.createElement("i")
-    $(icon).addClass("close icon")
-
-    var headerDiv = document.createElement("div")
-    $(headerDiv).addClass("header")
-    $(headerDiv).append("Did you set the same status?")
-
-    var paragraph = document.createElement("p")
-    $(paragraph).append("You already set " + status + " to the form.")
-
-
-    $(messageDiv).append(icon)
-    $(messageDiv).append(headerDiv)
-    $(messageDiv).append(paragraph)
-    $(promptDiv).append(messageDiv)
-
-    $('.message .close').on('click', function () {
-      $(this).closest('.message')
-        .transition('fade')
-    })    
+    toastr.warning("You already set " + status + " to the form.", "Did you set the same status?").css("width", "50%")
   } else {
     $.ajax({
       method: "post",
@@ -125,43 +75,23 @@ $("#remarks-form").submit(function (e) {
         currentStatus
       },
       success: function (result) {
-        var promptDiv = document.getElementById("prompt")
-        $(promptDiv).empty()
+        var header = "Remark added!"
 
-        var messageDiv = document.createElement("div")
-
-        $(messageDiv).addClass("ui positive message transition")
-
-        var icon = document.createElement("i")
-        $(icon).addClass("close icon")
-
-        var headerDiv = document.createElement("div")
-        $(headerDiv).addClass("header")
-        $(headerDiv).append("Remark added!")
-
-        var paragraph = document.createElement("p")
         if (status != "" && remark == "") {
           $("#form-status").val(status)
           currentStatus = $("#form-status").val()
-          $(paragraph).append("You successfully changed the status of " + grant + " to " + status + ".")
+          toastr.success("You successfully changed the status of " + grant + " to " + status + ".", header)
+            .css("width", "50%")
         } else if (status == "" && remark != "") {
-          $(paragraph).append("You successfully added the remark in " + grant + ".")
+          toastr.success("You successfully added the remark in " + grant + ".", header)
+            .css("width", "50%")
         } else if (status != "" || remark != "") {
           $("#form-status").val(status)
           currentStatus = $("#form-status").val()
-          $(paragraph).append("You successfully changed the status of " + grant + " to " + status + " and added the remark.")
+          toastr.success("You successfully changed the status of " + grant + " to " + status + " and added the remark.", header)
+            .css("width", "50%")
         }
-
-        $(messageDiv).append(icon)
-        $(messageDiv).append(headerDiv)
-        $(messageDiv).append(paragraph)
-        $(promptDiv).append(messageDiv)
-
-        $('.message .close').on('click', function () {
-          $(this).closest('.message')
-            .transition('fade')
-        })
-
+        
         if (result._id != "undefined") {
           var tbodyElement = document.getElementById("remarks-body")
           var trElement = document.createElement("tr")
