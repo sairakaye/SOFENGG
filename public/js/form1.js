@@ -417,4 +417,16 @@ $('#request-form')
       }
     }
   });
+  
+$("#no-avail").change(function() {
+  if (this.checked) {
+    $("#dateIncentiveLastAvailed").val("N/A");
+    $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
 
+  } else {
+    $("#dateIncentiveLastAvailed").val("");
+    $("dateIncentiveLastAvailed").removeProp("disabled");
+  }
+});
+
+  

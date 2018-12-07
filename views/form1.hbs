@@ -41,7 +41,7 @@
 
   <div class="ui grid">
     <!-- This is the side menubar. -->
-     <div class="row">
+    <div class="row">
       <div class="column" id="sidebar">
         <div class="ui secondary vertical fluid menu">
           <div class="ui grid">
@@ -108,13 +108,13 @@
                   </div>
                   <div class="field">
                     <label>Last Name</label>
-                    <input type="text" readonly name="lastName" value="{{user.lastName}}"/>
+                    <input type="text" readonly name="lastName" value="{{user.lastName}}" />
                   </div>
                 </div>
                 <div class="fields disabled">
                   <div class="seven wide field">
                     <label>Department</label>
-                    <input type="text" readonly name="department" value="{{user.department}}"/>
+                    <input type="text" readonly name="department" value="{{user.department}}" />
                   </div>
                   <div class="four wide field disabled">
                     <label>Date Hired</label>
@@ -158,23 +158,22 @@
                         <input type="radio" readonly name="status" value="Probationary" />
                         <label>Probationary</label>
                       </div>
-                    </div>                    
+                    </div>
                     {{/facultystatus}}
                   </div>
                 </div>
                 <div class="field disabled">
                   <label>Average teaching performance for the last 3 academic years</label>
-                  <input type="number" readonly name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}"/>
+                  <input type="number" readonly name="aveTeachingPerformance" value="{{user.aveTeachingPerformance}}" />
                 </div>
                 <div class="field">
                   <label>Title of Paper or Publication</label>
-                  <input type="text" name="titleOfPaperOrPublication" id  = "titleOfPaperOrPublication" class = "check" 
-                         value="{{fdOneData.titleOfPaperOrPublication}}"/>
+                  <input type="text" name="titleOfPaperOrPublication" id="titleOfPaperOrPublication" class="check"
+                    value="{{fdOneData.titleOfPaperOrPublication}}" />
                 </div>
                 <div class="field">
                   <label>Title of the Journal where paper was published</label>
-                  <input type="text" name="titleOfJournal" id  = "titleOfJournal" class = " check"
-                         value="{{fdOneData.titleOfJournal}}"/>
+                  <input type="text" name="titleOfJournal" id="titleOfJournal" class=" check" value="{{fdOneData.titleOfJournal}}" />
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -183,8 +182,8 @@
                       <div class="ui calendar" id="submit-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="datePaperSubmitted" placeholder="Date" id  = "datePaperSubmitted"  class=" check" 
-                                 value="{{fdOneData.datePaperSubmitted}}"/>
+                          <input type="text" name="datePaperSubmitted" placeholder="Date" id="datePaperSubmitted" class=" check"
+                            value="{{fdOneData.datePaperSubmitted}}" />
                         </div>
                       </div>
                     </div>
@@ -193,8 +192,8 @@
                       <div class="ui calendar" id="accept-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="datePaperAccepted" placeholder="Date" id  = "datePaperAccepted"  class=" check"  
-                                 value="{{fdOneData.datePaperAccepted}}"/>
+                          <input type="text" name="datePaperAccepted" placeholder="Date" id="datePaperAccepted" class=" check"
+                            value="{{fdOneData.datePaperAccepted}}" />
                         </div>
                       </div>
                     </div>
@@ -202,13 +201,12 @@
                 </div>
                 <div class="field">
                   <label>Name of Conference</label>
-                  <input type="text" name="nameOfConference" id  = "nameOfConference" class=" check" 
-                         value="{{fdOneData.nameOfConference}}"/>
+                  <input type="text" name="nameOfConference" id="nameOfConference" class=" check" value="{{fdOneData.nameOfConference}}" />
                 </div>
                 <div class="field">
                   <label>Title of paper to be presented</label>
-                  <input type="text" name="titleOfPaperToBePresented" id = "titleOfPaperToBePresented" class=" check"
-                         value="{{fdOneData.titleOfPaperToBePresented}}"/>
+                  <input type="text" name="titleOfPaperToBePresented" id="titleOfPaperToBePresented" class=" check"
+                    value="{{fdOneData.titleOfPaperToBePresented}}" />
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -217,8 +215,8 @@
                       <div class="ui calendar" id="conference-startdate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfStartConference" placeholder="Date" id  = "dateOfStartConference" class=" check"
-                                 value="{{fdOneData.dateOfStartConference}}"/>
+                          <input type="text" name="dateOfStartConference" placeholder="Date" id="dateOfStartConference"
+                            class=" check" value="{{fdOneData.dateOfStartConference}}" />
                         </div>
                       </div>
                     </div>
@@ -227,8 +225,8 @@
                       <div class="ui calendar" id="conference-enddate">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfEndConference" placeholder="Date" id  = "dateOfEndConference" class=" check"
-                                 value="{{fdOneData.dateOfEndConference}}"/>
+                          <input type="text" name="dateOfEndConference" placeholder="Date" id="dateOfEndConference"
+                            class=" check" value="{{fdOneData.dateOfEndConference}}" />
                         </div>
                       </div>
                     </div>
@@ -236,8 +234,7 @@
                 </div>
                 <div class="field">
                   <label>Place and Venue</label>
-                  <input type="text" name="placeAndVenue" id  = "placeAndVenue" class=" check" 
-                         value="{{fdOneData.placeAndVenue}}"/>
+                  <input type="text" name="placeAndVenue" id="placeAndVenue" class=" check" value="{{fdOneData.placeAndVenue}}" />
                 </div>
                 <div class="field">
                   <div class="fields">
@@ -246,8 +243,8 @@
                       <div class="ui calendar" id="departure-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfDeparture" placeholder="Date" id  = "dateOfDeparture" class="check"
-                                 value="{{fdOneData.dateOfDeparture}}"/>
+                          <input type="text" name="dateOfDeparture" placeholder="Date" id="dateOfDeparture" class="check"
+                            value="{{fdOneData.dateOfDeparture}}" />
                         </div>
                       </div>
                     </div>
@@ -256,8 +253,8 @@
                       <div class="ui calendar" id="return-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfReturn" placeholder="Date" id  = "dateOfReturn" class=" check" 
-                                 value="{{fdOneData.dateOfReturn}}"/>
+                          <input type="text" name="dateOfReturn" placeholder="Date" id="dateOfReturn" class=" check"
+                            value="{{fdOneData.dateOfReturn}}" />
                         </div>
                       </div>
                     </div>
@@ -270,8 +267,8 @@
                       <div class="ui calendar" id="expected-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateOfReturnToWork" placeholder="Date" id  = "dateOfReturnToWork" class=" check"
-                                 value="{{fdOneData.dateOfReturnToWork}}"/>
+                          <input type="text" name="dateOfReturnToWork" placeholder="Date" id="dateOfReturnToWork" class=" check"
+                            value="{{fdOneData.dateOfReturnToWork}}" />
                         </div>
                       </div>
                     </div>
@@ -280,20 +277,24 @@
                       <div class="ui calendar" id="incentive-date">
                         <div class="ui input left icon">
                           <i class="calendar icon"></i>
-                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id  = "dateIncentiveLastAvailed " class="check" 
-                                 value="{{fdOneData.dateIncentiveLastAvailed}}"/>
+                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                            class="check" value="{{fdOneData.dateIncentiveLastAvailed}}" />
                         </div>
+                      </div>
+                      <div class="ui checkbox" style="padding-top: 10px">
+                        <input type="checkbox" name="noneIncentive" id="no-avail" >
+                        <label>Did not avail an incentive yet.</label>
                       </div>
                     </div>
                   </div>
                 </div>
 
-               <!-- This is where you will put the additional requirements. -->
+                <!-- This is where you will put the additional requirements. -->
                 <div class="field additional requirements">
-                  <label class = "additional requirements title">Application should be accompanied by the following:</label>
+                  <label class="additional requirements title">Application should be accompanied by the following:</label>
                   <div class="fields">
                     <div class="three wide field">
-                      <i class="right triangle icon"></i> 
+                      <i class="right triangle icon"></i>
                       Application Letter
                     </div>
                     <div class="five wide field">
@@ -312,39 +313,37 @@
                       <i class="right triangle icon"></i>
                       Copy of journal paper
                     </div>
-                    <div class="thirteen wide field" style = "font-size: 13px;">
+                    <div class="thirteen wide field" style="font-size: 13px;">
                       <i class="right triangle icon"></i>
                       Proof of paper acceptance for the conference <b>&nbsp; or &nbsp;</b>
                       Copy of invitation to deliver keynote presentation as an
-                          invited speaker
+                      invited speaker
                     </div>
                   </div>
                 </div>
                 <div class="field additional requirements">
                   <i class="right triangle icon"></i>
-                  Updated DLSU Faculty webpage 
+                  Updated DLSU Faculty webpage
                   <i>(attach printout of updated
-                  faculty webpage) 
-                  <a href="https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf" 
-                    target="_blank">https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf
-                  </a>
+                    faculty webpage)
+                    <a href="https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf" target="_blank">https://www.dlsu.edu.ph/wp-content/uploads/2018/08/individual-faculty-web-form.pdf
+                    </a>
                   </i>
                 </div>
                 <div class="field">
                   <div class="sixteen wide field">
                     <b>Faculty Development Guidelines: </b>
-                    <a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf" 
-                    target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf
+                    <a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf" target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf
                     </a>
                   </div>
                 </div>
 
                 <div class="ui grid">
                   <div class="four column row">
-                    
+
                     <div class="left floated column">
                       <div class="extra">
-                        <a class="ui left floated button" href="/faculty/request-grant" >
+                        <a class="ui left floated button" href="/faculty/request-grant">
                           <i class="left chevron icon"></i>
                           Back
                         </a>
@@ -353,28 +352,28 @@
 
                     <div class="right floated column">
                       <div class="extra">
-                        <div class="ui submit green button right floated" id="confirm" >
+                        <div class="ui submit green button right floated" id="confirm">
                           Submit
-                         <i class="right chevron icon"></i>
+                          <i class="right chevron icon"></i>
+                        </div>
                       </div>
                     </div>
-                   </div>
 
                   </div>
                 </div>
               </form>
 
               <!-- This the modal for logout confirmation -->
-                <div class="ui mini modal logout">
-                  <div class="header">Are you sure?</div>
-                  <div class="content">
-                    <p>Do you really want to log out?</p>
-                  </div>
-                  <div class="actions">
-                    <input type="submit" value="Log out" class="ui button positive logout" style = "background-color:#016938">
-                    <div class="ui cancel button">Not yet</div>
-                  </div>
+              <div class="ui mini modal logout">
+                <div class="header">Are you sure?</div>
+                <div class="content">
+                  <p>Do you really want to log out?</p>
                 </div>
+                <div class="actions">
+                  <input type="submit" value="Log out" class="ui button positive logout" style="background-color:#016938">
+                  <div class="ui cancel button">Not yet</div>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -391,4 +390,5 @@
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/form1.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
+
 </html>
