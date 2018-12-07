@@ -80,7 +80,7 @@
           <!-- These are the side menubar items. -->
           {{#if viewdetails}}
           <a href="/faculty/my-requests" class="active item">
-             My Grant Requests
+            My Grant Requests
             <i class="chevron right icon"></i>
           </a>
           <a href="/faculty/request-grant" class=" item">
@@ -98,7 +98,7 @@
           </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
-             My Grant Requests
+            My Grant Requests
             <i class="chevron right icon"></i>
           </a>
           <a href="/faculty/request-grant" class="active item">
@@ -123,41 +123,6 @@
               {{/if}}
             </h1>
           </div>
-          <div class="ui divider"></div>
-          {{#if adminAccess}}
-          <div class="row">
-            <div id="prompt"></div>
-          </div>
-          <div class="row">
-            <form class="ui form" id="remarks-form">
-              <div class="row" style="width: 25%;">
-                <div class="field">
-                  <b>Status</b>
-                  <input type="hidden" name="form-status" id="form-status" value="{{fdSixteenData.grantStatus}}">
-                  <div class="ui selection dropdown">
-                    <input type="hidden" name="status-dropdown" id="status-dropdown">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Select status...</div>
-                    <div class="menu">
-                      <div class="item" data-value="Approved">Approved</div>
-                      <div class="item" data-value="Pending">Pending</div>
-                      <div class="item" data-value="Rejected">Rejected</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <b>Remark</b>
-                <textarea name="remark" id="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
-              </div>
-              <br>
-              <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}" style = "background-color:#016938">Submit</button>
-              <button class="ui button" id="reset-button" type="button">Reset</button>
-            </form>
-          </div>
-          {{/if}}
-
           {{#if viewdetails}}
           <!-- This is where the remarks or details from the Administrator -->
           <table class="ui padded selectable table tablet stackable celled " id="remarks">
@@ -207,16 +172,16 @@
             <div class="one column">
               <div class="ui attached message">
                 <div class="two column center aligned row">
-                      {{#if viewdetails}}
-                      <div class="ui compact right floated segment">
-                        <b> Form ID: </b> {{fdSixteenData.formId}}
-                      </div>
-                      {{else if adminAccess}}
-                      <div class="ui compact right floated segment">
-                        <b> Form ID: </b> {{fdSixteenData.formId}}
-                      </div>
-                      {{else}}
-                      {{/if}}
+                  {{#if viewdetails}}
+                  <div class="ui compact right floated segment">
+                    <b> Form ID: </b> {{fdSixteenData.formId}}
+                  </div>
+                  {{else if adminAccess}}
+                  <div class="ui compact right floated segment">
+                    <b> Form ID: </b> {{fdSixteenData.formId}}
+                  </div>
+                  {{else}}
+                  {{/if}}
                   <div class="column">
                     <h2>[FD16] Support for Membership in Professional Organizations</h2>
                   </div>
@@ -326,26 +291,63 @@
                   <button class="ui submit green button" type="Submit">
                     Submit
                   </button>
-                {{/if}}
-                {{#if viewdetails}}
+                  {{/if}}
+                  {{#if viewdetails}}
                   <div class="extra">
-                    <a class="ui button" href="/faculty/my-requests" >
+                    <a class="ui button" href="/faculty/my-requests">
                       <i class="left chevron icon"></i>
                       Back
                     </a>
                   </div>
+              </form>
+              {{else if adminAccess}}
+              <div class="extra">
+                <a class="ui button" href="/admin/view-grants">
+                  <i class="left chevron icon"></i>
+                  Back
+                </a>
+              </div>
+              </form>
+              {{else}}
+              <input type="submit" formaction="/faculty/fd-16" class="ui button" value="Back">
+              {{/if}}
+
+              <!-- This is for filling up the remarks -->
+              {{#if adminAccess}}
+              <br>
+              <div class="row">
+                <form class="ui form" id="remarks-form">
+                  <div class="row" style="width: 25%;">
+                    <div class="field">
+                      <b>Status</b>
+                      <input type="hidden" name="form-status" id="form-status" value="{{fdOneData.grantStatus}}">
+                      <div class="ui selection dropdown">
+                        <input type="hidden" name="status-dropdown" id="status-dropdown">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select status...</div>
+                        <div class="menu">
+                          <div class="item" data-value="Approved">Approved</div>
+                          <div class="item" data-value="Pending">Pending</div>
+                          <div class="item" data-value="Rejected">Rejected</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <b>Remark</b>
+                    <textarea name="remark" id="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
+                  </div>
+                  <br>
+                  <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}"
+                    style="background-color:#016938">Submit</button>
+                  <button class="ui button" id="reset-button" type="button">Reset</button>
                 </form>
-                {{else if adminAccess}}
-                  <div class="extra">
-                    <a class="ui button" href="/admin/view-grants" >
-                      <i class="left chevron icon"></i>
-                      Back
-                    </a>
-                  </div>
-                </form>              
-                {{else}}
-                    <input type="submit" formaction="/faculty/fd-16" class="ui button" value="Back">
-                {{/if}}
+              </div>
+              <div class="row">
+                <div id="prompt"></div>
+              </div>
+              {{/if}}
 
               <!-- This the modal for the remark deletion -->
               <div class="ui mini modal deletion">
@@ -366,7 +368,7 @@
                   <p>Do you really want to log out?</p>
                 </div>
                 <div class="actions">
-                  <input type="submit" value="Log out" class="ui button positive logout" style = "background-color:#016938">
+                  <input type="submit" value="Log out" class="ui button positive logout" style="background-color:#016938">
                   <div class="ui cancel button">Not yet</div>
                 </div>
               </div>
