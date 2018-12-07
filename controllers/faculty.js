@@ -529,7 +529,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
     User.addFDOneInUser(newFdOneData).then((updatedUser) => {
       var remark = {
         remarkId: 1, formId: newFdOneData._id, date: new Date(),
-        status: "Waiting for Documents", remark: "Do not forget to complete the form and pass it to Ms. Grace."
+        status: "Pending", remark: "Do not forget to complete the form and pass it to Ms. Grace."
       }
 
       Remark.create(remark).then((addedRemark) => {

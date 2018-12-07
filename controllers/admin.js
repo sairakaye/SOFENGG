@@ -169,9 +169,12 @@ router.post("/change-status", urlencoder, function (req, res) {
 
     var statusMessage = ""
 
-    if (status == "Approved" || status == "Rejected" || status == "Pending")
-        statusMessage = "Changed to " + status
-    else
+    if (status == "Approved" || status == "Rejected" || status == "Pending") {
+        statusMessage = status
+
+        if (remark == null || remark == "")
+            remark = "Status changed to " + status + "."
+    } else
         statusMessage = currentStatus
 
     var remarkObj = {
