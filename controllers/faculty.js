@@ -1481,8 +1481,8 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                                 from: newMailer.emailAddress,
                                 to: adminUser.emailAddress,
                                 subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
-                                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFifteenData.formId +
-                                    " "+ newFdFifteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdSixteenData.formId +
+                                    " "+ newFdSixteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                             }
                             
                             transporter.sendMail(mailOptions, function (error, info) {

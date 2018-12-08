@@ -341,33 +341,37 @@
                 {{#if viewdetails}}
                 {{else if adminAccess}}
                 {{else}}
-                <div class="field">
-                  <label>Note</label>
-                  <p>Once you clicked submit, you may not be able to revise it.</p>
-                  <p></p>
-                </div>
-                <br>
-                <div class="field">
-                  <button class="ui submit green button" type="Submit">
-                    Submit
-                  </button>
-                  {{/if}}
-                  {{#if viewdetails}}
+                  <div class="field">
+                    <label>Note</label>
+                    <p>Once you clicked submit, you may not be able to revise it.</p>
+                    <p></p>
+                  </div>
+                  <br>
+                  <div class="right floated column">
+                    <div class="extra">
+                      <button class="ui submit green button right floated" type = "Submit">
+                        Submit
+                        <i class="right chevron icon"></i>
+                      </button>
+                   </div>
+                  </div>
+                {{/if}}
+                {{#if viewdetails}}
                   <div class="extra">
                     <a class="ui button" href="/faculty/my-requests">
                       <i class="left chevron icon"></i>
                       Back
                     </a>
                   </div>
-              </form>
-              {{else if adminAccess}}
-              <div class="extra">
-                <a class="ui button" href="/admin/view-grants">
-                  <i class="left chevron icon"></i>
-                  Back
-                </a>
-              </div>
-              </form>
+                </form>
+                {{else if adminAccess}}
+                <div class="extra">
+                  <a class="ui button" href="/admin/view-grants">
+                    <i class="left chevron icon"></i>
+                    Back
+                  </a>
+                </div>
+                </form>
 
               <!-- This is for filling up the remarks -->
               {{#if adminAccess}}
@@ -418,7 +422,13 @@
                 </div>
               </div>
               {{else}}
-              <input type="submit" formaction="/faculty/fd-4" class="ui button" value="Back">
+               <div class="extra">
+                  <button type="submit" formaction="/faculty/fd-4" class="ui button">
+                    <i class="left chevron icon"></i>
+                    Back
+                  </button>
+                </div>
+              </form>
               {{/if}}
 
               <!-- This the modal for logout confirmation -->

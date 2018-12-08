@@ -364,19 +364,23 @@ November 15, 2018
                   <p></p>
                 </div>
                 <br>
-                <div class="field">
-                  <button class="ui submit green button" type="Submit">
-                    Submit
-                  </button>
-                  {{/if}}
-                  {{#if viewdetails}}
+                  <div class="right floated column">
+                    <div class="extra">
+                      <button class="ui submit green button right floated" type = "Submit">
+                        Submit
+                        <i class="right chevron icon"></i>
+                      </button>
+                   </div>
+                  </div>
+              {{/if}}
+              {{#if viewdetails}}
                   <div class="extra">
                     <a class="ui button" href="/faculty/my-requests">
                       <i class="left chevron icon"></i>
                       Back
                     </a>
                   </div>
-              </form>
+                </form>
               {{else if adminAccess}}
               <a href="/admin/view-grants" class="ui button">
                 Back
@@ -432,7 +436,13 @@ November 15, 2018
                 </div>
               </div>
               {{else}}
-              <input type="submit" formaction="/faculty/fd-3" class="ui button" value="Back">
+               <div class="extra">
+                  <button type="submit" formaction="/faculty/fd-3" class="ui button">
+                    <i class="left chevron icon"></i>
+                    Back
+                  </button>
+                </div>
+              </form>
               {{/if}}
 
               <!-- This the modal for logout confirmation -->
