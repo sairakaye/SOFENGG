@@ -308,8 +308,9 @@ $(".item.saveform").click(function () {
                     doc.save(form.formId + '.pdf');
                 }
                 
-                $('.ui.page.dimmer.savingdone').dimmer('show');
-                setTimeout(function() {   $('.ui.page.dimmer.savingdone').dimmer('hide'); }, 2000);
+                var header = "Form saved!"
+                toastr.success("You successfully saved " + form.grantName + " with ID " + form.formId, header)
+                .css("width", "50%")
             } 
         }
     })

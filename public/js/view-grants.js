@@ -76,23 +76,15 @@ $(document).ready(function() {
     );
 
     $(".buttons-excel").on('click',function(){
-        var exportDiv = document.getElementById("done table export")
-        $(exportDiv).empty()
-        $(exportDiv).append("<i class='check icon'></i>")
-        $(exportDiv).append("Table exported to Excel")
-
-        $('.ui.page.dimmer.exportdone').dimmer('show')
-        setTimeout(function() {  $('.ui.page.dimmer.exportdone').dimmer('hide'); }, 1000)
+        var header = "Table exported!"
+        toastr.success("You have successfully exported the table to Excel", header)
+        .css("width", "50%")
     });
     
     $(".buttons-pdf").on('click',function(){
-        var exportDiv = document.getElementById("done table export")
-        $(exportDiv).empty()
-        $(exportDiv).append("<i class='check icon'></i>")
-        $(exportDiv).append("Table exported to PDF")
-
-        $('.ui.page.dimmer.exportdone').dimmer('show')
-        setTimeout(function() {  $('.ui.page.dimmer.exportdone').dimmer('hide'); }, 1000)
+        var header = "Table exported!"
+        toastr.success("You have successfully exported the table to PDF", header)
+        .css("width", "50%")
     });
 } );
 
@@ -143,9 +135,9 @@ $("button.delete").click(function () {
             success : function(result){
                 if (result.n === 1){
                     $tr.remove(); 
-                    $('.ui.modal.deletion').modal('hide');
-                    $('.ui.page.dimmer.deletiondone').dimmer('show');
-                    setTimeout(function() {   $('.ui.page.dimmer.deletiondone').dimmer('hide'); }, 2000);
+                    var header = "Grant request deleted!"
+                    toastr.success("You successfully deleted the grant request", header)
+                    .css("width", "50%")
                 } 
             }
         })

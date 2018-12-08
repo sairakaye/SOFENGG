@@ -98,23 +98,14 @@ $("#remarks-form").submit(function (e) {
           var tdDate = document.createElement("td")
           var tdStatus = document.createElement("td")
           var tdRemark = document.createElement("td")
-          var tdButton = document.createElement("td")
-          var deleteButton = document.createElement("button")
-          
-          $(deleteButton).addClass("ui button red")
-          $(deleteButton).attr("data-id", result._id)
-          $(deleteButton).attr("id", "delete-button")
-          $(deleteButton).append("Delete")
 
           $(tdDate).append(moment(result.date).format("MMMM D, YYYY h:mm A"))
           $(tdStatus).append(result.status)
           $(tdRemark).append(result.remark)
-          $(tdButton).append(deleteButton)
-
+          
           $(trElement).append(tdDate)
           $(trElement).append(tdStatus)
           $(trElement).append(tdRemark)
-          $(trElement).append(tdButton)
 
           $(tbodyElement).append(trElement)
 
