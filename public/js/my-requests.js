@@ -6,8 +6,29 @@
  */
 
 $(document).ready(function() {
-    $('#example').DataTable({
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+    $('#example thead tr:eq(1) th').each( function (i) {
+        if (i!== 5){
+            if (i!== 4){
+                var title = $(this).text();
+                $(this).html( '<div class="ui input fluid"><input style=" height: 20px; padding: 5px; " type="text" placeholder='+title+'></div>' );
+            
+                $( 'input', this ).on( 'keyup change', function () {
+                    if ( table.column(i).search() !== this.value ) {
+                        table
+                            .column(i)
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            }
+        }
+    } );
+
+    var table = $('#example').DataTable({
         pageLength: 10,
+        orderCellsTop: true,
+        fixedHeader: true,
         language: { 
             "searchPlaceholder": "Keywords", 
             "zeroRecords": "No grant requests found", 

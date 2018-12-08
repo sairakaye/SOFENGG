@@ -144,10 +144,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="four wide field">
+                <div class="four wide field disabled">
                   <label>If Part-Time, No. of units taught since hired</label>
-                  <input type="number" name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                    min="0" />
+                  <input type="number" readonly name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                    min="0" value="{{user.noOfUnitsTaught}}" //>
                 </div>
                 {{else}}
                 <div class="field disabled">
