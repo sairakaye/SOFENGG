@@ -256,9 +256,20 @@
                   <div class="fields">
                     <div class="eight wide field">
                       <label>Membership Fee</label>
-                      <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                         min = "0" name="membershipFee" id = "membershipFee" class = "check" 
-                             value="{{fdSixteenData.membershipFee}}"/>
+                          <div class="ui right labeled input">
+                              <div class="ui dropdown label">
+                              <div class="text">PHP</div>
+                              <i class="dropdown icon"></i>
+                              <div class="menu">
+                                <div class="item">PHP</div>
+                                <div class="item">USD</div>
+                                <div class="item">SGD</div>
+                              </div>
+                            </div>
+                           <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                             min = "0" name="membershipFee" id = "membershipFee" class = "check" 
+                             value="{{fdSixteenData.membershipFee}}">
+                        </div>
                     </div>
                     <div class="eight wide field">
                       <label>(check payable to)</label>

@@ -24,6 +24,7 @@
    }
  }
  
+$('.ui.dropdown').dropdown();
  /**
   * This is initialize to the page where
   * when a key is pressed, it calls for
