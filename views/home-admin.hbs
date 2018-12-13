@@ -88,22 +88,25 @@
             </h1>
           </div>
           <div class="ui divider"></div>
+          <div class="row">
+            <h2>Budget Allocation of VCA for Term 1, AY 2018-2019</h2>
+          </div>
             <table class="ui celled table selectable table tablet responsive" style="width:100%">
                 <thead>
                     <tr><th>College</th>
-                        <th>FDFour</th>
-                        <th>FDFifteen</th>
-                        <th>FDSixteen</th>
+                        <th>FD4</th>
+                        <th>FD15</th>
+                        <th>FD16</th>
                         <th>Total</th>
                     </tr></thead>
                 <tbody>
                     {{#each totalArray}}
                     <tr>
                         <td data-label="College">{{collegeName}}</td>
-                        <td data-label="FDFour">{{fdFourTotal}}</td>
-                        <td data-label="FDFifteen">{{fdFifteenTotal}}</td>
-                        <td data-label="FDSixteen">{{fdSixteenTotal}}</td>
-                        <td data-label="Total">{{Total}}</td>
+                        <td data-label="FDFour" class="right aligned">PhP {{fdFourTotal}}</td>
+                        <td data-label="FDFifteen" class="right aligned">PhP {{fdFifteenTotal}}</td>
+                        <td data-label="FDSixteen" class="right aligned">PhP {{fdSixteenTotal}}</td>
+                        <td data-label="Total" class="right aligned">PhP {{Total}}</td>
                     </tr>
                     {{/each}}
                 </tbody>

@@ -115,7 +115,7 @@ router.post("/home", (req, res)=>{
 //        Total : 0
 //	  }
 //      var CED = {
-//	  	collegeName: "CED",
+//	  	collegeName: "BAGCED",
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -129,14 +129,14 @@ router.post("/home", (req, res)=>{
 //        Total : 0
 //	  }
 //      var COB = {
-//	  	collegeName: "COB",
+//	  	collegeName: "RVRCOB",
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
 //        Total : 0
 //	  }
 //      var COE = {
-//	  	collegeName: "COE",
+//	  	collegeName: "GCOE",
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
