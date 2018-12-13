@@ -5,31 +5,31 @@
  * @author Sai Manalili
  */
 
- /**
-  * This is variable creates the date
-  * today.
-  */
- var today = new Date();
+/**
+ * This is variable creates the date
+ * today.
+ */
+var today = new Date();
 
- /**
-  * Prevents the enter key to be pressed in forms.
-  * @param {Event} e
-  */
- function stopEnterKey(e) { 
-   var e = (e) ? e : ((event) ? event : null); 
-   var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null); 
-   if ((e.keyCode == 13) && ((node.type=="text") 
-       || node.type=="number")) {
-     return false;
-   }
- }
- 
- /**
-  * This is initialize to the page where
-  * when a key is pressed, it calls for
-  * stopEnterKey function.
-  */
- document.onkeypress = stopEnterKey;
+/**
+ * Prevents the enter key to be pressed in forms.
+ * @param {Event} e
+ */
+function stopEnterKey(e) {
+  var e = (e) ? e : ((event) ? event : null);
+  var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null);
+  if ((e.keyCode == 13) && ((node.type == "text")
+    || node.type == "number")) {
+    return false;
+  }
+}
+
+/**
+ * This is initialize to the page where
+ * when a key is pressed, it calls for
+ * stopEnterKey function.
+ */
+document.onkeypress = stopEnterKey;
 
 /**
  * Initializes the Date Hired field.
@@ -37,7 +37,7 @@
  * the calendar
  */
 $('#date-hired').calendar({
-  type: 'date', 
+  type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 })
 
@@ -66,7 +66,7 @@ $('#accept-date').calendar({
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   onChange: function (date) {
     var yearCon = date.getFullYear();
     var monthCon = date.getMonth();
@@ -96,7 +96,7 @@ $('#conference-startdate').calendar({
                 var yearRet = date.getFullYear();
                 var monthRet = date.getMonth();
                 var dayRet = date.getDate();
-        
+
                 $('#expected-date').calendar({
                   type: 'date',
                   minDate: new Date(yearRet, monthRet, dayRet)
@@ -185,7 +185,7 @@ $("#confirm").click(function () {
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
  */
-function check(){
+function check() {
   var count = 0;
 
   $('.check').each(function (i, e) {
@@ -212,156 +212,172 @@ function check(){
  * the form
  */
 $('#request-form')
-    .form({
-      inline: true,
-      on: 'blur',
-      keyboardShortcuts: false,
-      
-      fields: {
-        firstName: {
-          identifier: 'firstName',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your first name.'
-            }
-          ]
-        },
-        lastName: {
-          identifier: 'lastName',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your last name.'
-            }
-          ]
-        },
-        department: {
-          identifier: 'department',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your department.'
-            }
-          ]
-        },
-        dateHired: {
-          identifier: 'dateHired',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter when you were hired.'
-            }
-          ]
-        },     
-        rank: {
-          identifier: 'rank',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your rank.'
-            }
-          ]
-        },
-        noOfUnitsTaught: {
-          identifier: 'noOfUnitsTaught',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the number of units taught.'
-            }
-          ]
-        },        
-        nameOfConference: {
-          identifier: 'nameOfConference',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the name of conference.'
-            }
-          ]
-        },
-        titleOfPaperToBePresented: {
-          identifier: 'titleOfPaperToBePresented',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the title of paper to be presented.'
-            }
-          ]
-        },
-        dateOfStartConference: {
-          identifier: 'dateOfStartConference',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please enter the date of the conference.'
-            }
-          ]
-        },
-  
-        dateOfEndConference: {
-          identifier: 'dateOfEndConference',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please enter the date of the conference.'
-            }
-          ]
-        },
-        placeAndVenue: {
-          identifier: 'placeAndVenue',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the place and venue.'
-            }
-          ]
-        },
-        dateOfDeparture: {
-          identifier: 'dateOfDeparture',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of departure.'
-            }
-          ]
-        },
-        dateOfReturn: {
-          identifier: 'dateOfReturn',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return.'
-            }
-          ]
-        },
-        dateOfReturnToWork: {
-          identifier: 'dateOfReturnToWork',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of return to work.'
-            }
-          ]
-        },
-        travelAndConferenceSubsidy: {
-          identifier: 'travelAndConferenceSubsidy',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please specify your travel and conference subsidy.'
-            }
-          ]
-        },
-        dateIncentiveLastAvailed: {
-          identifier: 'dateIncentiveLastAvailed',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter the date of last availed incentive.'
-            }
-          ]
-        }
+  .form({
+    inline: true,
+    on: 'blur',
+    keyboardShortcuts: false,
+
+    fields: {
+      firstName: {
+        identifier: 'firstName',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter your first name.'
+          }
+        ]
+      },
+      lastName: {
+        identifier: 'lastName',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter your last name.'
+          }
+        ]
+      },
+      department: {
+        identifier: 'department',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter your department.'
+          }
+        ]
+      },
+      dateHired: {
+        identifier: 'dateHired',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter when you were hired.'
+          }
+        ]
+      },
+      rank: {
+        identifier: 'rank',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter your rank.'
+          }
+        ]
+      },
+      noOfUnitsTaught: {
+        identifier: 'noOfUnitsTaught',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the number of units taught.'
+          }
+        ]
+      },
+      nameOfConference: {
+        identifier: 'nameOfConference',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the name of conference.'
+          }
+        ]
+      },
+      titleOfPaperToBePresented: {
+        identifier: 'titleOfPaperToBePresented',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the title of paper to be presented.'
+          }
+        ]
+      },
+      dateOfStartConference: {
+        identifier: 'dateOfStartConference',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of the conference.'
+          }
+        ]
+      },
+
+      dateOfEndConference: {
+        identifier: 'dateOfEndConference',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of the conference.'
+          }
+        ]
+      },
+      placeAndVenue: {
+        identifier: 'placeAndVenue',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the place and venue.'
+          }
+        ]
+      },
+      dateOfDeparture: {
+        identifier: 'dateOfDeparture',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of departure.'
+          }
+        ]
+      },
+      dateOfReturn: {
+        identifier: 'dateOfReturn',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of return.'
+          }
+        ]
+      },
+      dateOfReturnToWork: {
+        identifier: 'dateOfReturnToWork',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of return to work.'
+          }
+        ]
+      },
+      travelAndConferenceSubsidy: {
+        identifier: 'travelAndConferenceSubsidy',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please specify your travel and conference subsidy.'
+          }
+        ]
+      },
+      dateIncentiveLastAvailed: {
+        identifier: 'dateIncentiveLastAvailed',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the date of last availed incentive.'
+          }
+        ]
       }
-    });
+    }
+  });
+
+/**
+* This function checks for the change
+* of the checkbox in "Date incentive was last availed of".
+*/
+$("#no-avail").change(function () {
+  if (this.checked) {
+    $("#dateIncentiveLastAvailed").val("N/A");
+    $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
+    $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
+
+  } else {
+    $("#dateIncentiveLastAvailed").val("");
+    $("dateIncentiveLastAvailed").removeProp("disabled");
+  }
+});

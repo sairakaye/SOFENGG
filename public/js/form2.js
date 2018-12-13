@@ -5,39 +5,39 @@
  * @author Sai Manalili
  */
 
- /**
-  * This is variable creates the date
-  * today.
-  */
- var today = new Date();
+/**
+ * This is variable creates the date
+ * today.
+ */
+var today = new Date();
 
- /**
-  * Prevents the enter key to be pressed in forms.
-  * @param {Event} e
-  */
- function stopEnterKey(e) { 
-   var e = (e) ? e : ((event) ? event : null); 
-   var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null); 
-   if ((e.keyCode == 13) && ((node.type=="text") 
-       || node.type=="number")) {
-     return false;
-   }
- }
- 
- /**
-  * This is initialize to the page where
-  * when a key is pressed, it calls for
-  * stopEnterKey function.
-  */
- document.onkeypress = stopEnterKey;
-  
+/**
+ * Prevents the enter key to be pressed in forms.
+ * @param {Event} e
+ */
+function stopEnterKey(e) {
+  var e = (e) ? e : ((event) ? event : null);
+  var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null);
+  if ((e.keyCode == 13) && ((node.type == "text")
+    || node.type == "number")) {
+    return false;
+  }
+}
+
+/**
+ * This is initialize to the page where
+ * when a key is pressed, it calls for
+ * stopEnterKey function.
+ */
+document.onkeypress = stopEnterKey;
+
 /**
  * Initializes the Date Hired field.
  * @param {Object} settings - customizing the settings of
  * the calendar
  */
 $('#date-hired').calendar({
-  type: 'date', 
+  type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 })
 
@@ -49,7 +49,7 @@ $('#date-hired').calendar({
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   onChange: function (date) {
     var yearCon = date.getFullYear();
     var monthCon = date.getMonth();
@@ -79,7 +79,7 @@ $('#conference-startdate').calendar({
                 var yearRet = date.getFullYear();
                 var monthRet = date.getMonth();
                 var dayRet = date.getDate();
-        
+
                 $('#expected-date').calendar({
                   type: 'date',
                   minDate: new Date(yearRet, monthRet, dayRet)
@@ -109,7 +109,7 @@ $('#conference-enddate').calendar({
  * the calendar
  */
 $('#departure-date').calendar({
-  type: 'date', 
+  type: 'date',
   minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -119,7 +119,7 @@ $('#departure-date').calendar({
  * the calendar
  */
 $('#return-date').calendar({
-  type: 'date', 
+  type: 'date',
   minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -140,7 +140,7 @@ $('#expected-date').calendar({
  * the calendar
  */
 $('#incentive-date').calendar({
-  type: 'date', 
+  type: 'date',
   maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
@@ -168,7 +168,7 @@ $("#confirm").click(function () {
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
  */
-function check(){
+function check() {
   var count = 0;
 
   $('.check').each(function (i, e) {
@@ -199,7 +199,7 @@ $('#request-form')
     inline: true,
     on: 'blur',
     keyboardShortcuts: false,
-    
+
     fields: {
       firstName: {
         identifier: 'firstName',
@@ -339,3 +339,19 @@ $('#request-form')
       }
     }
   });
+
+/**
+* This function checks for the change
+* of the checkbox in "Date incentive was last availed of".
+*/
+$("#no-avail").change(function () {
+  if (this.checked) {
+    $("#dateIncentiveLastAvailed").val("N/A");
+    $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
+    $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
+
+  } else {
+    $("#dateIncentiveLastAvailed").val("");
+    $("dateIncentiveLastAvailed").removeProp("disabled");
+  }
+});

@@ -44,10 +44,10 @@ router.get("/view-grants", function (req, res) {
     var user = req.session.user
     if (user.userType != 'Administrator')
         res.redirect("/")
-    
-    if(user){
-        forms = getAllForms(function(forms){
-            if (forms == ""){
+
+    if (user) {
+        forms = getAllForms(function (forms) {
+            if (forms == "") {
                 res.render("view-grants.hbs", {
                     user
                 })
@@ -190,7 +190,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdOne.addRemarkInFDOne(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -198,44 +198,44 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId +" "+
-                                                foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
+                                                    foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDOne.formId +" "+foundFDOne.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDOne.formId + " " + foundFDOne.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDOne.formId +" "+foundFDOne.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDOne.formId + " " + foundFDOne.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
-                                        
+
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -243,7 +243,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -265,7 +265,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdTwo.addRemarkInFDTwo(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -273,43 +273,43 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDTwo.formId +" "+
-                                                foundFDTwo.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDTwo.formId + " " +
+                                                    foundFDTwo.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDTwo.formId +" "+foundFDTwo.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDTwo.formId +" "+foundFDTwo.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -317,7 +317,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -339,7 +339,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdThree.addRemarkInFDThree(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -347,43 +347,43 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDThree.formId +" "+
-                                                foundFDThree.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDThree.formId + " " +
+                                                    foundFDThree.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDThree.formId +" "+foundFDThree.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDThree.formId + " " + foundFDThree.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDThree.formId +" "+foundFDThree.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDThree.formId + " " + foundFDThree.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -391,7 +391,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -415,7 +415,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdFour.addRemarkInFDFour(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -423,43 +423,43 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDFour.formId +" "+
-                                                foundFDFour.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDFour.formId + " " +
+                                                    foundFDFour.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFour.formId +" "+foundFDFour.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFour.formId + " " + foundFDFour.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDFour.formId +" "+foundFDFour.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDFour.formId + " " + foundFDFour.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -467,7 +467,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -489,7 +489,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdFifteen.addRemarkInFDFifteen(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -497,43 +497,43 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDFifteen.formId +" "+
-                                                foundFDFifteen.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDFifteen.formId + " " +
+                                                    foundFDFifteen.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFifteen.formId +" "+foundFDFifteen.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId +" "+foundFDFifteen.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -541,7 +541,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -563,7 +563,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                             Remark.create(remarkObj).then((newRemark) => {
                                 fdSixteen.addRemarkInFDSixteen(newRemark).then(() => {
                                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                                        
+
                                         var transporter = nodemailer.createTransport({
                                             service: 'gmail',
                                             auth: {
@@ -571,43 +571,43 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 pass: newMailer.password
                                             }
                                         })
-                                        
-                                        if(status == "Approved"){
+
+                                        if (status == "Approved") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDSixteen.formId +" "+
-                                                foundFDSixteen.grantName + " has been approved and forwarded to the accounting office.\n\n"+
-                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDSixteen.formId + " " +
+                                                    foundFDSixteen.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                        }else if(status == "Rejected"){
+                                        } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDSixteen.formId +" "+foundFDSixteen.grantName + 
-                                                " has been declined. The reason/s for your declinations are as follows:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
+                                                    " has been declined. The reason/s for your declinations are as follows:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
-                                        }else if(status == "Pending"){
+
+                                        } else if (status == "Pending") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId +" "+foundFDSixteen.grantName + 
-                                                " has been pended for the following reasons:\n\n"+
-                                                newRemark.remark+"\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
+                                                    " has been pended for the following reasons:\n\n" +
+                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
-                                            
+
                                         }
-                                        
+
                                         transporter.sendMail(mailOptions, function (error, info) {
                                             if (error) {
                                                 console.log(error);
@@ -615,7 +615,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-                                        
+
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -690,67 +690,67 @@ router.delete("/delete-remark", urlencoder, (req, res) => {
     var remarkID = req.body.id
 
     if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdOne.deleteRemarkInFDOne(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdOne.deleteRemarkInFDOne(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
     }
     else if (grant == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdTwo.deleteRemarkInFDTwo(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdTwo.deleteRemarkInFDTwo(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
     }
     else if (grant == "[FD3] Support for Paper Presentations in Conferences") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdThree.deleteRemarkInFDThree(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdThree.deleteRemarkInFDThree(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
     }
     else if (grant == "[FD4] Support for Participation in Local Conferences") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdFour.deleteRemarkInFDFour(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdFour.deleteRemarkInFDFour(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
     }
     else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdFifteen.deleteRemarkInFDFifteen(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdFifteen.deleteRemarkInFDFifteen(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
     }
     else if (grant == "[FD16] Support for Membership in Professional Organizations") {
-        Remark.getRemark(formID, remarkID).then((foundRemark)=> {
-            fdSixteen.deleteRemarkInFDSixteen(foundRemark).then((deletedRemark)=> {
-                Remark.delete(remarkID).then((deletedResult)=> {
+        Remark.getRemark(formID, remarkID).then((foundRemark) => {
+            fdSixteen.deleteRemarkInFDSixteen(foundRemark).then((deletedRemark) => {
+                Remark.delete(remarkID).then((deletedResult) => {
                     res.send(deletedResult)
                 })
-            }, (err)=> {
+            }, (err) => {
                 res.send(err)
             })
         })
@@ -834,15 +834,15 @@ router.delete("/delete-form", urlencoder, (req, res) => {
  */
 router.post("/approveform", urlencoder, (req, res) => {
     console.log("POST /approveform " + req.body.id)
-    
+
     var grant = req.body.grant
     var id = req.body.id
-    
+
     if (grant == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         fdOne.approveFDOne(id).then((foundFDOne) => {
             User.changeStatusFDOneInUser(foundFDOne, "Approve").then((updatedUser) => {
                 Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-                    
+
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
@@ -850,14 +850,14 @@ router.post("/approveform", urlencoder, (req, res) => {
                             pass: newMailer.password
                         }
                     })
-                    
+
                     var mailOptions = {
                         from: newMailer.emailAddress,
                         to: updatedUser.emailAddress,
                         subject: "[OVCA]",
-                        text: foundFDOne.formId +" of "+foundFDOne.grantName+ " has been approved!"
+                        text: foundFDOne.formId + " of " + foundFDOne.grantName + " has been approved!"
                     }
-                    
+
                     transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
                             console.log(error);
@@ -865,7 +865,7 @@ router.post("/approveform", urlencoder, (req, res) => {
                             console.log('Email sent: ' + info.response);
                         }
                     })
-                    
+
                     res.send(updatedUser)
                 }, (err) => {
                     res.send(err)
@@ -1031,6 +1031,10 @@ hbs.registerHelper('formatDateTime', function (date) {
  * @param {Date} date  
  */
 hbs.registerHelper('formatDate', function (date) {
+    if (date == null || date == undefined) {
+        momentDate = "N/A"
+        return momentDate
+    }
     var momentDate = moment(date);
     return momentDate.format("MMMM D, YYYY");
 })
@@ -1073,7 +1077,7 @@ function getFormById(id, callback) {
             })
         })
     })
-} 
+}
 
 /**
  * Gets the form with the id being requested, this is 
@@ -1084,10 +1088,10 @@ function getFormById(id, callback) {
  */
 router.get("/saveform", urlencoder, (req, res) => {
     console.log("GET /saveform ")
-  
+
     var id = req.query.id
-  
+
     var forms = getFormById(id, function (forms) {
-      res.send(forms)
+        res.send(forms)
     })
-  })
+})

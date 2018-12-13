@@ -5,21 +5,21 @@
  * @author Sai Manalili
  */
 
- /**
-  * This is variable creates the date
-  * today.
-  */
+/**
+ * This is variable creates the date
+ * today.
+ */
 var today = new Date();
 
 /**
  * Prevents the enter key to be pressed in forms.
  * @param {Event} e
  */
-function stopEnterKey(e) { 
-  var e = (e) ? e : ((event) ? event : null); 
-  var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null); 
-  if ((e.keyCode == 13) && ((node.type=="text") 
-      || node.type=="number")) {
+function stopEnterKey(e) {
+  var e = (e) ? e : ((event) ? event : null);
+  var node = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null);
+  if ((e.keyCode == 13) && ((node.type == "text")
+    || node.type == "number")) {
     return false;
   }
 }
@@ -80,7 +80,7 @@ $('#accept-date').calendar({
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   onChange: function (date) {
     var yearCon = date.getFullYear();
     var monthCon = date.getMonth();
@@ -110,7 +110,7 @@ $('#conference-startdate').calendar({
                 var yearRet = date.getFullYear();
                 var monthRet = date.getMonth();
                 var dayRet = date.getDate();
-        
+
                 $('#expected-date').calendar({
                   type: 'date',
                   minDate: new Date(yearRet, monthRet, dayRet)
@@ -230,7 +230,7 @@ $('#request-form')
     inline: true,
     on: 'blur',
     keyboardShortcuts: false,
-    
+
     fields: {
       firstName: {
         identifier: 'firstName',
@@ -417,11 +417,16 @@ $('#request-form')
       }
     }
   });
-  
-$("#no-avail").change(function() {
+
+/**
+ * This function checks for the change
+ * of the checkbox in "Date incentive was last availed of".
+ */
+$("#no-avail").change(function () {
   if (this.checked) {
     $("#dateIncentiveLastAvailed").val("N/A");
     $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
+    $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
 
   } else {
     $("#dateIncentiveLastAvailed").val("");
@@ -429,4 +434,3 @@ $("#no-avail").change(function() {
   }
 });
 
-  
