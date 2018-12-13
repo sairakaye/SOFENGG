@@ -43,9 +43,13 @@ router.get("/", function(req, res) {
 	user = req.session.user
 	if(user){
 		if(user.userType == "Administrator")
-			res.render("home-admin.hbs", {
-				user
-			})
+            Overview.getAllOverview().then((totalArray)=>{
+                res.render("home-admin.hbs", {
+                    user, totalArray
+                })
+            }, (err)=>{
+                res.send(err)
+            })
 		else if(user.userType == "Faculty")
 			var forms = getAllForms(forms, function(forms){
 				res.redirect("/faculty/my-requests")
