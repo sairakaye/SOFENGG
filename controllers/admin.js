@@ -24,6 +24,7 @@ var excel = require('exceljs');
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
+const Overview = require("../models/overview")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -206,12 +207,17 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
-                                                    foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
-                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
+                                                foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDOneTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -287,6 +293,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            
+                                            Overview.addFDTwoTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -361,6 +373,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            
+                                            Overview.addFDThreeTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -437,6 +455,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDFourTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -511,6 +534,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -585,6 +613,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,

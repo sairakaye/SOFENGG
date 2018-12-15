@@ -113,6 +113,9 @@ router.post("/home", (req, res)=>{
 /*  FOR ADDING Overviews TO DB */
 //	  var CCS = {
 //	  	collegeName: "CCS",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -120,6 +123,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var CED = {
 //	  	collegeName: "BAGCED",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -127,6 +133,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var CLA = {
 //	  	collegeName: "CLA",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -134,6 +143,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COB = {
 //	  	collegeName: "RVRCOB",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -141,6 +153,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COE = {
 //	  	collegeName: "GCOE",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -148,6 +163,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COL = {
 //	  	collegeName: "COL",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -155,6 +173,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COS = {
 //	  	collegeName: "COS",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -162,6 +183,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var SOE = {
 //	  	collegeName: "SOE",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -169,6 +193,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var Total = {
 //	  	collegeName: "Total",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,

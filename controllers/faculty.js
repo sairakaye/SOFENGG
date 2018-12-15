@@ -23,7 +23,6 @@ const nodemailer = require('nodemailer')
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
-const Overview = require("../models/overview")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -1132,50 +1131,46 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
         res.send(err)
       })
 
-      var cost = parseFloat(newFdFourData.participantFee)
       if (user.userType != 'Faculty')
         res.redirect("/")
 
       if (user) {
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
-          User.getUserByType("Administrator").then((adminUser) => {
-            Overview.addFDFourTotal(updatedUser.college, cost).then((updatedOverview) => {
-              var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                  user: newMailer.emailAddress,
-                  pass: newMailer.password
+            User.getUserByType("Administrator").then((adminUser) => {
+                
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: newMailer.emailAddress,
+                        pass: newMailer.password
+                    }
+                })
+                
+                var mailOptions = {
+                    from: newMailer.emailAddress,
+                    to: adminUser.emailAddress,
+                    subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
+                    text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFourData.formId +
+                    " " + newFdFourData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                 }
-              })
-
-              var mailOptions = {
-                from: newMailer.emailAddress,
-                to: adminUser.emailAddress,
-                subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFourData.formId +
-                  " " + newFdFourData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
-              }
-
-              transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              })
-
-              res.render("success.hbs", {
-                user, formName: "[FD4] Support for Participation in Local Conferences"
-              })
+                
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                })
+                
+                res.render("success.hbs", {
+                    user, formName: "[FD4] Support for Participation in Local Conferences"
+                })
+                
+                
             }, (err) => {
-              res.send(err)
+                res.send(err)
             })
-
-
-          }, (err) => {
-            res.send(err)
-          })
 
         }, (err) => {
           res.send(err)
@@ -1312,7 +1307,6 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
         res.send(err)
       })
 
-      var cost = parseFloat(newFdFifteenData.participantFee)
       if (user.userType != 'Faculty')
         res.redirect("/")
 
@@ -1320,41 +1314,38 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
 
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
-          User.getUserByType("Administrator").then((adminUser) => {
-            Overview.addFDFifteenTotal(updatedUser.college, cost).then((updatedOverview) => {
-              var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                  user: newMailer.emailAddress,
-                  pass: newMailer.password
+            User.getUserByType("Administrator").then((adminUser) => {
+                
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: newMailer.emailAddress,
+                        pass: newMailer.password
+                    }
+                })
+                
+                var mailOptions = {
+                    from: newMailer.emailAddress,
+                    to: adminUser.emailAddress,
+                    subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
+                    text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFifteenData.formId +
+                    " " + newFdFifteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                 }
-              })
-
-              var mailOptions = {
-                from: newMailer.emailAddress,
-                to: adminUser.emailAddress,
-                subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFifteenData.formId +
-                  " " + newFdFifteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
-              }
-
-              transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              })
-
-              res.render("success.hbs", {
-                user, formName: "[FD15] Support for Local Trainings, Seminars and Workshops"
-              })
+                
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                })
+                
+                res.render("success.hbs", {
+                    user, formName: "[FD15] Support for Local Trainings, Seminars and Workshops"
+                })
             }, (err) => {
-              res.send(err)
+                res.send(err)
             })
-          }, (err) => {
-            res.send(err)
-          })
 
         }, (err) => {
           res.send(err)
@@ -1497,43 +1488,40 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
       if (user) {
         Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
-          User.getUserByType("Administrator").then((adminUser) => {
-            Overview.addFDSixteenTotal(updatedUser.college, cost).then((updatedOverview) => {
-              var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                  user: newMailer.emailAddress,
-                  pass: newMailer.password
+            User.getUserByType("Administrator").then((adminUser) => {
+                
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: newMailer.emailAddress,
+                        pass: newMailer.password
+                    }
+                })
+                
+                var mailOptions = {
+                    from: newMailer.emailAddress,
+                    to: adminUser.emailAddress,
+                    subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
+                    text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdSixteenData.formId +
+                    " " + newFdSixteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                 }
-              })
-
-              var mailOptions = {
-                from: newMailer.emailAddress,
-                to: adminUser.emailAddress,
-                subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdSixteenData.formId +
-                  " " + newFdSixteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
-              }
-
-              transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              })
-
-              res.render("success.hbs", {
-                user, formName: "[FD16] Support for Membership in Professional Organizations"
-              })
+                
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                })
+                
+                res.render("success.hbs", {
+                    user, formName: "[FD16] Support for Membership in Professional Organizations"
+                })
+                
+                
             }, (err) => {
-              res.send(err)
+                res.send(err)
             })
-
-
-          }, (err) => {
-            res.send(err)
-          })
 
         }, (err) => {
           res.send(err)
