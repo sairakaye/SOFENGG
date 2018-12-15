@@ -56,7 +56,7 @@ router.get("/", function(req, res) {
 			})
 	} else {
 		res.render("index.hbs")
-	}
+    }
 })
 
 /**
@@ -307,9 +307,9 @@ router.get("/home", function(req, res){
             var forms = getAllForms(forms, function(forms){
                 res.redirect("/faculty/my-requests")
             })
-            } else {
-                res.redirect("/")
-            }
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -322,17 +322,19 @@ router.get("/home", function(req, res){
 router.get("/logout", function(req, res){
 	console.log("GET /logout")
 
-	if (req.session) {
+    user = req.session.user
+	if (user) {
 		req.session.destroy((err) => {      
 			if (err) {
 				console.log(err)
-			} 
-		})
-	}
-		
-	res.render("index.hbs", {
-		loggedout: "You have successfully logged out."
-	})	
+            } 
+            res.render("index.hbs", {
+                loggedout: "You have successfully logged out."
+            })
+        })
+	} else {
+        res.redirect("/")
+    }
 })
 
 module.exports = router

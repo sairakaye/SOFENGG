@@ -44,10 +44,10 @@ router.get("/view-grants", function (req, res) {
     console.log("GET /view-grants")
 
     var user = req.session.user
-    if (user.userType != 'Administrator')
-        res.redirect("/")
-
     if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+            
         forms = getAllForms(function (forms) {
             if (forms == "") {
                 res.render("view-grants.hbs", {
@@ -74,12 +74,12 @@ router.post("/view-details", urlencoder, function (req, res) {
     console.log("POST /view-details")
 
     var user = req.session.user
-    if (user.userType != 'Administrator')
-        res.redirect("/")
-
     var id = req.body.details
 
-    if (user != null) {
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+
         var forms = getFormById(id, function (forms) {
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
                 var fdOneData = forms
@@ -1123,11 +1123,20 @@ function getFormById(id, callback) {
 router.get("/saveform", urlencoder, (req, res) => {
     console.log("GET /saveform ")
 
+    var user = req.session.user
     var id = req.query.id
 
-    var forms = getFormById(id, function (forms) {
-        res.send(forms)
-    })
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+            
+        var forms = getFormById(id, function (forms) {
+            res.send(forms)
+        })
+    } else {
+        res.redirect("/")
+    }
+
 })
 
 /**
@@ -1140,37 +1149,51 @@ router.get("/saveform", urlencoder, (req, res) => {
 router.get("/export", urlencoder, (req, res) => {
     console.log("GET /export ")
 
-    var MongoClient = require('mongodb').MongoClient
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+           
+        var MongoClient = require('mongodb').MongoClient
 
-    MongoClient.connect('mongodb://localhost', function (err, client) {
-        if (err) throw err          
-        var workbook = new excel.Workbook();
-        var db = client.db('VCA-Database')
-
-        db.collection('fdones').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items)  {     
-          var worksheet = workbook.addWorksheet('FD1');
-          worksheet.mergeCells('A1', 'K1');
-          worksheet.getCell('A1').value = 'FD1 - Pre Selected High Impact Journal, AY 2018-2019'
-          worksheet.getCell('L1').value = 'ETD'
-          worksheet.getCell('O1').value = 'BALANCE'
-          worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', , 'FACULTY NAME', 'TITLE OF PAPER OR PUBLICATION', 'TITLE OF JOURNAL', 
-           'TITLE OF PAPER TO BE PRESENTED', 'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
-           'SUMMARY REPORT(Received by VCAO)', 'LIQUIDATION(Received by VCAO)', 'Remarks'];
-          worksheet.columns = [{key: 'term'}, {key: 'college'}, {key: 'dept'}, {key: 'status'}, {key: 'facultyname'}, {key: 'titlepaper'}, {key: 'titlejournal'},
-           {key: 'titleppresent'}, {key: 'dateconf'}, {key: 'venue'}, {key: 'remarksbenefit'}, {key: 'dollar'}, {key: 'peso'}, {key: 'prsno'}, {key: 'payabto'}, {key: 'daterecivacct'}, 
-           {key: 'summaryreport'}, {key: 'liquida'}, {key: 'remarks'}]
-          items.forEach(function(item) {
-              worksheet.addRow({  term: item.term, dept: item.department, status: item.status, titlepaper: item.titleOfPaperOrPublication, titlejournal: item.titleOfJournal,
-                titleppresent: item.titleOfPaperToBePresented, dateconf: item.dateOfStartConference+" - "+item.dateOfEndConference, venue: item.placeAndVenue})
-          })
-
-          var tempfile = require('tempfile');
-          var tempFilePath = tempfile('.xlsx');
-          console.log("tempFilePath : ", tempFilePath);
-          workbook.xlsx.writeFile(tempFilePath).then(function() {
-              res.sendFile(tempFilePath, function(err){
-              });
-          });
-        });
-      });       
+        MongoClient.connect('mongodb://localhost', function (err, client) {
+            if (err) throw err          
+            var workbook = new excel.Workbook();
+            var db = client.db('VCA-Database')
+    
+            db.collection('fdones').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items)  {     
+                var worksheet = workbook.addWorksheet('FD1');
+                var font = { name: "Arial", family: 2, size: 16, bold: true};
+    
+                worksheet.mergeCells('A1', 'K1');
+                worksheet.getCell('A1').value = 'FD1 - Pre Selected High Impact Journal, AY 2018-2019'
+                worksheet.getCell('L1').value = 'ETD'
+                worksheet.getCell('O1').value = 'BALANCE'
+                worksheet.getCell("A1").font = font;
+                worksheet.getCell("L1").font = font;
+                worksheet.getCell("O1").font = font;
+    
+                worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'TITLE OF PAPER OR PUBLICATION', 'TITLE OF JOURNAL', 
+                'TITLE OF PAPER TO BE PRESENTED', 'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
+                'SUMMARY REPORT(Received by VCAO)', 'LIQUIDATION(Received by VCAO)', 'Remarks'];
+    
+                worksheet.columns = [{key: 'term'}, {key: 'college'}, {key: 'dept'}, {key: 'status'}, {key: 'facultyname'}, {key: 'titlepaper'}, {key: 'titlejournal'},
+                {key: 'titleppresent'}, {key: 'dateconf'}, {key: 'venue'}, {key: 'remarksbenefit'}, {key: 'dollar'}, {key: 'peso'}, {key: 'prsno'}, {key: 'payabto'}, {key: 'daterecivacct'}, 
+                {key: 'summaryreport'}, {key: 'liquida'}, {key: 'remarks'}]
+    
+                items.forEach(function(item) {
+                    worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperOrPublication, 
+                    titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: item.dateOfStartConference+" - "+item.dateOfEndConference, venue: item.placeAndVenue})
+                })
+    
+                var tempfile = require('tempfile');
+                var tempFilePath = tempfile('.xlsx');
+                workbook.xlsx.writeFile(tempFilePath).then(function() {
+                    res.sendFile(tempFilePath, function(err){
+                    });
+                });
+            });
+        });       
+    } else {
+        res.redirect("/")
+    }
 })
