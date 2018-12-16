@@ -192,12 +192,14 @@ exports.getFDThreeByID = function(id){
         fdThree.findOne({
             _id : id
         }).then((foundFDThree)=>{
-            foundFDThree.remarks = foundFDThree.remarks.sort(function(a, b){
-                const aDate = new Date(a.date)
-                const bDate = new Date(b.date)
-                
-                return bDate.getTime() - aDate.getTime()
-            })
+            if (foundFDThree.remarks != null) {
+                foundFDThree.remarks = foundFDThree.remarks.sort(function(a, b){
+                    const aDate = new Date(a.date)
+                    const bDate = new Date(b.date)
+                    
+                    return bDate.getTime() - aDate.getTime()
+                })
+            }
             resolve(foundFDThree)
         }, (err)=>{
             reject(err)
