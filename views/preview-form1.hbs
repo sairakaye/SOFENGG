@@ -86,7 +86,7 @@
             My Grant Requests
             <i class="chevron right icon"></i>
           </a>
-          <a href="/faculty/request-grant" class=" item">
+          <a href="/faculty/request-grant" class="item">
             Request Grant
             <i class="chevron right icon"></i>
           </a>
@@ -97,6 +97,10 @@
           </a>
           <a href="/admin/view-grants" class="active item">
             View Grant Requests
+            <i class="chevron right icon"></i>
+          </a>
+          <a href="/admin/settings" class="item">
+            Settings
             <i class="chevron right icon"></i>
           </a>
           {{else}}
@@ -187,7 +191,7 @@
                     <h2>[FD1] Incentive for Publication in Pre-Selected High Impact Journal</h2>
                   </div>
                   <div class="column">
-                    <h3>1st Term, AY 2018-2019</h3>
+                    <h3>{{fdOneData.term}} Term, AY {{fdOneData.startAY}}-{{fdOneData.endAY}}</h3>
                   </div>
                 </div>
               </div>

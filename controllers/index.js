@@ -28,6 +28,7 @@ const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const Remark = require("../models/remark")
+const Settings = require("../models/settings")
 router.use("/faculty", require("./faculty"))
 router.use("/admin", require("./admin"))
 
@@ -220,8 +221,19 @@ router.post("/home", (req, res)=>{
 //          })
 //      }, (error)=>{
 //          console.log(error)
-//      })  
- 
+//      })
+
+/** FOR THE SETTINGS */
+  // var settings = {
+  //     term : "1st",
+  //     startAY : 2018,
+  //     endAY : 2019
+  // }
+
+  // Settings.create(settings).then((newSettings)=> {
+  //   console.log("Setting is created!")
+  // })
+
   let user = {
       username : idnumber,
       password 

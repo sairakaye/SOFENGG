@@ -99,6 +99,10 @@ November 15, 2018
             View Grant Requests
             <i class="chevron right icon"></i>
           </a>
+          <a href="/admin/settings" class="item">
+            Settings
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Grant Requests
@@ -187,11 +191,12 @@ November 15, 2018
                     <h2> [FD3] Support for Paper Presentations in Conferences</h2>
                   </div>
                   <div class="column">
-                    <h3>1st Term, AY 2018-2019</h3>
+                    <h3>{{fdThreeData.term}} Term, AY {{fdThreeData.startAY}}-{{fdThreeData.endAY}}</h3>
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd3" method="post" class="ui form attached fluid segment" id="preview-form" autocomplete="off">
+              <form action="/faculty/submit-fd3" method="post" class="ui form attached fluid segment" id="preview-form"
+                autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
                 <div class="two fields">
                   <div class="field">
@@ -362,23 +367,23 @@ November 15, 2018
                   <p></p>
                 </div>
                 <br>
-                  <div class="right floated column">
-                    <div class="extra">
-                      <button class="ui submit green button right floated" type = "Submit">
-                        Submit
-                        <i class="right chevron icon"></i>
-                      </button>
-                   </div>
-                  </div>
-              {{/if}}
-              {{#if viewdetails}}
+                <div class="right floated column">
                   <div class="extra">
-                    <a class="ui button" href="/faculty/my-requests">
-                      <i class="left chevron icon"></i>
-                      Back
-                    </a>
+                    <button class="ui submit green button right floated" type="Submit">
+                      Submit
+                      <i class="right chevron icon"></i>
+                    </button>
                   </div>
-                </form>
+                </div>
+                {{/if}}
+                {{#if viewdetails}}
+                <div class="extra">
+                  <a class="ui button" href="/faculty/my-requests">
+                    <i class="left chevron icon"></i>
+                    Back
+                  </a>
+                </div>
+              </form>
               {{else if adminAccess}}
               <a href="/admin/view-grants" class="ui button">
                 Back
@@ -434,12 +439,12 @@ November 15, 2018
                 </div>
               </div>
               {{else}}
-               <div class="extra">
-                  <button type="submit" formaction="/faculty/fd-3" class="ui button">
-                    <i class="left chevron icon"></i>
-                    Back
-                  </button>
-                </div>
+              <div class="extra">
+                <button type="submit" formaction="/faculty/fd-3" class="ui button">
+                  <i class="left chevron icon"></i>
+                  Back
+                </button>
+              </div>
               </form>
               {{/if}}
 

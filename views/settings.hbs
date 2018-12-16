@@ -1,6 +1,6 @@
 <!-- 
-  This is the home page of the admin.
-  October 15, 2018
+  This is the settings page of the admin.
+  December 16, 2018
   @ver 1.0
   @author Sai Manalili
 -->
@@ -9,7 +9,7 @@
 <html>
 
 <head>
-  <title>Home</title>
+  <title>Settings</title>
   <!-- Always include these two css files when creating a new html file. -->
   <link href="../public/semantic/semantic.css" type="text/css" rel="stylesheet" />
   <link href="../public/css/main.css" type="text/css" rel="stylesheet" />
@@ -68,15 +68,15 @@
           </div>
 
           <!-- These are the side menubar items. -->
-          <a href="/home" class="active item">
+          <a href="/home" class="item">
             Overview
             <i class="chevron right icon"></i>
           </a>
-          <a href="admin/view-grants" class="item">
+          <a href="/admin/view-grants" class="item">
             View Grant Requests
             <i class="chevron right icon"></i>
           </a>
-          <a href="/admin/settings" class="item">
+          <a href="/admin/settings" class="active item">
             Settings
             <i class="chevron right icon"></i>
           </a>
@@ -88,35 +88,49 @@
         <div class="ui grid">
           <div class="row">
             <h1 class="ui huge header">
-              Welcome, {{user.firstName}}!
+              Settings
             </h1>
           </div>
           <div class="ui divider"></div>
           <div class="row">
-            <h2>Budget Allocation of VCA for Term 1, AY 2018-2019</h2>
+            <!-- Will fix it later... -->
+            <form action="/admin/save-settings" method="post" class="ui form" autocomplete="off">
+              <div class="inline fields">
+                <label>Term</label>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="term" value="1st" checked="checked">
+                    <label>1st</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="term" value="2nd">
+                    <label>2nd</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="term" value="3rd">
+                    <label>3rd</label>
+                  </div>
+                </div>
+              </div>
+              <div class="inline field">
+                <label>Academic Year</label>
+                <div class="ui input" style="width: 70px;">
+                  <input type="text" name="startAY" id="startAY" />
+                </div> -
+                <div class="ui input" style="width: 70px;">
+                  <input type="text" name="endAY" id="endAY" />
+                </div>
+              </div>
+
+              <button class="ui button extra" type="submit">
+                Save Changes
+              </button>
+            </form>
           </div>
-          <table class="ui celled table selectable table tablet responsive" style="width:100%">
-            <thead>
-              <tr>
-                <th>College</th>
-                <th>FD4</th>
-                <th>FD15</th>
-                <th>FD16</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each totalArray}}
-              <tr>
-                <td data-label="College">{{collegeName}}</td>
-                <td data-label="FDFour" class="right aligned">PhP {{fdFourTotal}}</td>
-                <td data-label="FDFifteen" class="right aligned">PhP {{fdFifteenTotal}}</td>
-                <td data-label="FDSixteen" class="right aligned">PhP {{fdSixteenTotal}}</td>
-                <td data-label="Total" class="right aligned">PhP {{Total}}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
@@ -139,6 +153,7 @@
 <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../public/semantic/semantic.js"></script>
 <!-- You can insert more JS files below -->
+<script type="text/javascript" src="../public/js/admin-settings.js"></script>
 <script type="text/javascript" src="../public/js/log-out.js"></script>
 
 </html>

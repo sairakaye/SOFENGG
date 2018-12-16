@@ -99,6 +99,10 @@
             View Grant Requests
             <i class="chevron right icon"></i>
           </a>
+          <a href="/admin/settings" class="item">
+            Settings
+            <i class="chevron right icon"></i>
+          </a>
           {{else}}
           <a href="/faculty/my-requests" class="item">
             My Grant Requests
@@ -187,11 +191,12 @@
                     <h2>[FD16] Support for Membership in Professional Organizations</h2>
                   </div>
                   <div class="column">
-                    <h3>1st Term, AY 2018-2019</h3>
+                    <h3>{{fdSixteenData.term}} Term, AY {{fdSixteenData.startAY}}-{{fdSixteenData.endAY}}</h3>
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd16" method="post" class="ui form attached fluid segment" id="preview-form" autocomplete="off">
+              <form action="/faculty/submit-fd16" method="post" class="ui form attached fluid segment" id="preview-form"
+                autocomplete="off">
                 <div class="two fields">
                   <div class="field">
                     <label>First Name</label>
@@ -278,9 +283,9 @@
 
                 <div class="ui divider"></div>
                 <br>
-              {{#if viewdetails}}
-              {{else if adminAccess}}
-              {{else}}
+                {{#if viewdetails}}
+                {{else if adminAccess}}
+                {{else}}
                 <div class="field">
                   <label>Note</label>
                   <p>Once you clicked submit, you may not be able to revise it.</p>
@@ -288,38 +293,38 @@
                 </div>
                 <br>
 
-                  <div class="right floated column">
-                    <div class="extra">
-                      <button class="ui submit green button right floated" type = "Submit">
-                        Submit
-                        <i class="right chevron icon"></i>
-                      </button>
-                   </div>
-                  </div>
-              {{/if}}
-              {{#if viewdetails}}
+                <div class="right floated column">
                   <div class="extra">
-                    <a class="ui button" href="/faculty/my-requests">
-                      <i class="left chevron icon"></i>
-                      Back
-                    </a>
+                    <button class="ui submit green button right floated" type="Submit">
+                      Submit
+                      <i class="right chevron icon"></i>
+                    </button>
                   </div>
-              </form>
-              {{else if adminAccess}}
+                </div>
+                {{/if}}
+                {{#if viewdetails}}
                 <div class="extra">
-                  <a class="ui button" href="/admin/view-grants">
+                  <a class="ui button" href="/faculty/my-requests">
                     <i class="left chevron icon"></i>
                     Back
                   </a>
                 </div>
               </form>
+              {{else if adminAccess}}
+              <div class="extra">
+                <a class="ui button" href="/admin/view-grants">
+                  <i class="left chevron icon"></i>
+                  Back
+                </a>
+              </div>
+              </form>
               {{else}}
-               <div class="extra">
-                  <button type="submit" formaction="/faculty/fd-16" class="ui button">
-                    <i class="left chevron icon"></i>
-                    Back
-                  </button>
-                </div>
+              <div class="extra">
+                <button type="submit" formaction="/faculty/fd-16" class="ui button">
+                  <i class="left chevron icon"></i>
+                  Back
+                </button>
+              </div>
               </form>
               {{/if}}
 

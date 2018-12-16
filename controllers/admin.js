@@ -30,6 +30,7 @@ const fdFour = require("../models/fdFour")
 const fdFifteen = require("../models/fdFifteen")
 const fdSixteen = require("../models/fdSixteen")
 const Remark = require("../models/remark")
+const Settings = require("../models/settings")
 var forms
 
 /**
@@ -968,7 +969,67 @@ router.post("/rejectform", urlencoder, (req, res) => {
 
 })
 
+/**
+ * Gets the form with the id being requested, this is 
+ * used in exporting the form as pdf file.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/saveform", urlencoder, (req, res) => {
+    console.log("GET /saveform ")
 
+    var id = req.query.id
+
+    var forms = getFormById(id, function (forms) {
+        res.send(forms)
+    })
+})
+
+/**
+ * Going to the settings page for the admin.
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/settings", (req, res) => {
+    console.log("GET /settings")
+
+    var user = req.session.user
+
+    if (user.userType != 'Administrator')
+        res.redirect("/")
+
+    if (user) {
+        res.render("settings", {
+            user
+        })
+    } else {
+        res.redirect("/")
+    }
+})
+
+/**
+ * Saving the settings set by the admin.
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.post("/save-settings", urlencoder, (req, res) => {
+    console.log("POST /save-settings")
+
+    var user = req.session.user
+
+    var term = req.body.term
+    var startAY = req.body.startAY
+    var endAY = req.body.endAY
+
+    var newSettings = {
+        term, startAY, endAY
+    }
+
+    Settings.updateSettings(newSettings).then((updatedSettings) => {
+        res.redirect("/")
+    })
+})
 
 module.exports = router
 
@@ -1078,20 +1139,3 @@ function getFormById(id, callback) {
         })
     })
 }
-
-/**
- * Gets the form with the id being requested, this is 
- * used in exporting the form as pdf file.
- *
- * @param {Request} req
- * @param {Response} res
- */
-router.get("/saveform", urlencoder, (req, res) => {
-    console.log("GET /saveform ")
-
-    var id = req.query.id
-
-    var forms = getFormById(id, function (forms) {
-        res.send(forms)
-    })
-})
