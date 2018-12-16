@@ -316,6 +316,16 @@ $('#request-form')
           }
         ]
       },
+      checkPayableTo: {
+        identifier: 'checkPayableTo',
+        rules: [
+          {
+            type: 'empty',
+            prompt: "Please enter the check payable to.",
+          }
+        ]
+      }
+      ,
       noOfLocalConferencesAttendedThisYear: {
         identifier: 'noOfLocalConferencesAttendedThisYear',
         rules: [

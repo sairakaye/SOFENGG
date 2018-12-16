@@ -1047,6 +1047,7 @@ router.post("/fd-4", urlencoder, function (req, res) {
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
@@ -1056,7 +1057,7 @@ router.post("/fd-4", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
+    dateIncentiveLastAvailed, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
 
