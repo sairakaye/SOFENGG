@@ -291,7 +291,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your title of paper or publication.'
+            prompt: 'Please enter the title of paper or publication.'
           }
         ]
       },
@@ -300,7 +300,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your title of journal.'
+            prompt: 'Please enter the title of journal.'
           }
         ]
       },

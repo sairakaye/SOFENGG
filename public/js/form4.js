@@ -273,7 +273,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the start date of the conference.'
           }
         ]
       },
@@ -283,7 +283,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the end date of the conference.'
           }
         ]
       },
@@ -328,7 +328,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the participants fee.'
+            prompt: "Please enter the participant's fee."
           },
           {
             type: 'decimalLimit[2]',

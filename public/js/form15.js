@@ -185,7 +185,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your the duration start.'
+            prompt: 'Please enter the start duration.'
           }
         ]
       },
@@ -194,7 +194,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your the duration end.'
+            prompt: 'Please enter the end duration.'
           }
         ]
       },
@@ -230,7 +230,7 @@ $('#request-form')
         rules: [ 
           {
             type: 'empty',
-            prompt: 'Please enter the participants fee.'
+            prompt: "Please enter the participant's fee."
           },
           {
             type: 'decimalLimit[2]',
