@@ -1643,8 +1643,8 @@ router.get("/my-requests", function (req, res) {
   if (user) {
     if (user.userType != 'Faculty')
       res.redirect("/")
-
       
+
       User.changeNotifInUser(user.username, "").then((notifiedUser)=>{
             
         }, (err)=>{
