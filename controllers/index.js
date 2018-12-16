@@ -89,6 +89,7 @@ router.post("/home", (req, res)=>{
 //        emailAddress : "christian_dequito@dlsu.edu.ph",
 //	  	userType: 'Faculty', //or Secretary
 //	 	employmentType: 'Full-time',
+//      noOfUnitsTaught: 30,
 //	 	rank: 'Asso. Prof 4',
 //	  	status: "Permanent",
 //          notification : "",

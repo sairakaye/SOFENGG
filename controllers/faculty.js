@@ -328,6 +328,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
@@ -354,7 +355,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -889,6 +890,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
@@ -912,7 +914,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -948,6 +950,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var aveTeachingPerformance = req.body.aveTeachingPerformance
   var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
@@ -973,7 +976,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var fdThreeData = {
     formId: "FD3-", grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
