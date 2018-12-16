@@ -20,7 +20,10 @@ const router = express.Router()
 router.use(urlencoder)
 const app = express()
 const nodemailer = require('nodemailer')
-var excel = require('exceljs');
+var excel = require('exceljs')
+const xlsxj = require("xlsx-to-json")
+const path = require("path")    
+const multer = require('multer')
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
@@ -34,6 +37,15 @@ const fdSixteen = require("../models/fdSixteen")
 const Remark = require("../models/remark")
 const Settings = require("../models/settings")
 var forms
+
+const UPLOAD_PATH = path.resolve(__dirname, "uploads")
+const upload = multer({
+  dest: UPLOAD_PATH,
+  limits: {
+    fileSize : 10000000,
+    files : 2
+  }
+})
 
 /**
  * Leads to the page for requesting grants 
@@ -1046,6 +1058,152 @@ router.post("/save-settings", urlencoder, (req, res) => {
     Settings.updateSettings(newSettings).then((updatedSettings) => {
         res.redirect("/")
     })
+})
+
+/**
+* Updates Faculty List
+*
+* @param {Request} req
+* @param {Response} res
+*/
+router.post("/upload", upload.single("filename"), (req, res) => {
+    /** Multer gives us file info in req.file object */
+    try {
+        
+        xlsxj({
+            input: req.file.path,
+            output : null
+        }, function(err, result) {
+            if(err) {
+                console.error(err)
+            }else {
+                User.remove().then((idk)=>{
+                    for(var i=0; i<result.length; i++){
+                        var updatedUser = {
+                            username: result[i].PERSONNELIDNO,
+                            password: result[i].PASSWORD,
+                            salutation : result[i].SALUTATION,
+                            firstName: result[i].FIRSTNAME, 
+                            middleName: result[i].MIDDLENAME,
+                            lastName: result[i].LASTNAME, 
+                            department: result[i].DEPARTMENTCODE, 
+                            college : result[i].COLLEGECODE,
+                            emailAddress : result[i].EMAILADDRESS,
+                            userType: result[i].CATEGORY,
+                            employmentType: result[i].CLASSIFICATION,
+                            rank: result[i].RANK,
+                            status: result[i].EMPLOYMENT_STATUS,
+                            aveTeachingPerformance : result[i].AVERAGE_TEACHING_PERFORMANCE,
+                            dateHired: Date.parse(result[i].DATE_HIRED),
+                        }
+                        if(updatedUser.employmentType == "FT"){
+                            updatedUser.employmentType = "Full-time"
+                        }else if(updatedUser.employmentType == "PT"){
+                            updatedUser.employmentType = "Part-time"
+                        }
+                        User.create(updatedUser).then((user)=>{
+                            fdOne.getFDOneByLoginId(user.username).then((userForms)=>{
+                                if(userForms){
+                                    for(var j=0; j<userForms.length; j++){
+                                        User.addFDOneInUser(userForms[j]).then((newUser)=>{
+                                        }, (err)=>{
+                                            res.send(err)
+                                        })
+                                    }
+                                }
+                                fdTwo.getFDTwoByLoginId(user.username).then((userForms)=>{
+                                    if(userForms){
+                                        for(var j=0; j<userForms.length; j++){
+                                            User.addFDTwoInUser(userForms[j]).then((newUser)=>{
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
+                                    }
+                                    fdThree.getFDThreeByLoginId(user.username).then((userForms)=>{
+                                        if(userForms){
+                                            for(var j=0; j<userForms.length; j++){
+                                                User.addFDThreeInUser(userForms[j]).then((newUser)=>{
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
+                                            }
+                                        }
+                                        
+                                        fdFour.getFDFourByLoginId(user.username).then((userForms)=>{
+                                            if(userForms){
+                                                for(var j=0; j<userForms.length; j++){
+                                                    User.addFDFourInUser(userForms[j]).then((newUser)=>{
+                                                    }, (err)=>{
+                                                        res.send(err)
+                                                    })
+                                                }
+                                            }
+                                            
+                                            fdFifteen.getFDFifteenByLoginId(user.username).then((userForms)=>{
+                                                if(userForms){
+                                                    for(var j=0; j<userForms.length; j++){
+                                                        User.addFDFifteenInUser(userForms[j]).then((newUser)=>{
+                                                        }, (err)=>{
+                                                            res.send(err)
+                                                        })
+                                                    }
+                                                }
+                                                fdSixteen.getFDSixteenByLoginId(user.username).then((userForms)=>{
+                                                    if(userForms){
+                                                        for(var j=0; j<userForms.length; j++){
+                                                            User.addFDSixteenInUser(userForms[j]).then((newUser)=>{
+                                                            }, (err)=>{
+                                                                res.send(err)
+                                                            })
+                                                        }
+                                                    }
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }, (err)=>{
+                                            res.send(err)
+                                        })
+                                        
+                                    }, (err)=>{
+                                        res.send(err)
+                                    })
+                                    
+                                }, (err)=>{
+                                    res.send(err)
+                                })
+                                
+                            }, (err)=>{
+                                res.send(err)
+                            })
+                            
+                        }, (error)=>{
+                            console.log("ERROR")
+                            console.log(error)
+                        })
+                    }
+                    
+                }, (err)=>{
+                    res.send(err)
+                })
+            }
+        })
+        
+        Overview.getAllOverview().then((totalArray)=>{
+            var user = req.session.user
+            res.render("home-admin.hbs", {
+                user, totalArray
+            })
+        }, (err)=>{
+            res.send(err)
+        })
+    } catch (e){
+        res.send(e)
+    }
 })
 
 module.exports = router
