@@ -80,7 +80,9 @@ router.post("/home", (req, res)=>{
 //	  var user = {
 //	  	username: idnumber,
 //	  	password, 
+//          salutation : "Ms.",
 //	  	firstName: 'Juana', 
+//          middleName : 'M.',
 //	  	lastName: 'Dela Cruz', 
 //	  	department: "ECE", 
 //        college : "CCS",
@@ -89,6 +91,7 @@ router.post("/home", (req, res)=>{
 //	 	employmentType: 'Full-time',
 //	 	rank: 'Asso. Prof 4',
 //	  	status: "Permanent",
+//          notification : "",
 //	 	aveTeachingPerformance : 3.8,
 //	  	dateHired: today,
 //	  }
@@ -335,8 +338,8 @@ router.get("/logout", function(req, res){
 	console.log("GET /logout")
 
     user = req.session.user
-	if (user) {
-		req.session.destroy((err) => {      
+    if (user) {
+        req.session.destroy((err) => {      
 			if (err) {
 				console.log(err)
             } 

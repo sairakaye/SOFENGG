@@ -71,6 +71,8 @@ var userSchema = mongoose.Schema({
 	userType: String, //Secretary or Faculty
 
     status : String, // Probationary or Permanent
+    
+    notification : String,
 
     aveTeachingPerformance : Number,
 
@@ -301,6 +303,27 @@ exports.getFDOneFormsByLastName = function(paramLastName){
             if(userFound!=null)
                 resolve(userFound.fdOneForms)
             resolve(null)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Update Notification in User Schema 
+ *
+ * @param {User to be updated} paramUser
+ * @param {Notification new} paramNotif
+ */
+exports.changeNotifInUser = function(paramUser, paramNotif){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username : paramUser
+        }, {
+            $set : {notification : paramNotif}
+        }).then((updatedUser)=>{
+            
+            resolve(updatedUser)
         }, (err)=>{
             reject(err)
         })
