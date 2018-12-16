@@ -93,30 +93,35 @@
           </div>
           <div class="ui divider"></div>
           <div class="row">
-            <h2>Budget Allocation of VCA for Term 1, AY 2018-2019</h2>
+            <h2>Approved Grants of VCA for Term 1, AY 2018-2019</h2>
           </div>
-          <table class="ui celled table selectable table tablet responsive" style="width:100%">
-            <thead>
-              <tr>
-                <th>College</th>
-                <th>FD4</th>
-                <th>FD15</th>
-                <th>FD16</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each totalArray}}
-              <tr>
-                <td data-label="College">{{collegeName}}</td>
-                <td data-label="FDFour" class="right aligned">PhP {{fdFourTotal}}</td>
-                <td data-label="FDFifteen" class="right aligned">PhP {{fdFifteenTotal}}</td>
-                <td data-label="FDSixteen" class="right aligned">PhP {{fdSixteenTotal}}</td>
-                <td data-label="Total" class="right aligned">PhP {{Total}}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
+          <div class = "row"> <a class = "ui tiny button exportdata" href = "admin/export">Export Data</a> </div>
+            <table class="ui celled table selectable table tablet responsive" style="width:100%">
+                <thead>
+                    <tr><th>College</th>
+                        <th>FD1</th>
+                        <th>FD2</th>
+                        <th>FD3</th>
+                        <th>FD4</th>
+                        <th>FD15</th>
+                        <th>FD16</th>
+                        <th>Total</th>
+                    </tr></thead>
+                <tbody>
+                    {{#each totalArray}}
+                    <tr>
+                        <td data-label="College">{{collegeName}}</td>
+                        <td data-label="FDOne" class="right aligned">{{fdOneTotal}}</td>
+                        <td data-label="FDTwo" class="right aligned">{{fdTwoTotal}}</td>
+                        <td data-label="FDThree" class="right aligned">{{fdThreeTotal}}</td>
+                        <td data-label="FDFour" class="right aligned">{{fdFourTotal}}</td>
+                        <td data-label="FDFifteen" class="right aligned">{{fdFifteenTotal}}</td>
+                        <td data-label="FDSixteen" class="right aligned">{{fdSixteenTotal}}</td>
+                        <td data-label="Total" class="right aligned">{{Total}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
       </div>
     </div>
@@ -140,5 +145,5 @@
 <script type="text/javascript" src="../public/semantic/semantic.js"></script>
 <!-- You can insert more JS files below -->
 <script type="text/javascript" src="../public/js/log-out.js"></script>
-
+<script type="text/javascript" src="../public/js/admin-view.js"></script>
 </html>

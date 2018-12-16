@@ -57,7 +57,7 @@ router.get("/", function(req, res) {
 			})
 	} else {
 		res.render("index.hbs")
-	}
+    }
 })
 
 /**
@@ -114,6 +114,9 @@ router.post("/home", (req, res)=>{
 /*  FOR ADDING Overviews TO DB */
 //	  var CCS = {
 //	  	collegeName: "CCS",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -121,6 +124,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var CED = {
 //	  	collegeName: "BAGCED",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -128,6 +134,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var CLA = {
 //	  	collegeName: "CLA",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -135,6 +144,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COB = {
 //	  	collegeName: "RVRCOB",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -142,6 +154,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COE = {
 //	  	collegeName: "GCOE",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -149,6 +164,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COL = {
 //	  	collegeName: "COL",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -156,6 +174,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var COS = {
 //	  	collegeName: "COS",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -163,6 +184,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var SOE = {
 //	  	collegeName: "SOE",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -170,6 +194,9 @@ router.post("/home", (req, res)=>{
 //	  }
 //      var Total = {
 //	  	collegeName: "Total",
+//        fdOneTotal : 0,
+//        fdTwoTotal : 0,
+//        fdThreeTotal : 0,
 //        fdFourTotal : 0,
 //        fdFifteenTotal : 0,
 //        fdSixteenTotal : 0,
@@ -292,9 +319,9 @@ router.get("/home", function(req, res){
             var forms = getAllForms(forms, function(forms){
                 res.redirect("/faculty/my-requests")
             })
-            } else {
-                res.redirect("/")
-            }
+    } else {
+        res.redirect("/")
+    }
 })
 
 /**
@@ -307,17 +334,19 @@ router.get("/home", function(req, res){
 router.get("/logout", function(req, res){
 	console.log("GET /logout")
 
-	if (req.session) {
+    user = req.session.user
+	if (user) {
 		req.session.destroy((err) => {      
 			if (err) {
 				console.log(err)
-			} 
-		})
-	}
-		
-	res.render("index.hbs", {
-		loggedout: "You have successfully logged out."
-	})	
+            } 
+            res.render("index.hbs", {
+                loggedout: "You have successfully logged out."
+            })
+        })
+	} else {
+        res.redirect("/")
+    }
 })
 
 module.exports = router

@@ -20,9 +20,11 @@ const router = express.Router()
 router.use(urlencoder)
 const app = express()
 const nodemailer = require('nodemailer')
+var excel = require('exceljs');
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
+const Overview = require("../models/overview")
 const fdOne = require("../models/fdOne")
 const fdTwo = require("../models/fdTwo")
 const fdThree = require("../models/fdThree")
@@ -43,10 +45,10 @@ router.get("/view-grants", function (req, res) {
     console.log("GET /view-grants")
 
     var user = req.session.user
-    if (user.userType != 'Administrator')
-        res.redirect("/")
-
     if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+            
         forms = getAllForms(function (forms) {
             if (forms == "") {
                 res.render("view-grants.hbs", {
@@ -73,12 +75,12 @@ router.post("/view-details", urlencoder, function (req, res) {
     console.log("POST /view-details")
 
     var user = req.session.user
-    if (user.userType != 'Administrator')
-        res.redirect("/")
-
     var id = req.body.details
 
-    if (user != null) {
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+
         var forms = getFormById(id, function (forms) {
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
                 var fdOneData = forms
@@ -206,12 +208,17 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
                                                 text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
-                                                    "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
-                                                    foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
-                                                    "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
-                                                    " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
+                                                foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
+                                                "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
+                                                " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
+                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDOneTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -287,6 +294,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            
+                                            Overview.addFDTwoTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -361,6 +374,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            
+                                            Overview.addFDThreeTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -437,6 +456,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDFourTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -511,6 +535,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -585,6 +614,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
                                                     "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            Overview.addFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
                                         } else if (status == "Rejected") {
                                             var mailOptions = {
                                                 from: newMailer.emailAddress,
@@ -970,23 +1004,6 @@ router.post("/rejectform", urlencoder, (req, res) => {
 })
 
 /**
- * Gets the form with the id being requested, this is 
- * used in exporting the form as pdf file.
- *
- * @param {Request} req
- * @param {Response} res
- */
-router.get("/saveform", urlencoder, (req, res) => {
-    console.log("GET /saveform ")
-
-    var id = req.query.id
-
-    var forms = getFormById(id, function (forms) {
-        res.send(forms)
-    })
-})
-
-/**
  * Going to the settings page for the admin.
  * @param {Request} req
  * @param {Response} res
@@ -1139,3 +1156,88 @@ function getFormById(id, callback) {
         })
     })
 }
+
+/**
+ * Gets the form with the id being requested, this is 
+ * used in exporting the form as pdf file.
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/saveform", urlencoder, (req, res) => {
+    console.log("GET /saveform ")
+
+    var user = req.session.user
+    var id = req.query.id
+
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+            
+        var forms = getFormById(id, function (forms) {
+            res.send(forms)
+        })
+    } else {
+        res.redirect("/")
+    }
+
+})
+
+/**
+ * Gets the forms requested, this is 
+ * used in exporting the data as an excel file
+ *
+ * @param {Request} req
+ * @param {Response} res
+ */
+router.get("/export", urlencoder, (req, res) => {
+    console.log("GET /export ")
+
+    if (user) {
+        if (user.userType != 'Administrator')
+            res.redirect("/")
+           
+        var MongoClient = require('mongodb').MongoClient
+
+        MongoClient.connect('mongodb://localhost', function (err, client) {
+            if (err) throw err          
+            var workbook = new excel.Workbook();
+            var db = client.db('VCA-Database')
+    
+            db.collection('fdones').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items)  {     
+                var worksheet = workbook.addWorksheet('FD1');
+                var font = { name: "Arial", family: 2, size: 16, bold: true};
+    
+                worksheet.mergeCells('A1', 'K1');
+                worksheet.getCell('A1').value = 'FD1 - Pre Selected High Impact Journal, AY 2018-2019'
+                worksheet.getCell('L1').value = 'ETD'
+                worksheet.getCell('O1').value = 'BALANCE'
+                worksheet.getCell("A1").font = font;
+                worksheet.getCell("L1").font = font;
+                worksheet.getCell("O1").font = font;
+    
+                worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'TITLE OF PAPER OR PUBLICATION', 'TITLE OF JOURNAL', 
+                'TITLE OF PAPER TO BE PRESENTED', 'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
+                'SUMMARY REPORT(Received by VCAO)', 'LIQUIDATION(Received by VCAO)', 'Remarks'];
+    
+                worksheet.columns = [{key: 'term'}, {key: 'college'}, {key: 'dept'}, {key: 'status'}, {key: 'facultyname'}, {key: 'titlepaper'}, {key: 'titlejournal'},
+                {key: 'titleppresent'}, {key: 'dateconf'}, {key: 'venue'}, {key: 'remarksbenefit'}, {key: 'dollar'}, {key: 'peso'}, {key: 'prsno'}, {key: 'payabto'}, {key: 'daterecivacct'}, 
+                {key: 'summaryreport'}, {key: 'liquida'}, {key: 'remarks'}]
+    
+                items.forEach(function(item) {
+                    worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperOrPublication, 
+                    titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: item.dateOfStartConference+" - "+item.dateOfEndConference, venue: item.placeAndVenue})
+                })
+    
+                var tempfile = require('tempfile');
+                var tempFilePath = tempfile('.xlsx');
+                workbook.xlsx.writeFile(tempFilePath).then(function() {
+                    res.sendFile(tempFilePath, function(err){
+                    });
+                });
+            });
+        });       
+    } else {
+        res.redirect("/")
+    }
+})
