@@ -30,7 +30,7 @@ $("#remarks-form").submit(function (e) {
   
   if (remark == "" && status == "") {
     toastr.info("Enter a remark or status first before you submit!", "Enter a remark or status first!").css("width", "50%")
-  } else if (status === currentStatus) {
+  } else if (status === currentStatus && remark == "") {
     toastr.warning("You already set " + status + " to the form.", "Did you set the same status?").css("width", "50%")
   } else {
     $.ajax({
