@@ -1614,6 +1614,23 @@ router.get("/printform", urlencoder, (req, res) => {
 module.exports = router
 
 /**
+ * Compares if the faculty has availed the
+ * incentive or not.
+ * 
+ * @param {status} String
+ * @param {options} options.fn
+ * @param {options} options.inverse
+ */
+
+hbs.registerHelper('isNoIncentiveAvailed', function (incentive, options) {
+  if (incentive == "N/A") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+})
+
+/**
  * Compares the faculty status from the .hbs files that
  * is retrieved from the database.
  * 

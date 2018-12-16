@@ -210,10 +210,17 @@
                             class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
                         </div>
                       </div>
+                      {{#isNoIncentiveAvailed fdFourData.dateIncentiveLastAvailed}}
+                      <div class="ui checkbox" style="padding-top: 10px">
+                        <input type="checkbox" name="noneIncentive" id="no-avail" checked="checked">
+                        <label>Did not avail an incentive yet.</label>
+                      </div>
+                      {{else}}
                       <div class="ui checkbox" style="padding-top: 10px">
                         <input type="checkbox" name="noneIncentive" id="no-avail">
                         <label>Did not avail an incentive yet.</label>
                       </div>
+                      {{/isNoIncentiveAvailed}}
                     </div>
                   </div>
                 </div>

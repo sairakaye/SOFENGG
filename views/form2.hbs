@@ -246,10 +246,17 @@
                             class="check" value="{{fdTwoData.dateIncentiveLastAvailed}}" />
                         </div>
                       </div>
+                      {{#isNoIncentiveAvailed fdTwoData.dateIncentiveLastAvailed}}
+                      <div class="ui checkbox" style="padding-top: 10px">
+                        <input type="checkbox" name="noneIncentive" id="no-avail" checked="checked">
+                        <label>Did not avail an incentive yet.</label>
+                      </div>
+                      {{else}}
                       <div class="ui checkbox" style="padding-top: 10px">
                         <input type="checkbox" name="noneIncentive" id="no-avail">
                         <label>Did not avail an incentive yet.</label>
                       </div>
+                      {{/isNoIncentiveAvailed}}
                     </div>
                   </div>
                 </div>

@@ -367,6 +367,18 @@ $('#request-form')
   });
 
 /**
+ * This part checks if the incentive was not availed,
+ * and the user submits the form for preview, it retains
+ * the did not avail for incentive check.
+ */
+var isNoAvailChecked = $('#no-avail').prop('checked');
+if (isNoAvailChecked) {
+  $("#dateIncentiveLastAvailed").val("N/A");
+  $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
+  $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
+}
+
+/**
 * This function checks for the change
 * of the checkbox in "Date incentive was last availed of".
 */

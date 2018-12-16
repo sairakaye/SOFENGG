@@ -147,10 +147,7 @@
                 <div class="four wide field disabled">
                   <label>If Part-Time, No. of units taught since hired</label>
                   <input type="number" readonly name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                    min="0" value="{{user.noOfUnitsTaught}}" //>
-                </div>
-                {{else}}
-                <div class="field disabled">
+                    min="0" value="{{user.noOfUnitsTaught}}" //> </div> {{else}} <div class="field disabled">
                   <label>Status</label>
                   <div class="fields readonly">
                     <div class="two wide field">
@@ -172,7 +169,7 @@
                   <label>Name of Conference</label>
                   <input type="text" name="nameOfConference" id="nameOfConference" class="check" value="{{fdThreeData.nameOfConference}}" />
                 </div>
-                {{#conferencetype fdThreeData.typeOfConference }}
+                {{#conferencetype fdThreeData.typeOfConference}}
                 <div class="field">
                   <label>Type of Conference</label>
                   <div class="fields">
@@ -290,10 +287,17 @@
                         class="check" value="{{fdThreeData.dateIncentiveLastAvailed}}" />
                     </div>
                   </div>
+                  {{#isNoIncentiveAvailed fdThreeData.dateIncentiveLastAvailed}}
+                  <div class="ui checkbox" style="padding-top: 10px">
+                    <input type="checkbox" name="noneIncentive" id="no-avail" checked="checked">
+                    <label>Did not avail an incentive yet.</label>
+                  </div>
+                  {{else}}
                   <div class="ui checkbox" style="padding-top: 10px">
                     <input type="checkbox" name="noneIncentive" id="no-avail">
                     <label>Did not avail an incentive yet.</label>
                   </div>
+                  {{/isNoIncentiveAvailed}}
                 </div>
                 <br>
                 <!-- This is where you will put the additional requirements. -->
