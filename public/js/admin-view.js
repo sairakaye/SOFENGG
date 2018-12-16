@@ -15,37 +15,6 @@ $('.ui.dropdown').dropdown();
 var formID = $("#submit-button").attr("data-id")
 var grant = $("#submit-button").attr("data-grant")
 var currentStatus = $("#form-status").val()
-var $tr
-var id
-
-$("button#delete-button").on("click", function (e) {
-  $tr = $(this).closest('tr')
-  id = $(this).attr("data-id")
-
-  $('.ui.modal.deletion')
-    .modal('show');
-})
-
-$(".negative.delete.final").on("click", function () {
-  $.ajax({
-    method: "delete",
-    url: "delete-remark",
-    data: {
-      id,
-      formID,
-      grant
-    },
-    success: function (result) {
-      if (result.n == 1) {
-        $tr.remove();
-        $tr = null
-        id = null
-      } else
-        alert("Something went wrong!")
-    }
-  })
-})
-
 
 $("#reset-button").on("click", function() {
   $(".dropdown").dropdown('restore defaults');
@@ -107,15 +76,7 @@ $("#remarks-form").submit(function (e) {
           $(trElement).append(tdStatus)
           $(trElement).append(tdRemark)
 
-          $(tbodyElement).append(trElement)
-
-          $(document).on("click", "#delete-button", function() {
-            $tr = $(this).closest('tr')
-            id = $(this).attr("data-id")
-          
-            $('.ui.modal.deletion')
-              .modal('show');         
-          })
+          $(tbodyElement).prepend(trElement)
 
           $(".dropdown").dropdown('restore defaults');
           $("#status-dropdown").val("")
