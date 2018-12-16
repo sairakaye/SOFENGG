@@ -129,3 +129,9 @@ $("#remarks-form").submit(function (e) {
     })
   }
 })
+
+$(".button.exportdata").on("click", function (e) {
+    var header = "Approved grants data exported!"
+    toastr.success("You have successfully exported the data of approved grants to Excel", header)
+    .css("width", "50%")
+})
