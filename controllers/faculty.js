@@ -483,6 +483,9 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
+  
+  if (coverage == null || coverage == undefined)
+    coverage = "N/A"
 
   var fdSixteenData = {
     grantName: "[FD16] Support for Membership in Professional Organizations",
@@ -1451,6 +1454,9 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
+
+  if (coverage == null || coverage == undefined)
+    coverage = "N/A"
 
   var fdSixteenData = {
     formId: "FD16-", grantName: "[FD16] Support for Membership in Professional Organizations",

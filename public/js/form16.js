@@ -182,29 +182,24 @@ $('#request-form')
   });
 
 /**
- * This part checks if the incentive was not availed,
- * and the user submits the form for preview, it retains
- * the did not avail for incentive check.
+ * This part checks if the it is a lifetime type of
+ * membership
  */
-var isNoAvailChecked = $('#no-avail').prop('checked');
-if (isNoAvailChecked) {
-  $("#dateIncentiveLastAvailed").val("N/A");
-  $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
-  $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
+
+var isLifetimeDuration = $('#lifetime-membership').prop('checked');
+if (isLifetimeDuration) {
+  $("#coverage").val("N/A");
+  $("#coverage").attr("disabled", "disabled");
+  $("#request-form").form('validate field', 'coverage');
 }
 
-/**
-* This function checks for the change
-* of the checkbox in "Date incentive was last availed of".
-*/
-$("#no-avail").change(function () {
-  if (this.checked) {
-    $("#dateIncentiveLastAvailed").val("N/A");
-    $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
-    $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
-
+$("input[type=radio][name=typeofMembershipDuration]").change(function () {
+  if (this.value == "Lifetime") {
+    $("#coverage").val("N/A");
+    $("#coverage").attr("disabled", "disabled");
+    $("#request-form").form('validate field', 'coverage');
   } else {
-    $("#dateIncentiveLastAvailed").val("");
-    $("#dateIncentiveLastAvailed").removeAttr("disabled");
+    $("#coverage").val("");
+    $("#coverage").removeAttr("disabled");
   }
 });
