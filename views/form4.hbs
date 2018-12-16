@@ -189,110 +189,110 @@
                   </div>
                 </div>
                 <div class="two fields">
-                <div class="field">
-                  <label>Participant’s fee</label>
-                  <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                    name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                  <div class="field">
+                    <label>Participant’s fee</label>
+                    <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                      name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
+                  </div>
+                  <div class="field">
+                    <label>(check payable to)</label>
+                    <input type="text" class="check" id="checkPayableTo" name="checkPayableTo" />
+                  </div>
                 </div>
                 <div class="field">
-                  <label>(check payable to)</label>
-                  <input type="text" class="check" id="checkPayableTo" name="checkPayableTo" />
-                </div>
-                </div>
-                <div class="field">
-                <div class="field">
-                  <div class="fields">
-                    <div class="eight wide field">
-                      <label>No. of local conferences attended this academic year to date</label>
-                      <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                        min="0" name="noOfLocalConferencesAttendedThisYear" id="noOfLocalConferencesAttendedThisYear"
-                        class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
+                  <div class="field">
+                    <div class="fields">
+                      <div class="eight wide field">
+                        <label>No. of local conferences attended this academic year to date</label>
+                        <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                          min="0" name="noOfLocalConferencesAttendedThisYear" id="noOfLocalConferencesAttendedThisYear"
+                          class="check" value="{{fdFourData.noOfLocalConferencesAttendedThisYear}}" />
+                      </div>
+                      <div class="eight wide field">
+                        <label>Date incentive was last availed of</label>
+                        <div class="ui calendar" id="incentive-date">
+                          <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                              class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
+                          </div>
+                        </div>
+                        {{#isNoIncentiveAvailed fdFourData.dateIncentiveLastAvailed}}
+                        <div class="ui checkbox" style="padding-top: 10px">
+                          <input type="checkbox" name="noneIncentive" id="no-avail" checked="checked">
+                          <label>Did not avail an incentive yet.</label>
+                        </div>
+                        {{else}}
+                        <div class="ui checkbox" style="padding-top: 10px">
+                          <input type="checkbox" name="noneIncentive" id="no-avail">
+                          <label>Did not avail an incentive yet.</label>
+                        </div>
+                        {{/isNoIncentiveAvailed}}
+                      </div>
                     </div>
-                    <div class="eight wide field">
-                      <label>Date incentive was last availed of</label>
-                      <div class="ui calendar" id="incentive-date">
-                        <div class="ui input left icon">
-                          <i class="calendar icon"></i>
-                          <input type="text" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                            class="check" value="{{fdFourData.dateIncentiveLastAvailed}}">
+                  </div>
+
+                  <!-- This is where you will put the additional requirements. -->
+                  <div class="field additional requirements">
+                    <label class="additional requirements title">Application should be accompanied by the following:</label>
+                    <div class="fields">
+                      <div class="three wide field">
+                        <i class="right triangle icon"></i>
+                        Application Letter
+                      </div>
+                      <div class="four wide field">
+                        <i class="right triangle icon"></i>
+                        Program conference
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field additional requirements">
+                    <div class="five wide field">
+                      <i class="right triangle icon"></i>
+                      Copy of invitation
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="sixteen wide field">
+                      <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf"
+                        target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
+                    </div>
+                  </div>
+                  <div class="ui grid">
+                    <div class="four column row">
+
+                      <div class="left floated column">
+                        <div class="extra">
+                          <a class="ui left floated button" href="/faculty/request-grant">
+                            <i class="left chevron icon"></i>
+                            Back
+                          </a>
                         </div>
                       </div>
-                      {{#isNoIncentiveAvailed fdFourData.dateIncentiveLastAvailed}}
-                      <div class="ui checkbox" style="padding-top: 10px">
-                        <input type="checkbox" name="noneIncentive" id="no-avail" checked="checked">
-                        <label>Did not avail an incentive yet.</label>
-                      </div>
-                      {{else}}
-                      <div class="ui checkbox" style="padding-top: 10px">
-                        <input type="checkbox" name="noneIncentive" id="no-avail">
-                        <label>Did not avail an incentive yet.</label>
-                      </div>
-                      {{/isNoIncentiveAvailed}}
-                    </div>
-                  </div>
-                </div>
 
-                <!-- This is where you will put the additional requirements. -->
-                <div class="field additional requirements">
-                  <label class="additional requirements title">Application should be accompanied by the following:</label>
-                  <div class="fields">
-                    <div class="three wide field">
-                      <i class="right triangle icon"></i>
-                      Application Letter
-                    </div>
-                    <div class="four wide field">
-                      <i class="right triangle icon"></i>
-                      Program conference
-                    </div>
-                  </div>
-                </div>
-                <div class="field additional requirements">
-                  <div class="five wide field">
-                    <i class="right triangle icon"></i>
-                    Copy of invitation
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="sixteen wide field">
-                    <b>Faculty Development Guidelines: </b><a href="http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf"
-                      target="_blank">http://intranet.dlsu.edu.ph/downloads/forms/pdf/faculty-development-program.pdf</a>
-                  </div>
-                </div>
-                <div class="ui grid">
-                  <div class="four column row">
-
-                    <div class="left floated column">
-                      <div class="extra">
-                        <a class="ui left floated button" href="/faculty/request-grant">
-                          <i class="left chevron icon"></i>
-                          Back
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="right floated column">
-                      <div class="extra">
-                        <div class="ui submit green button right floated" id="confirm">
-                          Submit
-                          <i class="right chevron icon"></i>
+                      <div class="right floated column">
+                        <div class="extra">
+                          <div class="ui submit green button right floated" id="confirm">
+                            Submit
+                            <i class="right chevron icon"></i>
+                          </div>
                         </div>
                       </div>
+
                     </div>
+                  </div>
 
+                  <!-- This the modal for logout confirmation -->
+                  <div class="ui mini modal logout">
+                    <div class="header">Are you sure?</div>
+                    <div class="content">
+                      <p>Do you really want to log out?</p>
+                    </div>
+                    <div class="actions">
+                      <input type="submit" value="Log out" class="ui button positive logout" style="background-color:#016938">
+                      <div class="ui cancel button">Not yet</div>
+                    </div>
                   </div>
-                </div>
-
-                <!-- This the modal for logout confirmation -->
-                <div class="ui mini modal logout">
-                  <div class="header">Are you sure?</div>
-                  <div class="content">
-                    <p>Do you really want to log out?</p>
-                  </div>
-                  <div class="actions">
-                    <input type="submit" value="Log out" class="ui button positive logout" style="background-color:#016938">
-                    <div class="ui cancel button">Not yet</div>
-                  </div>
-                </div>
               </form>
             </div>
           </div>
