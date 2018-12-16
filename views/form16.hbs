@@ -99,7 +99,16 @@
               <h3>1st Term, AY 2018-2019</h3>
             </div>
           </div>
-
+          <div class="row">
+            <div class="one column">
+              <div class="ui negative message fluid">
+                <div class="header">
+                  Reminder
+                </div>
+                <p>All fields are required to be filled up.</p>
+              </div>
+            </div>
+          </div>
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
@@ -270,8 +279,8 @@
                                 <div class="item">SGD</div>
                               </div>
                             </div>
-                           <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                             min = "0" name="membershipFee" id = "membershipFee" class = "check" 
+                           <input type="number" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46"
+                             name="membershipFee" id = "membershipFee" class = "check" 
                              value="{{fdSixteenData.membershipFee}}">
                         </div>
                     </div>
