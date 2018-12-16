@@ -24,6 +24,8 @@ function stopEnterKey(e) {
   }
 }
 
+$('.ui.dropdown').dropdown('refresh');
+$('.ui.dropdown').dropdown('set selected','PHP')
 /**
  * This is initialize to the page where
  * when a key is pressed, it calls for

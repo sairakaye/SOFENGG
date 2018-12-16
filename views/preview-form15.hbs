@@ -263,25 +263,41 @@
                     </div>
                   </div>
                 </div>
+                <div class = "field"> 
+                  <div class = "fields"> 
+                      <div class="eight wide field">
+                        <label>Date incentive was last availed of</label>
+                        {{#if viewdetails}}
+                        <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
+                        {{else if adminAccess}}
+                        <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
+                        {{else}}
+                        <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
+                        <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
+                          class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
+                        {{/if}}
+                      </div>
+                  </div>
+                </div>
                 <div class="field">
                   <div class="fields">
-                    <div class="eight wide field">
-                      <label>Date incentive was last availed of</label>
-                      {{#if viewdetails}}
-                      <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
-                      {{else if adminAccess}}
-                      <p>{{formatDate fdFifteenData.dateIncentiveLastAvailed}}</p>
-                      {{else}}
-                      <p>{{fdFifteenData.dateIncentiveLastAvailed}}</p>
-                      <input type="hidden" name="dateIncentiveLastAvailed" placeholder="Date" id="dateIncentiveLastAvailed"
-                        class="check" value="{{fdFifteenData.dateIncentiveLastAvailed}}" />
-                      {{/if}}
-                    </div>
                     <div class="eight wide field">
                       <label>Participant’s Fee (check payable to)</label>
                       <p>{{fdFifteenData.participantFee}}</p>
                       <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFifteenData.participantFee}}" />
                     </div>
+                      <div class="eight wide field">
+                        <label>(currency)</label>
+                        <p>{{fdFifteenData.currencychoice}}</p>
+                        <input type="hidden" name="currencychoice" id="currencychoice" class="check" value="{{fdFifteenData.currencychoice}}" />
+                     </div>
+                  </div>
+                </div>
+                <div class = "field">  
+                  <div class = "sixteen wide field">           
+                    <label>(check payable to)</label>
+                    <p>{{fdFifteenData.checkPayableTo}}</p>
+                    <input type="hidden" class="check" id="checkPayableTo" name="checkPayableTo" value="{{fdFifteenData.checkPayableTo}}"/>
                   </div>
                 </div>
 

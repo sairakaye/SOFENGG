@@ -289,7 +289,7 @@
 
                 <div class="field">
                   <div class="fields">
-                    <div class="eight wide field">
+                    <div class="sixteen wide field">
                       <label>Date of expected return to work</label>
                       {{#if viewdetails}}
                       <p>{{formatDate fdFourData.dateOfReturnToWork}}</p>
@@ -301,8 +301,13 @@
                         value="{{fdFourData.dateOfReturnToWork}}" />
                       {{/if}}
                     </div>
-                    <div class="eight wide field">
-                      <label>Participant’s fee (check payable to)</label>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="fields">
+                     <div class="eight wide field">
+                      <label>Participant’s fee</label>
                       {{#if viewdetails}}
                       <p>{{fdFourData.participantFee}}</p>
                       {{else if adminAccess}}
@@ -312,6 +317,19 @@
                       <input type="hidden" name="participantFee" id="participantFee" class="check" value="{{fdFourData.participantFee}}" />
                       {{/if}}
                     </div>
+                      <div class="eight wide field">
+                        <label>(currency)</label>
+                        <p>{{fdFourData.currencychoice}}</p>
+                        <input type="hidden" name="currencychoice" id="currencychoice" class="check" value="{{fdFourData.currencychoice}}" />
+                     </div>
+                  </div>
+                </div>
+
+                 <div class = "field">  
+                  <div class = "sixteen wide field">           
+                    <label>(check payable to)</label>
+                    <p>{{fdFourData.checkPayableTo}}</p>
+                    <input type="hidden" class="check" id="checkPayableTo" name="checkPayableTo" value="{{fdFourData.checkPayableTo}}"/>
                   </div>
                 </div>
 

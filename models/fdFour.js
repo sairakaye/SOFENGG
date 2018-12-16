@@ -37,6 +37,7 @@ var fdFourSchema = mongoose.Schema({
     placeAndVenue : String,
     dateOfReturn : Date,
     dateOfReturnToWork : Date,
+    currencychoice: String,
     participantFee : String,
     checkPayableTo : String,
     noOfLocalConferencesAttendedThisYear : Number,

@@ -36,6 +36,7 @@ var fdSixteenSchema = mongoose.Schema({
     typeofMembershipDuration : String, //true = annual, false = lifetime
     membershipDate : Date,
     coverage : String,
+    currencychoice: String,
     membershipFee : Number,
     checkPayableTo : String,
     participantFee : Number, //MONEY
