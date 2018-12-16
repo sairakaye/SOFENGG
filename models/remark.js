@@ -17,10 +17,6 @@ const moment = require("moment")
  * Setting up Remark Schema
  */
 var remarkSchema = mongoose.Schema({
-    remarkId : {
-      type: Number,
-      required : true
-    },
     formId : {
       type : String,
       required : true
@@ -43,8 +39,7 @@ var Remark = mongoose.model("remark", remarkSchema)
 exports.create = function(remark) {
   return new Promise(function(resolve, reject) {
     var r = new Remark(remark)
-    
-    r.remarkId = 1;
+
     r.date = new Date();
     
     r.save().then((newRemark)=>{

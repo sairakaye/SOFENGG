@@ -168,6 +168,12 @@ exports.getFDFifteen = function(paramFDFifteen){
         fdFifteen.findOne({
             _id : paramFDFifteen._id
         }).then((foundFDFifteen)=>{
+            foundFDFifteen.remarks = foundFDFifteen.remarks.sort(function(a, b){
+                const aDate = new Date(a.date)
+                const bDate = new Date(b.date)
+                
+                return bDate.getTime() - aDate.getTime()
+            })
             resolve(foundFDFifteen)
         }, (err)=>{
             reject(err)

@@ -71,7 +71,11 @@
           <!-- These are the side menubar items. -->
           <a href="/faculty/my-requests" class="item">
             My Grant Requests
-            <i class="chevron right icon"></i>
+            {{#if user.notification}}
+              <i class="ui red circular label">{{user.notification}}</i>
+              {{else}}
+              <i class="right chevron icon"></i>
+              {{/if}}
           </a>
           <a href="/faculty/request-grant" class="active item">
             Request Grant
@@ -90,7 +94,8 @@
               </div>
               <p>Your request for {{formName}} is submitted!</p>
               <br>
-              <p>Check the status of your request in My Grant Requests .</p>
+              <p>Check the status of your request in My Grant Requests.</p>
+              <p>You will be receiving an email notification once the secretary has recieved your application</p>
             </div>
           </div>
           <a href="/faculty/request-grant" class="ui button black">Request Another Grant</a>

@@ -168,18 +168,49 @@ $('#incentive-date').calendar({
 $('.ui.checkbox').checkbox();
 
 /**
- * Initializes the button with #confirm and checks whether
- * it will show the confirmation modal or not.
+ * Initializes the multiple selection
+ * search dropdown
  */
-$("#confirm").click(function () {
+$(".ui.fluid.dropdown").dropdown({
+  allowAdditions : true
+})
+
+/**
+ * Initializes the button with an id confirm and fixes
+ * the multiple search selection dropdown.
+ */
+$("#confirm").click(function (e) {
+  e.preventDefault();
   check();
   var isValid = $('.form').form('validate form');
 
   if (isValid) {
-    $('.ui.modal.submit')
-      .modal('show');
+    var stringInsert = ""
+    var values = $("#subsidy").dropdown("get value")
+
+    for (let i = 0; i < values.length; i++) {
+      stringInsert += values[i]
+
+      if (i+1 < values.length)
+        stringInsert += ", "
+    }
+
+    $("#travelAndConferenceSubsidy").val(stringInsert)
   }
 })
+
+var getSubsidy = $("#travelAndConferenceSubsidy").val();
+if (getSubsidy != "") {
+  var tempSubsidies = getSubsidy.split(",")
+  var subsidies = []
+
+  if (tempSubsidies.length >= 1) {
+    for (let i = 0; i < tempSubsidies.length; i++) {
+      subsidies.push(tempSubsidies[i].trim())
+    }
+    $("#subsidy").dropdown('set selected', subsidies)
+  }
+}
 
 /**
  * Checks if all input have values, if it does not
@@ -295,7 +326,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the start date of the conference.'
           }
         ]
       },
@@ -305,7 +336,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the end date of the conference.'
           }
         ]
       },
@@ -346,10 +377,10 @@ $('#request-form')
         ]
       },
       travelAndConferenceSubsidy: {
-        identifier: 'travelAndConferenceSubsidy',
+        identifier: 'selectSubsidy',
         rules: [
           {
-            type: 'empty',
+            type: 'minCount[1]',
             prompt: 'Please specify your travel and conference subsidy.'
           }
         ]

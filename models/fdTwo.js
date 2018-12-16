@@ -188,6 +188,12 @@ exports.getFDTwoByID = function(id){
         fdTwo.findOne({
             _id : id
         }).then((foundFDTwo)=>{
+            foundFDTwo.remarks = foundFDTwo.remarks.sort(function(a, b){
+                const aDate = new Date(a.date)
+                const bDate = new Date(b.date)
+                
+                return bDate.getTime() - aDate.getTime()
+            })
             resolve(foundFDTwo)
         }, (err)=>{
             reject(err)

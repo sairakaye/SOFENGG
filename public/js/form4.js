@@ -159,20 +159,6 @@ $('#incentive-date').calendar({
 $('.ui.checkbox').checkbox();
 
 /**
- * Initializes the button with #confirm and checks whether
- * it will show the confirmation modal or not.
- */
-$("#confirm").click(function () {
-  check();
-  var isValid = $('.form').form('validate form');
-
-  if (isValid) {
-    $('.ui.modal.submit')
-      .modal('show');
-  }
-})
-
-/**
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
  */
@@ -275,7 +261,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the start date of the conference.'
           }
         ]
       },
@@ -285,7 +271,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the end date of the conference.'
           }
         ]
       },
@@ -330,7 +316,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the participants fee.'
+            prompt: "Please enter the participant's fee."
           },
           {
             type: 'decimalLimit[2]',

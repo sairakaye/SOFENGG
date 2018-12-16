@@ -182,20 +182,6 @@ $('#incentive-date').calendar({
 $('.ui.checkbox').checkbox();
 
 /**
- * Initializes the button with #confirm and checks whether
- * it will show the confirmation modal or not.
- */
-$("#confirm").click(function () {
-  check();
-  var isValid = $('.form').form('validate form');
-
-  if (isValid) {
-    $('.ui.modal.submit')
-      .modal('show');
-  }
-})
-
-/**
  * Checks if all input have values, if it does not
  * it scrolls and focuses to that field
  */
@@ -291,7 +277,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your title of paper or publication.'
+            prompt: 'Please enter the title of paper or publication.'
           }
         ]
       },
@@ -300,7 +286,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your title of journal.'
+            prompt: 'Please enter the title of journal.'
           }
         ]
       },
