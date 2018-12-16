@@ -222,6 +222,7 @@ November 15, 2018
                     <input type="hidden" name="rank" value="{{fdThreeData.rank}}" />
                   </div>
                 </div>
+                {{#employment fdThreeData.status}}
                 <div class="two fields">
                   <div class="field">
                     <label>Date Hired</label>
@@ -240,6 +241,31 @@ November 15, 2018
                     <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
                   </div>
                 </div>
+                <div class="field">
+                    <label>No. of units taught since hired</label>
+                    <p>{{fdThreeData.noOfUnitsTaught}}</p>
+                    <input type="hidden" name="noOfUnitsTaught" id="noOfUnitsTaught" value="{{fdThreeData.noOfUnitsTaught}}" />
+                </div>
+                {{else}}
+                <div class="two fields">
+                  <div class="field">
+                    <label>Date Hired</label>
+                    {{#if viewdetails}}
+                    <p>{{formatDate fdThreeData.dateHired}}</p>
+                    {{else if adminAccess}}
+                    <p>{{formatDate fdThreeData.dateHired}}</p>
+                    {{else}}
+                    <p>{{fdThreeData.dateHired}}</p>
+                    <input type="hidden" name="dateHired" placeholder="Date" value="{{fdThreeData.dateHired}}" />
+                    {{/if}}
+                  </div>
+                  <div class="field">
+                    <label>Status</label>
+                    <p>{{fdThreeData.status}}</p>
+                    <input type="hidden" name="status" id="status" value="{{fdThreeData.status}}" />
+                  </div>
+                </div>
+                {{/employment}}
                 <div class="two fields">
                   <div class="field">
                     <label>Name of Conference</label>

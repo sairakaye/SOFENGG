@@ -321,6 +321,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var rank = req.body.rank
   var dateHired = req.body.dateHired
   var status = req.body.status
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
   var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
   var titleOfJournal = req.body.titleOfJournal
@@ -345,7 +346,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status,
+    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -843,6 +844,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var rank = req.body.rank
   var dateHired = req.body.dateHired
   var status = req.body.status
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
   var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
   var titleOfJournal = req.body.titleOfJournal
@@ -864,7 +866,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status,
+    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
