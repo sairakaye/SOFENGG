@@ -95,6 +95,8 @@ exports.getRemarksFromForm = function(paramForm){
   return new Promise(function(resolve, reject){
       Remark.find({
           formId : paramForm._id
+      }, null, {
+          sort: { date: -1 }
       }).then((remarksForm)=>{
           resolve(remarksForm)
       }, (err)=>{

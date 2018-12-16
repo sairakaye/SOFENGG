@@ -93,6 +93,16 @@
               <h3>1st Term, AY 2018-2019</h3>
             </div>
           </div>
+          <div class="row">
+            <div class="one column">
+              <div class="ui negative message fluid">
+                <div class="header">
+                  Reminder
+                </div>
+                <p>All fields are required to be filled up.</p>
+              </div>
+            </div>
+          </div>
           <!-- This is where the fields for the forms. -->
           <div class="row">
             <div class="one column">
@@ -147,10 +157,7 @@
                 <div class="four wide field">
                   <label>If Part-Time, No. of units taught since hired</label>
                   <input type="number" name="noOfUnitsTaught" id="noOfUnitsTaught" class="check" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                    min="0" value="{{fdThreeData.noOfUnitsTaught}}" //> 
-                </div> 
-                  {{else}} 
-                  <div class="field disabled">
+                    min="0" value="{{fdThreeData.noOfUnitsTaught}}" //> </div> {{else}} <div class="field disabled">
                   <label>Status</label>
                   <div class="fields readonly">
                     <div class="two wide field">
