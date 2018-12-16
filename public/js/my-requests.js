@@ -105,8 +105,15 @@ $(".item.saveform").click(function () {
                     doc.text(350,743, moment(form.dateOfReturn).format('LL') + "")
                     doc.text(155,270, moment(form.dateOfReturnToWork).format('LL') + "")
                     doc.text(155,758, moment(form.dateOfReturnToWork).format('LL') + "")
-                    doc.text(165,290, moment(form.dateIncentiveLastAvailed).format('LL') + "")
-                    doc.text(165,778, moment(form.dateIncentiveLastAvailed).format('LL') + "")    
+
+                    if (form.dateIncentiveLastAvailed == null){
+                        doc.text(165,290, "N/A")
+                        doc.text(165,778, "N/A")
+
+                    } else {
+                        doc.text(165,290, moment(form.dateIncentiveLastAvailed).format('LL') + "")
+                        doc.text(165,778, moment(form.dateIncentiveLastAvailed).format('LL') + "")    
+                    }
                     
                     if (form.status == "Permanent"){
                         doc.rect(385, 112, 8, 6, 'F')
@@ -149,9 +156,15 @@ $(".item.saveform").click(function () {
                     doc.text(348,715, moment(form.dateOfReturn).format('LL'))
                     doc.text(156,244, moment(form.dateOfReturnToWork).format('LL'))
                     doc.text(156,731, moment(form.dateOfReturnToWork).format('LL'))
-                    doc.text(164,260, moment(form.dateIncentiveLastAvailed).format('LL'))
-                    doc.text(164,747, moment(form.dateIncentiveLastAvailed).format('LL'))
                     
+                    if (form.dateIncentiveLastAvailed == null){
+                        doc.text(164,260, "N/A")
+                        doc.text(164,747, "N/A")
+                    } else {
+                        doc.text(164,260, moment(form.dateIncentiveLastAvailed).format('LL'))
+                        doc.text(164,747, moment(form.dateIncentiveLastAvailed).format('LL')) 
+                    }
+
                     if (form.status == "Permanent"){
                         doc.rect(386,148, 8, 6, 'F') 
                         doc.rect(386,634, 8, 6, 'F') 
@@ -192,8 +205,14 @@ $(".item.saveform").click(function () {
                     doc.text(167,711, moment(form.dateOfReturnToWork).format('LL'))
                     doc.text(205, 242, form.travelAndConferenceSubsidy+"")
                     doc.text(205, 727, form.travelAndConferenceSubsidy+"")
-                    doc.text(180,259, moment(form.dateIncentiveLastAvailed).format('LL'))
-                    doc.text(180,744, moment(form.dateIncentiveLastAvailed).format('LL'))
+
+                    if (form.dateIncentiveLastAvailed == null){
+                        doc.text(180,259, "N/A")
+                        doc.text(180,744, "N/A")
+                    } else {
+                        doc.text(180,259, moment(form.dateIncentiveLastAvailed).format('LL'))
+                        doc.text(180,744, moment(form.dateIncentiveLastAvailed).format('LL'))
+                    }
 
                     if (form.status == "Full-time"){
                         doc.rect(262,142, 8, 6, 'F') 
@@ -245,8 +264,14 @@ $(".item.saveform").click(function () {
                     doc.text(181, 661, form.participantFee)
                     doc.text(260, 230, form.noOfLocalConferencesAttendedThisYear + "")
                     doc.text(260, 678, form.noOfLocalConferencesAttendedThisYear + "")
-                    doc.text(466, 230, moment(form.dateIncentiveLastAvailed).format('LL'))
-                    doc.text(466, 680, moment(form.dateIncentiveLastAvailed).format('LL'))
+
+                    if (form.dateIncentiveLastAvailed == null){
+                        doc.text(466, 230, "N/A")
+                        doc.text(466, 680, "N/A")
+                    } else {
+                        doc.text(466, 230, moment(form.dateIncentiveLastAvailed).format('LL'))
+                        doc.text(466, 680, moment(form.dateIncentiveLastAvailed).format('LL'))
+                    }
 
                     doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops"){
@@ -274,10 +299,16 @@ $(".item.saveform").click(function () {
                     doc.text(115,653, moment(form.startTime).format('LL'))
                     doc.text(330,200, moment(form.endTime).format('LL'))
                     doc.text(330,653, moment(form.endTime).format('LL'))
-                    doc.text(174,216, moment(form.dateIncentiveLastAvailed).format('LL'))
-                    doc.text(174,668, moment(form.dateIncentiveLastAvailed).format('LL'))
                     doc.text(190,235, form.participantFee)
                     doc.text(190,688, form.participantFee)
+
+                    if (form.dateIncentiveLastAvailed == null){
+                        doc.text(174,216,  "N/A")
+                        doc.text(174,668, "N/A")
+                    } else {
+                        doc.text(174,216, moment(form.dateIncentiveLastAvailed).format('LL'))
+                        doc.text(174,668, moment(form.dateIncentiveLastAvailed).format('LL'))
+                    }
                     
                     doc.save(form.formId + '.pdf');
                 } else if (form.grantName == "[FD16] Support for Membership in Professional Organizations"){
