@@ -185,6 +185,7 @@ router.post("/fd-1", urlencoder, function (req, res) {
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
+  console.log(dateOfEndConference)
 
   if (user) {
     if (user.userType != 'Faculty')
@@ -235,6 +236,7 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
   if (dateIncentiveLastAvailed == null || dateIncentiveLastAvailed == undefined)
     dateIncentiveLastAvailed = "N/A"
 
+    console.log(dateOfEndConference)
   var fdOneData = {
     grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
     ownerIdNumber: user.username, term: "1st Term", startAY: 2018, endAY: 2019,

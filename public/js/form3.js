@@ -111,16 +111,6 @@ $('#conference-startdate').calendar({
 });
 
 /**
- * Initializes the Date of Conference end field
- * @param {Object} settings - customizing the settings of
- * the calendar
- */
-$('#conference-enddate').calendar({
-  type: 'date',
-  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
-});
-
-/**
  * Initializes the Date of Departure field.
  * @param {Object} settings - customizing the settings of
  * the calendar

@@ -74,7 +74,7 @@
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), 
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   onChange: function (date) {
     var yearCon = date.getFullYear();
     var monthCon = date.getMonth();
@@ -91,7 +91,7 @@ $('#conference-startdate').calendar({
         $('#departure-date').calendar({
           type: 'date',
           minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-          maxDate: new Date(yearCon, monthCon, dayCon),
+          maxDate: new Date(yearEnd, monthEnd, dayEnd),
           onChange: function (date) {
             var year = date.getFullYear();
             var month = date.getMonth();
@@ -99,12 +99,12 @@ $('#conference-startdate').calendar({
 
             $('#return-date').calendar({
               type: 'date',
-              minDate: new Date(yearCon, monthCon, dayCon),
+              minDate: new Date(year, month, day),
               onChange: function (date) {
                 var yearRet = date.getFullYear();
                 var monthRet = date.getMonth();
                 var dayRet = date.getDate();
-        
+
                 $('#expected-date').calendar({
                   type: 'date',
                   minDate: new Date(yearRet, monthRet, dayRet)
@@ -116,16 +116,6 @@ $('#conference-startdate').calendar({
       }
     });
   }
-});
-
-/**
- * Initializes the Date of Conference end field
- * @param {Object} settings - customizing the settings of
- * the calendar
- */
-$('#conference-enddate').calendar({
-  type: 'date',
-  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
  /**
