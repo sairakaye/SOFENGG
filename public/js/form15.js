@@ -195,7 +195,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the place.'
+            prompt: 'Please enter the place of seminar.'
           }
         ]
       },
