@@ -291,7 +291,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter your title of publication.'
+            prompt: 'Please enter your title of paper or publication.'
           }
         ]
       },
@@ -336,7 +336,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the name of the conference.'
+            prompt: 'Please enter the title of paper to be presented.'
           }
         ]
       },
@@ -346,7 +346,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the start date of the conference.'
           }
         ]
       },
@@ -356,7 +356,7 @@ $('#request-form')
         rules: [
           {
             type: 'empty',
-            prompt: 'Please enter the date of the conference.'
+            prompt: 'Please enter the end date of the conference.'
           }
         ]
       },
