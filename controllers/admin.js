@@ -59,7 +59,7 @@ router.get("/view-grants", function (req, res) {
 
     var user = req.session.user
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
             
         forms = getAllForms(function (forms) {
@@ -91,7 +91,7 @@ router.post("/view-details", urlencoder, function (req, res) {
     var id = req.body.details
 
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
 
         var forms = getFormById(id, function (forms) {
@@ -1026,7 +1026,7 @@ router.get("/settings", (req, res) => {
 
     var user = req.session.user
 
-    if (user.userType != 'Administrator')
+    if (user.userType != 'Secretary')
         res.redirect("/")
 
     if (user) {
@@ -1330,7 +1330,7 @@ router.get("/saveform", urlencoder, (req, res) => {
     var id = req.query.id
 
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
             
         var forms = getFormById(id, function (forms) {
@@ -1457,7 +1457,7 @@ router.get("/export", urlencoder, (req, res) => {
 
                         items3.forEach(function(item) {
                             worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, typeconf: item.typeOfConference,
-                            titlepaper: item.titleOfPaperToBePresented, nameofconference: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                            titlepaper: item.titleOfPaperToBePresented, nameconf: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                         })
                                 
                         worksheet.columns.forEach(column => {
@@ -1486,12 +1486,12 @@ router.get("/export", urlencoder, (req, res) => {
                                 worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
                             }
 
-                            worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'titlepaper', width: 30}, {key: 'nameconf', width: 28},
+                            worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28},  {key: 'nameconf', width: 28},
                             {key: 'dateconf', width: 28}, {key: 'venue', width: 20}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 11}, {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
                             {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
 
                             items4.forEach(function(item) {
-                                worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, nameofconference: item.nameOfConference, 
+                                worksheet.addRow({  term: item.term, dept: item.department, status: item.rank, facultyname: item.firstName + " " + item.lastName, nameconf: item.nameOfConference, 
                                 dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                             })
                             

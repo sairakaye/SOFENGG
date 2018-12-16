@@ -68,7 +68,7 @@ var userSchema = mongoose.Schema({
     
     emailAddress : String,
     
-	userType: String, //Administrator or Faculty
+	userType: String, //Secretary or Faculty
 
     status : String, // Probationary or Permanent
 
@@ -120,7 +120,7 @@ exports.create = function(user){
  */
 exports.remove = function(){
     return new Promise(function(resolve, reject){
-        User.remove( { userType : { $ne: "Administrator" } } ).then((idk)=>{
+        User.remove( { userType : { $ne: "Secretary" } } ).then((idk)=>{
             resolve(idk)
         }, (err)=>{
             res.send(err)

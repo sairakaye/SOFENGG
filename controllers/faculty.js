@@ -581,7 +581,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
         })
         
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-            User.getUserByType("Administrator").then((adminUser) => {
+            User.getUserByType("Secretary").then((adminUser) => {
               var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -762,7 +762,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
         })
 
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-            User.getUserByType("Administrator").then((adminUser) => {
+            User.getUserByType("Secretary").then((adminUser) => {
               var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -960,7 +960,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
         })
 
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-            User.getUserByType("Administrator").then((adminUser) => {
+            User.getUserByType("Secretary").then((adminUser) => {
               var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -1141,7 +1141,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
 
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
-              User.getUserByType("Administrator").then((adminUser) => {
+              User.getUserByType("Secretary").then((adminUser) => {
                   
                   var transporter = nodemailer.createTransport({
                       service: 'gmail',
@@ -1315,7 +1315,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
 
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
 
-              User.getUserByType("Administrator").then((adminUser) => {
+              User.getUserByType("Secretary").then((adminUser) => {
                   
                   var transporter = nodemailer.createTransport({
                       service: 'gmail',
@@ -1491,7 +1491,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
         var cost = parseFloat(newFdSixteenData.membershipFee)
 
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
-              User.getUserByType("Administrator").then((adminUser) => {
+              User.getUserByType("Secretary").then((adminUser) => {
                   
                   var transporter = nodemailer.createTransport({
                       service: 'gmail',
