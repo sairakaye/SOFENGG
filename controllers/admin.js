@@ -59,7 +59,7 @@ router.get("/view-grants", function (req, res) {
 
     var user = req.session.user
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
             
         forms = getAllForms(function (forms) {
@@ -91,7 +91,7 @@ router.post("/view-details", urlencoder, function (req, res) {
     var id = req.body.details
 
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
 
         var forms = getFormById(id, function (forms) {
@@ -1026,7 +1026,7 @@ router.get("/settings", (req, res) => {
 
     var user = req.session.user
 
-    if (user.userType != 'Administrator')
+    if (user.userType != 'Secretary')
         res.redirect("/")
 
     if (user) {
@@ -1330,7 +1330,7 @@ router.get("/saveform", urlencoder, (req, res) => {
     var id = req.query.id
 
     if (user) {
-        if (user.userType != 'Administrator')
+        if (user.userType != 'Secretary')
             res.redirect("/")
             
         var forms = getFormById(id, function (forms) {

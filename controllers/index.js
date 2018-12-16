@@ -43,7 +43,7 @@ router.get("/", function(req, res) {
 	 
 	user = req.session.user
 	if(user){
-		if(user.userType == "Administrator")
+		if(user.userType == "Secretary")
             Overview.getAllOverview().then((totalArray)=>{
                 res.render("home-admin.hbs", {
                     user, totalArray
@@ -85,7 +85,7 @@ router.post("/home", (req, res)=>{
 //	  	department: "ECE", 
 //        college : "CCS",
 //        emailAddress : "christian_dequito@dlsu.edu.ph",
-//	  	userType: 'Faculty',
+//	  	userType: 'Faculty', //or Secretary
 //	 	employmentType: 'Full-time',
 //	 	rank: 'Asso. Prof 4',
 //	  	status: "Permanent",
@@ -269,7 +269,7 @@ router.post("/home", (req, res)=>{
   User.authenticate(user).then((user)=>{
       if(user){
           req.session.user = user
-          if(user.userType == "Administrator"){
+          if(user.userType == "Secretary"){
               Overview.getAllOverview().then((totalArray)=>{
                   res.render("home-admin.hbs", {
                       user, totalArray
@@ -305,7 +305,7 @@ router.get("/home", function(req, res){
     
     user = req.session.user
     if (user){
-        if(user.userType == "Administrator")
+        if(user.userType == "Secretary")
             Overview.getAllOverview().then((totalArray)=>{
                 console.log(totalArray)
                 res.render("home-admin.hbs", {
