@@ -137,7 +137,7 @@
               <tr id="remarks-row">
                 <th class="four wide">Date</th>
                 <th class="three wide">Status</th>
-                <th class="nine wide">Remarks</th>
+                <th class="nine wide">Remark</th>
               </tr>
             </thead>
             <tbody id="remarks-body">
@@ -157,7 +157,7 @@
               <tr id="remarks-row">
                 <th class="four wide">Date</th>
                 <th class="three wide">Status</th>
-                <th class="seven wide">Remarks</th>
+                <th class="seven wide">Remark</th>
               </tr>
             </thead>
             <tbody id="remarks-body">
@@ -195,7 +195,8 @@
                   </div>
                 </div>
               </div>
-              <form action="/faculty/submit-fd1" method="post" class="ui form attached fluid segment" id="preview-form" autocomplete="off">
+              <form action="/faculty/submit-fd1" method="post" class="ui form attached fluid segment" id="preview-form"
+                autocomplete="off">
                 <input type="hidden" name="formNum" value="1" />
                 <div class="two fields">
                   <div class="field">
@@ -386,51 +387,46 @@
                     </div>
                   </div>
                 </div>
-
+                {{#if viewdetails}}
+                {{else if adminAccess}}
+                {{else}}
                 <div class="ui divider"></div>
                 <br>
-              {{#if viewdetails}}
-              {{else if adminAccess}}
-              {{else}}
                 <div class="field">
                   <label>Note</label>
-                  <p>Once you click submit, you will not be able to change the details of your entries. 
+                  <p>Once you click submit, you will not be able to change the details of your entries.
                     If you wish to edit your application, please select the back button.</p>
                   <p></p>
                 </div>
                 <br>
-                  <div class="right floated column">
-                    <div class="extra">
-                      <button class="ui submit green button right floated" type = "Submit">
-                        Submit
-                        <i class="right chevron icon"></i>
-                      </button>
-                   </div>
-                  </div>
-              {{/if}}
-              {{#if viewdetails}}
+                <div class="right floated column">
                   <div class="extra">
-                    <a class="ui button" href="/faculty/my-requests">
-                      <i class="left chevron icon"></i>
-                      Back
-                    </a>
+                    <button class="ui submit green button right floated" type="Submit">
+                      Submit
+                      <i class="right chevron icon"></i>
+                    </button>
                   </div>
-              </form>
-              {{else if adminAccess}}
-              <div class="extra">
-                <a class="ui button" href="/admin/view-grants">
-                  <i class="left chevron icon"></i>
-                  Back
-                </a>
-              </div>
-              </form>
-              {{else}}
-               <div class="extra">
-                  <button type="submit" formaction="/faculty/fd-1" class="ui button">
+                </div>
+                {{/if}}
+                {{#if viewdetails}}
+                <div class="ui divider"></div>
+                <br>
+                <div class="extra">
+                  <a class="ui button" href="/faculty/my-requests">
                     <i class="left chevron icon"></i>
                     Back
-                  </button>
+                  </a>
                 </div>
+              </form>
+              {{else if adminAccess}}
+              </form>
+              {{else}}
+              <div class="extra">
+                <button type="submit" formaction="/faculty/fd-1" class="ui button">
+                  <i class="left chevron icon"></i>
+                  Back
+                </button>
+              </div>
               </form>
               {{/if}}
 
@@ -457,13 +453,25 @@
                   </div>
                   <br>
                   <div class="row">
-                    <b>Remarks</b>
+                    <b>Remark</b>
                     <textarea name="remark" id="remark" rows="5" cols="235" placeholder="Put your remark for the status here..."></textarea>
                   </div>
                   <br>
-                  <button class="ui button green" type="submit" id="submit-button" data-grant="{{grant}}" data-id="{{formID}}"
-                    style="background-color:#016938">Submit</button>
-                  <button class="ui button" id="reset-button" type="button">Reset</button>
+                  <div class="two column row">
+                    <div class="left floated column">
+                      <div class="extra">
+                        <a class="ui left floated button" href="/admin/view-grants">
+                          <i class="left chevron icon"></i>
+                          Back
+                        </a>
+                      </div>
+                    </div>
+                    <div class="right floated column">
+                      <button class="ui button right floated" id="reset-button" type="button">Reset</button>
+                      <button class="ui button green right floated" type="submit" id="submit-button" data-grant="{{grant}}"
+                        data-id="{{formID}}" style="background-color:#016938">Submit</button>
+                    </div>
+                  </div>
                 </form>
               </div>
               {{/if}}
