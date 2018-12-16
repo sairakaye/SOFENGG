@@ -1567,8 +1567,9 @@ router.get("/export", urlencoder, (req, res) => {
                 {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
 
                 items.forEach(function(item) {
-                    worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperOrPublication, 
-                    titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                    if (item.grantStatus == "Approved")
+                        worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperOrPublication, 
+                        titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                 })
 
                 worksheet.columns.forEach(column => {
@@ -1601,8 +1602,9 @@ router.get("/export", urlencoder, (req, res) => {
                     {key: 'remarks', width: 15}]
         
                     items2.forEach(function(item) {
-                        worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperToBePresented, 
-                        nameofconference: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                        if (item.grantStatus == "Approved")
+                            worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperToBePresented, 
+                            nameofconference: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                     })  
 
                     worksheet.columns.forEach(column => {
@@ -1636,8 +1638,9 @@ router.get("/export", urlencoder, (req, res) => {
                         {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
 
                         items3.forEach(function(item) {
-                            worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, typeconf: item.typeOfConference,
-                            titlepaper: item.titleOfPaperToBePresented, nameconf: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                            if (item.grantStatus == "Approved")
+                                worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, typeconf: item.typeOfConference,
+                                titlepaper: item.titleOfPaperToBePresented, nameconf: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                         })
                                 
                         worksheet.columns.forEach(column => {
@@ -1671,8 +1674,9 @@ router.get("/export", urlencoder, (req, res) => {
                             {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
 
                             items4.forEach(function(item) {
-                                worksheet.addRow({  term: item.term, dept: item.department, status: item.rank, facultyname: item.firstName + " " + item.lastName, nameconf: item.nameOfConference, 
-                                dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                                if (item.grantStatus == "Approved")
+                                    worksheet.addRow({  term: item.term, dept: item.department, status: item.rank, facultyname: item.firstName + " " + item.lastName, nameconf: item.nameOfConference, 
+                                    dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                             })
                             
                             worksheet.columns.forEach(column => {
@@ -1706,8 +1710,9 @@ router.get("/export", urlencoder, (req, res) => {
                                 {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
                     
                                 items15.forEach(function(item) {
-                                    worksheet.addRow({  term: item.term, dept: item.department, facultyname: item.firstName + " " + item.lastName, titleseminar: item.titleOfSeminar, 
-                                    hostinst: item.hostInstitution, location: item.place, dateofsem: moment(item.startTime).format("MMMM D, YYYY")+"-"+moment(item.endTime).format("MMMM D, YYYY")})
+                                    if (item.grantStatus == "Approved")
+                                        worksheet.addRow({  term: item.term, dept: item.department, facultyname: item.firstName + " " + item.lastName, titleseminar: item.titleOfSeminar, 
+                                        hostinst: item.hostInstitution, location: item.place, dateofsem: moment(item.startTime).format("MMMM D, YYYY")+"-"+moment(item.endTime).format("MMMM D, YYYY")})
                                 })
                                 
                                 worksheet.columns.forEach(column => {
@@ -1740,8 +1745,9 @@ router.get("/export", urlencoder, (req, res) => {
                                     {key: 'remarks', width: 15}]
                                     
                                     items16.forEach(function(item) {
-                                        worksheet.addRow({ term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, nameorg: item.nameOfOrganization, 
-                                        typemem: item.typeOfMembershipPlace, typemem2: item.typeofMembershipDuration, dateofmem: moment(item.membershipDate).format("MMMM D, YYYY")})
+                                        if (item.grantStatus == "Approved")
+                                            worksheet.addRow({ term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, nameorg: item.nameOfOrganization, 
+                                            typemem: item.typeOfMembershipPlace, typemem2: item.typeofMembershipDuration, dateofmem: moment(item.membershipDate).format("MMMM D, YYYY")})
                                     })
                                     
                                     worksheet.columns.forEach(column => {

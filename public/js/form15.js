@@ -115,6 +115,23 @@ function check() {
 }
 
 /**
+ * This is a custom validation for the fees 
+ * 
+ * @param {Integer} inputValue - the input of the user
+ * @param {Integer} validationValue - the checker value
+ */
+$.fn.form.settings.rules.decimalLimit = function (inputValue, validationValue) {
+  if (inputValue.toString().includes('.')){
+    var input = inputValue.toString().split('.')
+    console.log(inputValue)
+    console.log(input[1].length)
+    return input[1].length <= validationValue
+  }
+  return true
+}
+
+
+/**
  * Initializes the form in order for the form to do
  * form validation.
  * @param {Object} settings - customizing the settings of
@@ -210,15 +227,21 @@ $('#request-form')
       },
       participantFee: {
         identifier: 'participantFee',
-        rules: [
+        rules: [ 
           {
             type: 'empty',
-            prompt: "Please enter the participant's fee."
+            prompt: 'Please enter the participants fee.'
+          },
+          {
+            type: 'decimalLimit[2]',
+            prompt: 'Please input up to only two decimal places',
           }
         ]
       },
     }
   });
+
+  
 
 /**
  * This part checks if the incentive was not availed,
