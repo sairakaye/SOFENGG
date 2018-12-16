@@ -18,28 +18,28 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD15 Form Schema
  */
 var fdFifteenSchema = mongoose.Schema({
-    timestamp: Date,
-    formId : String,
-    grantName : String,
-    ownerIdNumber : String,
-    grantStatus: String,
-    term : String, 
-    startAY : Number,
-    endAY : Number,
-    firstName : String, 
-    lastName: String,
-    department : String,
-    rank : String,
-    hostInstitution : String,
-    titleOfSeminar : String,
-    place : String,
-    startTime : Date,
-    endTime : Date,
-    dateIncentiveLastAvailed : Date,
-    currencychoice: String,
-    participantFee : String,
-    checkPayableTo : String,
-    remarks : [remarkSchema]
+  timestamp: Date,
+  formId: String,
+  grantName: String,
+  ownerIdNumber: String,
+  grantStatus: String,
+  term: String,
+  startAY: Number,
+  endAY: Number,
+  firstName: String,
+  lastName: String,
+  department: String,
+  rank: String,
+  hostInstitution: String,
+  titleOfSeminar: String,
+  place: String,
+  startTime: Date,
+  endTime: Date,
+  dateIncentiveLastAvailed: Date,
+  currencychoice: String,
+  participantFee: String,
+  checkPayableTo: String,
+  remarks: [remarkSchema]
 })
 
 var fdFifteen = mongoose.model("fdFifteen", fdFifteenSchema)
@@ -49,41 +49,41 @@ var fdFifteen = mongoose.model("fdFifteen", fdFifteenSchema)
  *
  * @param {FD15 record to be created} paramFDFifteen
  */
-exports.create = function(paramFDFifteen){
-    return new Promise(function(resolve, reject){
-        
-        var f = new fdFifteen(paramFDFifteen)
-        f.timestamp = new Date()
-        var i
-        
-        fdFifteen.countDocuments().then((count) => {
-            if(count == 0){
-                f.formId = f.formId + count
-                f.save().then((newFDFifteen)=>{    
-                        resolve(newFDFifteen)
-                    }, (err)=>{
-                        reject(err)
-                    })
-            }else{
-                fdFifteen.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
-                    i = parseInt(lastDocument[0].formId.replace("FD15-", ""), 10) + 1
-                    f.formId = "FD15-" + i
-                    
-                    f.save().then((newFDFifteen)=>{    
-                        resolve(newFDFifteen)
-                    }, (err)=>{
-                        reject(err)
-                    })
-                    
-                }, (err)=>{
-                    reject(err)
-                })
-            }               
-        }, (err)=>{
-            reject(err)
+exports.create = function (paramFDFifteen) {
+  return new Promise(function (resolve, reject) {
+
+    var f = new fdFifteen(paramFDFifteen)
+    f.timestamp = new Date()
+    var i
+
+    fdFifteen.countDocuments().then((count) => {
+      if (count == 0) {
+        f.formId = f.formId + count
+        f.save().then((newFDFifteen) => {
+          resolve(newFDFifteen)
+        }, (err) => {
+          reject(err)
         })
-        
+      } else {
+        fdFifteen.find().sort({ $natural: -1 }).limit(1).then((lastDocument) => {
+          i = parseInt(lastDocument[0].formId.replace("FD15-", ""), 10) + 1
+          f.formId = "FD15-" + i
+
+          f.save().then((newFDFifteen) => {
+            resolve(newFDFifteen)
+          }, (err) => {
+            reject(err)
+          })
+
+        }, (err) => {
+          reject(err)
+        })
+      }
+    }, (err) => {
+      reject(err)
     })
+
+  })
 }
 
 /**
@@ -91,16 +91,16 @@ exports.create = function(paramFDFifteen){
  *
  * @param {ID of the record to be deleted} paramID
  */
-exports.delete = function(paramID){
-    return new Promise(function(resolve, reject){
-        fdFifteen.deleteOne({
-            _id : paramID
-        }).then((deletedFDFifteen)=>{
-            resolve(deletedFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.delete = function (paramID) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.deleteOne({
+      _id: paramID
+    }).then((deletedFDFifteen) => {
+      resolve(deletedFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -108,16 +108,16 @@ exports.delete = function(paramID){
  *
  * @param {FD15 record to be edited} paramFDOne
  */
-exports.edit = function(paramFDFifteen){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOneAndUpdate({
-            _id : paramFDFifteen._id
-        }, paramFDFifteen).then((updatedFDFifteen)=>{
-            resolve(updatedFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.edit = function (paramFDFifteen) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOneAndUpdate({
+      _id: paramFDFifteen._id
+    }, paramFDFifteen).then((updatedFDFifteen) => {
+      resolve(updatedFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -125,18 +125,18 @@ exports.edit = function(paramFDFifteen){
  *
  * @param {FD15 record to be approved} paramID
  */
-exports.changeStatusFDFifteen = function(paramID, status){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOneAndUpdate({
-            _id : paramID
-        }, {
-            "$set" : {"grantStatus" : status}
-        }).then((updatedFDFifteen)=>{
-            resolve(updatedFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.changeStatusFDFifteen = function (paramID, status) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOneAndUpdate({
+      _id: paramID
+    }, {
+        "$set": { "grantStatus": status }
+      }).then((updatedFDFifteen) => {
+        resolve(updatedFDFifteen)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -144,18 +144,18 @@ exports.changeStatusFDFifteen = function(paramID, status){
  *
  * @param {FD15 record to be reject} paramID
  */
-exports.rejectFDFifteen = function(paramID){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOneAndUpdate({
-            _id : paramID
-        }, {
-            "$set" : {"grantStatus" : "Rejected"}
-        }).then((updatedFDFifteen)=>{
-            resolve(updatedFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.rejectFDFifteen = function (paramID) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOneAndUpdate({
+      _id: paramID
+    }, {
+        "$set": { "grantStatus": "Rejected" }
+      }).then((updatedFDFifteen) => {
+        resolve(updatedFDFifteen)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -163,24 +163,16 @@ exports.rejectFDFifteen = function(paramID){
  *
  * @param {FD15 record to get} paramFDOne
  */
-exports.getFDFifteen = function(paramFDFifteen){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOne({
-            _id : paramFDFifteen._id
-        }).then((foundFDFifteen)=>{
-            if (foundFDFifteen.remarks != null) {
-                foundFDFifteen.remarks = foundFDFifteen.remarks.sort(function(a, b){
-                    const aDate = new Date(a.date)
-                    const bDate = new Date(b.date)
-                    
-                    return bDate.getTime() - aDate.getTime()
-                })
-            }
-            resolve(foundFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDFifteen = function (paramFDFifteen) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOne({
+      _id: paramFDFifteen._id
+    }).then((foundFDFifteen) => {
+      resolve(foundFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -188,29 +180,29 @@ exports.getFDFifteen = function(paramFDFifteen){
  *
  * @param {id to use} id
  */
-exports.getFDFifteenByID = function(id){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOne({
-            _id : id
-        }).then((foundFDFifteen)=>{
-            resolve(foundFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDFifteenByID = function (id) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOne({
+      _id: id
+    }).then((foundFDFifteen) => {
+      resolve(foundFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
  * Gets all FD15 record in FD15 Schema 
  */
-exports.getAllFDFifteen = function(){
-    return new Promise(function(resolve, reject){
-        fdFifteen.find().then((fdFifteenForms)=>{
-            resolve(fdFifteenForms)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getAllFDFifteen = function () {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.find().then((fdFifteenForms) => {
+      resolve(fdFifteenForms)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 
@@ -219,16 +211,16 @@ exports.getAllFDFifteen = function(){
  *
  * @param {Filtering department} paramFDOneDepartment
  */
-exports.getFDFifteenByDepartment = function(paramFDFifteenDepartment){
-    return new Promise(function(resolve, reject){
-        fdFifteen.find({
-            department : paramFDFifteenDepartment
-        }).then((departmentFDFifteen)=>{
-            resolve(departmentFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDFifteenByDepartment = function (paramFDFifteenDepartment) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.find({
+      department: paramFDFifteenDepartment
+    }).then((departmentFDFifteen) => {
+      resolve(departmentFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -236,16 +228,16 @@ exports.getFDFifteenByDepartment = function(paramFDFifteenDepartment){
  *
  * @param {Filtering Login ID} paramFDFifteenLoginId
  */
-exports.getFDFifteenByLoginId = function(paramFDFifteenLoginId){
-    return new Promise(function(resolve, reject){
-        fdFifteen.find({
-            ownerIdNumber : paramFDFifteenLoginId
-        }).then((loginIdFDFifteen)=>{
-            resolve(loginIdFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDFifteenByLoginId = function (paramFDFifteenLoginId) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.find({
+      ownerIdNumber: paramFDFifteenLoginId
+    }).then((loginIdFDFifteen) => {
+      resolve(loginIdFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 
@@ -254,16 +246,16 @@ exports.getFDFifteenByLoginId = function(paramFDFifteenLoginId){
  *
  * @param {Filtering status} paramFDOnestatus
  */
-exports.getFDFifteenByStatus = function(paramFDFifteenStatus){
-    return new Promise(function(resolve, reject){
-        fdFifteen.find({
-            grantStatus : paramFDFifteenStatus
-        }).then((statusFDFifteen)=>{
-            resolve(statusFDFifteen)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDFifteenByStatus = function (paramFDFifteenStatus) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.find({
+      grantStatus: paramFDFifteenStatus
+    }).then((statusFDFifteen) => {
+      resolve(statusFDFifteen)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -271,18 +263,18 @@ exports.getFDFifteenByStatus = function(paramFDFifteenStatus){
  *
  * @param {Form} paramFDFifteen
  */
-exports.getRemarksFromFDFifteenForm = function(paramFDFifteen){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOne({
-            _id : paramFDFifteen._id
-        }).then((fdFifteenFound)=>{
-            if(fdFifteenFound !=null)
-                resolve(fdFifteenFound.remarks)
-            resolve(null)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getRemarksFromFDFifteenForm = function (paramFDFifteen) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOne({
+      _id: paramFDFifteen._id
+    }).then((fdFifteenFound) => {
+      if (fdFifteenFound != null)
+        resolve(fdFifteenFound.remarks)
+      resolve(null)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -290,18 +282,18 @@ exports.getRemarksFromFDFifteenForm = function(paramFDFifteen){
  *
  * @param {Remark} paramRemark
  */
-exports.addRemarkInFDFifteen = function(paramRemark){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOneAndUpdate({
-            _id : paramRemark.formId
-        }, {
-            $push : {remarks : paramRemark}
-        }).then((updatedFdFifteen)=>{
-            resolve(updatedFdFifteen)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.addRemarkInFDFifteen = function (paramRemark) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOneAndUpdate({
+      _id: paramRemark.formId
+    }, {
+        $push: { remarks: paramRemark }
+      }).then((updatedFdFifteen) => {
+        resolve(updatedFdFifteen)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -309,16 +301,16 @@ exports.addRemarkInFDFifteen = function(paramRemark){
  *
  * @param {Remark} paramRemark
  */
-exports.deleteRemarkInFDFifteen = function(paramRemark){
-    return new Promise(function(resolve, reject){
-        fdFifteen.findOneAndUpdate({
-            _id : paramRemark.formId
-        }, {
-            $pull : {remarks : {_id : paramRemark._id}}
-        }).then((foundRemark)=>{
-            resolve(foundRemark)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.deleteRemarkInFDFifteen = function (paramRemark) {
+  return new Promise(function (resolve, reject) {
+    fdFifteen.findOneAndUpdate({
+      _id: paramRemark.formId
+    }, {
+        $pull: { remarks: { _id: paramRemark._id } }
+      }).then((foundRemark) => {
+        resolve(foundRemark)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
