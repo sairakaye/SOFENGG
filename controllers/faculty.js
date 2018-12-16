@@ -74,6 +74,14 @@ router.post("/view-details", urlencoder, function (req, res) {
       res.redirect("/")
 
     var forms = getFormById(id, function (forms) {
+      if (forms.remarks.length >= 1) {
+        forms.remarks = forms.remarks.sort(function (a, b) {
+          const aDate = new Date(a.date)
+          const bDate = new Date(b.date)
+          return bDate.getTime() - aDate.getTime()
+        })
+      }
+
       if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         var fdOneData = forms
 

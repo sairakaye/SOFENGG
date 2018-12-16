@@ -18,31 +18,31 @@ const remarkSchema = mongoose.model('remark').schema
  * Setting up FD2 Form Schema
  */
 var fdTwoSchema = mongoose.Schema({
-    timestamp: Date,
-    formId : String,
-    grantName : String,
-    ownerIdNumber : String,
-    grantStatus : String,
-    term : String, 
-    startAY : Number,
-    endAY : Number,
-    firstName : String, 
-    lastName: String,
-    department : String,
-    dateHired : Date,
-    rank : String,
-    status : String, //true = permanent, false = probationary
-    aveTeachingPerformance : Number,
-    nameOfConference : String, 
-    titleOfPaperToBePresented : String,
-    dateOfStartConference : Date,
-    dateOfEndConference : Date,
-    dateOfDeparture : Date,
-    placeAndVenue : String,
-    dateOfReturn : Date,
-    dateOfReturnToWork : Date,
-    dateIncentiveLastAvailed : Date,
-    remarks : [remarkSchema]
+  timestamp: Date,
+  formId: String,
+  grantName: String,
+  ownerIdNumber: String,
+  grantStatus: String,
+  term: String,
+  startAY: Number,
+  endAY: Number,
+  firstName: String,
+  lastName: String,
+  department: String,
+  dateHired: Date,
+  rank: String,
+  status: String, //true = permanent, false = probationary
+  aveTeachingPerformance: Number,
+  nameOfConference: String,
+  titleOfPaperToBePresented: String,
+  dateOfStartConference: Date,
+  dateOfEndConference: Date,
+  dateOfDeparture: Date,
+  placeAndVenue: String,
+  dateOfReturn: Date,
+  dateOfReturnToWork: Date,
+  dateIncentiveLastAvailed: Date,
+  remarks: [remarkSchema]
 })
 
 var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
@@ -52,41 +52,41 @@ var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
  *
  * @param {FD2 record to be created} paramFDTwo
  */
-exports.create = function(paramFDTwo){
-    return new Promise(function(resolve, reject){
-        
-        var f = new fdTwo(paramFDTwo)
-        f.timestamp = new Date()
-        var i
-        
-        fdTwo.countDocuments().then((count) => {
-            if(count == 0){
-                f.formId = f.formId + count
-                f.save().then((newFDTwo)=>{    
-                        resolve(newFDTwo)
-                    }, (err)=>{
-                        reject(err)
-                    })
-            }else{
-                fdTwo.find().sort({$natural:-1}).limit(1).then((lastDocument)=>{
-                    i = parseInt(lastDocument[0].formId.replace("FD2-", ""), 10) + 1
-                    f.formId = "FD2-" + i
-                    
-                    f.save().then((newFDTwo)=>{    
-                        resolve(newFDTwo)
-                    }, (err)=>{
-                        reject(err)
-                    })
-                    
-                }, (err)=>{
-                    reject(err)
-                })
-            }               
-        }, (err)=>{
-            reject(err)
+exports.create = function (paramFDTwo) {
+  return new Promise(function (resolve, reject) {
+
+    var f = new fdTwo(paramFDTwo)
+    f.timestamp = new Date()
+    var i
+
+    fdTwo.countDocuments().then((count) => {
+      if (count == 0) {
+        f.formId = f.formId + count
+        f.save().then((newFDTwo) => {
+          resolve(newFDTwo)
+        }, (err) => {
+          reject(err)
         })
-        
+      } else {
+        fdTwo.find().sort({ $natural: -1 }).limit(1).then((lastDocument) => {
+          i = parseInt(lastDocument[0].formId.replace("FD2-", ""), 10) + 1
+          f.formId = "FD2-" + i
+
+          f.save().then((newFDTwo) => {
+            resolve(newFDTwo)
+          }, (err) => {
+            reject(err)
+          })
+
+        }, (err) => {
+          reject(err)
+        })
+      }
+    }, (err) => {
+      reject(err)
     })
+
+  })
 }
 
 /**
@@ -94,16 +94,16 @@ exports.create = function(paramFDTwo){
  *
  * @param {ID of the record to be deleted} paramID
  */
-exports.delete = function(paramID){
-    return new Promise(function(resolve, reject){
-        fdTwo.deleteOne({
-            _id : paramID
-        }).then((deletedFDTwo)=>{
-            resolve(deletedFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.delete = function (paramID) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.deleteOne({
+      _id: paramID
+    }).then((deletedFDTwo) => {
+      resolve(deletedFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -111,16 +111,16 @@ exports.delete = function(paramID){
  *
  * @param {FD2 record to be edited} paramFDTwo
  */
-exports.edit = function(paramFDTwo){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramFDTwo._id
-        }, paramFDTwo).then((updatedFDTwo)=>{
-            resolve(updatedFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.edit = function (paramFDTwo) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOneAndUpdate({
+      _id: paramFDTwo._id
+    }, paramFDTwo).then((updatedFDTwo) => {
+      resolve(updatedFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -128,18 +128,18 @@ exports.edit = function(paramFDTwo){
  *
  * @param {FD2 record to be approved} paramID
  */
-exports.changeStatusFDTwo = function(paramID, status){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramID
-        }, {
-            "$set" : {"grantStatus" : status}
-        }).then((updatedFDTwo)=>{
-            resolve(updatedFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.changeStatusFDTwo = function (paramID, status) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOneAndUpdate({
+      _id: paramID
+    }, {
+        "$set": { "grantStatus": status }
+      }).then((updatedFDTwo) => {
+        resolve(updatedFDTwo)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -147,18 +147,18 @@ exports.changeStatusFDTwo = function(paramID, status){
  *
  * @param {FD2 record to be reject} paramID
  */
-exports.rejectFDTwo = function(paramID){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramID
-        }, {
-            "$set" : {"grantStatus" : "Rejected"}
-        }).then((updatedFDTwo)=>{
-            resolve(updatedFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.rejectFDTwo = function (paramID) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOneAndUpdate({
+      _id: paramID
+    }, {
+        "$set": { "grantStatus": "Rejected" }
+      }).then((updatedFDTwo) => {
+        resolve(updatedFDTwo)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -166,16 +166,16 @@ exports.rejectFDTwo = function(paramID){
  *
  * @param {FD2 record to get} paramFDTwo
  */
-exports.getFDTwo = function(paramFDTwo){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOne({
-            _id : paramFDTwo._id
-        }).then((foundFDTwo)=>{
-            resolve(foundFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDTwo = function (paramFDTwo) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOne({
+      _id: paramFDTwo._id
+    }).then((foundFDTwo) => {
+      resolve(foundFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -183,37 +183,29 @@ exports.getFDTwo = function(paramFDTwo){
  *
  * @param {id to use} id
  */
-exports.getFDTwoByID = function(id){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOne({
-            _id : id
-        }).then((foundFDTwo)=>{
-            if (foundFDTwo.remarks != null) {
-                foundFDTwo.remarks = foundFDTwo.remarks.sort(function(a, b){
-                    const aDate = new Date(a.date)
-                    const bDate = new Date(b.date)
-                    
-                    return bDate.getTime() - aDate.getTime()
-                })
-            }
-            resolve(foundFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDTwoByID = function (id) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOne({
+      _id: id
+    }).then((foundFDTwo) => {
+      resolve(foundFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
  * Gets all FD2 record in FD2 Schema 
  */
-exports.getAllFDTwo = function(){
-    return new Promise(function(resolve, reject){
-        fdTwo.find().then((fdTwoForms)=>{
-            resolve(fdTwoForms)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getAllFDTwo = function () {
+  return new Promise(function (resolve, reject) {
+    fdTwo.find().then((fdTwoForms) => {
+      resolve(fdTwoForms)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 
@@ -222,16 +214,16 @@ exports.getAllFDTwo = function(){
  *
  * @param {Filtering department} paramFDTwoDepartment
  */
-exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
-    return new Promise(function(resolve, reject){
-        fdTwo.find({
-            department : paramFDTwoDepartment
-        }).then((departmentFDTwo)=>{
-            resolve(departmentFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDTwoByDepartment = function (paramFDTwoDepartment) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.find({
+      department: paramFDTwoDepartment
+    }).then((departmentFDTwo) => {
+      resolve(departmentFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -239,16 +231,16 @@ exports.getFDTwoByDepartment = function(paramFDTwoDepartment){
  *
  * @param {Filtering Login ID} paramFDTwoLoginId
  */
-exports.getFDTwoByLoginId = function(paramFDTwoLoginId){
-    return new Promise(function(resolve, reject){
-        fdTwo.find({
-            ownerIdNumber : paramFDTwoLoginId
-        }).then((loginIdFDTwo)=>{
-            resolve(loginIdFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDTwoByLoginId = function (paramFDTwoLoginId) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.find({
+      ownerIdNumber: paramFDTwoLoginId
+    }).then((loginIdFDTwo) => {
+      resolve(loginIdFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -256,16 +248,16 @@ exports.getFDTwoByLoginId = function(paramFDTwoLoginId){
  *
  * @param {Filtering status} paramFDTwostatus
  */
-exports.getFDTwoByStatus = function(paramFDTwoStatus){
-    return new Promise(function(resolve, reject){
-        fdTwo.find({
-            grantStatus : paramFDTwoStatus
-        }).then((statusFDTwo)=>{
-            resolve(statusFDTwo)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getFDTwoByStatus = function (paramFDTwoStatus) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.find({
+      grantStatus: paramFDTwoStatus
+    }).then((statusFDTwo) => {
+      resolve(statusFDTwo)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -273,18 +265,18 @@ exports.getFDTwoByStatus = function(paramFDTwoStatus){
  *
  * @param {Form} paramFDTwo
  */
-exports.getRemarksFromFDTwoForm = function(paramFDTwo){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOne({
-            _id : paramFDTwo._id
-        }).then((fdTwoFound)=>{
-            if(fdTwoFound !=null)
-                resolve(fdTwoFound.remarks)
-            resolve(null)
-        }, (err)=>{
-            reject(err)
-        })
+exports.getRemarksFromFDTwoForm = function (paramFDTwo) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOne({
+      _id: paramFDTwo._id
+    }).then((fdTwoFound) => {
+      if (fdTwoFound != null)
+        resolve(fdTwoFound.remarks)
+      resolve(null)
+    }, (err) => {
+      reject(err)
     })
+  })
 }
 
 /**
@@ -292,18 +284,18 @@ exports.getRemarksFromFDTwoForm = function(paramFDTwo){
  *
  * @param {Remark} paramRemark
  */
-exports.addRemarkInFDTwo = function(paramRemark){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramRemark.formId
-        }, {
-            $push : {remarks : paramRemark}
-        }).then((updatedFdTwo)=>{
-            resolve(updatedFdTwo)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.addRemarkInFDTwo = function (paramRemark) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOneAndUpdate({
+      _id: paramRemark.formId
+    }, {
+        $push: { remarks: paramRemark }
+      }).then((updatedFdTwo) => {
+        resolve(updatedFdTwo)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
 
 /**
@@ -311,16 +303,16 @@ exports.addRemarkInFDTwo = function(paramRemark){
  *
  * @param {Remark} paramRemark
  */
-exports.deleteRemarkInFDTwo = function(paramRemark){
-    return new Promise(function(resolve, reject){
-        fdTwo.findOneAndUpdate({
-            _id : paramRemark.formId
-        }, {
-            $pull : {remarks : {_id : paramRemark._id}}
-        }).then((foundRemark)=>{
-            resolve(foundRemark)
-        }, (err)=>{
-            reject(err)
-        })
-    })
+exports.deleteRemarkInFDTwo = function (paramRemark) {
+  return new Promise(function (resolve, reject) {
+    fdTwo.findOneAndUpdate({
+      _id: paramRemark.formId
+    }, {
+        $pull: { remarks: { _id: paramRemark._id } }
+      }).then((foundRemark) => {
+        resolve(foundRemark)
+      }, (err) => {
+        reject(err)
+      })
+  })
 }
