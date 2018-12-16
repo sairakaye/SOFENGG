@@ -579,7 +579,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
         }, (err) => {
           res.send(err)
         })
-        
+          
           Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
             User.getUserByType("Secretary").then((adminUser) => {
               var transporter = nodemailer.createTransport({
@@ -597,17 +597,32 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
                 text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdOneData.formId +
                   " " + newFdOneData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
-
+              
               transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
+                  if (error) {
+                      console.log(error);
+                  } else {
+                      console.log('Email sent: ' + info.response);
+                  }
               })
-
-              res.render("success.hbs", {
-                user, formName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
+                
+                if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
+                
+                res.render("success.hbs", {
+                    user, formName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal"
               })
             }, (err) => {
               res.send(err)
@@ -786,6 +801,21 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
                   console.log('Email sent: ' + info.response);
                 }
               })
+                
+                if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
 
               res.render("success.hbs", {
                 user, formName: "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences"
@@ -984,6 +1014,21 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
                   console.log('Email sent: ' + info.response);
                 }
               })
+                
+                if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
 
               res.render("success.hbs", {
                 user, formName: "[FD3] Support for Paper Presentations in Conferences"
@@ -1167,6 +1212,21 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
                       }
                   })
                   
+                  if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
+                  
                   res.render("success.hbs", {
                       user, formName: "[FD4] Support for Participation in Local Conferences"
                   })
@@ -1340,6 +1400,21 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
                           console.log('Email sent: ' + info.response);
                       }
                   })
+                  
+                  if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
                   
                   res.render("success.hbs", {
                       user, formName: "[FD15] Support for Local Trainings, Seminars and Workshops"
@@ -1517,6 +1592,21 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                       }
                   })
                   
+                  if(adminUser.notification == ""){
+                    User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }else{
+                    var num = parseInt(adminUser.notification) + 1
+                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
+                }
+                  
                   res.render("success.hbs", {
                       user, formName: "[FD16] Support for Membership in Professional Organizations"
                   })
@@ -1553,6 +1643,13 @@ router.get("/my-requests", function (req, res) {
   if (user) {
     if (user.userType != 'Faculty')
       res.redirect("/")
+
+      
+      User.changeNotifInUser(user.username, "").then((notifiedUser)=>{
+            
+        }, (err)=>{
+            res.send(err)
+        })
 
     forms = getAllForms(forms, user.username, function (forms) {
       if (forms == "") {

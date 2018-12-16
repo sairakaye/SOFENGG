@@ -71,15 +71,19 @@
           <!-- These are the side menubar items. -->
           <a href="/home" class="active item">
             Overview
-            <i class="chevron right icon"></i>
-          </a>
-          <a href="admin/view-grants" class="item">
-            View Grant Requests
-            <i class="chevron right icon"></i>
-          </a>
-          <a href="/admin/settings" class="item">
-            Settings
-            <i class="chevron right icon"></i>
+              <i class="chevron right icon"></i>
+            </a>
+            <a href="admin/view-grants" class="item">
+                View Grant Requests
+                {{#if user.notification}}
+                <i class="ui red circular label">{{user.notification}}</i>
+                {{else}}
+                <i class="right chevron icon"></i>
+                {{/if}}
+            </a>
+            <a href="/admin/settings" class="item">
+                Settings
+                <i class="chevron right icon"></i>
           </a>
         </div>
       </div>

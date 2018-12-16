@@ -73,7 +73,11 @@
             <!-- These are the side menubar items. -->
             <a href="/faculty/my-requests" class="active item">
               My Grant Requests
-              <i class="chevron right icon"></i>
+              {{#if user.notification}}
+              <i class="ui red circular label">{{user.notification}}</i>
+              {{else}}
+              <i class="right chevron icon"></i>
+              {{/if}}
             </a>
             <a href="/faculty/request-grant" class="item">
               Request Grant

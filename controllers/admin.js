@@ -61,7 +61,13 @@ router.get("/view-grants", function (req, res) {
     if (user) {
         if (user.userType != 'Secretary')
             res.redirect("/")
+        
+        User.changeNotifInUser(user.username, "").then((notifiedUser)=>{
             
+        }, (err)=>{
+            res.send(err)
+        })
+        
         forms = getAllForms(function (forms) {
             if (forms == "") {
                 res.render("view-grants.hbs", {
@@ -264,7 +270,22 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
-
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
+                                        
                                         res.send(newRemark)
                                     }, (err) => {
                                         res.send(err)
@@ -344,6 +365,21 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
 
                                         res.send(newRemark)
                                     }, (err) => {
@@ -424,6 +460,21 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
 
                                         res.send(newRemark)
                                     }, (err) => {
@@ -505,6 +556,21 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
 
                                         res.send(newRemark)
                                     }, (err) => {
@@ -584,6 +650,21 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
 
                                         res.send(newRemark)
                                     }, (err) => {
@@ -663,6 +744,21 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 console.log('Email sent: ' + info.response);
                                             }
                                         })
+                                        
+                                        if(updatedUser.notification == ""){
+                                            User.changeNotifInUser(updatedUser.username, "1").then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }else{
+                                            var num = parseInt(updatedUser.notification) + 1
+                                            User.changeNotifInUser(updatedUser.username, num.toString()).then((notifiedUser)=>{
+                                                
+                                            }, (err)=>{
+                                                res.send(err)
+                                            })
+                                        }
 
                                         res.send(newRemark)
                                     }, (err) => {
@@ -1274,6 +1370,7 @@ router.post("/upload", upload.single("filename"), (req, res) => {
                             employmentType: result[i].CLASSIFICATION,
                             rank: result[i].RANK,
                             status: result[i].EMPLOYMENT_STATUS,
+                            notification : "",
                             aveTeachingPerformance : result[i].AVERAGE_TEACHING_PERFORMANCE,
                             dateHired: Date.parse(result[i].DATE_HIRED),
                         }
