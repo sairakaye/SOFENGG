@@ -36,7 +36,9 @@ var fdFifteenSchema = mongoose.Schema({
     startTime : Date,
     endTime : Date,
     dateIncentiveLastAvailed : Date,
-    participantFee : String, //MONEY
+    currencychoice: String,
+    participantFee : String,
+    checkPayableTo : String,
     remarks : [remarkSchema]
 })
 
