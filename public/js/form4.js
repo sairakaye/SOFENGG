@@ -349,6 +349,6 @@ $("#no-avail").change(function () {
 
   } else {
     $("#dateIncentiveLastAvailed").val("");
-    $("dateIncentiveLastAvailed").removeProp("disabled");
+    $("#dateIncentiveLastAvailed").removeAttr("disabled");
   }
 });

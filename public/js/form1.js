@@ -427,10 +427,9 @@ $("#no-avail").change(function () {
     $("#dateIncentiveLastAvailed").val("N/A");
     $("#dateIncentiveLastAvailed").attr("disabled", "disabled");
     $("#request-form").form('validate field', 'dateIncentiveLastAvailed');
-
   } else {
     $("#dateIncentiveLastAvailed").val("");
-    $("dateIncentiveLastAvailed").removeProp("disabled");
+    $("#dateIncentiveLastAvailed").removeAttr("disabled");
   }
 });
 
