@@ -287,11 +287,34 @@
                     </div>
                   </div>
                 </div>
+
+
+                <div class="field">
+                  <label>Travel and conference subsidy (pls. specify)</label>
+                  <p><b>Local</b>: Registration Fee, Transporation, Accomodation (could be more than one)</p>
+                  <p><b>International</b>: Travel Allowance, Travel Tax, Insurance, Visa Fee (could be more than one)</p>
+                  <select name="selectSubsidy" id="subsidy" class="ui fluid search dropdown" multiple="" class="check">
+                    <option value="">Travel and conference subsidy </option>
+                    <option value="Registration Fee">Registration Fee</option>
+                    <option value="Transporation">Transporation</option>
+                    <option value="Accomodation">Accomodation</option>
+                    <option value="Travel Allowance">Travel Allowance</option>
+                    <option value="Travel Tax">Travel Tax</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Visa Fee">Visa Fee</option>
+                  </select>
+                  <input type="hidden" name="travelAndConferenceSubsidy" id="travelAndConferenceSubsidy"
+                    value="{{fdThreeData.travelAndConferenceSubsidy}}" />
+                </div>
+
+
+                <!--
                 <div class="field">
                   <label>Travel and conference subsidy (pls. specify)</label>
                   <input type="text" name="travelAndConferenceSubsidy" id="travelAndConferenceSubsidy" class="check"
                     value="{{fdThreeData.travelAndConferenceSubsidy}}" />
                 </div>
+                -->
                 <div class="field">
                   <label>Date incentive was last availed of</label>
                   <div class="ui calendar" id="incentive-date">
