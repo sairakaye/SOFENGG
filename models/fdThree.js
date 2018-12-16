@@ -45,7 +45,8 @@ var fdThreeSchema = mongoose.Schema({
   dateOfReturnToWork: Date,
   travelAndConferenceSubsidy: String,
   dateIncentiveLastAvailed: Date,
-  remarks: [remarkSchema]
+  remarks: [remarkSchema],
+  notif : Boolean
 
 })
 
@@ -125,6 +126,25 @@ exports.edit = function (paramFDThree) {
       reject(err)
     })
   })
+}
+
+/**
+ * Turns on notification on fd3 
+ *
+ * @param {FD3 record to be notified} paramID
+ */
+exports.changeNotif = function(paramForm, notif){
+    return new Promise(function(resolve, reject){
+        fdThree.findOneAndUpdate({
+            _id : paramForm
+        }, {
+            "$set" : {"notif" : notif}
+        }).then((updatedFDThree)=>{
+            resolve(updatedFDThree)
+        }, (err)=>{
+            reject(err)
+        })
+    })
 }
 
 /**

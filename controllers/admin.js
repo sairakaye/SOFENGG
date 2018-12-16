@@ -92,86 +92,118 @@ router.get("/view-grants", function (req, res) {
  */
 router.post("/view-details", urlencoder, function (req, res) {
     console.log("POST /view-details")
-
+    
     var user = req.session.user
     var id = req.body.details
-
+    var bool = false
+    
     if (user) {
         if (user.userType != 'Secretary')
             res.redirect("/")
-
+        
         var forms = getFormById(id, function (forms) {
             if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
                 var fdOneData = forms
-
+                
                 Remark.getRemarksFromForm(fdOneData).then((foundRemarks) => {
-                    res.render("preview-form1.hbs", {
-                        user, fdOneData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdOneData._id, grant: fdOneData.grantName
+                    fdOne.changeNotif(forms._id, bool).then((notifiedFDOne)=>{
+                        res.render("preview-form1.hbs", {
+                            user, fdOneData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdOneData._id, grant: fdOneData.grantName
+                        })
+                        
+                    }, (err)=>{
+                        res.send(err)
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
                 var fdTwoData = forms
-
+                
                 Remark.getRemarksFromForm(fdTwoData).then((foundRemarks) => {
-                    res.render("preview-form2.hbs", {
-                        user, fdTwoData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdTwoData._id, grant: fdTwoData.grantName
+                    fdTwo.changeNotif(forms._id, bool).then((notifiedForm)=>{
+                        res.render("preview-form2.hbs", {
+                            user, fdTwoData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdTwoData._id, grant: fdTwoData.grantName
+                        })
+                    }, (err)=>{
+                        res.send(err)                                    
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             } else if (forms.grantName == "[FD3] Support for Paper Presentations in Conferences") {
                 var fdThreeData = forms
-
+                
                 Remark.getRemarksFromForm(fdThreeData).then((foundRemarks) => {
-                    res.render("preview-form3.hbs", {
-                        user, fdThreeData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdThreeData._id, grant: fdThreeData.grantName
+                    fdThree.changeNotif(forms._id, bool).then((notifiedForm)=>{
+                        res.render("preview-form3.hbs", {
+                            user, fdThreeData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdThreeData._id, grant: fdThreeData.grantName
+                        })
+                    }, (err)=>{
+                        res.send(err)                                    
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences") {
                 var fdFourData = forms
-
+                
                 Remark.getRemarksFromForm(fdFourData).then((foundRemarks) => {
-                    res.render("preview-form4.hbs", {
-                        user, fdFourData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdFourData._id, grant: fdFourData.grantName
+                    fdFour.changeNotif(forms._id, bool).then((notifiedForm)=>{
+                        res.render("preview-form4.hbs", {
+                            user, fdFourData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdFourData._id, grant: fdFourData.grantName
+                        })
+                    }, (err)=>{
+                        res.send(err)                                    
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops") {
                 var fdFifteenData = forms
-
+                
                 Remark.getRemarksFromForm(fdFifteenData).then((foundRemarks) => {
-                    res.render("preview-form15.hbs", {
-                        user, fdFifteenData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdFifteenData._id, grant: fdFifteenData.grantName
+                    fdFifteen.changeNotif(forms._id, bool).then((notifiedForm)=>{
+                        res.render("preview-form15.hbs", {
+                            user, fdFifteenData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdFifteenData._id, grant: fdFifteenData.grantName
+                        })
+                    }, (err)=>{
+                        res.send(err)                                    
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations") {
                 var fdSixteenData = forms
-
+                
                 Remark.getRemarksFromForm(fdSixteenData).then((foundRemarks) => {
-                    res.render("preview-form16.hbs", {
-                        user, fdSixteenData, adminAccess: "True", remarks: foundRemarks,
-                        formID: fdSixteenData._id, grant: fdSixteenData.grantName
+                    fdSixteen.changeNotif(forms._id, bool).then((notifiedForm)=>{
+                        res.render("preview-form16.hbs", {
+                            user, fdSixteenData, adminAccess: "True", remarks: foundRemarks,
+                            formID: fdSixteenData._id, grant: fdSixteenData.grantName
+                        })
+                    }, (err)=>{
+                        res.send(err)                                    
                     })
+                    
                 }, (err) => {
                     res.send(err)
                 })
             }
         })
-    } else {
-        res.redirect("/")
-    }
+        } else {
+            res.redirect("/")
+        }
 })
 
 /**
