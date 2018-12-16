@@ -24,6 +24,8 @@ function stopEnterKey(e) {
   }
 }
 
+$('.ui.dropdown').dropdown('refresh');
+$('.ui.dropdown').dropdown('set selected','PHP')
 /**
  * This is initialize to the page where
  * when a key is pressed, it calls for
@@ -100,16 +102,6 @@ $('#conference-startdate').calendar({
 });
 
 /**
- * Initializes the Date of Conference end field
- * @param {Object} settings - customizing the settings of
- * the calendar
- */
-$('#conference-enddate').calendar({
-  type: 'date',
-  maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
-});
-
-/**
  * Initializes the Date of Departure field.
  * @param {Object} settings - customizing the settings of
  * the calendar
@@ -155,20 +147,6 @@ $('#incentive-date').calendar({
  * radio buttons.
  */
 $('.ui.checkbox').checkbox();
-
-/**
- * Initializes the button with #confirm and checks whether
- * it will show the confirmation modal or not.
- */
-$("#confirm").click(function () {
-  check();
-  var isValid = $('.form').form('validate form');
-
-  if (isValid) {
-    $('.ui.modal.submit')
-      .modal('show');
-  }
-})
 
 /**
  * Checks if all input have values, if it does not
@@ -333,6 +311,10 @@ $('#request-form')
           {
             type: 'decimalLimit[2]',
             prompt: 'Please input up to only two decimal places',
+          }, 
+          {
+            type   : 'maxLength[10]',
+            prompt: 'Please enter a valid participant fee.'
           }
         ]
       },

@@ -74,6 +74,14 @@ router.post("/view-details", urlencoder, function (req, res) {
       res.redirect("/")
 
     var forms = getFormById(id, function (forms) {
+      if (forms.remarks.length >= 1) {
+        forms.remarks = forms.remarks.sort(function (a, b) {
+          const aDate = new Date(a.date)
+          const bDate = new Date(b.date)
+          return bDate.getTime() - aDate.getTime()
+        })
+      }
+
       if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         var fdOneData = forms
 
@@ -177,6 +185,7 @@ router.post("/fd-1", urlencoder, function (req, res) {
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, grantStatus
   }
+  console.log(dateOfEndConference)
 
   if (user) {
     if (user.userType != 'Faculty')
@@ -227,6 +236,7 @@ router.post("/preview-fd1", urlencoder, function (req, res) {
   if (dateIncentiveLastAvailed == null || dateIncentiveLastAvailed == undefined)
     dateIncentiveLastAvailed = "N/A"
 
+    console.log(dateOfEndConference)
   var fdOneData = {
     grantName: "[FD1] Incentive for Publication in Pre-Selected High Impact Journal",
     ownerIdNumber: user.username, term: "1st Term", startAY: 2018, endAY: 2019,
@@ -320,6 +330,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
@@ -346,7 +357,7 @@ router.post("/preview-fd3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -388,7 +399,9 @@ router.post("/preview-fd4", urlencoder, function (req, res) {
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
@@ -401,7 +414,7 @@ router.post("/preview-fd4", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
+    dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
 
@@ -439,7 +452,9 @@ router.post("/preview-fd15", urlencoder, function (req, res) {
   var startTime = req.body.startTime
   var endTime = req.body.endTime
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
 
   if (dateIncentiveLastAvailed == null || dateIncentiveLastAvailed == undefined)
@@ -450,7 +465,7 @@ router.post("/preview-fd15", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    participantFee, grantStatus
+    currencychoice, participantFee, checkPayableTo, grantStatus
   }
 
   if (user) {
@@ -481,6 +496,7 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
   var membershipDate = req.body.membershipDate
   var coverage = req.body.coverage
   var membershipFee = req.body.membershipFee
+  var currencychoice = req.body.currencychoice
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
   
@@ -492,7 +508,7 @@ router.post("/preview-fd16", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, membershipFee, checkPayableTo, grantStatus
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus
   }
 
   if (user) {
@@ -876,6 +892,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var noOfUnitsTaught = req.body.noOfUnitsTaught
   var aveTeachingPerformance = req.body.aveTeachingPerformance
@@ -899,7 +916,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status, noOfUnitsTaught,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status, noOfUnitsTaught,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -935,6 +952,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var department = req.body.department
   var rank = req.body.rank
   var dateHired = req.body.dateHired
+  var noOfUnitsTaught = req.body.noOfUnitsTaught
   var status = req.body.status
   var aveTeachingPerformance = req.body.aveTeachingPerformance
   var titleOfPaperOrPublication = req.body.titleOfPaperOrPublication
@@ -960,7 +978,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var fdThreeData = {
     formId: "FD3-", grantName: "[FD3] Support for Paper Presentations in Conferences",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, dateHired, rank, status,
+    firstName, lastName, department, dateHired, noOfUnitsTaught, rank, status,
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
@@ -1094,6 +1112,7 @@ router.post("/fd-4", urlencoder, function (req, res) {
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
   var checkPayableTo = req.body.checkPayableTo
   var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
@@ -1105,7 +1124,7 @@ router.post("/fd-4", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
+    dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
 
@@ -1144,7 +1163,9 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
   var dateOfDeparture = req.body.dateOfDeparture
   var dateOfReturn = req.body.dateOfReturn
   var dateOfReturnToWork = req.body.dateOfReturnToWork
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
@@ -1157,7 +1178,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, participantFee, noOfLocalConferencesAttendedThisYear,
+    dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
     grantStatus
   }
 
@@ -1293,15 +1314,17 @@ router.post("/fd-15", urlencoder, function (req, res) {
   var startTime = req.body.startTime
   var endTime = req.body.endTime
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
 
   var fdFifteenData = {
     grantName: "[FD15] Support for Local Trainings, Seminars and Workshops",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
-    firstName, lastName, department, rank, hostInstitution,
+    firstName, lastName, department, rank, hostInstitution, 
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    participantFee, grantStatus
+    currencychoice, participantFee, checkPayableTo, grantStatus
   }
 
   if (user) {
@@ -1338,7 +1361,9 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
   var startTime = req.body.startTime
   var endTime = req.body.endTime
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
+  var currencychoice = req.body.currencychoice
   var participantFee = req.body.participantFee
+  var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
 
   if (dateIncentiveLastAvailed == "N/A")
@@ -1349,7 +1374,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    participantFee, grantStatus
+    currencychoice, participantFee, checkPayableTo, grantStatus
   }
 
   if (user) {
@@ -1480,6 +1505,7 @@ router.post("/fd-16", urlencoder, function (req, res) {
   var typeofMembershipDuration = req.body.typeofMembershipDuration
   var membershipDate = req.body.membershipDate
   var coverage = req.body.coverage
+  var currencychoice = req.body.currencychoice
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
@@ -1489,7 +1515,7 @@ router.post("/fd-16", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, membershipFee, checkPayableTo, grantStatus
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus
   }
 
   if (user) {
@@ -1526,19 +1552,20 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
   var typeofMembershipDuration = req.body.typeofMembershipDuration
   var membershipDate = req.body.membershipDate
   var coverage = req.body.coverage
+  var currencychoice = req.body.currencychoice
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
 
   if (coverage == null || coverage == undefined)
     coverage = "N/A"
-
+    
   var fdSixteenData = {
     formId: "FD16-", grantName: "[FD16] Support for Membership in Professional Organizations",
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, membershipFee, checkPayableTo, grantStatus
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus
   }
 
   if (user) {

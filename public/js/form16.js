@@ -23,8 +23,9 @@ function stopEnterKey(e) {
     return false;
   }
 }
+$('.ui.dropdown').dropdown('refresh');
+$('.ui.dropdown').dropdown('set selected','PHP')
 
-$('.ui.dropdown').dropdown();
 /**
  * This is initialize to the page where
  * when a key is pressed, it calls for
@@ -45,20 +46,6 @@ $('#membership-date').calendar({
  * radio buttons.
  */
 $('.ui.checkbox').checkbox();
-
-/**
- * Initializes the button with #confirm and checks whether
- * it will show the confirmation modal or not.
- */
-$("#confirm").click(function () {
-  check();
-  var isValid = $('.form').form('validate form');
-
-  if (isValid) {
-    $('.ui.modal.submit')
-      .modal('show');
-  }
-})
 
 /**
  * Checks if all input have values, if it does not
@@ -185,6 +172,10 @@ $('#request-form')
           {
             type: 'decimalLimit[2]',
             prompt: 'Please input up to only two decimal places',
+          }, 
+          {
+            type   : 'maxLength[10]',
+            prompt: 'Please enter a valid membership fee.'
           }
         ]
       },
