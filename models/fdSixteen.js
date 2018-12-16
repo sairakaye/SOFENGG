@@ -185,12 +185,14 @@ exports.getFDSixteenByID = function(id){
         fdSixteen.findOne({
             _id : id
         }).then((foundFDSixteen)=>{
-            foundFDSixteen.remarks = foundFDSixteen.remarks.sort(function(a, b){
-                const aDate = new Date(a.date)
-                const bDate = new Date(b.date)
-                
-                return bDate.getTime() - aDate.getTime()
-            })
+            if (foundFDSixteen.remarks != null) {
+                foundFDSixteen.remarks = foundFDSixteen.remarks.sort(function(a, b){
+                    const aDate = new Date(a.date)
+                    const bDate = new Date(b.date)
+                    
+                    return bDate.getTime() - aDate.getTime()
+                })
+            }
             resolve(foundFDSixteen)
         }, (err)=>{
             reject(err)

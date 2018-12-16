@@ -191,12 +191,14 @@ exports.getFDOneByID = function(id){
         fdOne.findOne({
             _id : id
         }).then((foundFDOne)=>{
-            foundFDOne.remarks = foundFDOne.remarks.sort(function(a, b){
-                const aDate = new Date(a.date)
-                const bDate = new Date(b.date)
-                
-                return bDate.getTime() - aDate.getTime()
-            })
+            if (foundFDOne.remarks != null) {
+                foundFDOne.remarks = foundFDOne.remarks.sort(function(a, b){
+                    const aDate = new Date(a.date)
+                    const bDate = new Date(b.date)
+                    
+                    return bDate.getTime() - aDate.getTime()
+                })
+            }
             resolve(foundFDOne)
         }, (err)=>{
             reject(err)
