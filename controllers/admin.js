@@ -24,6 +24,7 @@ var excel = require('exceljs')
 const xlsxj = require("xlsx-to-json")
 const path = require("path")    
 const multer = require('multer')
+var excel = require('exceljs');
 
 const User = require("../models/user")
 const Mailer = require("../models/mailer")
@@ -1350,10 +1351,6 @@ router.get("/saveform", urlencoder, (req, res) => {
  */
 router.get("/export", urlencoder, (req, res) => {
     console.log("GET /export ")
-
-    if (user) {
-        if (user.userType != 'Administrator')
-            res.redirect("/")
            
         var MongoClient = require('mongodb').MongoClient
 
@@ -1364,38 +1361,224 @@ router.get("/export", urlencoder, (req, res) => {
     
             db.collection('fdones').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items)  {     
                 var worksheet = workbook.addWorksheet('FD1');
-                var font = { name: "Arial", family: 2, size: 16, bold: true};
+                var font = { name: "Arial", family: 2, size: 16, bold: true, color: {'argb': 'FF1F497D'}};
     
                 worksheet.mergeCells('A1', 'K1');
                 worksheet.getCell('A1').value = 'FD1 - Pre Selected High Impact Journal, AY 2018-2019'
                 worksheet.getCell('L1').value = 'ETD'
-                worksheet.getCell('O1').value = 'BALANCE'
+                worksheet.getCell("N1").value = 'BUDGET'
                 worksheet.getCell("A1").font = font;
                 worksheet.getCell("L1").font = font;
-                worksheet.getCell("O1").font = font;
+                worksheet.getCell("N1").font = font;
+                worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
     
                 worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'TITLE OF PAPER OR PUBLICATION', 'TITLE OF JOURNAL', 
                 'TITLE OF PAPER TO BE PRESENTED', 'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
                 'SUMMARY REPORT(Received by VCAO)', 'LIQUIDATION(Received by VCAO)', 'Remarks'];
-    
-                worksheet.columns = [{key: 'term'}, {key: 'college'}, {key: 'dept'}, {key: 'status'}, {key: 'facultyname'}, {key: 'titlepaper'}, {key: 'titlejournal'},
-                {key: 'titleppresent'}, {key: 'dateconf'}, {key: 'venue'}, {key: 'remarksbenefit'}, {key: 'dollar'}, {key: 'peso'}, {key: 'prsno'}, {key: 'payabto'}, {key: 'daterecivacct'}, 
-                {key: 'summaryreport'}, {key: 'liquida'}, {key: 'remarks'}]
-    
+                worksheet.getRow(2).font = { size: 9, bold: true };
+
+                for (i = 1; i <= 20; i++)  {
+                    worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                    worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                }
+
+                worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'titlepaper', width: 30}, {key: 'titleppresent', width: 30},{key: 'titlejournal', width: 30},
+                {key: 'dateconf', width: 28}, {key: 'venue', width: 20}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 16},  {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
+
                 items.forEach(function(item) {
                     worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperOrPublication, 
-                    titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: item.dateOfStartConference+" - "+item.dateOfEndConference, venue: item.placeAndVenue})
+                    titlejournal: item.titleOfJournal, titleppresent: item.titleOfPaperToBePresented, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
                 })
+
+                worksheet.columns.forEach(column => {
+                    column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                })
+
+                db.collection('fdtwos').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items2)  {   
+                    var worksheet = workbook.addWorksheet('FD2');
+
+                    worksheet.mergeCells('A1', 'K1');
+                    worksheet.getCell('A1').value = 'FD2 - Pre Selected High Impact Conferences, AY 2018-2019'
+                    worksheet.getCell('L1').value = 'ETD'
+                    worksheet.getCell("N1").value = 'BUDGET'
+                    worksheet.getCell("A1").font = font;
+                    worksheet.getCell("L1").font = font;
+                    worksheet.getCell("N1").font = font;
+                    worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
+
+                    worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'TITLE OF PAPER TO BE PRESENTED', 'NAME OF CONFERENCE', 
+                    'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 'Remarks'];
+                    worksheet.getRow(2).font = { size: 9, bold: true };
+
+                    for (i = 1; i <= 16; i++)  {
+                        worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                        worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                    }
+
+                    worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'titlepaper', width: 30}, {key: 'nameofconference', width: 30},
+                    {key: 'dateconf', width: 28}, {key: 'venue', width: 20}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 16},  {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                    {key: 'remarks', width: 15}]
+        
+                    items2.forEach(function(item) {
+                        worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, titlepaper: item.titleOfPaperToBePresented, 
+                        nameofconference: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                    })  
+
+                    worksheet.columns.forEach(column => {
+                        column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                    })
+
+                    db.collection('fdthrees').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items3)  {   
+                        var worksheet = workbook.addWorksheet('FD3');
     
-                var tempfile = require('tempfile');
-                var tempFilePath = tempfile('.xlsx');
-                workbook.xlsx.writeFile(tempFilePath).then(function() {
-                    res.sendFile(tempFilePath, function(err){
-                    });
-                });
+                        worksheet.mergeCells('A1', 'K1');
+                        worksheet.getCell('A1').value = 'FD3 - Support for Paper Presentation in Conferences, AY 2018-2019'
+                        worksheet.getCell('L1').value = 'ETD'
+                        worksheet.getCell("N1").value = 'BUDGET'
+                        worksheet.getCell("A1").font = font;
+                        worksheet.getCell("L1").font = font;
+                        worksheet.getCell("N1").font = font;
+                        worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
+        
+                        worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'TYPE OF CONFERENCE', 'TITLE OF PAPER TO BE PRESENTED', 
+                        'NAME OF CONFERENCE', 'DATE OF CONFERENCE', 'VENUE', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'CHECK PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
+                        'SUMMARY REPORT (Received by VCAO)', 'LIQUIDATION (Received by VCAO)', 'Remarks'];
+                        worksheet.getRow(2).font = { size: 9, bold: true };
+
+                        for (i = 1; i <= 19; i++)  {
+                            worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                            worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                        }
+
+                        worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'typeconf', width: 18}, {key: 'titlepaper', width: 30}, {key: 'nameconf', width: 30},
+                        {key: 'dateconf', width: 28}, {key: 'venue', width: 20}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 16}, {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                        {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
+
+                        items3.forEach(function(item) {
+                            worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, typeconf: item.typeOfConference,
+                            titlepaper: item.titleOfPaperToBePresented, nameofconference: item.nameOfConference, dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                        })
+                                
+                        worksheet.columns.forEach(column => {
+                            column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                        })
+
+                        db.collection('fdfours').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items4)  {   
+                            var worksheet = workbook.addWorksheet('FD4');
+        
+                            worksheet.mergeCells('A1', 'K1');
+                            worksheet.getCell('A1').value = 'FD4 - Support for Participation in Local Conferences, AY 2018-2019 (twice a year)'
+                            worksheet.getCell('L1').value = 'ETD'
+                            worksheet.getCell("N1").value = 'BUDGET'
+                            worksheet.getCell("A1").font = font;
+                            worksheet.getCell("L1").font = font;
+                            worksheet.getCell("N1").font = font;
+                            worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
+        
+                            worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'NAME OF CONFERENCE', 'DATE OF CONFERENCE', 'VENUE', 
+                            'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'CHECK PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
+                            'SUMMARY REPORT (Received by VCAO)', 'LIQUIDATION (Received by VCAO)', 'Remarks'];
+                            worksheet.getRow(2).font = { size: 9, bold: true };
+                                
+                            for (i = 1; i <= 17; i++)  {
+                                worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                                worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                            }
+
+                            worksheet.columns = [{key: 'term', width: 7}, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'titlepaper', width: 30}, {key: 'nameconf', width: 28},
+                            {key: 'dateconf', width: 28}, {key: 'venue', width: 20}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 11}, {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                            {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
+
+                            items4.forEach(function(item) {
+                                worksheet.addRow({  term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, nameofconference: item.nameOfConference, 
+                                dateconf: moment(item.dateOfStartConference).format("MMMM D, YYYY")+" - "+moment(item.dateOfEndConference).format("MMMM D, YYYY"), venue: item.placeAndVenue})
+                            })
+                            
+                            worksheet.columns.forEach(column => {
+                                column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                            })
+        
+                            db.collection('fdfifteens').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items15)  {   
+                                var worksheet = workbook.addWorksheet('FD15');
+            
+                                worksheet.mergeCells('A1', 'K1');
+                                worksheet.getCell('A1').value = 'FD15 - Support for Local Trainings, Seminars and Workshops, AY 2018-2019 (once in a Academic Year)'
+                                worksheet.getCell('L1').value = 'ETD'
+                                worksheet.getCell("N1").value = 'BUDGET'
+                                worksheet.getCell("A1").font = font;
+                                worksheet.getCell("L1").font = font;
+                                worksheet.getCell("N1").font = font;
+                                worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
+
+                                worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'FACULTY NAME', 'TITLE OF TRAINING/SEMINAR/WORKSHOP', 'HOST INSTITUTION/ORGANIZATION', 
+                                'LOCATION', 'DATE OF TRAINING/SEMINAR/ WORKSHOP', 'REMARKS/BENEFIT', 'DOLLAR', 'PESO', 'PRS NO.', 'CHECK PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 
+                                'SUMMARY REPORT (Received by VCAO)', 'LIQUIDATION (Received by VCAO)', 'Remarks'];
+                                worksheet.getRow(2).font = { size: 9, bold: true };
+                                
+                                for (i = 1; i <= 17; i++)  {
+                                    worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                                    worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                                }
+
+                                worksheet.columns = [{key: 'term', width: 7 }, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'facultyname', width: 28}, {key: 'titleseminar', width: 30}, {key: 'hostinst', width: 28},
+                                {key: 'location', width: 20}, {key: 'dateofsem', width: 28}, {key: 'remarksbenefit', width: 28}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 11}, {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                                {key: 'summaryreport', width: 15}, {key: 'liquida', width: 15}, {key: 'remarks', width: 15}]
+                    
+                                items15.forEach(function(item) {
+                                    worksheet.addRow({  term: item.term, dept: item.department, facultyname: item.firstName + " " + item.lastName, titleseminar: item.titleOfSeminar, 
+                                    hostinst: item.hostInstitution, location: item.place, dateofsem: moment(item.startTime).format("MMMM D, YYYY")+"-"+moment(item.endTime).format("MMMM D, YYYY")})
+                                })
+                                
+                                worksheet.columns.forEach(column => {
+                                    column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                                })
+                                
+                                db.collection('fdsixteens').find({},{_id:0,user:true,db:true,roles:true } ).toArray(function(err, items16)  {   
+                                    var worksheet = workbook.addWorksheet('FD16');
+                
+                                    worksheet.mergeCells('A1', 'K1');
+                                    worksheet.getCell('A1').value = 'FD16 - Support for Membership in Professional Organization, AY 2018-2019'
+                                    worksheet.getCell('L1').value = 'ETD'
+                                    worksheet.getCell('N1').value = 'BALANCE'
+                                    worksheet.getCell("A1").font = font;
+                                    worksheet.getCell("L1").font = font;
+                                    worksheet.getCell("N1").font = font;
+                                    worksheet.getCell('M1').value = { formula :'SUM(L3:L39)' };  
+                
+                                    worksheet.getRow(2).values = ['TERM', 'COLLEGE', 'DEPT', 'STATUS', 'FACULTY NAME', 'NAME OF ORGANIZATION', 'TYPE OF MEMBERSHIP (LOCAL/INTL) ', 
+                                    'TYPE OF MEMBERSHIP (ANNUAL/LIFETIME)', 'MEMBERSHIP DATE', 'COVERAGE', 'DOLLAR', 'PESO', 'PRS NO.', 'CHECK PAYABLE TO', 'DATE RECEIVED BY ACCTG.', 'Remarks'];
+                                    worksheet.getRow(2).font = { size: 9, bold: true };
+
+                                    for (i = 1; i <= 16; i++)  {
+                                        worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
+                                        worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
+                                    }
+
+                                    worksheet.columns = [{key: 'term', width: 7 }, {key: 'college', width: 10}, {key: 'dept', width: 13}, {key: 'status', width: 12}, {key: 'facultyname', width: 28}, {key: 'nameorg', width: 32}, {key: 'typemem', width: 16},
+                                    {key: 'typemem2', width: 20}, {key: 'dateofmem', width: 17}, {key: 'coverage', width: 18}, {key: 'dollar', width: 9}, {key: 'peso', width: 13}, {key: 'prsno', width: 11}, {key: 'payabto', width: 25}, {key: 'daterecivacct', width: 14}, 
+                                    {key: 'remarks', width: 15}]
+                                    
+                                    items16.forEach(function(item) {
+                                        worksheet.addRow({ term: item.term, dept: item.department, status: item.status, facultyname: item.firstName + " " + item.lastName, nameorg: item.nameOfOrganization, 
+                                        typemem: item.typeOfMembershipPlace, typemem2: item.typeofMembershipDuration, dateofmem: moment(item.membershipDate).format("MMMM D, YYYY")})
+                                    })
+                                    
+                                    worksheet.columns.forEach(column => {
+                                        column.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+                                    })
+                
+                                    var tempfile = require('tempfile');
+                                    var tempFilePath = tempfile('.xlsx');
+                                    workbook.xlsx.writeFile(tempFilePath).then(function() {
+                                        res.sendFile(tempFilePath, function(err){
+                                        });
+                                    });
+                                })
+                            })
+                        })
+                    })
+                })
             });
         });       
-    } else {
-        res.redirect("/")
-    }
 })
