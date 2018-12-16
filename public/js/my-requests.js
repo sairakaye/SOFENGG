@@ -34,7 +34,8 @@ $(document).ready(function() {
             "zeroRecords": "No grant requests found", 
             "info": "Showing _START_ to _END_ of _TOTAL_ grant requests",
             "infoEmpty": "No matches found",
-            "infoFiltered": "(filtered from _MAX_  grant requests)"
+            "infoFiltered": "(filtered from _MAX_  grant requests)",
+            "search": "  "
         },
         columnDefs: [{"targets": 4, "orderable": false}, {"targets": 5, "orderable": false}],   
         order: [[ 1, "desc" ]],
