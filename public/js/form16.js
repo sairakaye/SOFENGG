@@ -172,6 +172,10 @@ $('#request-form')
           {
             type: 'decimalLimit[2]',
             prompt: 'Please input up to only two decimal places',
+          }, 
+          {
+            type   : 'maxLength[10]',
+            prompt: 'Please enter a valid membership fee.'
           }
         ]
       },
