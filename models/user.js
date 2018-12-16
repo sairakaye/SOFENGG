@@ -39,7 +39,17 @@ var userSchema = mongoose.Schema({
         required : true
     },
     
+    salutation : {
+        type : String,
+        required : true
+    },
+    
     firstName : {
+        type : String, 
+        required : true
+    },
+    
+    middleName : {
         type : String, 
         required : true
     },
@@ -101,6 +111,21 @@ exports.create = function(user){
       reject(err)
     })
   })
+}
+
+/**
+ * Removes user record in User Schema 
+ *
+ * @param {user record to be created} user
+ */
+exports.remove = function(){
+    return new Promise(function(resolve, reject){
+        User.remove( { userType : { $ne: "Administrator" } } ).then((idk)=>{
+            resolve(idk)
+        }, (err)=>{
+            res.send(err)
+        })
+    })
 }
 
 /**
