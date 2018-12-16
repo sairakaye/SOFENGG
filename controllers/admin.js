@@ -220,12 +220,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                 "\n\nGood day!\n\nYour request for funding at the " + foundFDOne.formId + " " +
                                                 foundFDOne.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                 "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                 " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDOneTotal(updatedUser.college).then((updatedOverview) => {
                                                 console.log("Added to Approved Files!")
@@ -237,10 +237,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDOne.formId + " " + foundFDOne.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -248,10 +248,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDOne.formId + " " + foundFDOne.grantName +
                                                     " has been pended for the following reasons:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         }
@@ -300,12 +300,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour request for funding at the " + foundFDTwo.formId + " " +
                                                     foundFDTwo.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                     "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             
                                             Overview.addFDTwoTotal(updatedUser.college).then((updatedOverview) => {
@@ -318,10 +318,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -329,7 +329,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
@@ -380,12 +380,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour request for funding at the " + foundFDThree.formId + " " +
                                                     foundFDThree.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                     "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             
                                             Overview.addFDThreeTotal(updatedUser.college).then((updatedOverview) => {
@@ -398,10 +398,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDThree.formId + " " + foundFDThree.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -409,10 +409,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDThree.formId + " " + foundFDThree.grantName +
                                                     " has been pended for the following reasons:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         }
@@ -462,12 +462,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour request for funding at the " + foundFDFour.formId + " " +
                                                     foundFDFour.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                     "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDFourTotal(updatedUser.college).then((updatedOverview) => {
                                                 console.log("Added to Approved Files!")
@@ -479,10 +479,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFour.formId + " " + foundFDFour.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -490,10 +490,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDFour.formId + " " + foundFDFour.grantName +
                                                     " has been pended for the following reasons:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         }
@@ -541,12 +541,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour request for funding at the " + foundFDFifteen.formId + " " +
                                                     foundFDFifteen.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                     "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
                                                 console.log("Added to Approved Files!")
@@ -558,10 +558,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -569,10 +569,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
                                                     " has been pended for the following reasons:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         }
@@ -620,12 +620,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour request for funding at the " + foundFDSixteen.formId + " " +
                                                     foundFDSixteen.grantName + " has been approved and forwarded to the accounting office.\n\n" +
                                                     "Regulations on disbursements shall follow the relevant DLSU accounting procedures." +
                                                     " Please contact the Disbursement Section at local 118\n\nRemarks:\n\n" + newRemark.remark +
-                                                    "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
                                                 console.log("Added to Approved Files!")
@@ -637,10 +637,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nIt is with deep regret for us to inform you that your request for funding for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         } else if (status == "Pending") {
@@ -648,10 +648,10 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 from: newMailer.emailAddress,
                                                 to: updatedUser.emailAddress,
                                                 subject: "[OVCA]",
-                                                text: "Dear Dr./Mr./Mrs./Ms. " + updatedUser.firstName + " " + updatedUser.lastName +
+                                                text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
                                                     "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
                                                     " has been pended for the following reasons:\n\n" +
-                                                    newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
+                                                    newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
 
                                         }
@@ -821,7 +821,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdOne.getFDOneByID(id).then((foundFDOne) => {
             User.deleteFDOneInUser(foundFDOne).then((updatedUser) => {
                 fdOne.delete(req.body.id).then((result) => {
-                    res.send(result)
+                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDOne.formId + " " + foundFDOne.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
@@ -830,7 +860,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdTwo.getFDTwoByID(id).then((foundFDTwo) => {
             User.deleteFDTwoInUser(foundFDTwo).then((updatedUser) => {
                 fdTwo.delete(req.body.id).then((result) => {
-                    res.send(result)
+                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
@@ -839,7 +899,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdThree.getFDThreeByID(id).then((foundFDThree) => {
             User.deleteFDThreeInUser(foundFDThree).then((updatedUser) => {
                 fdThree.delete(req.body.id).then((result) => {
-                    res.send(result)
+                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDThree.formId + " " + foundFDThree.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
@@ -848,7 +938,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdFour.getFDFourByID(id).then((foundFDFour) => {
             User.deleteFDFourInUser(foundFDFour).then((updatedUser) => {
                 fdFour.delete(req.body.id).then((result) => {
-                    res.send(result)
+                     Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDFour.formId + " " + foundFDFour.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
@@ -857,7 +977,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdFifteen.getFDFifteenByID(id).then((foundFDFifteen) => {
             User.deleteFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
                 fdFifteen.delete(req.body.id).then((result) => {
-                    res.send(result)
+                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
@@ -866,7 +1016,37 @@ router.delete("/delete-form", urlencoder, (req, res) => {
         fdSixteen.getFDSixteenByID(id).then((foundFDSixteen) => {
             User.deleteFDSixteenInUser(foundFDSixteen).then((updatedUser) => {
                 fdSixteen.delete(req.body.id).then((result) => {
-                    res.send(result)
+                    Mailer.getMailerByEmail("ovca.dlsu@gmail.com").then((newMailer) => {
+                        var transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: newMailer.emailAddress,
+                                pass: newMailer.password
+                            }
+                        })
+                        
+                        var mailOptions = {
+                            from: newMailer.emailAddress,
+                            to: updatedUser.emailAddress,
+                            subject: "[OVCA]",
+                            text: "Dear " + updatedUser.salutation + updatedUser.firstName + " "+ updatedUser.middleName +" " + updatedUser.lastName +
+                            "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
+                            " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
+                        }
+                        
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                        
+                        res.send(result)
+                        
+                    }, (err)=>{
+                        res.send(err)
+                    })
                 })
             })
         })
