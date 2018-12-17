@@ -58,6 +58,56 @@ $('#submit-date').calendar({
       type: 'date',
       minDate: new Date(year, month, day),
       maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      onChange: function(date){
+        var yearacc = date.getFullYear()
+        var monthacc = date.getMonth()
+        var dayacc = date.getDate()
+
+        $('#conference-startdate').calendar({
+          type: 'date',
+          minDate: new Date(yearacc, monthacc, dayacc),
+          onChange: function (date) {
+            var yearCon = date.getFullYear();
+            var monthCon = date.getMonth();
+            var dayCon = date.getDate();
+        
+            $('#conference-enddate').calendar({
+              type: 'date',
+              minDate: new Date(yearCon, monthCon, dayCon),
+              onChange: function (date) {
+                var yearEnd = date.getFullYear();
+                var monthEnd = date.getMonth();
+                var dayEnd = date.getDate();
+        
+                $('#departure-date').calendar({
+                  type: 'date',
+                  maxDate: new Date(yearEnd, monthEnd, dayEnd),
+                  onChange: function (date) {
+                    var year = date.getFullYear();
+                    var month = date.getMonth();
+                    var day = date.getDate();
+        
+                    $('#return-date').calendar({
+                      type: 'date',
+                      minDate: new Date(year, month, day),
+                      onChange: function (date) {
+                        var yearRet = date.getFullYear();
+                        var monthRet = date.getMonth();
+                        var dayRet = date.getDate();
+        
+                        $('#expected-date').calendar({
+                          type: 'date',
+                          minDate: new Date(yearRet, monthRet, dayRet)
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
     });
   }
 });
@@ -80,48 +130,7 @@ $('#accept-date').calendar({
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-  onChange: function (date) {
-    var yearCon = date.getFullYear();
-    var monthCon = date.getMonth();
-    var dayCon = date.getDate();
-
-    $('#conference-enddate').calendar({
-      type: 'date',
-      minDate: new Date(yearCon, monthCon, dayCon),
-      onChange: function (date) {
-        var yearEnd = date.getFullYear();
-        var monthEnd = date.getMonth();
-        var dayEnd = date.getDate();
-
-        $('#departure-date').calendar({
-          type: 'date',
-          minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-          maxDate: new Date(yearEnd, monthEnd, dayEnd),
-          onChange: function (date) {
-            var year = date.getFullYear();
-            var month = date.getMonth();
-            var day = date.getDate();
-
-            $('#return-date').calendar({
-              type: 'date',
-              minDate: new Date(year, month, day),
-              onChange: function (date) {
-                var yearRet = date.getFullYear();
-                var monthRet = date.getMonth();
-                var dayRet = date.getDate();
-
-                $('#expected-date').calendar({
-                  type: 'date',
-                  minDate: new Date(yearRet, monthRet, dayRet)
-                });
-              }
-            });
-          }
-        });
-      }
-    });
-  }
+  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
 });
 
 /**

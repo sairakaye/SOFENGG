@@ -49,7 +49,6 @@ $('#date-hired').calendar({
  */
 $('#conference-startdate').calendar({
   type: 'date',
-  minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
   onChange: function (date) {
     var yearCon = date.getFullYear();
     var monthCon = date.getMonth();
@@ -65,7 +64,6 @@ $('#conference-startdate').calendar({
 
         $('#departure-date').calendar({
           type: 'date',
-          minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
           maxDate: new Date(yearEnd, monthEnd, dayEnd),
           onChange: function (date) {
             var year = date.getFullYear();
