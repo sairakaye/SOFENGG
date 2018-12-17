@@ -280,6 +280,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            Overview.subtractFDOneTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -291,6 +296,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDOneTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 
@@ -376,6 +387,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDTwoTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -387,6 +404,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nViceChancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDTwoTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 
@@ -471,6 +494,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDThreeTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -482,6 +511,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDThreeTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 
@@ -567,6 +602,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDFourTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -578,6 +619,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDFourTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 
@@ -661,6 +708,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            Overview.subtractFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -672,6 +724,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 
@@ -755,6 +813,12 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been declined. The reason/s for your declinations are as follows:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            
+                                            Overview.subtractFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         } else if (status == "Pending") {
                                             var mailOptions = {
@@ -766,6 +830,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     " has been pended for the following reasons:\n\n" +
                                                     newRemark.remark + "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
+                                            Overview.subtractFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
+                                                console.log("Added to Approved Files!")
+                                            }, (err) => {
+                                                res.send(err)
+                                            })
 
                                         }
 

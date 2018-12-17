@@ -364,3 +364,292 @@ exports.addFDSixteenTotal = function(college, cost){
     })
 }
 
+//////////////////SUBTRACT//////////////////////////////////
+
+/**
+ * Add new form cost to FD1 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDOneTotal = function(college){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdOneTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            console.log(college)
+            collegeTotal = foundOverview.fdOneTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdOneTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdOneTotal = foundTotalOverview.fdOneTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdOneTotal" : fdOneTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Add new form cost to FD2 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDTwoTotal = function(college){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdTwoTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            console.log(college)
+            collegeTotal = foundOverview.fdTwoTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdTwoTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdTwoTotal = foundTotalOverview.fdTwoTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdTwoTotal" : fdTwoTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Add new form cost to FD3 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDThreeTotal = function(college){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdThreeTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            console.log(college)
+            collegeTotal = foundOverview.fdThreeTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdThreeTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdThreeTotal = foundTotalOverview.fdThreeTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdThreeTotal" : fdThreeTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+/**
+ * Add new form cost to FD4 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDFourTotal = function(college, cost){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdFourTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            console.log(college)
+            collegeTotal = foundOverview.fdFourTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdFourTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdFourTotal = foundTotalOverview.fdFourTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdFourTotal" : fdFourTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Add new form cost to FD15 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDFifteenTotal = function(college, cost){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdFifteenTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            collegeTotal = foundOverview.fdFifteenTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdFifteenTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdFifteenTotal = foundTotalOverview.fdFifteenTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdFifteenTotal" : fdFifteenTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Add new form cost to FD16 Total
+ *
+ * @param {college to use} college
+ */
+exports.subtractFDSixteenTotal = function(college, cost){
+    return new Promise(function(resolve, reject){
+        var collegeTotal = 0
+        var total = 0
+        var fdSixteenTotal = 0
+        var overallTotal = 0
+        Overview.findOne({
+            collegeName : college
+        }).then((foundOverview)=>{
+            collegeTotal = foundOverview.fdSixteenTotal - 1
+            total = foundOverview.Total - 1
+            Overview.findOneAndUpdate({
+                collegeName : college
+            }, {
+                "$set" : {"fdSixteenTotal" : collegeTotal, "Total" : total}
+            }).then((updatedOverview)=>{
+                Overview.findOne({
+                    collegeName : "Total"
+                }).then((foundTotalOverview)=>{
+                    fdSixteenTotal = foundTotalOverview.fdSixteenTotal - 1
+                    overallTotal = foundTotalOverview.Total - 1
+                    Overview.findOneAndUpdate({
+                        collegeName : "Total"
+                    }, {
+                        "$set" : {"fdSixteenTotal" : fdSixteenTotal, "Total" : overallTotal}
+                    }).then((updatedTotalOverView)=>{
+                        resolve(updatedTotalOverView)
+                    }, (err)=>{
+                        reject(err)
+                    })
+                }, (err)=>{
+                    reject(err)
+                })
+            }, (err)=>{
+                reject(err)
+            })
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
