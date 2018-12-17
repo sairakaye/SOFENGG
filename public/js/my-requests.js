@@ -260,8 +260,8 @@ $(".item.saveform").click(function () {
                     doc.text(360, 630, moment(form.dateOfReturn).format('LL'))
                     doc.text(169, 197, moment(form.dateOfReturnToWork).format('LL'))
                     doc.text(169, 646, moment(form.dateOfReturnToWork).format('LL'))
-                    doc.text(181, 215, form.participantFee)
-                    doc.text(181, 661, form.participantFee)
+                    doc.text(181, 215,  form.currencychoice + " " + form.participantFee)
+                    doc.text(181, 661,  form.currencychoice + " " + form.participantFee)
                     doc.text(260, 230, form.noOfLocalConferencesAttendedThisYear + "")
                     doc.text(260, 678, form.noOfLocalConferencesAttendedThisYear + "")
 
@@ -299,8 +299,8 @@ $(".item.saveform").click(function () {
                     doc.text(115,653, moment(form.startTime).format('LL'))
                     doc.text(330,200, moment(form.endTime).format('LL'))
                     doc.text(330,653, moment(form.endTime).format('LL'))
-                    doc.text(190,235, form.participantFee)
-                    doc.text(190,688, form.participantFee)
+                    doc.text(190,235,  form.currencychoice + " " + form.participantFee)
+                    doc.text(190,688,  form.currencychoice + " " + form.participantFee)
 
                     if (form.dateIncentiveLastAvailed == null){
                         doc.text(174,216,  "N/A")
@@ -330,8 +330,8 @@ $(".item.saveform").click(function () {
                     doc.text(135,638, form.nameOfOrganization)
                     doc.text(120,214, moment(form.membershipDate).format('LL'))
                     doc.text(131,687, moment(form.membershipDate).format('LL'))                    
-                    doc.text(135,232, form.membershipFee+"")              
-                    doc.text(135,705, form.membershipFee+"")
+                    doc.text(135,232,  form.currencychoice + " " + form.membershipFee+"")              
+                    doc.text(135,705,  form.currencychoice + " " + form.membershipFee+"")
                     doc.text(373,231, form.checkPayableTo)
                     doc.text(386,705, form.checkPayableTo) 
 
@@ -577,8 +577,8 @@ $(".item.printform").click(function () {
                     doc.text(360, 630, moment(form.dateOfReturn).format('LL'))
                     doc.text(169, 197, moment(form.dateOfReturnToWork).format('LL'))
                     doc.text(169, 646, moment(form.dateOfReturnToWork).format('LL'))
-                    doc.text(181, 215, form.participantFee)
-                    doc.text(181, 661, form.participantFee)
+                    doc.text(181, 215,  form.currencychoice + " " + form.participantFee)
+                    doc.text(181, 661,  form.currencychoice + " " + form.participantFee)
                     doc.text(260, 230, form.noOfLocalConferencesAttendedThisYear + "")
                     doc.text(260, 678, form.noOfLocalConferencesAttendedThisYear + "")
                     
@@ -615,8 +615,8 @@ $(".item.printform").click(function () {
                     doc.text(115,653, moment(form.startTime).format('LL'))
                     doc.text(330,200, moment(form.endTime).format('LL'))
                     doc.text(330,653, moment(form.endTime).format('LL'))
-                    doc.text(190,235, form.participantFee)
-                    doc.text(190,688, form.participantFee)
+                    doc.text(190,235,  form.currencychoice + " " + form.participantFee)
+                    doc.text(190,688,  form.currencychoice + " " + form.participantFee)
 
                     if (form.dateIncentiveLastAvailed == null){
                         doc.text(174,216,  "N/A")
@@ -645,8 +645,8 @@ $(".item.printform").click(function () {
                     doc.text(135,638, form.nameOfOrganization)
                     doc.text(120,214, moment(form.membershipDate).format('LL'))
                     doc.text(131,687, moment(form.membershipDate).format('LL'))                    
-                    doc.text(135,232, form.membershipFee+"")              
-                    doc.text(135,705, form.membershipFee+"")
+                    doc.text(135,232, form.currencychoice + " " + form.membershipFee+"")              
+                    doc.text(135,705, form.currencychoice + " " + form.membershipFee+"")
                     doc.text(373,231, form.checkPayableTo)
                     doc.text(386,705, form.checkPayableTo) 
 
