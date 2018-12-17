@@ -42,7 +42,8 @@ var fdFourSchema = mongoose.Schema({
   checkPayableTo: String,
   noOfLocalConferencesAttendedThisYear: Number,
   dateIncentiveLastAvailed: Date,
-  remarks: [remarkSchema]
+  remarks: [remarkSchema],
+  notif : Boolean
 })
 
 var fdFour = mongoose.model("fdFour", fdFourSchema)
@@ -121,6 +122,25 @@ exports.edit = function (paramFDFour) {
       reject(err)
     })
   })
+}
+
+/**
+ * Turns on notification on fd2 
+ *
+ * @param {FD2 record to be notified} paramID
+ */
+exports.changeNotif = function(paramForm, notif){
+    return new Promise(function(resolve, reject){
+        fdFour.findOneAndUpdate({
+            _id : paramForm
+        }, {
+            "$set" : {"notif" : notif}
+        }).then((updatedFDFour)=>{
+            resolve(updatedFDFour)
+        }, (err)=>{
+            reject(err)
+        })
+    })
 }
 
 /**

@@ -561,6 +561,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
+  var notif = true
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -572,7 +573,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus
+    dateIncentiveLastAvailed, grantStatus, notif
   }
 
   if (user) {
@@ -610,8 +611,8 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdOneData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdOneData.formId +
-                  " " + newFdOneData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdOneData.formId +
+                  " for paper/publication " + newFdOneData.titleOfPaperOrPublication + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
               
               transporter.sendMail(mailOptions, function (error, info) {
@@ -758,6 +759,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
   var dateOfReturnToWork = req.body.dateOfReturnToWork
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
+  var notif = true
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -768,7 +770,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus
+    dateIncentiveLastAvailed, grantStatus, notif
   }
 
   if (user) {
@@ -806,8 +808,8 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdTwoData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdTwoData.formId +
-                  " " + newFdTwoData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdTwoData.formId +
+                  " for the conference " + newFdTwoData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -912,6 +914,7 @@ router.post("/fd-3", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
   var grantStatus = "Pending"
+  
 
   var fdThreeData = {
     grantName: "[FD3] Support for Paper Presentations in Conferences",
@@ -971,6 +974,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
   var grantStatus = "Pending"
+  var notif = true
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -982,7 +986,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus
+    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus, notif
   }
 
   if (user) {
@@ -1021,8 +1025,8 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdThreeData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdThreeData.formId +
-                  " " + newFdThreeData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdThreeData.formId +
+                  " for conference " + newFdThreeData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -1169,6 +1173,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
   var noOfLocalConferencesAttendedThisYear = req.body.noOfLocalConferencesAttendedThisYear
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
+  var notif = true
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1179,7 +1184,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
-    grantStatus
+    grantStatus, notif
   }
 
   if (user) {
@@ -1221,8 +1226,8 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFourData.formId +
-                      " " + newFdFourData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdFourData.formId +
+                      " for local conference " + newFdFourData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
@@ -1365,6 +1370,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
   var participantFee = req.body.participantFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
+  var notif = true
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1374,7 +1380,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    currencychoice, participantFee, checkPayableTo, grantStatus
+    currencychoice, participantFee, checkPayableTo, grantStatus, notif
   }
 
   if (user) {
@@ -1414,8 +1420,8 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFifteenData.formId +
-                      " " + newFdFifteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdFifteenData.formId +
+                      " for the seminar " + newFdFifteenData.titleOfSeminar + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
@@ -1509,6 +1515,7 @@ router.post("/fd-16", urlencoder, function (req, res) {
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
+  
 
   var fdSixteenData = {
     grantName: "[FD16] Support for Membership in Professional Organizations",
@@ -1556,6 +1563,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
   var membershipFee = req.body.membershipFee
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
+  var notif = true
 
   if (coverage == null || coverage == undefined)
     coverage = "N/A"
@@ -1565,7 +1573,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus, notif
   }
 
   if (user) {
@@ -1607,8 +1615,8 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdSixteenData.formId +
-                      " " + newFdSixteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdSixteenData.formId +
+                      " for the professional organization " + newFdSixteenData.nameOfOrganization + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
@@ -1670,8 +1678,8 @@ router.get("/my-requests", function (req, res) {
   if (user) {
     if (user.userType != 'Faculty')
       res.redirect("/")
-
       
+
       User.changeNotifInUser(user.username, "").then((notifiedUser)=>{
             
         }, (err)=>{

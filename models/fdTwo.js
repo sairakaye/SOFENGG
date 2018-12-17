@@ -42,7 +42,8 @@ var fdTwoSchema = mongoose.Schema({
   dateOfReturn: Date,
   dateOfReturnToWork: Date,
   dateIncentiveLastAvailed: Date,
-  remarks: [remarkSchema]
+  remarks: [remarkSchema],
+  notif : Boolean
 })
 
 var fdTwo = mongoose.model("fdTwo", fdTwoSchema)
@@ -121,6 +122,25 @@ exports.edit = function (paramFDTwo) {
       reject(err)
     })
   })
+}
+
+/**
+ * Turns on notification on fd2 
+ *
+ * @param {FD2 record to be notified} paramID
+ */
+exports.changeNotif = function(paramForm, notif){
+    return new Promise(function(resolve, reject){
+        fdTwo.findOneAndUpdate({
+            _id : paramForm
+        }, {
+            "$set" : {"notif" : notif}
+        }).then((updatedFDTwo)=>{
+            resolve(updatedFDTwo)
+        }, (err)=>{
+            reject(err)
+        })
+    })
 }
 
 /**

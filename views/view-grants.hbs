@@ -132,7 +132,7 @@
                   <tr class="listmember">
                     {{else}}
                     {{/checkstatus}}
-                    <td>{{formId}} </td>
+                    <td>{{#if notif}}<i class="attention icon"></i>{{/if}}{{formId}}</td>
                     <td>{{formatDateTime timestamp}} </td>
                     <td>{{firstName}} {{lastName}} </td>
                     <td>{{department}}</td>
