@@ -268,7 +268,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                             Overview.addFDOneTotal(updatedUser.college).then((updatedOverview) => {
                                                 fdOne.changeNotifFaculty(foundFDOne._id, boolFac).then((notifiedFD)=>{
-                                                    console.log("Added to Approved Files!")
+                                                    console.log("Added to Approved Files!" + boolFac.toString)
                                                 }, (err)=>{
                                                     res.send(err)
                                                 })
@@ -287,7 +287,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                             Overview.subtractFDOneTotal(updatedUser.college).then((updatedOverview) => {
                                                 fdOne.changeNotifFaculty(foundFDOne._id, boolFac).then((notifiedFD)=>{
-                                                    console.log("Added to Approved Files!")
+                                                    console.log("Added to Approved Files!" + boolFac.toString)
                                                 }, (err)=>{
                                                     res.send(err)
                                                 })
@@ -308,7 +308,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             
                                             Overview.subtractFDOneTotal(updatedUser.college).then((updatedOverview) => {
                                                 fdOne.changeNotifFaculty(foundFDOne._id, boolFac).then((notifiedFD)=>{
-                                                    console.log("Added to Approved Files!")
+                                                    console.log("Added to Approved Files!" + boolFac.toString)
                                                 }, (err)=>{
                                                     res.send(err)
                                                 })
@@ -626,7 +626,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                             Overview.addFDFourTotal(updatedUser.college).then((updatedOverview) => {
                                                 fdFour.changeNotifFaculty(foundFDFour._id, boolFac).then((notifiedFD)=>{
-                                                    console.log("Added to Approved Files!")
+                                                    console.log("Added to Approved Files!" + boolFac)
                                                 }, (err)=>{
                                                     res.send(err)
                                                 })
@@ -646,7 +646,7 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             
                                             Overview.subtractFDFourTotal(updatedUser.college).then((updatedOverview) => {
                                                 fdFour.changeNotifFaculty(foundFDFour._id, boolFac).then((notifiedFD)=>{
-                                                    console.log("Added to Approved Files!")
+                                                    console.log("Added to Approved Files!" + boolFac)
                                                 }, (err)=>{
                                                     res.send(err)
                                                 })

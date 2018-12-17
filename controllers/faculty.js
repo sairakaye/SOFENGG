@@ -597,6 +597,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -608,7 +609,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus, notif
+    dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -788,6 +789,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -798,7 +800,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus, notif
+    dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -996,6 +998,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1007,7 +1010,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus, notif
+    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1188,6 +1191,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1198,7 +1202,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
-    grantStatus, notif
+    grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1378,6 +1382,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1387,7 +1392,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    currencychoice, participantFee, checkPayableTo, grantStatus, notif
+    currencychoice, participantFee, checkPayableTo, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1564,6 +1569,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (coverage == null || coverage == undefined)
     coverage = "N/A"
@@ -1573,7 +1579,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus, notif
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus, notif, notifFaculty
   }
 
   if (user) {

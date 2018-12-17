@@ -157,7 +157,7 @@ exports.changeNotifFaculty = function(paramForm, notif){
         fdOne.findOneAndUpdate({
             _id : paramForm
         }, {
-            "$set" : {"notif" : notif}
+            "$set" : {"notifFaculty" : notif}
         }).then((updatedFDOne)=>{
             resolve(updatedFDOne)
         }, (err)=>{
