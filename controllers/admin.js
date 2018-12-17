@@ -1035,6 +1035,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             "\n\nGood day!\n\nYour application for " + foundFDOne.formId + " " + foundFDOne.grantName +
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
+
+                        Overview.subtractFDOneTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
                         
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
@@ -1074,6 +1080,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             "\n\nGood day!\n\nYour application for " + foundFDTwo.formId + " " + foundFDTwo.grantName +
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
+
+                        Overview.subtractFDTwoTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
                         
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
@@ -1113,6 +1125,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             "\n\nGood day!\n\nYour application for " + foundFDThree.formId + " " + foundFDThree.grantName +
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
+
+                        Overview.subtractFDThreeTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
                         
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
@@ -1153,6 +1171,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
                         
+                        Overview.subtractFDFourTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
+
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
                                 console.log(error);
@@ -1191,6 +1215,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             "\n\nGood day!\n\nYour application for " + foundFDFifteen.formId + " " + foundFDFifteen.grantName +
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
+                                                
+                        Overview.subtractFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
                         
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
@@ -1230,6 +1260,12 @@ router.delete("/delete-form", urlencoder, (req, res) => {
                             "\n\nGood day!\n\nYour application for " + foundFDSixteen.formId + " " + foundFDSixteen.grantName +
                             " has been removed\n\n" + "Thank You.\n\nVice Chancellor for Academics Office"
                         }
+
+                        Overview.subtractFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
+                            console.log("Subtracted to Approved Files!")
+                        }, (err) => {
+                            res.send(err)
+                        })
                         
                         transporter.sendMail(mailOptions, function (error, info) {
                             if (error) {
