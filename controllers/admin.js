@@ -1355,7 +1355,7 @@ router.post("/approveform", urlencoder, (req, res) => {
             })
         })
     }
-    else if (grant == "[FD15] Incentive for Publication in Pre-Selected High Impact Journal") {
+    else if (grant == "[FD15] Support for Local Trainings, Seminars and Workshops") {
         fdFifteen.approveFDFifteen(id).then((foundFDFifteen) => {
             User.approveFDFifteenInUser(foundFDFifteen).then((updatedUser) => {
                 res.send(updatedUser)
