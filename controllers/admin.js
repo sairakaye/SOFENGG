@@ -220,6 +220,7 @@ router.post("/change-status", urlencoder, function (req, res) {
     var id = req.body.formID
     var grant = req.body.grant
     var remark = req.body.remark
+    var boolFac = true
 
     var statusMessage = ""
 
@@ -266,7 +267,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                 "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDOneTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdOne.changeNotifFaculty(foundFDOne._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!" + boolFac.toString)
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })
@@ -362,7 +367,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                             
                                             Overview.addFDTwoTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdTwo.changeNotifFaculty(foundFDTwo._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!")
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })
@@ -459,7 +468,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                             }
                                             
                                             Overview.addFDThreeTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdThree.changeNotifFaculty(foundFDThree._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!")
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })
@@ -556,7 +569,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDFourTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdFour.changeNotifFaculty(foundFDFour._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!" + boolFac)
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })
@@ -653,7 +670,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDFifteenTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdFifteen.changeNotifFaculty(foundFDFifteen._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!")
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })
@@ -749,7 +770,11 @@ router.post("/change-status", urlencoder, function (req, res) {
                                                     "\n\nThank You.\n\nVice Chancellor for Academics Office"
                                             }
                                             Overview.addFDSixteenTotal(updatedUser.college).then((updatedOverview) => {
-                                                console.log("Added to Approved Files!")
+                                                fdSixteen.changeNotifFaculty(foundFDSixteen._id, boolFac).then((notifiedFD)=>{
+                                                    console.log("Added to Approved Files!")
+                                                }, (err)=>{
+                                                    res.send(err)
+                                                })
                                             }, (err) => {
                                                 res.send(err)
                                             })

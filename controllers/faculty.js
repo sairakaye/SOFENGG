@@ -68,6 +68,7 @@ router.post("/view-details", urlencoder, function (req, res) {
 
   var user = req.session.user
   var id = req.body.details
+  var boolFac = false
 
   if (user) {
     if (user.userType != 'Faculty')
@@ -84,35 +85,69 @@ router.post("/view-details", urlencoder, function (req, res) {
 
       if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         var fdOneData = forms
-
-        res.render("preview-form1.hbs", {
+        
+        fdOne.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form1.hbs", {
           user, fdOneData, viewdetails: "True", remarks: fdOneData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
+        
       } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
         var fdTwoData = forms
-        res.render("preview-form2.hbs", {
+        
+        fdTwo.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form2.hbs", {
           user, fdTwoData, viewdetails: "True", remarks: fdTwoData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD3] Support for Paper Presentations in Conferences") {
         var fdThreeData = forms
-        res.render("preview-form3.hbs", {
+        
+        fdThree.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form3.hbs", {
           user, fdThreeData, viewdetails: "True", remarks: fdThreeData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences") {
         var fdFourData = forms
-        res.render("preview-form4.hbs", {
+        
+        fdFour.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form4.hbs", {
           user, fdFourData, viewdetails: "True", remarks: fdFourData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops") {
         var fdFifteenData = forms
-        res.render("preview-form15.hbs", {
+        fdFifteen.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form15.hbs", {
           user, fdFifteenData, viewdetails: "True", remarks: fdFifteenData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations") {
         var fdSixteenData = forms
-        res.render("preview-form16.hbs", {
+        fdSixteen.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form16.hbs", {
           user, fdSixteenData, viewdetails: "True", remarks: fdSixteenData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       }
     })
   } else {
@@ -562,6 +597,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -573,7 +609,7 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus, notif
+    dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -753,6 +789,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -763,7 +800,7 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
     firstName, lastName, department, dateHired, rank, status,
     aveTeachingPerformance, nameOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    dateIncentiveLastAvailed, grantStatus, notif
+    dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -961,6 +998,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
   var travelAndConferenceSubsidy = req.body.travelAndConferenceSubsidy
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -972,7 +1010,7 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
     aveTeachingPerformance, titleOfPaperOrPublication, titleOfJournal,
     datePaperSubmitted, datePaperAccepted, nameOfConference, typeOfConference, titleOfPaperToBePresented,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
-    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus, notif
+    travelAndConferenceSubsidy, dateIncentiveLastAvailed, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1153,6 +1191,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
   var dateIncentiveLastAvailed = req.body.dateIncentiveLastAvailed
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1163,7 +1202,7 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
     firstName, lastName, department, rank, nameOfConference,
     dateOfStartConference, dateOfEndConference, dateOfDeparture, placeAndVenue, dateOfReturn, dateOfReturnToWork,
     dateIncentiveLastAvailed, currencychoice, participantFee, checkPayableTo, noOfLocalConferencesAttendedThisYear,
-    grantStatus, notif
+    grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1343,6 +1382,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (dateIncentiveLastAvailed == "N/A")
     dateIncentiveLastAvailed = null
@@ -1352,7 +1392,7 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, hostInstitution,
     titleOfSeminar, place, startTime, endTime, dateIncentiveLastAvailed,
-    currencychoice, participantFee, checkPayableTo, grantStatus, notif
+    currencychoice, participantFee, checkPayableTo, grantStatus, notif, notifFaculty
   }
 
   if (user) {
@@ -1529,6 +1569,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
   var checkPayableTo = req.body.checkPayableTo
   var grantStatus = "Pending"
   var notif = true
+  var notifFaculty = false
 
   if (coverage == null || coverage == undefined)
     coverage = "N/A"
@@ -1538,7 +1579,7 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
     ownerIdNumber: user.username, term: "1st", startAY: 2018, endAY: 2019,
     firstName, lastName, department, rank, status, nameOfOrganization,
     typeOfMembershipPlace, typeofMembershipDuration, membershipDate,
-    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus, notif
+    coverage, currencychoice, membershipFee, checkPayableTo, grantStatus, notif, notifFaculty
   }
 
   if (user) {

@@ -41,7 +41,8 @@ var fdSixteenSchema = mongoose.Schema({
   checkPayableTo: String,
   participantFee: Number, //MONEY
   remarks: [remarkSchema],
-  notif : Boolean
+  notif : Boolean,
+  notifFaculty : Boolean
 })
 
 var fdSixteen = mongoose.model("fdSixteen", fdSixteenSchema)
@@ -133,6 +134,25 @@ exports.changeNotif = function(paramForm, notif){
             _id : paramForm
         }, {
             "$set" : {"notif" : notif}
+        }).then((updatedFDSixteen)=>{
+            resolve(updatedFDSixteen)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+/**
+ * Turns on notification on fd2 
+ *
+ * @param {FD2 record to be notified} paramID
+ */
+exports.changeNotifFaculty = function(paramForm, notif){
+    return new Promise(function(resolve, reject){
+        fdSixteen.findOneAndUpdate({
+            _id : paramForm
+        }, {
+            "$set" : {"notifFaculty" : notif}
         }).then((updatedFDSixteen)=>{
             resolve(updatedFDSixteen)
         }, (err)=>{
