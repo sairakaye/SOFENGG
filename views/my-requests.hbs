@@ -74,7 +74,7 @@
             <a href="/faculty/my-requests" class="active item">
               My Grant Requests
               {{#if user.notification}}
-              <i class="ui red circular label">{{user.notification}}</i>
+              <i class="ui red circular label"></i>
               {{else}}
               <i class="right chevron icon"></i>
               {{/if}}
@@ -126,7 +126,7 @@
                               <tr class = "listmember">
                               {{else}}
                               {{/checkstatus}}
-                              <td>{{formId}} </td>
+                              <td>{{#if notifFaculty}}<i class="attention icon red"></i>{{/if}}{{formId}} </td>
                               <td>{{formatDateTime timestamp}} </td>
                               <td>{{grantName}}</td>
                               <td>{{grantStatus}}</td>

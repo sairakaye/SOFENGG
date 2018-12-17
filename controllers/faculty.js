@@ -629,13 +629,6 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
                     }, (err)=>{
                         res.send(err)
                     })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
                 }
                 
                 res.render("success.hbs", {
@@ -822,13 +815,6 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
                 
                 if(adminUser.notification == ""){
                     User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
                         
                     }, (err)=>{
                         res.send(err)
@@ -1043,13 +1029,6 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
                     }, (err)=>{
                         res.send(err)
                     })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
                 }
 
               res.render("success.hbs", {
@@ -1244,13 +1223,6 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
                     }, (err)=>{
                         res.send(err)
                     })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
                 }
                   
                   res.render("success.hbs", {
@@ -1434,13 +1406,6 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
                   
                   if(adminUser.notification == ""){
                     User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
                         
                     }, (err)=>{
                         res.send(err)
@@ -1629,13 +1594,6 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                   
                   if(adminUser.notification == ""){
                     User.changeNotifInUser(adminUser.username, "1").then((notifiedUser)=>{
-                        
-                    }, (err)=>{
-                        res.send(err)
-                    })
-                }else{
-                    var num = parseInt(adminUser.notification) + 1
-                    User.changeNotifInUser(adminUser.username, num.toString()).then((notifiedUser)=>{
                         
                     }, (err)=>{
                         res.send(err)
