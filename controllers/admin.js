@@ -1686,7 +1686,7 @@ router.get("/export", urlencoder, (req, res) => {
                 'SUMMARY REPORT(Received by VCAO)', 'LIQUIDATION(Received by VCAO)', 'Remarks'];
                 worksheet.getRow(2).font = { size: 9, bold: true };
 
-                for (i = 1; i <= 20; i++)  {
+                for (i = 1; i <= 19; i++)  {
                     worksheet.getRow(2).getCell(i).fill = { type: 'pattern', pattern: 'solid', fgColor:{argb:'FFCDF2BE'}, bgColor:{argb:'FFCDF2BE'}}
                     worksheet.getRow(2).getCell(i).border = { top: {style:'thin'}, left: {style:'thin'}, bottom: {style:'thin'}, right: {style:'thin'}}
                 }
