@@ -1503,13 +1503,9 @@ router.post("/upload", upload.single("filename"), (req, res) => {
             }
         })
         
-        Overview.getAllOverview().then((totalArray)=>{
-            var user = req.session.user
-            res.render("home-admin.hbs", {
-                user, totalArray
-            })
-        }, (err)=>{
-            res.send(err)
+        var user = req.session.user
+        res.render("settings.hbs", {
+            user
         })
     } catch (e){
         res.send(e)
