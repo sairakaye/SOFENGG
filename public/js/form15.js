@@ -233,8 +233,6 @@ $('#request-form')
     }
   });
 
-  
-
 /**
  * This part checks if the incentive was not availed,
  * and the user submits the form for preview, it retains
