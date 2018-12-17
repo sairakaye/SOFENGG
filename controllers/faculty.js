@@ -68,6 +68,7 @@ router.post("/view-details", urlencoder, function (req, res) {
 
   var user = req.session.user
   var id = req.body.details
+  var boolFac = false
 
   if (user) {
     if (user.userType != 'Faculty')
@@ -84,35 +85,69 @@ router.post("/view-details", urlencoder, function (req, res) {
 
       if (forms.grantName == "[FD1] Incentive for Publication in Pre-Selected High Impact Journal") {
         var fdOneData = forms
-
-        res.render("preview-form1.hbs", {
+        
+        fdOne.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form1.hbs", {
           user, fdOneData, viewdetails: "True", remarks: fdOneData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
+        
       } else if (forms.grantName == "[FD2] Incentive for Publication in Pre-Selected High Impact Conferences") {
         var fdTwoData = forms
-        res.render("preview-form2.hbs", {
+        
+        fdTwo.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form2.hbs", {
           user, fdTwoData, viewdetails: "True", remarks: fdTwoData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD3] Support for Paper Presentations in Conferences") {
         var fdThreeData = forms
-        res.render("preview-form3.hbs", {
+        
+        fdThree.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form3.hbs", {
           user, fdThreeData, viewdetails: "True", remarks: fdThreeData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD4] Support for Participation in Local Conferences") {
         var fdFourData = forms
-        res.render("preview-form4.hbs", {
+        
+        fdFour.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form4.hbs", {
           user, fdFourData, viewdetails: "True", remarks: fdFourData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD15] Support for Local Trainings, Seminars and Workshops") {
         var fdFifteenData = forms
-        res.render("preview-form15.hbs", {
+        fdFifteen.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form15.hbs", {
           user, fdFifteenData, viewdetails: "True", remarks: fdFifteenData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       } else if (forms.grantName == "[FD16] Support for Membership in Professional Organizations") {
         var fdSixteenData = forms
-        res.render("preview-form16.hbs", {
+        fdSixteen.changeNotifFaculty(forms._id, boolFac).then((notifiedFD)=>{
+            res.render("preview-form16.hbs", {
           user, fdSixteenData, viewdetails: "True", remarks: fdSixteenData.remarks
         })
+        }, (err)=>{
+            res.send(err)
+        })
+        
       }
     })
   } else {
