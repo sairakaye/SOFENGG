@@ -611,8 +611,8 @@ router.post("/submit-fd1", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdOneData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdOneData.formId +
-                  " " + newFdOneData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdOneData.formId +
+                  " for paper/publication " + newFdOneData.titleOfPaperOrPublication + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
               
               transporter.sendMail(mailOptions, function (error, info) {
@@ -808,8 +808,8 @@ router.post("/submit-fd2", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdTwoData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdTwoData.formId +
-                  " " + newFdTwoData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdTwoData.formId +
+                  " for the conference " + newFdTwoData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -1025,8 +1025,8 @@ router.post("/submit-fd3", urlencoder, function (req, res) {
                 from: newMailer.emailAddress,
                 to: adminUser.emailAddress,
                 subject: "[OVCA]" + " [" + newFdThreeData.formId + "]",
-                text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdThreeData.formId +
-                  " " + newFdThreeData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdThreeData.formId +
+                  " for conference " + newFdThreeData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
               }
 
               transporter.sendMail(mailOptions, function (error, info) {
@@ -1226,8 +1226,8 @@ router.post("/submit-fd4", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdFourData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFourData.formId +
-                      " " + newFdFourData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdFourData.formId +
+                      " for local conference " + newFdFourData.nameOfConference + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
@@ -1420,8 +1420,8 @@ router.post("/submit-fd15", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdFifteenData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdFifteenData.formId +
-                      " " + newFdFifteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdFifteenData.formId +
+                      " for the seminar " + newFdFifteenData.titleOfSeminar + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
@@ -1615,8 +1615,8 @@ router.post("/submit-fd16", urlencoder, function (req, res) {
                       from: newMailer.emailAddress,
                       to: adminUser.emailAddress,
                       subject: "[OVCA]" + " [" + newFdSixteenData.formId + "]",
-                      text: "Good Day Miss Grace!\n\nYou have received a request application for " + newFdSixteenData.formId +
-                      " " + newFdSixteenData.grantName + " by " + user.firstName + " " + user.lastName + "\n\nThank You!"
+                      text: "Good Day Miss Grace!\n\nYou have received a request application " + newFdSixteenData.formId +
+                      " for the professional organization " + newFdSixteenData.nameOfOrganization + " sent by " + user.firstName + " " + user.lastName + "\n\nThank You!"
                   }
                   
                   transporter.sendMail(mailOptions, function (error, info) {
